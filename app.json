@@ -1,0 +1,30 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F08080",
+    "navigationBarTitleText": "友爱清单-Togatherm",
+    "navigationBarTextStyle":"white"
+  },
+    "tabBar": {
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "我的愿望",
+          "selectedIconPath": "images/mine.png",
+          "iconPath": "images/mine1.png"
+        },
+        {
+          "pagePath": "pages/logs/logs",
+          "text": "朋友的愿望",
+          "selectedIconPath": "images/front.png",
+          "iconPath": "images/front1.png"
+        }
+      ],
+      "color": "#929292",
+      "selectedColor": "#20492e"
+    }
+}
