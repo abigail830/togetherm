@@ -1,0 +1,28 @@
+/* pages/index/guide/guide.wxss */
+swiper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-items {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  color: #ffffff;
+}
+
+.main-slogon{
+  margin: 180rpx auto;
+  font-size: 130%;
+  margin-top: 250rpx;
+}
+.sub-slogon {
+  margin: 50rpx auto;
+  font-size: 80%;
+}

@@ -1,0 +1,10 @@
+<!--pages/index/guide/guide.wxml-->
+<swiper indicator-dots="false" autoplay="true" interval="2500" bindchange="swiperChange"
+  current="{{currentIndex}}">
+  <block wx:for="{{imgs}}" wx:key="{{imgs.index}}">
+    <swiper-item class="swiper-items">
+      <image class="swiper-image" src="{{item}}"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
