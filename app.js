@@ -11,82 +11,88 @@ App({
     this.wxLogin();
   },
   wxLogin: function () {
-    wx.login({
-      success: res => {
-        console.log(res);
-        wx.setStorageSync('wx_code', res.code);
-        const header = {
-          "X-WX-Code": res.code
-        };
-        console.log("登录中...");
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: this.globalData.apiBase + "/common/wxLogin",
-          method: "GET",
-          header: header,
-          dataType: "json",
-          complete: res => {
-            wx.hideLoading();
-          },
-          success: (result) => {
-            wx.setStorageSync('skey', result.data.session_key);
-            wx.setStorageSync('openid', result.data.openid);
-            console.log("登录后台成功");
-            util.showSuccess('登录后台成功');
-            console.log(this.globalData);
-            this.globalData.authInfo.skey = result.data.session_key;
-            this.globalData.authInfo.openid = result.data.openid;
-            // 获取用户信息
-            wx.getSetting({
-              success: res2 => {
-                if (res2.authSetting['scope.userInfo']) {
-                  // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                  wx.getUserInfo({
-                    success: res3 => {
-                      console.log(res3);
-                      if (res3.iv && res3.encryptedData) {
-                        wx.request({
-                          url: this.globalData.apiBase + "/common/decrypt",
-                          method: "GET",
-                          header: {
-                            iv: res3.iv,
-                            encryptedData: res3.encryptedData,
-                            appId: "wxa823794835f994b3",
-                            skey: result.data.session_key
-                          },
-                          dataType: "json",
-                          complete: res => {
-                            wx.hideLoading();
-                          },
-                          success: (result2) => {
+    return new Promise((resolve, reject) => {
 
-                          },
+      wx.login({
+        success: res => {
+          console.log(res);
+          wx.setStorageSync('wx_code', res.code);
+          const header = {
+            "X-WX-Code": res.code
+          };
+          console.log("登录中...");
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.request({
+            url: this.globalData.apiBase + "/common/wxLogin",
+            method: "GET",
+            header: header,
+            dataType: "json",
+            complete: res => {
+              wx.hideLoading();
+            },
+            success: resolve,
 
-                          fail: (result2) => {
-                            util.showModel('登录后台错误', result2.msg)
-                          },
-                        });
-                      }
-                      // 可以将 res 发送给后台解码出 unionId
-                      this.globalData.userInfo = res3.userInfo;
+            fail: reject,
+          });
+        }
+      });
+    }).then((result) => {
+      wx.setStorageSync('skey', result.data.session_key);
+      wx.setStorageSync('openid', result.data.openid);
+      console.log("登录后台成功");
+      console.log(this.globalData);
+      this.globalData.authInfo.skey = result.data.session_key;
+      this.globalData.authInfo.openid = result.data.openid;
 
-                      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                      // 所以此处加入 callback 以防止这种情况
-                      if (this.userInfoReadyCallback) {
-                        this.userInfoReadyCallback(res3)
-                      }
-                    }
-                  })
+      console.log(this.globalData.authInfo.openid);
+      // this.initWishLists();
+      // 获取用户信息
+      wx.getSetting({
+        success: res2 => {
+          if (res2.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            wx.getUserInfo({
+              success: res3 => {
+                console.log(res3);
+                if (res3.iv && res3.encryptedData) {
+                  wx.request({
+                    url: this.globalData.apiBase + "/common/decrypt",
+                    method: "GET",
+                    header: {
+                      iv: res3.iv,
+                      encryptedData: res3.encryptedData,
+                      appId: "wxa823794835f994b3",
+                      skey: result.data.session_key
+                    },
+                    dataType: "json",
+                    complete: res => {
+                      wx.hideLoading();
+                    },
+                    success: (result2) => {
+
+                    },
+
+                    fail: (result2) => {
+                      util.showModel('登录后台错误', result2.msg)
+                    },
+                  });
+                }
+                // 可以将 res 发送给后台解码出 unionId
+                this.globalData.userInfo = res3.userInfo;
+
+                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                // 所以此处加入 callback 以防止这种情况
+                if (this.userInfoReadyCallback) {
+                  this.userInfoReadyCallback(res3)
                 }
               }
-            });
-          },
-
-          fail: (result) => {
-            util.showModel('登录后台错误', result.errMsg)
-          },
-        });
-      }
+            })
+          }
+        }
+      });
+      
+    }, (result) => {
+      util.showModel('登录后台错误', result.errMsg)
     });
   },
   bindNetworkChangeRefresh: function () {
@@ -103,15 +109,28 @@ App({
           duration: 1000
         });
       } else if (res.isConnected) {
-        if (!this.globalData.authInfo.openid) {
-          this.wxLogin();
-        }
         if (!this.globalData.isNetworkConnected) {
-          let curpage = util.getCurrentPageUrlWithArgs();
-          wx.reLaunch({
-            url: "/" + curpage
-          });
-          this.globalData.isNetworkConnected = true;
+          let networkResumeCallback = () => {
+            let curpage = util.getCurrentPageUrlWithArgs();
+            curpage.page.onLoad(curpage.keys);
+            curpage.page.onShow();
+            this.globalData.isNetworkConnected = true;
+          };
+          let promiseList = [];
+          if (this.globalData.authInfo.openid==null) {
+            promiseList.push(this.wxLogin());
+          }
+          // if (this.globalData.myCompletedWishCount==null ||
+          //   this.globalData.myFriendsCompletedWishCount==null) {
+          //   promiseList.push(this.initWishLists());
+          // }
+          if (promiseList.length !== 0) {
+            Promise.all(promiseList)
+              .then(networkResumeCallback, () => {
+              });
+          } else {
+            networkResumeCallback();
+          }
         }
       } else {// for Android Unknown status
         this.globalData.isNetworkConnected = false;
@@ -133,6 +152,9 @@ App({
     isNetworkConnected: true,
     userInfo: null,
     apiBase: "https://wishlist.rabbit-hop.com",
-
+    myCompletedWishCount: null,
+    myFriendsCompletedWishCount: null,
+    wishLists:[],
+    hasWishList:false
   }
 });

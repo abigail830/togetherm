@@ -1,21 +1,81 @@
 /**index.wxss**/
+.container {
+  padding:0rpx;
+  margin: 0rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.fullwidth{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F08080;
+  width: 100%;
+  padding: 0;
+  margin:0rpx;
+  text-align: center;
+}
+.authorizebtn {
+  margin: 80rpx 50rpx;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #F08080;
+  width: 100%;
+  padding: 30rpx;
+  margin:0rpx;
 }
+
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
   border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
 }
 
 .usermotto {
   margin-top: 200px;
+}
+
+.countinfo{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color:  #e2e2e2;
+  color:#757575;
+}
+
+.countcell{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 10rpx 5rpx;
+  margin: 0;
+
+  
+}
+
+.countheader{
+ font-size: 90%;
+}
+
+.count {
+  font-size: 150%;
+  font-weight: bold;
+}
+.counttips {
+  font-size: 50%;
+  font-weight: lighter;
 }

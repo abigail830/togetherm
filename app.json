@@ -2,7 +2,8 @@
   "pages": [
     "pages/guide/guide",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/otherWish/otherWish"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,7 +20,7 @@
         "iconPath": "images/mine1.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/otherWish/otherWish",
         "text": "朋友的愿望",
         "selectedIconPath": "images/front.png",
         "iconPath": "images/front1.png"

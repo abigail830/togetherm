@@ -1,22 +1,22 @@
 //index.js
 //获取应用实例
+let util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+
+    myCompletedWishCount: 0,
+    myFriendsCompletedWishCount:0,
+    hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    this.initWishLists();
+    if (app.globalData.userInfo) {   
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -34,7 +34,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          app.globalData.userInfo = res.userInfo
+          app.globalData.userInfo = res.userInfo;
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
@@ -50,5 +50,44 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  initWishLists: function () {
+    console.log("initWishLists is being called");
+    if (app.globalData.authInfo.openid == null) {
+      console.log("openID is not come back yet");
+      app.globalData.myCompletedWishCount = null;
+      app.globalData.myFriendsCompletedWishCount = null;
+    }
+    else {
+      return Promise.all([
+        util.request(app.globalData.apiBase + "/wish/lists?" + "openId=" + app.globalData.authInfo.openid)
+          .then((res) => {
+            console.log(res.data);
+            app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
+            app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
+            app.globalData.wishLists = res.data.wishLists;
+            app.globalData.hasWishList = res.data.hasWishList;
+            console.log(app.globalData);
+            this.setData({
+              myCompletedWishCount: app.globalData.myCompletedWishCount,
+              myFriendsCompletedWishCount: app.globalData.myFriendsCompletedWishCount,
+              hasWishList: app.globalData.hasWishList,
+              wishLists: app.globalData.wishLists
+            })
+          }, (res) => {
+            util.showModel('获取您的愿望清单', res.errMsg)
+          })
+      ]).then(() => {
+        wx.hideLoading();
+      });
+    }
+  },
+  /**
+  * 生命周期函数--监听页面显示
+  */
+  onShow: function () {
+  
   }
 })
+
+ 

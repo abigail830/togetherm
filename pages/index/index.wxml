@@ -1,13 +1,32 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view wx:if="{{!hasUserInfo && canIUse}}" class="fullwidth">
+    <button wx:if="{{!hasUserInfo && canIUse}}" 
+          open-type="getUserInfo" 
+          bindgetuserinfo="getUserInfo" class="authorizebtn"> 开启我的愿望之旅 
+    </button>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view wx:else class="fullwidth">
+    <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" 
+      src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </view>
+    <view class="countinfo">
+      <view class="countcell">
+        <view class="countheader">我自己实现了</view>
+        <view class="count">{{myCompletedWishCount}}<text class="counttips">个愿望</text></view>      
+      </view>
+      <view class="countcell">
+        <view class="countheader">帮朋友实现了</view>
+        <view class="count">{{myFriendsCompletedWishCount}}<text class="counttips">个愿望</text></view>
+      </view>
+    </view>
+
+    <view wx:if="{{hasWishList}}">
+    
+    </view>
+    <view wx:else>
+    
+    </view>
   </view>
 </view>

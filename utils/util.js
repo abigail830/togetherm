@@ -104,7 +104,7 @@ const getCurrentPageUrlWithArgs = () => {
   }
   urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1);
 
-  return urlWithArgs
+  return { url: urlWithArgs, keys: options, page: currentPage }
 };
 
 const networkTypePromise = () => new Promise((resolve, reject) => {
@@ -124,6 +124,24 @@ const networkTypePromise = () => new Promise((resolve, reject) => {
   console.log(req);
 });
 
+const request = (url, data, header, method) => {
+  return new Promise((resolve, reject) => {
+    let header = header || {};
+    let data = data || {};
+    wx.request({
+      url: url,
+      method: method || "GET",
+      data: data,
+      header: {
+        ...header
+      },
+      dataType: "json",
+      success: resolve,
+      fail: reject
+    })
+  })
+};
+
 module.exports = {
   formatTime: formatTime,
   formatNumber: formatNumber,
@@ -140,4 +158,5 @@ module.exports = {
   getCurrentPageUrl: getCurrentPageUrl,
   getCurrentPageUrlWithArgs: getCurrentPageUrlWithArgs,
   networkTypePromise: networkTypePromise,
+  request: request,
 };

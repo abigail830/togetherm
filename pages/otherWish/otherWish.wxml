@@ -1,0 +1,11 @@
+<!--pages/otherWish/otherWish.wxml-->
+<view class="container">
+  <!-- <view wx:if="{{!hasUserInfo && canIUse}}" class="userinfo_before">
+    <button wx:if="{{!hasUserInfo && canIUse}}" 
+          open-type="getUserInfo" 
+          bindgetuserinfo="getUserInfo" class="authorizebtn"> 开启我的愿望之旅 
+    </button>
+  </view>
+  <view wx:else>
+  </view> -->
+</view>
