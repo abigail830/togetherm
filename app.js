@@ -12,7 +12,6 @@ App({
   },
   wxLogin: function () {
     return new Promise((resolve, reject) => {
-
       wx.login({
         success: res => {
           console.log(res);
@@ -21,6 +20,9 @@ App({
             "X-WX-Code": res.code
           };
           console.log("登录中...");
+          wx.showLoading({
+            title: '登录中...',
+          })
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
           wx.request({
             url: this.globalData.apiBase + "/common/wxLogin",
@@ -45,7 +47,7 @@ App({
       this.globalData.authInfo.openid = result.data.openid;
 
       console.log(this.globalData.authInfo.openid);
-      // this.initWishLists();
+      this.initWishLists();
       // 获取用户信息
       wx.getSetting({
         success: res2 => {
@@ -142,6 +144,34 @@ App({
         });
       }
     })
+  },
+
+  initWishLists: function () {
+    console.log("initWishLists is being called in app.js");
+    if (this.globalData.authInfo.openid == null) {
+      console.log("openID is not come back yet in app.js");
+      this.globalData.myCompletedWishCount = null;
+      this.globalData.myFriendsCompletedWishCount = null;
+    } else if (this.globalData.myCompletedWishCount!=null){
+      console.log("wishList already be collected before app.js call.");
+    }
+    else {
+      return Promise.all([
+        util.request(this.globalData.apiBase + "/wish/lists?" + "openId=" + this.globalData.authInfo.openid)
+          .then((res) => {
+            console.log(res.data);
+            this.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
+            this.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
+            this.globalData.wishLists = res.data.wishLists;
+            this.globalData.hasWishList = res.data.hasWishList;
+            console.log(this.globalData);
+          }, (res) => {
+            util.showModel('获取您的愿望清单', res.errMsg)
+          })
+      ]).then(() => {
+        wx.hideLoading();
+      });
+    }
   },
   
   globalData: {

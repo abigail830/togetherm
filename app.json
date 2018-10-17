@@ -3,7 +3,8 @@
     "pages/guide/guide",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/otherWish/otherWish"
+    "pages/otherWish/otherWish",
+    "pages/wishList/wishList"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,11 +1,13 @@
 <!--index.wxml-->
 <view class="container">
-  <view wx:if="{{!hasUserInfo && canIUse}}" class="fullwidth">
-    <button wx:if="{{!hasUserInfo && canIUse}}" 
+  <block wx:if="{{!hasUserInfo && canIUse}}" >
+    <view class="fullwidth">
+      <button wx:if="{{!hasUserInfo && canIUse}}" 
           open-type="getUserInfo" 
           bindgetuserinfo="getUserInfo" class="authorizebtn"> 开启我的愿望之旅 
     </button>
   </view>
+  </block>
   <view wx:else class="fullwidth">
     <view class="userinfo">
       <image bindtap="bindViewTap" class="userinfo-avatar" 
@@ -22,11 +24,22 @@
       </view>
     </view>
 
-    <view wx:if="{{hasWishList}}">
-    
+    <view wx:if="{{hasWishList}}" class="content">
+      <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="wishListID">
+	      <navigator url="../wishList/wishList?wishListID={{item.wishListID}}" hover-class="navigator-hover" class="row-container">
+		      <view class="con-date">{{item.dueTime}}</view>
+	      	<view class="con-info">{{item.description}}</view>
+	      </navigator>
+      </block>
     </view>
-    <view wx:else>
-    
+    <view wx:else class="content">
+      <view class="empty_wish">{{empty_wish}}</view>
     </view>
+
+    <view class="btnblock">
+      <button bindtap="addWishList" class="addwishbtn"> 添加愿望清单 
+      </button>
+    </view>
+
   </view>
 </view>

@@ -1,0 +1,27 @@
+<!--pages/wishList/wishList.wxml-->
+<view class="tab-header">
+    <view class="headerText">
+      <text>{{headerText}}</text>
+    </view>
+</view>
+
+<view>
+  <view wx:if="{{hasWish}}" class="content">
+      <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
+	      <view class="row-container">
+		      <view class="con-date">{{item.lastUpdateTime}}</view>
+	      	<view class="con-info">{{item.description}}</view>
+          <view class="con-info">{{item.wishStatus}}</view>
+	      </view>
+      </block>
+  </view>
+  <view wx:else>
+    <text>No Wish Found 6_6</text>
+  </view>
+
+  <view class="btnblock">
+      <button bindtap="addWishList" class="addwishbtn"> 添加愿望 
+      </button>
+  </view>
+</view>
+
