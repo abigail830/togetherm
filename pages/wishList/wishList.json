@@ -1,3 +1,5 @@
 {
-
+  "usingComponents": {
+    "date-picker": "../../vendor/date-picker/date-picker"
+  }
 }

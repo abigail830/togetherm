@@ -3,10 +3,19 @@
     <view class="headerText">
       <text>{{headerText}}</text>
     </view>
+    <view class="flex_row_header">
+	      <view class="lable">愿望实现日期：</view>
+        <view bindtap="showDatePicker" >{{year}} - {{month}} - {{currentDate}}
+        <image mode='aspectFill' class='arrow-img-header' src='https://kidneyhealty.com.cn/images/arrow-down-white.png'></image></view>
+      </view>
+    <view class="flex_row_header">
+      <view class="lable">愿望列表名：</view>
+      <input maxlength="18" bindinput="bindKeyInput" class="description" value="{{listDescription}}" />
+    </view>
 </view>
 
 <view>
-  <view wx:if="{{hasWish}}" class="content">
+  <view wx:if="{{resultCode}}=='SUCCESS'" class="content">
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
 	      <view class="row-container">
 		      <view class="con-date">{{item.lastUpdateTime}}</view>
@@ -15,7 +24,7 @@
 	      </view>
       </block>
   </view>
-  <view wx:else>
+  <view wx:else style="text-align:center;">
     <text>No Wish Found 6_6</text>
   </view>
 
@@ -24,4 +33,10 @@
       </button>
   </view>
 </view>
+
+<date-picker id="date-picker"
+			 value="{{datePickerValue}}"
+			 isShow="{{datePickerIsShow}}"
+			 bindsureclick="confirmDate"
+			 bindcancelclick="hideDatePicker"/>
 

@@ -1,6 +1,9 @@
 // pages/wishList/wishList.js
 let util = require('../../utils/util.js');
 const app = getApp()
+const currentYear = new Date().getFullYear();
+const currentMonth = util.formatNumber(new Date().getMonth() + 1);
+const currentDate = util.formatNumber(new Date().getDate());
 
 Page({
 
@@ -9,8 +12,15 @@ Page({
    */
   data: {
     wishes:[],
-    hasWish: false,
-    headerText: "愿望列表"
+    resultCode: null,
+    listDescription: '',
+    listDueTime: null,
+    headerText: "愿望列表",
+    datePickerIsShow: false,
+    datePickerValue: [currentYear, currentMonth, currentDate],
+    year: currentYear,
+    month: currentMonth,
+    currentDate: currentDate,
   },
 
   /**
@@ -21,12 +31,17 @@ Page({
       console.log("Going to create new wishlist");
     }else{
       return Promise.all([
-        util.request(app.globalData.apiBase + "/wish/details?" + "wishListId=" + options.wishListID)
+        util.request(app.globalData.apiBase + "/wish?" + "wishListId=" + options.wishListID)
           .then((res) => {
             console.log(res.data);
             this.setData({
               wishes: res.data.wishes,
-              hasWish: res.data.hasWish
+              resultCode: res.data.resultCode,
+              listDescription: res.data.listDescription,
+              listDueTime: res.data.listDueTime,
+              year: res.data.listDueTime.substring(0,4),
+              month: res.data.listDueTime.substring(5, 7),
+              currentDate: res.data.listDueTime.substring(8, 10),
             })
           }, (res) => {
             util.showModel('获取您的愿望', res.errMsg)
@@ -35,9 +50,6 @@ Page({
         wx.hideLoading();
       });
     }
-      
-
-
   },
 
   /**
@@ -87,5 +99,38 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  bindKeyInput: function (e) {
+    this.setData({
+      listDescription: e.detail.value
+    })
+  },
+
+  showDatePicker: function (e) {
+    this.setData({
+      datePickerIsShow: true,
+      datePickerValue: [this.data.year, this.data.month, this.data.currentDate]
+    });
+  },
+  hideDatePicker: function (e) {
+    this.setData({
+      datePickerIsShow: false,
+    });
+  },
+  confirmDate: function (e) {
+    console.log(e);
+    let dateArr = e.detail.value;
+    this.setData({
+      year: dateArr[0],
+      month: dateArr[1],
+      currentDate: dateArr[2],
+      listDueTime: dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2],
+      datePickerIsShow: false
+    });
+    // this.loadFood();
+  },
+
+
+
 })

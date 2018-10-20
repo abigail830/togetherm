@@ -13,7 +13,8 @@
 .headerText{
   border: 2rpx solid white;
   padding: 8rpx;
-  margin:0 auto;
+  margin:10rpx auto;
+  margin-bottom: 20rpx;
   border-radius: 50rpx;
   font-size: 40rpx;
   width: 60%;
@@ -60,4 +61,28 @@
   width: 60%;
   border: 3rpx solid #F08080;
   border-radius: 30rpx;
+}
+
+.flex_row_header {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  color: #ffffff;
+  padding: 6rpx 20rpx;
+}
+
+.lable {
+  margin: 5rpx 20rpx;
+  font-size: 90%;
+}
+.description {
+  color: #ffffff;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.arrow-img-header {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
 }
