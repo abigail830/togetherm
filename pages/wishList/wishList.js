@@ -107,6 +107,14 @@ Page({
     })
   },
 
+  bindWishKeyInput: function (e) {
+    var id = e.currentTarget.dataset.id;
+    var value = e.detail.value;
+    var item = this.data.wishes[id];
+    item.description = value;
+    console.log(this.data.wishes);
+  },
+
   showDatePicker: function (e) {
     this.setData({
       datePickerIsShow: true,
@@ -128,6 +136,7 @@ Page({
       listDueTime: dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2],
       datePickerIsShow: false
     });
+    console.log(this.data.listDueTime);
     // this.loadFood();
   },
 

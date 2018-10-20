@@ -40,11 +40,12 @@
 .con-date{
   color:#757575;
   margin: 10rpx;
-  padding-left: 10rpx;
+  padding-left: 6rpx;
   font-size: 80%;
 } 
 .con-info {
   margin: 10rpx;
+  font-size: 90%;
 }
 
 .btnblock {
@@ -85,4 +86,5 @@
   width: 50rpx;
   height: 50rpx;
   margin-left: 10rpx;
+  margin-top: 6rpx;
 }

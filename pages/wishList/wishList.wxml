@@ -10,7 +10,7 @@
       </view>
     <view class="flex_row_header">
       <view class="lable">愿望列表名：</view>
-      <input maxlength="18" bindinput="bindKeyInput" class="description" value="{{listDescription}}" />
+      <input maxlength="12" bindinput="bindKeyInput" class="description" value="{{listDescription}}" />
     </view>
 </view>
 
@@ -19,7 +19,8 @@
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
 	      <view class="row-container">
 		      <view class="con-date">{{item.lastUpdateTime}}</view>
-	      	<view class="con-info">{{item.description}}</view>
+          <input maxlength="12" bindinput="bindWishKeyInput" data-id="{{index}}"
+            class="con-info" value="{{item.description}}" />
           <view class="con-info">{{item.wishStatus}}</view>
 	      </view>
       </block>
