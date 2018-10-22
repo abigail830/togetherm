@@ -32,7 +32,7 @@
       </block>
   </view>
   <view wx:else style="text-align:center;">
-    <text>No Wish Found 6_6</text>
+    <text>No Wish Added 6_6</text>
   </view>
 
   <view class="btnblock">
