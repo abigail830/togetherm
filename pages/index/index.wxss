@@ -81,7 +81,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction:column;
-  text-align: left;
+  text-align: center;
   padding: 50rpx 20rpx;
 }
 .row-container{
@@ -90,9 +90,10 @@
     width:100%;
     border-bottom: 1rpx solid #eeeeee;
     vertical-align: center;
-    padding:10rpx;
+    padding:10rpx 20rpx;
     margin:0;
     background-color: #ffffff;
+    text-align: left;
 }
 .con-date{
   color:#757575;
@@ -125,4 +126,16 @@
   width: 60%;
   border: 3rpx solid #F08080;
   border-radius: 20rpx;
+}
+
+.con-trimg{
+    width:60rpx;
+    height:60rpx;
+    margin:5rpx 10rpx;
+}
+.con-enter {
+  right: 40rpx;
+  text-align: right;
+  position: absolute;
+  color: #757575;
 }

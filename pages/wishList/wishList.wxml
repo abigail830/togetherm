@@ -18,7 +18,7 @@
   <view wx:if="{{resultCode}}=='SUCCESS'" class="content">
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
 	      <view class="row-container">
-		      <view class="con-date">{{item.lastUpdateTime}}</view>
+		      <view class="con-date">{{item.lastUpdateTime}}</view>        
           <input maxlength="11" bindinput="bindWishKeyInput" data-id="{{index}}"
             class="con-info" value="{{item.description}}" />
           <view class="con-info">{{item.wishStatus}}</view>
