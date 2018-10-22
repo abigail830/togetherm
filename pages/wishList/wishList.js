@@ -98,7 +98,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '友爱清单',
+      imageUrl: '../../images/guide1.jpg',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   },
 
   bindKeyInput: function (e) {
@@ -140,5 +151,12 @@ Page({
     // this.loadFood();
   },
  
+  addWishList: function(e) {
+
+  },
+
+  confirmAndBack: function(e){
+
+  }
 
 })

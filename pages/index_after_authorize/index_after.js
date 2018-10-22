@@ -7,33 +7,38 @@ Page({
   data: {
     empty_wish: "还没找到你的愿望清单哦 6_6",
     myCompletedWishCount: 0,
-    myFriendsCompletedWishCount:0,
+    myFriendsCompletedWishCount: 0,
     hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   onLoad: function () {
-  
-  },
-
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    });
-    wx.switchTab({
-      url: '../index_after_authorize/index_after'
+      userInfo: app.globalData.userInfo
     })
   },
- 
+  addWishList: function (e) {
+    wx.navigateTo({
+      url: '../wishList/wishList',
+    })
+  },
+
+  setWishListData: function () {
+    if (app.globalData.myCompletedWishCount != null) {
+      this.setData({
+        myCompletedWishCount: app.globalData.myCompletedWishCount,
+        myFriendsCompletedWishCount: app.globalData.myFriendsCompletedWishCount,
+        hasWishList: app.globalData.hasWishList,
+        wishLists: app.globalData.wishLists
+      })
+    }
+  },
   /**
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
+    this.setWishListData();
   },
 
   /**
@@ -55,4 +60,4 @@ Page({
   },
 })
 
- 
+

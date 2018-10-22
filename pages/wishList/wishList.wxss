@@ -11,7 +11,7 @@
 }
 
 .headerText{
-  border: 2rpx solid white;
+  border: 6rpx solid white;
   padding: 8rpx;
   margin:10rpx auto;
   margin-bottom: 20rpx;
@@ -46,6 +46,23 @@
 .con-info {
   margin: 10rpx;
   font-size: 90%;
+  color: #757575;
+}
+
+.con-input {
+  margin: 5rpx;
+  padding: 5rpx 10rpx;
+  font-size: 90%;
+  border: 1rpx solid #eeeeee;
+  border-radius: 5rpx;
+  width: 66%;
+}
+
+.con-status {
+  right: 30rpx;
+  position: absolute;
+  color: #757575;
+  font-size: 80%;
 }
 
 .btnblock {
@@ -75,13 +92,15 @@
 }
 
 .lable {
-  margin: 5rpx 20rpx;
+  margin: 5rpx 8rpx;
   font-size: 90%;
 }
 .description {
   color: #ffffff;
   text-align: left;
-  text-decoration: underline;
+  border: 1rpx solid #ffffff;
+  padding: 1rpx 12rpx;
+  border-radius: 30rpx;
 }
 
 .arrow-img-header {
@@ -89,4 +108,10 @@
   height: 50rpx;
   margin-left: 10rpx;
   margin-top: 6rpx;
+}
+
+.con-trimg{
+    width:60rpx;
+    height:60rpx;
+    margin:5rpx 10rpx;
 }

@@ -26,13 +26,27 @@ Page({
   },
 
   swiperChange: function (e) {
-    if (e.detail.current == this.data.imgs.length-1){
-      console.log("End swiper and going to redirect to index");     
-      wx.hideLoading()
-      wx.switchTab({
-        url: '../index/index',
-      })
-      
+    if (e.detail.current == this.data.imgs.length - 1) {
+      console.log("End swiper and going to redirect to index");
+      try {
+        var info = app.globalData.userInfo;
+        console.log(info);
+        if (info != null) {
+          console.log("Session contained userInfo.");
+          wx.switchTab({
+            url: '../index_after_authorize/index_after'
+          })
+        } else {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+
+        }
+
+      } catch (e) {
+        console.log('Exception happen when try to get userBodyInfo from storage!');
+        console.log(e);
+      }
     }
   },
 

@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/otherWish/otherWish",
-    "pages/wishList/wishList"
+    "pages/wishList/wishList",
+    "pages/index_after_authorize/index_after"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +16,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index_after_authorize/index_after",
         "text": "我的愿望",
         "selectedIconPath": "images/mine.png",
         "iconPath": "images/mine1.png"

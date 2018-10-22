@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="fullwidth">
+    <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" 
+      src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </view>
+    <view class="countinfo">
+      <view class="countcell">
+        <view class="countheader">我自己实现了</view>
+        <view class="count">{{myCompletedWishCount}}<text class="counttips">个愿望</text></view>      
+      </view>
+      <view class="countcell">
+        <view class="countheader">帮朋友实现了</view>
+        <view class="count">{{myFriendsCompletedWishCount}}<text class="counttips">个愿望</text></view>
+      </view>
+    </view>
+
+    <view wx:if="{{hasWishList}}" class="content">
+      <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="wishListID">
+	      <navigator url="../wishList/wishList?wishListID={{item.wishListID}}" hover-class="navigator-hover" class="row-container">
+		      <!-- <view class="con-date">{{item.dueTime}}</view> -->
+          <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>
+	      	<view class="con-info">{{item.description}}</view>
+          <view class="con-enter">></view>
+	      </navigator>
+      </block>
+    </view>
+    <view wx:else class="content">
+      <view class="empty_wish">{{empty_wish}}</view>
+    </view>
+
+    <view class="btnblock">
+      <button bindtap="addWishList" class="addwishbtn"> 添加愿望清单 
+      </button>
+    </view>
+
+  </view>
+</view>

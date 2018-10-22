@@ -1,0 +1,138 @@
+/**index.wxss**/
+.container {
+  padding:0rpx;
+  margin: 0rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.fullwidth{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F08080;
+  width: 100%;
+  padding: 0;
+  margin:0rpx;
+  text-align: center;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F08080;
+  width: 100%;
+  padding: 30rpx;
+  margin:0rpx;
+}
+
+
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+}
+
+
+.countinfo{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0rpx 10rpx;
+  margin: 0;
+  text-align: center;
+  background-color:  #F08080;
+  color:#757575;
+}
+
+.countcell{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 10rpx 5rpx;
+  margin: 0; 
+  background-color:  #e2e2e2;
+}
+
+.countheader{
+ font-size: 80%;
+}
+
+.count {
+  font-size: 150%;
+  font-weight: bold;
+}
+.counttips {
+  font-size: 50%;
+  font-weight: lighter;
+}
+
+.content {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction:column;
+  text-align: center;
+  padding: 50rpx 20rpx;
+}
+.row-container{
+    display: flex;
+    flex-direction:row;
+    width:100%;
+    border-bottom: 1rpx solid #eeeeee;
+    vertical-align: center;
+    padding:10rpx 20rpx;
+    margin:0;
+    background-color: #ffffff;
+    text-align: left;
+}
+.con-date{
+  color:#757575;
+  margin: 10rpx;
+  padding-left: 10rpx;
+  font-size: 80%;
+} 
+.con-info {
+  margin: 10rpx;
+}
+
+.empty_wish {
+  color: #757575;
+  margin: 50rpx;
+  text-align: center;
+  font-size: 90%;
+}
+
+.btnblock {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction:column;
+  text-align: center;
+  padding: 20rpx;
+}
+.addwishbtn {
+  color:#F08080;
+  margin: 30rpx auto;
+  width: 60%;
+  border: 3rpx solid #F08080;
+  border-radius: 20rpx;
+}
+
+.con-trimg{
+    width:60rpx;
+    height:60rpx;
+    margin:5rpx 10rpx;
+}
+.con-enter {
+  right: 40rpx;
+  text-align: right;
+  position: absolute;
+  color: #757575;
+}
