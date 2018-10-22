@@ -6,12 +6,16 @@ App({
     let logs = wx.getStorageSync('logs') || [];
     logs.unshift(Date.now());
     wx.setStorageSync('logs', logs);
-
+    let bodyInfo = wx.getStorageSync('userBodyInfo');
+    if (bodyInfo) {
+      this.globalData.userBodyInfo = bodyInfo;
+    }
     this.bindNetworkChangeRefresh();
-    this.wxLogin();
+
   },
   wxLogin: function () {
     return new Promise((resolve, reject) => {
+
       wx.login({
         success: res => {
           console.log(res);
@@ -20,9 +24,6 @@ App({
             "X-WX-Code": res.code
           };
           console.log("登录中...");
-          wx.showLoading({
-            title: '登录中...',
-          })
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
           wx.request({
             url: this.globalData.apiBase + "/common/wxLogin",
@@ -30,7 +31,7 @@ App({
             header: header,
             dataType: "json",
             complete: res => {
-              wx.hideLoading();
+              // wx.hideLoading();
             },
             success: resolve,
 
@@ -43,11 +44,11 @@ App({
       wx.setStorageSync('openid', result.data.openid);
       console.log("登录后台成功");
       console.log(this.globalData);
+
       this.globalData.authInfo.skey = result.data.session_key;
       this.globalData.authInfo.openid = result.data.openid;
-
-      console.log(this.globalData.authInfo.openid);
       this.initWishLists();
+
       // 获取用户信息
       wx.getSetting({
         success: res2 => {
@@ -68,7 +69,7 @@ App({
                     },
                     dataType: "json",
                     complete: res => {
-                      wx.hideLoading();
+                      // wx.hideLoading();
                     },
                     success: (result2) => {
 
@@ -92,7 +93,6 @@ App({
           }
         }
       });
-      
     }, (result) => {
       util.showModel('登录后台错误', result.errMsg)
     });
@@ -119,13 +119,10 @@ App({
             this.globalData.isNetworkConnected = true;
           };
           let promiseList = [];
-          if (this.globalData.authInfo.openid==null) {
+          if (!this.globalData.authInfo.openid) {
             promiseList.push(this.wxLogin());
           }
-          // if (this.globalData.myCompletedWishCount==null ||
-          //   this.globalData.myFriendsCompletedWishCount==null) {
-          //   promiseList.push(this.initWishLists());
-          // }
+
           if (promiseList.length !== 0) {
             Promise.all(promiseList)
               .then(networkResumeCallback, () => {

@@ -1,4 +1,7 @@
 // pages/index/guide/guide.js
+let util = require('../../utils/util.js');
+const app = getApp()
+
 Page({
 
   /**
@@ -16,15 +19,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中...',
+    });
+    app.wxLogin();
   },
 
   swiperChange: function (e) {
     if (e.detail.current == this.data.imgs.length-1){
-      console.log("End swiper and going to redirect to index");
+      console.log("End swiper and going to redirect to index");     
+      wx.hideLoading()
       wx.switchTab({
         url: '../index/index',
       })
+      
     }
   },
 
@@ -39,7 +47,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // wx.switchTab({
+    //   url: '../index/index',
+    // })
   },
 
   /**

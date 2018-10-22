@@ -49,19 +49,21 @@
 }
 
 .btnblock {
-  width: 100%;
+  width: 90%;
   background-color: #ffffff;
   display: flex;
-  flex-direction:column;
+  flex-direction:row;
   text-align: center;
   padding: 20rpx;
+  margin: 30rpx auto;
 }
 .addwishbtn {
   color:#F08080;
-  margin: 30rpx auto;
-  width: 60%;
+  margin: 10rpx;
   border: 3rpx solid #F08080;
   border-radius: 30rpx;
+  text-align: center;
+  width: 45%;
 }
 
 .flex_row_header {
