@@ -5,7 +5,6 @@ const app = getApp()
 
 Page({
   data: {
-    hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
