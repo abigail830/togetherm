@@ -47,7 +47,7 @@ App({
 
       this.globalData.authInfo.skey = result.data.session_key;
       this.globalData.authInfo.openid = result.data.openid;
-      this.initWishLists();
+      // this.initWishLists();
 
       // 获取用户信息
       wx.getSetting({
@@ -143,33 +143,6 @@ App({
     })
   },
 
-  initWishLists: function () {
-    console.log("initWishLists is being called in app.js");
-    if (this.globalData.authInfo.openid == null) {
-      console.log("openID is not come back yet in app.js");
-      this.globalData.myCompletedWishCount = null;
-      this.globalData.myFriendsCompletedWishCount = null;
-    } else if (this.globalData.myCompletedWishCount!=null){
-      console.log("wishList already be collected before app.js call.");
-    }
-    else {
-      return Promise.all([
-        util.request(this.globalData.apiBase + "/wish/lists?" + "openId=" + this.globalData.authInfo.openid)
-          .then((res) => {
-            console.log(res.data);
-            this.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
-            this.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
-            this.globalData.wishLists = res.data.wishLists;
-            this.globalData.hasWishList = res.data.hasWishList;
-            console.log(this.globalData);
-          }, (res) => {
-            util.showModel('获取您的愿望清单', res.errMsg)
-          })
-      ]).then(() => {
-        wx.hideLoading();
-      });
-    }
-  },
   
   globalData: {
     authInfo: {

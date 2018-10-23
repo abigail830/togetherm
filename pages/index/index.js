@@ -5,9 +5,6 @@ const app = getApp()
 
 Page({
   data: {
-    empty_wish: "还没找到你的愿望清单哦 6_6",
-    myCompletedWishCount: 0,
-    myFriendsCompletedWishCount:0,
     hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
@@ -34,6 +31,7 @@ Page({
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
+    
   },
 
   /**
@@ -53,6 +51,8 @@ Page({
       }
     }
   },
+
+
 })
 
  

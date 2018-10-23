@@ -25,6 +25,7 @@ Page({
   },
 
   setWishListData: function () {
+    console.log("going to setWishListData");
     if (app.globalData.myCompletedWishCount != null) {
       this.setData({
         myCompletedWishCount: app.globalData.myCompletedWishCount,
@@ -38,7 +39,8 @@ Page({
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
-    this.setWishListData();
+    this.initWishLists();
+    // this.setWishListData();
   },
 
   /**
@@ -56,6 +58,36 @@ Page({
         // 转发失败
         console.log("转发失败:" + JSON.stringify(res));
       }
+    }
+  },
+
+
+  initWishLists: function () {
+    console.log("initWishLists is being called in index_after.js");
+    if (app.globalData.authInfo.openid == null) {
+      console.log("openID is not come back yet in index_after.js");
+      app.globalData.myCompletedWishCount = null;
+      app.globalData.myFriendsCompletedWishCount = null;
+    } else if (app.globalData.myCompletedWishCount != null) {
+      console.log("wishList already be collected before app.js call.");
+    }
+    else {
+      return Promise.all([
+        util.request(app.globalData.apiBase + "/wish/lists?" + "openId=" + app.globalData.authInfo.openid)
+          .then((res) => {
+            console.log(res.data);
+            app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
+            app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
+            app.globalData.wishLists = res.data.wishLists;
+            app.globalData.hasWishList = res.data.hasWishList;
+            console.log(app.globalData);
+            this.setWishListData();
+          }, (res) => {
+            util.showModel('获取您的愿望清单', res.errMsg)
+          })
+      ]).then(() => {
+        wx.hideLoading();
+      });
     }
   },
 })
