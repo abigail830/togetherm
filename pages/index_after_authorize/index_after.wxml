@@ -17,11 +17,11 @@
     </view>
 
     <view wx:if="{{hasWishList}}" class="content">
-      <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="wishListID">
-	      <navigator url="../wishList/wishList?wishListID={{item.wishListID}}" hover-class="navigator-hover" class="row-container">
+      <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="listId">
+	      <navigator url="../wishList/wishList?wishListID={{item.listId}}" hover-class="navigator-hover" class="row-container">
 		      <!-- <view class="con-date">{{item.dueTime}}</view> -->
           <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>
-	      	<view class="con-info">{{item.description}}</view>
+	      	<view class="con-info">{{item.listDescription}}</view>
           <view class="con-enter">></view>
 	      </navigator>
       </block>

@@ -15,7 +15,7 @@
 </view>
 
 <view>
-  <view wx:if="{{resultCode}}=='SUCCESS'" class="content">
+  <view class="content">
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
 	      <view class="row-container">
 		      <!-- <view class="con-date">{{item.lastUpdateTime}}</view> -->
@@ -30,9 +30,6 @@
           <view class="con-status">{{item.wishStatus}}</view>
 	      </view>
       </block>
-  </view>
-  <view wx:else style="text-align:center;">
-    <text>No Wish Added 6_6</text>
   </view>
 
   <view class="btnblock">

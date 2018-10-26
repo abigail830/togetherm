@@ -73,7 +73,7 @@ Page({
     } 
     else {
       return Promise.all([
-        util.request(app.globalData.apiBase + "/wish/lists?" + "openId=" + app.globalData.authInfo.openid)
+        util.request(app.globalData.apiBase + "/v1/wishes/lists?" + "openId=" + app.globalData.authInfo.openid)
           .then((res) => {
             console.log(res.data);
             app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;

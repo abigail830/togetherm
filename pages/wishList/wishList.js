@@ -14,7 +14,6 @@ Page({
    */
   data: {
     wishes:[],
-    resultCode: null,
     listDescription: '',
     listDueTime: null,
     headerText: "愿望列表",
@@ -33,12 +32,11 @@ Page({
       console.log("Going to create new wishlist");
     }else{
       return Promise.all([
-        util.request(app.globalData.apiBase + "/wish?" + "wishListId=" + options.wishListID)
+        util.request(app.globalData.apiBase + "/v1/wishes?" + "wishListId=" + options.wishListID)
           .then((res) => {
             console.log(res.data);
             this.setData({
               wishes: res.data.wishes,
-              resultCode: res.data.resultCode,
               listDescription: res.data.listDescription,
               listDueTime: res.data.listDueTime,
               year: res.data.listDueTime.substring(0,4),
