@@ -2,12 +2,12 @@
 .tab-header {
   background-color: #F08080;
   color:white;
-  padding:50rpx 10rpx;
+  padding:30rpx 10rpx;
   margin:0;
   width: 100%;
   text-align: center;
   font-weight: bold;
-  padding-top: 30rpx;
+
 }
 
 .headerText{
@@ -114,4 +114,22 @@
     width:60rpx;
     height:60rpx;
     margin:5rpx 10rpx;
+}
+
+.top_btn_block{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0rpx;
+  margin: 0;
+  text-align: center;
+  background-color:  #F08080;
+}
+
+.top_btn {
+  color:#F08080;
+  text-align: center;
+  width: 48%;
+  margin: 10rpx;
+  border-radius: 10rpx;
 }

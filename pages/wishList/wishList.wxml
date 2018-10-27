@@ -1,17 +1,19 @@
 <!--pages/wishList/wishList.wxml-->
 <view class="tab-header">
-    <!-- <view class="headerText">
-      <text>{{headerText}}</text>
-    </view> -->
     <view class="flex_row_header">
 	      <view class="lable">愿望实现日期：</view>
         <view bindtap="showDatePicker" >{{year}} - {{month}} - {{currentDate}}
-        <image mode='aspectFill' class='arrow-img-header' src='https://kidneyhealty.com.cn/images/arrow-down-white.png'></image></view>
+        <image mode='aspectFill' class='arrow-img-header' src='https://kidneyhealty.com.cn/images/arrow-down-white.png'></image>
+        </view>
       </view>
     <view class="flex_row_header">
       <view class="lable">愿望列表名：</view>
       <input bindinput="bindKeyInput" class="description" value="{{listDescription}}" />
     </view>
+</view>
+<view class="top_btn_block">
+    <button bindtap="addWishList" class="top_btn"> 添加愿望 </button>
+    <button bindtap="delWishList" class="top_btn"> 清空列表 </button>
 </view>
 
 <view>
@@ -33,9 +35,9 @@
   </view>
 
   <view class="btnblock">
-      <button bindtap="addWishList" class="addwishbtn"> 添加愿望 
-      </button>
       <button bindtap="confirmAndBack" class="addwishbtn"> 确认并返回 
+      </button>
+      <button bindtap="shareList" class="addwishbtn"> 分享清单 
       </button>
   </view>
 </view>
