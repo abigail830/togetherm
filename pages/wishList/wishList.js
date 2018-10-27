@@ -21,7 +21,8 @@ Page({
     datePickerValue: [currentYear, currentMonth, currentDate],
     year: currentYear,
     month: currentMonth,
-    currentDate: currentDate
+    currentDate: currentDate,
+    wishListID: null
   },
 
   /**
@@ -31,6 +32,10 @@ Page({
     if (options.wishListID==null){
       console.log("Going to create new wishlist");
     }else{
+      this.setData({
+        wishListID: options.wishListID
+      })
+      console.log(this.data.wishListID);
       return Promise.all([
         util.request(app.globalData.apiBase + "/v1/wishes?" + "wishListId=" + options.wishListID)
           .then((res) => {
@@ -97,19 +102,35 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    return {
-      title: '友爱清单',
-      imageUrl: '../../images/guide1.jpg',
-      success: function (res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
+  onShareAppMessage: function (options) {
+    if (options.from == 'button') {
+      console.log(this.data.wishListID);    
+      var nick_name = app.globalData.userInfo.nickName;
+      return {
+        title: nick_name +'的小心愿',
+        path: '/pages/shareWish/shareWish?wishListId=' + this.data.wishListID + '&nickName=' + nick_name,
+        imageUrl: '../../images/guide1.jpg',
+        success: function (res) {
+          console.log("清单分享成功:" + JSON.stringify(res));
+        },
+        fail: function (res) {
+          console.log("清单分享失败:" + JSON.stringify(res));
+        }
       }
-    }
+    }else{
+      return {
+        title: '友爱清单',
+        imageUrl: '../../images/guide1.jpg',
+        success: function (res) {
+          // 转发成功
+          console.log("转发成功:" + JSON.stringify(res));
+        },
+        fail: function (res) {
+          // 转发失败
+          console.log("转发失败:" + JSON.stringify(res));
+        }
+      }
+    }  
   },
 
   bindKeyInput: function (e) {
@@ -151,8 +172,17 @@ Page({
   },
  
   addWishList: function(e) {
-
+    console.log("add wish event");
   },
+
+  delWishList: function (e) {
+    console.log("remove wish event");
+  },
+  
+  shareList: function (e) {
+    console.log("share wish event");
+  },
+  
 
   confirmAndBack: function(e){
     //This is going for HTTP POST/PUT for info update

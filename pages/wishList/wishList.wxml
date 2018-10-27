@@ -37,7 +37,7 @@
   <view class="btnblock">
       <button bindtap="confirmAndBack" class="addwishbtn"> 确认并返回 
       </button>
-      <button bindtap="shareList" class="addwishbtn"> 分享清单 
+      <button class="addwishbtn" data-name="shareBtn" open-type="share"> 分享清单 
       </button>
   </view>
 </view>

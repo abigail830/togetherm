@@ -1,1 +1,96 @@
-/* pages/shareWish/shareWish.wxss */
+/* pages/wishList/wishList.wxss */
+.tab-header {
+  background-color: #F08080;
+  color:white;
+  padding:30rpx 10rpx;
+  margin:0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.headerText{
+  border: 6rpx solid white;
+  padding: 8rpx;
+  margin:10rpx auto;
+  margin-bottom: 20rpx;
+  border-radius: 50rpx;
+  font-size: 40rpx;
+  width: 60%;
+}
+.content {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction:column;
+  text-align: left;
+  padding: 50rpx 20rpx;
+}
+.row-container{
+    display: flex;
+    flex-direction:row;
+    width:100%;
+    border-bottom: 1rpx solid #eeeeee;
+    vertical-align: center;
+    padding:10rpx;
+    margin:0;
+    background-color: #ffffff;
+}
+.con-date{
+  color:#757575;
+  margin: 10rpx;
+  padding-left: 6rpx;
+  font-size: 80%;
+} 
+.con-info {
+  margin: 10rpx;
+  font-size: 90%;
+  color: #757575;
+}
+
+
+.con-status {
+  right: 30rpx;
+  position: absolute;
+  color: #757575;
+  font-size: 80%;
+}
+
+
+.flex_row_header {
+  display: flex;
+  flex-direction: row;
+  width: 86%;
+  color: #ffffff;
+  padding: 6rpx 20rpx;
+  text-align: center;
+}
+
+.lable {
+  margin: 5rpx 8rpx;
+}
+.description {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  color: #ffffff;
+  text-align: center;
+  padding: 6rpx 20rpx;
+  margin-top:20rpx;
+}
+
+.arrow-img-header {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+  margin-top: 6rpx;
+}
+
+.con-trimg{
+    width:60rpx;
+    height:60rpx;
+    margin:5rpx 10rpx;
+}
+
+
