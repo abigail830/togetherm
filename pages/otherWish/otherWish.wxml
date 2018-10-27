@@ -1,11 +1,24 @@
-<!--pages/otherWish/otherWish.wxml-->
+<!--index.wxml-->
 <view class="container">
-  <!-- <view wx:if="{{!hasUserInfo && canIUse}}" class="userinfo_before">
-    <button wx:if="{{!hasUserInfo && canIUse}}" 
-          open-type="getUserInfo" 
-          bindgetuserinfo="getUserInfo" class="authorizebtn"> 开启我的愿望之旅 
-    </button>
+  <view class="fullwidth">
+    <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" 
+      src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </view>
+
+    <view wx:if="{{hasWishList}}" class="content">
+      <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="listId">
+	      <navigator url="../wishList/wishList?wishListID={{item.listId}}" hover-class="navigator-hover" class="row-container">
+		      <!-- <view class="con-date">{{item.dueTime}}</view> -->
+          <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>
+	      	<view class="con-info">{{item.listDescription}}</view>
+          <view class="con-enter">></view>
+	      </navigator>
+      </block>
+    </view>
+    <view wx:else class="content">
+      <view class="empty_wish">{{empty_wish}}</view>
+    </view>
+
   </view>
-  <view wx:else>
-  </view> -->
 </view>

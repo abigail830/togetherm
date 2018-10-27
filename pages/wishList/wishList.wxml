@@ -1,8 +1,8 @@
 <!--pages/wishList/wishList.wxml-->
 <view class="tab-header">
-    <view class="headerText">
+    <!-- <view class="headerText">
       <text>{{headerText}}</text>
-    </view>
+    </view> -->
     <view class="flex_row_header">
 	      <view class="lable">愿望实现日期：</view>
         <view bindtap="showDatePicker" >{{year}} - {{month}} - {{currentDate}}

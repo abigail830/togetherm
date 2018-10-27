@@ -10,7 +10,6 @@ Page({
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
     userInfo: {},
-    hasUserInfo: false,
   },
 
   onLoad: function () {

@@ -16,7 +16,7 @@ Page({
     wishes:[],
     listDescription: '',
     listDueTime: null,
-    headerText: "愿望列表",
+    // headerText: "愿望列表",
     datePickerIsShow: false,
     datePickerValue: [currentYear, currentMonth, currentDate],
     year: currentYear,

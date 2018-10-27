@@ -1,5 +1,7 @@
 // pages/otherWish/otherWish.js
+let util = require('../../utils/util.js');
 const app = getApp()
+
 
 Page({
 
@@ -7,9 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    empty_wish: "还没找到你认领的朋友愿望清单哦 6_6",
+    hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
