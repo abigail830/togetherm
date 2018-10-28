@@ -36,7 +36,14 @@
     padding:10rpx;
     margin:0;
     background-color: #ffffff;
+
+    z-index: 5;
+    transition: left 0.2s ease-in-out;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
+
 .con-date{
   color:#757575;
   margin: 10rpx;
@@ -132,4 +139,23 @@
   width: 48%;
   margin: 10rpx;
   border-radius: 10rpx;
+}
+
+.del{
+ background-color: orangered;
+ width: 90px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ -webkit-transform: translateX(90px);
+ transform: translateX(90px);
+ -webkit-transition: all 0.4s;
+ transition: all 0.4s;
+}
+
+.touch-move-active  {
+ -webkit-transform: translateX(0);
+ transform: translateX(0);
 }

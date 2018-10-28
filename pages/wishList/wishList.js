@@ -22,7 +22,8 @@ Page({
     year: currentYear,
     month: currentMonth,
     currentDate: currentDate,
-    wishListID: null
+    wishListID: null,
+    touchMoveIndex: null
   },
 
   /**
@@ -57,6 +58,15 @@ Page({
     }
   },
 
+  loadWish: function () {
+    util.request(app.globalData.apiBase + "/v1/wishes?" + "wishListId=" + this.data.wishListID)
+      .then((res) => {
+        console.log(res.data);
+        this.setData({
+          wishes: res.data.wishes
+        })
+      });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -235,6 +245,37 @@ Page({
     }
   },
 
+  deleteWish: function (wishID) {
+    console.log("Going to delete wish id: " + wishID);
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes`,
+        method: 'DELETE',
+        header: { "Content-Type": "application/json" },
+        data: {
+          "wishID": wishID
+        },
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          if (result.data.error) {
+            console.log(result.data.error);
+          } 
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+        }
+      });
+    } catch (e) {
+      this.setData({
+        hiddenLoading: true,
+      });
+      console.log('Exception happen when delete wish !');
+      console.log(e);
+    }
+  },
+
   bindDescCompleted: function (e) {
     var id = e.currentTarget.dataset.id;
     var item = this.data.wishes[id];
@@ -291,7 +332,6 @@ Page({
     this.setData({
       wishes: newWishes,
     });
-    console.info(this.data.wishes[1].description);
   },
 
   delWishList: function (e) {
@@ -342,6 +382,43 @@ Page({
       console.log('Exception happen when update wish content!');
       console.log(e);
     }
+  },
+
+  touchstart: function (e) {
+    this.setData({
+      startX: e.changedTouches[0].clientX,
+      startY: e.changedTouches[0].clientY,
+      moveIndex: e.currentTarget.dataset.index
+    })
+  },
+
+  touchmove: function (e) {
+    var that = this;
+    var  index = e.currentTarget.dataset.index;
+    var  startX = that.data.startX;
+    var  touchMoveX = e.changedTouches[0].clientX;
+    if ((startX - touchMoveX) > 50) {
+      console.info("left move for " + index);
+      this.data.wishes[index].moveForDelete = "touch-move-active";
+    }
+    if ((touchMoveX - startX) > 50) {
+      console.info("right move for " + index);
+      this.data.wishes[index].moveForDelete = "";
+    }
+    that.setData({
+      wishes: that.data.wishes
+    })
+  },
+
+  delWish: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var wishID = this.data.wishes[index].wishID;
+    console.info("delete wish id " + wishID + " with index " + index);
+    if (wishID > 0) {
+      //Positive wish ID means a valid item in backend DB, otherwise, just a temp item in UI
+      this.deleteWish(this.data.wishes[index].wishID);
+    }
+    this.loadWish();
   }
 
 })
