@@ -147,6 +147,116 @@ Page({
     console.log(this.data.wishes);
   },
 
+  addWish: function (itemID) {
+    var item = this.data.wishes[itemID];
+    console.log("add wish id to be change " + item.wishID);
+    console.log("add new wish to wishList id " + this.data.wishListID);
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes`,
+        method: 'POST',
+        header: { "Content-Type": "application/json" },
+        data: {
+          "description": item.description,
+          "wishListID": this.data.wishListID,
+          "wishStatus": "NEW"
+        },
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          item.wishID = result.data.wishID;
+          item.wishListID = result.data.wishListID;
+          item.wishStatus = result.data.wishStatus;
+          item.createTime = result.data.createTime;
+          item.lastUpdateTime = result.data.lastUpdateTime;
+          if (result.data.error) {
+            console.log(result.data.error);
+          } else {
+            wx.redirectTo({
+              url: '../index_after_authorize/index_after'
+            });
+          }
+
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+        }
+      });
+    } catch (e) {
+      this.setData({
+        hiddenLoading: true,
+      });
+      console.log('Exception happen when update wish content!');
+      console.log(e);
+    }
+
+  },
+
+  updateWish: function (itemID) {
+    var item = this.data.wishes[itemID];
+    console.log("update wish id to be change " + item.wishID);
+    console.log("update wish desc changed to " + item.description);
+    console.log("update wishList id " + this.data.wishListID);
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes`,
+        method: 'PUT',
+        header: { "Content-Type": "application/json" },
+        data: {
+          "wishID": item.wishID,
+          "description": item.description,
+          "wishListID": this.data.wishListID,
+          "wishStatus": item.wishStatus
+        },
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          if (result.data.error) {
+            console.log(result.data.error);
+          } else {
+            wx.redirectTo({
+              url: '../index_after_authorize/index_after'
+            });
+          }
+
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+        }
+      });
+    } catch (e) {
+      this.setData({
+        hiddenLoading: true,
+      });
+      console.log('Exception happen when update wish content!');
+      console.log(e);
+    }
+  },
+
+  bindDescCompleted: function (e) {
+    var id = e.currentTarget.dataset.id;
+    var item = this.data.wishes[id];
+    console.log("wish id to be change " + item.wishID);
+    console.log("wish desc changed to " + item.description);
+    console.log("wishList id " + this.data.wishListID);
+    if (item.description && item.description.length > 0) {
+
+      if (item.wishID > 0) {
+        this.updateWish(id);
+      } else {
+        this.addWish(id);
+      }
+
+    } else {
+      console.info("Wish desciption is empty, ignore...")
+    }
+
+  },
+
+
+
   showDatePicker: function (e) {
     this.setData({
       datePickerIsShow: true,
@@ -173,6 +283,15 @@ Page({
  
   addWishList: function(e) {
     console.log("add wish event");
+    var newWishes = this.data.wishes;
+    var tempId = (Math.floor(Math.random() * 100000) + 1) * -1; 
+    console.log("tempID is " + tempId)
+    var newWish = { "wishStatus": "NEW", "description": "","wishID":tempId};
+    newWishes.push(newWish);
+    this.setData({
+      wishes: newWishes,
+    });
+    console.info(this.data.wishes[1].description);
   },
 
   delWishList: function (e) {

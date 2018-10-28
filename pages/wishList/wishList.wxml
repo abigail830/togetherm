@@ -8,7 +8,7 @@
       </view>
     <view class="flex_row_header">
       <view class="lable">愿望列表名：</view>
-      <input bindinput="bindKeyInput" class="description" value="{{listDescription}}" />
+      <input bindinput="bindKeyInput"  class="description" value="{{listDescription}}" />
     </view>
 </view>
 <view class="top_btn_block">
@@ -26,7 +26,9 @@
             <view class="con-info">{{item.description}}</view>
           </block>
           <block wx:else>       
-          <input bindinput="bindWishKeyInput" data-id="{{index}}"
+          <input bindinput="bindWishKeyInput" 
+            data-id="{{index}}" 
+            bindblur="bindDescCompleted"
             class="con-input" value="{{item.description}}" />
           </block>
           <view class="con-status">{{item.wishStatus}}</view>
