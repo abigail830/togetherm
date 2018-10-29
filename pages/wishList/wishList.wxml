@@ -27,9 +27,8 @@
               data-id="{{index}}" 
               bindblur="bindDescCompleted"
               class="con-input" value="{{item.description}}" />
+              <view data-index="{{index}}" bindtap = "delWish" class="del {{item.moveForDelete}}">X</view>
           </block>
-
-          <view data-index="{{index}}" bindtap = "delWish" class="del {{item.moveForDelete}}">删除</view>
 	      </view>
       </block>
   </view>
