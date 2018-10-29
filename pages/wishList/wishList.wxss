@@ -57,6 +57,8 @@
   font-size: 90%;
   color: #757575;
   width: 64%;
+  display:flex;
+  flex-direction: row;
 }
 
 .con-input {
@@ -70,7 +72,7 @@
 
 .con-status {
   color: #bbbbbb;
-  font-size: 50%;
+  font-size: 60%;
 }
 
 .btnblock {
