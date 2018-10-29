@@ -155,25 +155,21 @@
     margin:5rpx 10rpx;
 }
 .con-enter {
-  right: 40rpx;
-  text-align: right;
-  position: absolute;
-  color: #757575;
+ align-items: center;
+ justify-content: center;
+ color: #757575;
 }
 
 
 .del{
- background-color: orangered;
- width: 80px;
- display: flex;
- flex-direction: column;
+ background-color: #F08080;
+ margin: 0rpx;
+ padding: 5rpx;
+ font-size: 86%;
+ width: 20%;
  align-items: center;
  justify-content: center;
- color: #fff;
- -webkit-transform: translateX(150px);
- transform: translateX(150px);
- -webkit-transition: all 0.4s;
- transition: all 0.4s;
+ color: #ffffff;
 }
 
 .touch-move-active  {

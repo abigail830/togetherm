@@ -23,8 +23,9 @@
 		      <!-- <view class="con-date">{{item.dueTime}}</view> -->
           <!-- <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view> -->
 	      	<view wishId="{{item.wishID}}">{{item.listDescription}}</view>
+           
 	      </navigator>
-         <view class="con-enter">></view>
+        <!-- <view class="con-enter">></view> -->
           <view data-index="{{index}}" bindtap = "delWishList" class="del {{item.moveForDelete}}">删除</view>
 
 

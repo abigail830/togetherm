@@ -31,7 +31,6 @@
     display: flex;
     flex-direction:row;
     width:100%;
-    border-bottom: 1rpx solid #eeeeee;
     vertical-align: center;
     padding:10rpx;
     margin:0;
@@ -60,7 +59,7 @@
   margin: 5rpx;
   padding: 5rpx 10rpx;
   font-size: 90%;
-  border: 1rpx solid #eeeeee;
+  border: 1rpx solid #cccccc;
   border-radius: 5rpx;
   width: 66%;
 }
@@ -142,13 +141,13 @@
 }
 
 .del{
- background-color: orangered;
+ background-color: #F08080;
  width: 90px;
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
- color: #fff;
+ color: #ffffff;
  -webkit-transform: translateX(90px);
  transform: translateX(90px);
  -webkit-transition: all 0.4s;
