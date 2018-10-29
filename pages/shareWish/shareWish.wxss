@@ -30,33 +30,26 @@
 .row-container{
     display: flex;
     flex-direction:row;
-    width:100%;
     border-bottom: 1rpx solid #eeeeee;
     vertical-align: center;
     padding:10rpx;
     margin:0;
     background-color: #ffffff;
 }
-.con-date{
-  color:#757575;
-  margin: 10rpx;
-  padding-left: 6rpx;
-  font-size: 80%;
-} 
-.con-info {
+
+ .con-info {
   margin: 10rpx;
   font-size: 90%;
   color: #757575;
+  width: 64%;
+  display:flex;
+  flex-direction: row;
 }
-
 
 .con-status {
-  right: 30rpx;
-  position: absolute;
-  color: #757575;
-  font-size: 80%;
+  color: #bbbbbb;
+  font-size: 60%;
 }
-
 
 .flex_row_header {
   display: flex;
@@ -80,17 +73,22 @@
   margin-top:20rpx;
 }
 
-.arrow-img-header {
-  width: 50rpx;
-  height: 50rpx;
-  margin-left: 10rpx;
-  margin-top: 6rpx;
-}
-
 .con-trimg{
-    width:60rpx;
-    height:60rpx;
-    margin:5rpx 10rpx;
+    width:50rpx;
+    height:50rpx;
+    margin:5rpx 8rpx;
 }
 
+.takeup{
+ border: 2rpx solid #F08080;
+ border-radius: 10rpx;
+ margin: 10rpx;
+ padding: 3rpx 10rpx;
+ margin-left: 20rpx;
+ align-items: center;
+ justify-content: center;
+ vertical-align: center;
+ text-align: center;
+ color: #F08080;
+}
 

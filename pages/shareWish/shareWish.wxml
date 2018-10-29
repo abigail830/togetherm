@@ -9,10 +9,16 @@
 <view>
   <view class="content">
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
-	      <view class="row-container">
-          <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>    
-          <view class="con-input">{{item.description}}</view>
-          <view class="con-status">{{item.wishStatus}}</view>
+	      <view class="row-container" data-index="{{index}}">
+            <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>    
+            <view class="con-info">{{item.description}}
+              <view class="con-status">{{item.wishStatus}}</view>
+            </view>
+            <block wx:if="{{item.wishStatus=='NEW'}}" >
+              <view>
+                <view data-index="{{index}}" bindtap = "takeupWish" class="takeup">Takeup</view>
+              </view>
+            </block>
 	      </view>
       </block>
   </view>

@@ -59,11 +59,11 @@ Page({
     }
   },
 
-  updateWish: function (itemID) {
-    var item = this.data.wishes[itemID];
-    console.log("update wish id to be change " + item.wishID);
-    console.log("update wish desc changed to " + item.description);
-    console.log("update wishList id " + this.data.wishListID);
+  takeupWish: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var item = this.data.wishes[index];
+    console.log(item);
+    console.log("wish id to be take up " + item.wishID);
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes`,
@@ -72,8 +72,8 @@ Page({
         data: {
           "wishID": item.wishID,
           "description": item.description,
-          "wishListID": this.data.wishListID,
-          "wishStatus": item.wishStatus,
+          "wishListID": item.wishListID,
+          "wishStatus": 'TAKEUP',
           "implementor": {
             "openId": app.globalData.authInfo.openid,
             "gender": app.globalData.userInfo.gender,
