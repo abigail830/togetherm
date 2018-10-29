@@ -380,9 +380,6 @@ Page({
     });
   },
 
-  delWishList: function (e) {
-    console.log("remove wish event");
-  },
 
   confirmAndBack: function(e){
     //This is going for HTTP POST/PUT for info update
@@ -403,11 +400,6 @@ Page({
           //http response code 200/404/500..etc 
           if (result.data.error){
             console.log(result.data.error);
-          }else{
-            app.initWishLists();
-            wx.redirectTo({
-              url: '../index_after_authorize/index_after'
-            });
           }
           
         },

@@ -27,10 +27,10 @@
   text-align: left;
   padding: 50rpx 20rpx;
 }
+
 .row-container{
     display: flex;
     flex-direction:row;
-    width:100%;
     vertical-align: center;
     padding:10rpx;
     margin:0;
@@ -41,6 +41,9 @@
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+}
+.left_row{
+  width: 70%;
 }
 
 .con-date{
@@ -53,6 +56,7 @@
   margin: 10rpx;
   font-size: 90%;
   color: #757575;
+  width: 64%;
 }
 
 .con-input {
@@ -60,15 +64,13 @@
   padding: 5rpx 10rpx;
   font-size: 90%;
   border: 1rpx solid #cccccc;
-  border-radius: 5rpx;
-  width: 66%;
+  border-radius: 15rpx;
+  width: 62%;
 }
 
 .con-status {
-  right: 30rpx;
-  position: absolute;
-  color: #757575;
-  font-size: 80%;
+  color: #bbbbbb;
+  font-size: 50%;
 }
 
 .btnblock {
@@ -106,7 +108,7 @@
   text-align: left;
   border: 1rpx solid #ffffff;
   padding: 1rpx 12rpx;
-  border-radius: 30rpx;
+  border-radius: 15rpx;
 }
 
 .arrow-img-header {
@@ -117,41 +119,24 @@
 }
 
 .con-trimg{
-    width:60rpx;
-    height:60rpx;
-    margin:5rpx 10rpx;
+    width:50rpx;
+    height:50rpx;
+    margin:5rpx;
+    color: #757575;
 }
 
-.top_btn_block{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 0rpx;
-  margin: 0;
-  text-align: center;
-  background-color:  #F08080;
-}
 
-.top_btn {
-  color:#F08080;
-  text-align: center;
-  width: 48%;
-  margin: 10rpx;
-  border-radius: 10rpx;
-}
 
 .del{
- background-color: #F08080;
- width: 90px;
- display: flex;
- flex-direction: column;
+ border: 2rpx solid #F08080;
+ border-radius: 20rpx;
+ margin: 15rpx;
+ padding: 6rpx 30rpx;
+ font-size: 86%;
  align-items: center;
  justify-content: center;
- color: #ffffff;
- -webkit-transform: translateX(90px);
- transform: translateX(90px);
- -webkit-transition: all 0.4s;
- transition: all 0.4s;
+ vertical-align: center;
+ color: #F08080;
 }
 
 .touch-move-active  {

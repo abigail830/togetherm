@@ -11,35 +11,34 @@
       <input bindinput="bindKeyInput"  class="description" value="{{listDescription}}" />
     </view>
 </view>
-<view class="top_btn_block">
-    <button bindtap="addWishList" class="top_btn"> 添加愿望 </button>
-    <button bindtap="delWishList" class="top_btn"> 清空列表 </button>
-</view>
 
 <view>
   <view class="content">
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
 	      <view class="row-container"  bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
-		      <!-- <view class="con-date">{{item.lastUpdateTime}}</view> -->
           <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view> 
-          <block wx:if="{{item.wishStatus=='DONE'}}" >
-            <view class="con-info">{{item.description}}</view>
+          <block wx:if="{{item.wishStatus!='NEW'}}" >
+            <view class="con-info">{{item.description}}
+              <view class="con-status">{{item.wishStatus}}</view>
+            </view>
           </block>
           <block wx:else>       
-          <input bindinput="bindWishKeyInput" 
-            data-id="{{index}}" 
-            bindblur="bindDescCompleted"
-            class="con-input" value="{{item.description}}" />
+            <input bindinput="bindWishKeyInput" 
+              data-id="{{index}}" 
+              bindblur="bindDescCompleted"
+              class="con-input" value="{{item.description}}" />
           </block>
-          <view class="con-status">{{item.wishStatus}}</view>
 
           <view data-index="{{index}}" bindtap = "delWish" class="del {{item.moveForDelete}}">删除</view>
 	      </view>
       </block>
   </view>
 
+
   <view class="btnblock">
-      <button bindtap="confirmAndBack" class="addwishbtn"> 确认并返回 
+      <button bindtap="addWishList" class="addwishbtn"> 添加愿望
+      </button>
+      <button bindtap="confirmAndBack" class="addwishbtn"> 保存 
       </button>
       <button class="addwishbtn" data-name="shareBtn" open-type="share"> 分享清单 
       </button>

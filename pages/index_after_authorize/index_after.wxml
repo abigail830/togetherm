@@ -20,15 +20,11 @@
       <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="listId">
 	      <view class="row-container"  bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
         <navigator class="con-info"  url="../wishList/wishList?wishListID={{item.listId}}" hover-class="navigator-hover" >
-		      <!-- <view class="con-date">{{item.dueTime}}</view> -->
-          <!-- <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view> -->
+          <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>
 	      	<view wishId="{{item.wishID}}">{{item.listDescription}}</view>
            
 	      </navigator>
-        <!-- <view class="con-enter">></view> -->
           <view data-index="{{index}}" bindtap = "delWishList" class="del {{item.moveForDelete}}">删除</view>
-
-
         </view>
       </block>
     </view>
