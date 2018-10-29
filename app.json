@@ -6,7 +6,8 @@
     "pages/otherWish/otherWish",
     "pages/wishList/wishList",
     "pages/index_after_authorize/index_after",
-    "pages/shareWish/shareWish"
+    "pages/shareWish/shareWish",
+    "pages/shareIndex/shareIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",

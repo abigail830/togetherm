@@ -119,7 +119,7 @@ Page({
       var nick_name = app.globalData.userInfo.nickName;
       return {
         title: nick_name +'的小心愿',
-        path: '/pages/shareWish/shareWish?wishListId=' + this.data.wishListID + '&nickName=' + nick_name,
+        path: '/pages/shareIndex/shareIndex?wishListId=' + this.data.wishListID + '&nickName=' + nick_name,
         imageUrl: '../../images/guide1.jpg',
         success: function (res) {
           console.log("清单分享成功:" + JSON.stringify(res));
@@ -383,11 +383,6 @@ Page({
   delWishList: function (e) {
     console.log("remove wish event");
   },
-  
-  shareList: function (e) {
-    console.log("share wish event");
-  },
-  
 
   confirmAndBack: function(e){
     //This is going for HTTP POST/PUT for info update

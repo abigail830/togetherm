@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="container">
+  <block wx:if="{{!hasUserInfo && canIUse}}" >
+    <view class="fullwidth">
+      <button wx:if="{{!hasUserInfo && canIUse}}" 
+          open-type="getUserInfo" 
+          bindgetuserinfo="getUserInfo" class="authorizebtn"> 为您的朋友开启愿望之旅 
+    </button>
+  </view>
+  </block>
+</view>

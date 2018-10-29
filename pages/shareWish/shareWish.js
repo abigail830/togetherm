@@ -59,6 +59,52 @@ Page({
     }
   },
 
+  updateWish: function (itemID) {
+    var item = this.data.wishes[itemID];
+    console.log("update wish id to be change " + item.wishID);
+    console.log("update wish desc changed to " + item.description);
+    console.log("update wishList id " + this.data.wishListID);
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes`,
+        method: 'PUT',
+        header: { "Content-Type": "application/json" },
+        data: {
+          "wishID": item.wishID,
+          "description": item.description,
+          "wishListID": this.data.wishListID,
+          "wishStatus": item.wishStatus,
+          "implementor": {
+            "openId": app.globalData.authInfo.openid,
+            "gender": app.globalData.userInfo.gender,
+            "nickName": app.globalData.userInfo.nickName,
+            "city": app.globalData.userInfo.city,
+            "country": app.globalData.userInfo.country,
+            "province": app.globalData.userInfo.province,
+            "avatarUrl": app.globalData.userInfo.avatarUrl,
+            "language": app.globalData.userInfo.language,
+          }
+        },
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          if (result.data.error) {
+            console.log(result.data.error);
+          }
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+        }
+      });
+    } catch (e) {
+      this.setData({
+        hiddenLoading: true,
+      });
+      console.log('Exception happen when update wish content!');
+      console.log(e);
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
