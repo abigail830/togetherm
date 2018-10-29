@@ -182,7 +182,7 @@ Page({
           if (result.data.error) {
             console.log(result.data.error);
           } else {
-            wx.redirectTo({
+            wx.switchTab({
               url: '../index_after_authorize/index_after'
             });
           }
