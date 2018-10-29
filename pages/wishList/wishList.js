@@ -31,7 +31,8 @@ Page({
    */
   onLoad: function (options) {
     if (options.wishListID==null){
-      console.log("Going to create new wishlist");
+      console.log("Going to create new wishlist ");
+      this.postWishList();
     }else{
       this.setData({
         wishListID: options.wishListID
@@ -155,6 +156,51 @@ Page({
     var item = this.data.wishes[id];
     item.description = value;
     console.log(this.data.wishes);
+  },
+
+  postWishList: function () {
+    console.log("add wish list ");
+    var myPage = this;
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes/lists`,
+        method: 'POST',
+        header: { "Content-Type": "application/json" },
+        data: {
+          "listDescription": "我的新愿望",
+          "listDueTime": currentYear + "-" + currentMonth + "-" + currentDate,
+          "listOpenId": app.globalData.authInfo.openid
+        },
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          myPage.setData({
+            wishListID: result.data.listId,
+            listDescription: result.data.listDescription,
+            listDueTime: result.data.listDueTime
+          });
+          if (result.data.error) {
+            console.log(result.data.error);
+          } else {
+            wx.redirectTo({
+              url: '../index_after_authorize/index_after'
+            });
+          }
+
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+        }
+      });
+    } catch (e) {
+      this.setData({
+        hiddenLoading: true,
+      });
+      console.log('Exception happen when update wish content!');
+      console.log(e);
+    }
+
   },
 
   addWish: function (itemID) {

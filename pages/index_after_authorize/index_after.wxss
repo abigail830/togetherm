@@ -82,7 +82,7 @@
   padding: 50rpx 20rpx;
 }
 .row-container{
-    display: flex;
+    /* display: flex;
     flex-direction:row;
     width:100%;
     border-bottom: 1rpx solid #eeeeee;
@@ -91,6 +91,28 @@
     margin:0;
     background-color: #ffffff;
     text-align: left;
+
+
+    z-index: 5;
+    transition: left 0.2s ease-in-out;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis; */
+
+        display: flex;
+    flex-direction:row;
+    width:100%;
+    border-bottom: 1rpx solid #eeeeee;
+    vertical-align: center;
+    padding:10rpx;
+    margin:0;
+    background-color: #ffffff;
+
+    z-index: 5;
+    transition: left 0.2s ease-in-out;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 .con-date{
   color:#757575;
@@ -100,6 +122,8 @@
 } 
 .con-info {
   margin: 10rpx;
+  text-align: left;
+  width: 66%;
 }
 
 .empty_wish {
@@ -135,4 +159,24 @@
   text-align: right;
   position: absolute;
   color: #757575;
+}
+
+
+.del{
+ background-color: orangered;
+ width: 80px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: #fff;
+ -webkit-transform: translateX(150px);
+ transform: translateX(150px);
+ -webkit-transition: all 0.4s;
+ transition: all 0.4s;
+}
+
+.touch-move-active  {
+ -webkit-transform: translateX(0);
+ transform: translateX(0);
 }
