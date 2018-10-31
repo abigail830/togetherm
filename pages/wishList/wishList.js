@@ -342,6 +342,47 @@ Page({
 
   },
 
+  bindListDescCompleted: function (e) {
+    console.log("detect description change, udpate description " + this.data.listDescription + " for " + this.data.wishListID);
+    this.updateWishList();
+  },
+
+  updateWishList: function () {
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes/lists`,
+        method: 'PUT',
+        header: { "Content-Type": "application/json" },
+        data: {
+          "listId": this.data.wishListID,
+          "listDescription": this.data.listDescription,
+          "listDueTime": this.data.listDueTime
+        },
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          if (result.data.error) {
+            console.log(result.data.error);
+          } else {
+            wx.redirectTo({
+              url: '../index_after_authorize/index_after'
+            });
+          }
+
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+        }
+      });
+    } catch (e) {
+      this.setData({
+        hiddenLoading: true,
+      });
+      console.log('Exception happen when update wish content!');
+      console.log(e);
+    }
+  },
 
 
   showDatePicker: function (e) {
@@ -366,6 +407,7 @@ Page({
       datePickerIsShow: false
     });
     console.log(this.data.listDueTime);
+    this.updateWishList();
   },
  
   addWishList: function(e) {

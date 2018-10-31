@@ -8,7 +8,7 @@
       </view>
     <view class="flex_row_header">
       <view class="lable">愿望列表名：</view>
-      <input bindinput="bindKeyInput"  class="description" value="{{listDescription}}" />
+      <input bindinput="bindKeyInput" bindblur="bindListDescCompleted" class="description" value="{{listDescription}}" />
     </view>
 </view>
 
@@ -36,8 +36,6 @@
 
   <view class="btnblock">
       <button bindtap="addWishList" class="addwishbtn"> 添加愿望
-      </button>
-      <button bindtap="confirmAndBack" class="addwishbtn"> 保存 
       </button>
       <button class="addwishbtn" data-name="shareBtn" open-type="share"> 分享清单 
       </button>
