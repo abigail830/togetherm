@@ -92,3 +92,16 @@
  color: #F08080;
 }
 
+/* .takeup{
+ border: 2rpx solid #aaaaaa;
+ border-radius: 10rpx;
+ margin: 10rpx;
+ padding: 3rpx 10rpx;
+ margin-left: 20rpx;
+ align-items: center;
+ justify-content: center;
+ vertical-align: center;
+ text-align: center;
+ color: #aaaaaa;
+} */
+

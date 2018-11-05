@@ -181,11 +181,7 @@ Page({
           });
           if (result.data.error) {
             console.log(result.data.error);
-          } else {
-            wx.redirectTo({
-              url: '../index_after_authorize/index_after'
-            });
-          }
+          } 
 
         },
         fail(error) {
@@ -227,11 +223,7 @@ Page({
           item.lastUpdateTime = result.data.lastUpdateTime;
           if (result.data.error) {
             console.log(result.data.error);
-          } else {
-            wx.switchTab({
-              url: '../index_after_authorize/index_after'
-            });
-          }
+          } 
 
         },
         fail(error) {
