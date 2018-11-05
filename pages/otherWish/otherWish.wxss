@@ -97,7 +97,7 @@
  border: 2rpx solid #008000;
  border-radius: 50%;
  margin-left: auto;
- margin-right: 5%;
+ margin-right: 7%;
  width: 50rpx;
  height: 50rpx;
  align-items: center;
@@ -105,4 +105,18 @@
  vertical-align: center;
  text-align: center;
  color: #008000;
+}
+
+.takeup{
+ border: 2rpx solid #aaaaaa;
+ border-radius: 50%;
+ margin-left: auto;
+ margin-right: 7%;
+ width: 50rpx;
+ height: 50rpx;
+ align-items: center;
+ justify-content: center;
+ vertical-align: center;
+ text-align: center;
+ color: #aaaaaa;
 }

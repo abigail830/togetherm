@@ -15,8 +15,11 @@
           <view class="con-info">{{item.description}}</view>
           <view class="con-status">{{item.wishStatus}}</view>
           <block wx:if="{{item.wishStatus !='DONE'}}" >
-            <view data-index="{{index}}" bindtap="doneWish" class="done">✓</view>
-          </block>     
+            <view data-index="{{index}}" bindtap="doneWish" class="takeup">✓</view>
+          </block>  
+          <block wx:else>
+            <view data-index="{{index}}" class="done">✓</view>
+          </block>   
         </view>
       </block>
     </view>
