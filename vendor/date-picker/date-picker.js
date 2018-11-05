@@ -31,7 +31,7 @@ Component({
     var months = [];
     var days = [];
 
-    for (let i = 1900; i <= date.getFullYear(); i++) {
+    for (let i = 1900; i <= date.getFullYear() + 10; i++) {
       years.push(i);
     }
 

@@ -76,6 +76,7 @@
 
 
 .con-trimg{
+    border-radius: 50%;
     width:60rpx;
     height:60rpx;
     margin:5rpx 10rpx;
@@ -85,4 +86,23 @@
   text-align: right;
   position: absolute;
   color: #757575;
+}
+
+.con-status {
+  color: #bbbbbb;
+  font-size: 60%;
+}
+
+.done{
+ border: 2rpx solid #008000;
+ border-radius: 50%;
+ margin-left: auto;
+ margin-right: 5%;
+ width: 50rpx;
+ height: 50rpx;
+ align-items: center;
+ justify-content: center;
+ vertical-align: center;
+ text-align: center;
+ color: #008000;
 }

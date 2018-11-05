@@ -2,18 +2,22 @@
 <view class="container">
   <view class="fullwidth">
     <view class="userinfo">
-      <image bindtap="bindViewTap" class="userinfo-avatar" 
-      src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     </view>
 
-    <view wx:if="{{hasWishList}}" class="content">
-      <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="listId">
-	      <navigator url="../wishList/wishList?wishListID={{item.listId}}" hover-class="navigator-hover" class="row-container">
-		      <!-- <view class="con-date">{{item.dueTime}}</view> -->
-          <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>
-	      	<view class="con-info">{{item.listDescription}}</view>
-          <view class="con-enter">></view>
-	      </navigator>
+    <view wx:if="{{takenUpWishes.length!=0}}" class="content">
+      <block wx:for="{{takenUpWishes}}" wx:for-item="item" wx:key="wishID">
+        <view class="row-container">
+          <!-- <view class="con-date">{{item.dueTime}}</view> -->
+          <view>
+            <image mode='aspectFill' class="con-trimg" src='{{item.creator.avatarUrl}}'></image>
+          </view>
+          <view class="con-info">{{item.description}}</view>
+          <view class="con-status">{{item.wishStatus}}</view>
+          <block wx:if="{{item.wishStatus !='DONE'}}" >
+            <view data-index="{{index}}" bindtap="doneWish" class="done">✓</view>
+          </block>     
+        </view>
       </block>
     </view>
     <view wx:else class="content">
