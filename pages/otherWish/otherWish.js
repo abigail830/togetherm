@@ -78,15 +78,17 @@ Page({
     });
   },
 
-  loadTakenWishes2: function (openID) {
+
+  completeWish: function (wishID) {
     var page = this;
+    var openID = app.globalData.authInfo.openid;
     wx.showLoading({
       title: '加载中...',
     });
     try {
       sdk.request({
-        url: app.globalData.apiBase + "/v1/wishes/taken?" + "openId=" + openID,
-        method: 'GET',
+        url: app.globalData.apiBase + `/v1/wishes/completed?` + "id=" + wishID + "&openId=" + openID,
+        method: 'PUT',
         header: { "Content-Type": "application/json" },
         success(res) {
           console.log(res.data);
@@ -99,41 +101,14 @@ Page({
 
         },
         fail(error) {
-          wx.hideLoading();
           util.showModel('请求失败,请检查网络', error);
           console.log('request fail', error);
+          wx.hideLoading();
+
         }
       });
     } catch (e) {
       wx.hideLoading();
-      console.log('Exception happen when update wish content!');
-      console.log(e);
-    }
-  },
-
-  completeWish: function (wishID) {
-    try {
-      sdk.request({
-        url: app.globalData.apiBase + `/v1/wishes/completed?` + "id=" + wishID,
-        method: 'PUT',
-        header: { "Content-Type": "application/json" },
-        success(result) {
-          console.log("请求成功");
-          console.log(result);
-          if (result.data.error) {
-            console.log(result.data.error);
-          }
-
-        },
-        fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
-        }
-      });
-    } catch (e) {
-      this.setData({
-        hiddenLoading: true,
-      });
       console.log('Exception happen when update wish content!');
       console.log(e);
     }
@@ -145,8 +120,6 @@ Page({
     var wishID = this.data.takenUpWishes[index].wishID;
     console.log("Mark wish as done for wish ID " + wishID);
     this.completeWish(wishID);
-    console.log("Mark wish as done is completed ");
-    this.loadTakenWishes2(app.globalData.authInfo.openid);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
