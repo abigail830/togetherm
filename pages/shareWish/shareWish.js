@@ -48,7 +48,6 @@ Page({
     console.log(item);
     console.log("wish id to be take up " + item.wishID);
     this.takenWish(item.wishID, app.globalData.authInfo.openid);
-    this.refreshWishList();
   },
 
   takenWish: function (wishID, openID) {
@@ -62,10 +61,11 @@ Page({
         method: 'PUT',
         header: { "Content-Type": "application/json" },
         success(res) {
+          console.log("handling take up wish response");
           console.log(res.data);
           page.setData(
             {
-              takenUpWishes: res.data
+              wishes: res.data
             }
           );
           wx.hideLoading();
@@ -92,6 +92,7 @@ Page({
     Promise.all([
         util.request(app.globalData.apiBase + "/v1/wishes?" + "wishListId=" + this.data.wishListId)
           .then((res) => {
+            console.log("refeshing wish data");
             console.log(res.data);
             this.setData({
               wishes: res.data.wishes,
