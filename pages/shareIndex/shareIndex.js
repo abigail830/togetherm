@@ -25,7 +25,7 @@ Page({
         nickName: options.nickName
       })
     }
-
+    app.wxLogin();
   },
 
   getUserInfo: function (e) {
