@@ -22,7 +22,7 @@ Page({
       hasUserInfo: true
     });
     wx.switchTab({
-      url: '../index_after_authorize/index_after'
+      url: '../main/main'
     })
   },
  

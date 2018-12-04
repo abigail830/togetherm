@@ -66,9 +66,9 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-    console.log("initWishLists is being called in index_after.js");
+    console.log("initWishLists is being called in main.js");
     if (app.globalData.authInfo.openid == null) {
-      console.log("openID is not come back yet in index_after.js");
+      console.log("openID is not come back yet in main.js");
       app.globalData.myCompletedWishCount = null;
       app.globalData.myFriendsCompletedWishCount = null;
     } 

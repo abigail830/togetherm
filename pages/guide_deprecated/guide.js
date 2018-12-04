@@ -34,7 +34,7 @@ Page({
         if (info != null) {
           console.log("Session contained userInfo.");
           wx.switchTab({
-            url: '../index_after_authorize/index_after'
+            url: '../main/main'
           })
         } else {
           wx.redirectTo({

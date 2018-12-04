@@ -6,11 +6,8 @@ App({
     let logs = wx.getStorageSync('logs') || [];
     logs.unshift(Date.now());
     wx.setStorageSync('logs', logs);
-    let bodyInfo = wx.getStorageSync('userBodyInfo');
-    if (bodyInfo) {
-      this.globalData.userBodyInfo = bodyInfo;
-    }
     this.bindNetworkChangeRefresh();
+    this.wxLogin();
 
   },
   wxLogin: function () {

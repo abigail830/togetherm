@@ -1,24 +1,23 @@
 {
   "pages": [
-    "pages/guide/guide",
-    "pages/index/index",
-    "pages/logs/logs",
+    "pages/index_new/index_new",
+    "pages/main/main",
     "pages/otherWish/otherWish",
     "pages/wishList/wishList",
-    "pages/index_after_authorize/index_after",
+    "pages/logs/logs",
     "pages/shareWish/shareWish",
     "pages/shareIndex/shareIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F08080",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "友爱清单",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index_after_authorize/index_after",
+        "pagePath": "pages/main/main",
         "text": "我的愿望",
         "selectedIconPath": "images/mine.png",
         "iconPath": "images/mine1.png"

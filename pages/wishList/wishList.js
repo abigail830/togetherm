@@ -264,7 +264,7 @@ Page({
             console.log(result.data.error);
           } else {
             wx.redirectTo({
-              url: '../index_after_authorize/index_after'
+              url: '../main/main'
             });
           }
 
@@ -357,7 +357,7 @@ Page({
             console.log(result.data.error);
           } else {
             wx.redirectTo({
-              url: '../index_after_authorize/index_after'
+              url: '../main/main'
             });
           }
 
