@@ -25,12 +25,12 @@
       },
       {
         "pagePath": "pages/otherWish/otherWish",
-        "text": "朋友的愿望",
-        "selectedIconPath": "images/front.png",
-        "iconPath": "images/front1.png"
+        "text": "友的愿望",
+        "selectedIconPath": "images/f_selected.png",
+        "iconPath": "images/f.png"
       }
     ],
     "color": "#929292",
-    "selectedColor": "#20492e"
+    "selectedColor": "#6a3906"
   }
 }

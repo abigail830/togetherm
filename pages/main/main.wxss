@@ -33,8 +33,6 @@
 .left{
   width: 30%;
   padding: 10rpx;
-  /* todo url doesn't work here */
-  /* background-image: url("../../images/icon_bg.png"); */
   text-align: right;
 }
 .middle{
@@ -42,7 +40,7 @@
   color: #6a3906;
   font-size: 80%;
   text-align: left;
-  padding-top: 50rpx;
+  padding-top: 60rpx;
 }
 .right {
   width: 30%;
@@ -51,6 +49,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .logo{
   width: 140rpx;
   height: 50rpx;
@@ -64,25 +63,30 @@
   line-height: 40rpx;
   width: 140rpx;
   border-radius: 15rpx;
-  border: solid 2rpx #6a3906;
-  color: #ffffff;
+  border: solid 4rpx #6a3906;
+  color: #6a3906;
   background-color: #94ddf8;
 }
 
 .userinfo-avatar {
+  position: absolute;
+  top: 40rpx;
+  left: 82rpx;
+  margin: 13rpx;
   width: 120rpx;
   height: 120rpx;
-  margin: 15rpx;
   border-radius: 50%;
   background-color: #94ddf8;
 }
-.icon_out{
+.icon_bg{
+  position: absolute;
+  top: 40rpx;
+  left: 80rpx;
   width: 150rpx;
   height: 150rpx;
-  border-radius: 50%;
-  background-color: #94ddf8;
-  border: solid 3rpx #6a3906;
-  margin: 10rpx 0rpx 20rpx 40rpx;
+}
+.icon_out{
+  height: 200rpx;
 }
 
 
