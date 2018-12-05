@@ -2,17 +2,44 @@
 <view class="container">
   <view class="fullwidth">
     <view class="userinfo">
+      <view class="left">
+      <view class="icon_out">
       <image bindtap="bindViewTap" class="userinfo-avatar" 
-      src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                </view>        
+      </view>
+      <view class="middle">
+        <text>{{userInfo.nickName}}</text>
+      </view>
+      <view class="right">
+        <image class="logo" src="../../images/LOGO.png"></image>
+        <button bindtap="help" class="help"> 帮 助 
+      </button>
+      </view>
     </view>
     <view class="countinfo">
       <view class="countcell">
-        <view class="countheader">我自己实现了</view>
-        <view class="count">{{myCompletedWishCount}}<text class="counttips">个愿望</text></view>      
+        <view class="count red">
+          <text class="counttips">Get</text>
+          {{myCompletedWishCount}}
+          <text class="counttips">个</text>
+        </view>
+        <view class="blocker">
+          <image class="blocker" src="../../images/count_block.png"></image>
+        </view>
+        <view class="countheader">我的愿望</view>      
       </view>
+
       <view class="countcell">
-        <view class="countheader">帮朋友实现了</view>
-        <view class="count">{{myFriendsCompletedWishCount}}<text class="counttips">个愿望</text></view>
+        <view class="count yellow">
+          <text class="counttips">Get</text>
+          {{myFriendsCompletedWishCount}}
+          <text class="counttips">个</text>
+        </view>
+        <view class="blocker">
+          <image class="blocker" src="../../images/count_block.png"></image>
+        </view>
+        <view class="countheader">友的愿望</view>      
       </view>
     </view>
 
