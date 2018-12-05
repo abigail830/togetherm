@@ -27,7 +27,6 @@
   width: 80%;
   color:#6A3906;
   font-size: 70%;
-
   border: #6A3906;
   border-style: solid;
   border-width: 3px;
@@ -50,11 +49,6 @@
 .header {
   font-size: large;
   margin: 10rpx;
-}
-
-.p {
-  font-size: 100%;
-  margin-bottom: 20rpx;
 }
 
 .buttonView{

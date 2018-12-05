@@ -62,5 +62,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  toMain: function(e) {
+    console.info("to main called")
+    wx.switchTab({
+      url: '../main/main',
+    });
   }
 })

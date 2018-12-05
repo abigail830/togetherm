@@ -21,7 +21,7 @@ Page({
   },
   help: function(e){
     wx.navigateTo({
-      url: '../help/help',
+      url: '../instruction/instruction',
     })
   },
 

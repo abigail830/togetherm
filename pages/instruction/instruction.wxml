@@ -20,6 +20,6 @@
 </view>
 </view>
 <view class='buttonView'>
-  <button class="main_btn"> 开始使用 </button>
+  <button class="main_btn" bindtap="toMain"> 开始使用 </button>
   </view>
 </view>
