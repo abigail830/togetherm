@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+let util = require('../../utils/util.js');
 
 Page({
   data: {
@@ -15,9 +16,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       });
-      wx.switchTab({
-        url: '../main/main',
-      })
+      this.initWishLists();
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -26,9 +25,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         });
-        wx.switchTab({
-          url: '../main/main',
-        })
+        this.initWishLists();
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -39,9 +36,7 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           });
-          wx.switchTab({
-            url: '../main/main',
-          })
+          this.initWishLists();
         }
       })
     }
@@ -54,9 +49,41 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     });
-    wx.switchTab({
-      url: '../main/main',
-    })
+    this.initWishLists();
+  },
+  initWishLists: function () {
+    wx.showLoading({
+      title: '加载中...',
+    });
+    console.log("initWishLists is being called in index_new.js");
+    if (app.globalData.authInfo.openid == null) {
+      console.log("openID is not come back yet in index_new.js");
+      app.globalData.myCompletedWishCount = null;
+      app.globalData.myFriendsCompletedWishCount = null;
+    }
+    else {
+      return Promise.all([
+        util.request(app.globalData.apiBase + "/v1/wishes/lists?" + "openId=" + app.globalData.authInfo.openid)
+          .then((res) => {
+            console.log(res.data);
+            app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
+            app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
+            app.globalData.wishLists = res.data.wishLists;
+            app.globalData.hasWishList = res.data.hasWishList;
+            console.log(app.globalData);
+            // this.setWishListData();
+            // wx.hideLoading();
+          }, (res) => {
+            util.showModel('获取您的愿望清单', res.errMsg)
+          })
+      ]).then(() => {
+        wx.hideLoading();
+        wx.switchTab({
+          url: '../main/main',
+        })
+        
+      });
+    }
   },
   /**
 * 用户点击右上角分享

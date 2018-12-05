@@ -7,7 +7,7 @@ const app = getApp()
 
 Page({
   data: {
-    empty_wish: "还没找到你的愿望清单哦 6_6",
+    empty_wish: "还没你的愿望清单哦 6_6",
     myCompletedWishCount: 0,
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
@@ -17,7 +17,8 @@ Page({
   onLoad: function () {
     this.setData({
       userInfo: app.globalData.userInfo
-    })
+    });
+    this.setWishListData();
   },
   help: function(e){
     wx.navigateTo({
@@ -45,11 +46,11 @@ Page({
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
-    if (app.globalData.authInfo.openid == null) {
-      console.log("openID is null - try to login wx again");
-      app.wxLogin();
-    }
-    this.initWishLists();
+    // if (app.globalData.authInfo.openid == null) {
+    //   console.log("openID is null - try to login wx again");
+    //   app.wxLogin();
+    // }
+    // this.initWishLists();
     // this.setWishListData();
   },
 
@@ -72,36 +73,7 @@ Page({
   },
 
 
-  initWishLists: function () {
-    wx.showLoading({
-      title: '加载中...',
-    });
-    console.log("initWishLists is being called in main.js");
-    if (app.globalData.authInfo.openid == null) {
-      console.log("openID is not come back yet in main.js");
-      app.globalData.myCompletedWishCount = null;
-      app.globalData.myFriendsCompletedWishCount = null;
-    } 
-    else {
-      return Promise.all([
-        util.request(app.globalData.apiBase + "/v1/wishes/lists?" + "openId=" + app.globalData.authInfo.openid)
-          .then((res) => {
-            console.log(res.data);
-            app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
-            app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
-            app.globalData.wishLists = res.data.wishLists;
-            app.globalData.hasWishList = res.data.hasWishList;
-            console.log(app.globalData);
-            this.setWishListData();
-            wx.hideLoading();
-          }, (res) => {
-            util.showModel('获取您的愿望清单', res.errMsg)
-          })
-      ]).then(() => {
-        wx.hideLoading();
-      });
-    }
-  },
+
 
   touchstart: function (e) {
     this.setData({
