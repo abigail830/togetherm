@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <image class="logo" src="../../images/LOGO.png"></image>
+  </view>
+  <view>
+    <image class="intro" src="../../images/intro.png"></image>
+  </view>
+  <view class="userinfo">
+    <button class="login_btn" wx:if="{{!hasUserInfo && canIUse}}" 
+    open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登陆 </button>
+  </view>
+  <view class="description">
+  <text>说明文字说明文字说明文字说明文字说明文字说明
+文字说明文字说明文字说明文字说明文字说明文字
+说明文字说明文字说明文字说明文字</text
+></view>
+</view>

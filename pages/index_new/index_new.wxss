@@ -1,0 +1,40 @@
+/**index.wxss**/
+.container {
+  margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+  text-align: center;
+  width: 100%;
+}
+
+.logo{
+  width: 250rpx;
+  height: 80rpx;
+  margin: 10rpx;
+  margin-top: 100rpx;
+}
+.intro {
+  width: 600rpx;
+  height: 300rpx;
+  margin: 50rpx;
+}
+.userinfo{
+  width: 65%;
+  margin: 20rpx; 
+  margin-bottom: 50rpx; 
+}
+.login_btn{
+  width: 100%;
+  border-radius: 30rpx;
+  background: #E60C12;
+  border: solid 1rpx #6A3906;
+  color: #ffffff;
+}
+.description{
+  margin: 30rpx;
+  width: 100%;
+  color:#6A3906;
+  font-size: 70%;
+}
