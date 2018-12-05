@@ -12,12 +12,17 @@ Page({
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
     userInfo: {},
+    hasUserInfo: false
   },
 
   onLoad: function () {
-    this.setData({
-      userInfo: app.globalData.userInfo
-    });
+    if (app.globalData.userInfo){
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      });
+    }
+    
     this.setWishListData();
   },
   help: function(e){

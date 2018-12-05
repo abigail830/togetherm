@@ -6,8 +6,14 @@
         <view class="icon_out">
           <image class="icon_bg" 
                 src="../../images/icon_bg.png"></image>
-          <image class="userinfo-avatar" 
+          <block wx:if="{{hasUserInfo}}">
+            <image class="userinfo-avatar" 
                 src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          </block>
+          <block wx:else>
+            <image class="userinfo-avatar" 
+                src="../../images/default_icon.png" mode="cover"></image>
+          </block>
         </view>        
       </view>
       <view class="middle">

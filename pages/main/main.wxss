@@ -70,9 +70,9 @@
 
 .userinfo-avatar {
   position: absolute;
-  top: 40rpx;
-  left: 82rpx;
-  margin: 13rpx;
+  top: 42rpx;
+  left: 84rpx;
+  margin: 10rpx;
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
