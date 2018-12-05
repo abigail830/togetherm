@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F08080;
+  background-color: #ffffff;
   width: 100%;
   padding: 0;
   margin:0rpx;
@@ -26,7 +26,7 @@
   flex-direction: row;
   align-items: center;
   background-color: #ffffff;
-  width: 100%;
+  width: 90%;
   padding: 10rpx;
   margin:0rpx;
 }
@@ -44,7 +44,7 @@
   padding-top: 50rpx;
 }
 .right {
-  width: 40%;
+  width: 30%;
   padding: 10rpx;
   display: flex;
   flex-direction: column;
@@ -88,34 +88,49 @@
 .countinfo{
   display: flex;
   flex-direction: row;
-  width: 100%;
-  padding: 0rpx 10rpx;
-  margin: 0;
+  width: 94%;
+  margin: 0rpx;
   text-align: center;
-  background-color:  #F08080;
-  color:#757575;
+  background-color:  #ffffff;
+  color:#353535;
+
 }
 
 .countcell{
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding: 10rpx 5rpx;
-  margin: 0; 
-  background-color:  #e2e2e2;
+  width: 47%;
+  padding: 10rpx;
+  margin: 10rpx 20rpx; 
+  border-radius: 30rpx;
+  border: solid 8rpx #6a3906; 
+  margin-top: 0rpx;
 }
-
+.red{
+  color: #e60c12; 
+}
+.yellow{
+  color: #ffc000;
+}
 .countheader{
  font-size: 80%;
+ margin: 10rpx;
+ color: #6a3906;
 }
 
 .count {
-  font-size: 150%;
+  font-size: 160%;
   font-weight: bold;
 }
 .counttips {
-  font-size: 50%;
+  font-size: 70%;
   font-weight: lighter;
+}
+.blocker{
+  width: 95%;
+  height: 30rpx;
+  margin: 10rpx;
+  margin-top: 1rpx;
 }
 
 .content {
