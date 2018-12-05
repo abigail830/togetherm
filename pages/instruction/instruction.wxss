@@ -1,0 +1,71 @@
+/* pages/instruction/instruction.wxss */
+.container {
+  margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+  text-align: center;
+  width: 100%;
+}
+
+.logo{
+  width: 250rpx;
+  height: 80rpx;
+  margin: 10rpx;
+  margin-top: 100rpx;
+}
+
+.intro {
+  width: 600rpx;
+  height: 300rpx;
+  margin: 50rpx;
+}
+
+.description{
+  margin: 30rpx;
+  width: 80%;
+  color:#6A3906;
+  font-size: 70%;
+
+  border: #6A3906;
+  border-style: solid;
+  border-width: 3px;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 300px;
+  padding-left: 10px;
+}
+
+.textArea{
+  margin-top: 30rpx;
+  width: 100%;
+  color:#6A3906;
+  font-size: 100%;
+  text-align: left;
+}
+
+.header {
+  font-size: large;
+  margin: 10rpx;
+}
+
+.p {
+  font-size: 100%;
+  margin-bottom: 20rpx;
+}
+
+.buttonView{
+  width: 65%;
+  margin: 20rpx; 
+  margin-bottom: 50rpx; 
+}
+.main_btn{
+  width: 100%;
+  border-radius: 30rpx;
+  background: #E60C12;
+  border: solid 1rpx #6A3906;
+  color: #ffffff;
+}
