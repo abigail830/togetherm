@@ -6,7 +6,8 @@
     "pages/wishList/wishList",
     "pages/logs/logs",
     "pages/shareWish/shareWish",
-    "pages/shareIndex/shareIndex"
+    "pages/shareIndex/shareIndex",
+    "pages/help/help"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,18 +19,18 @@
     "list": [
       {
         "pagePath": "pages/main/main",
-        "text": "我的愿望",
+        "text": "我",
         "selectedIconPath": "images/mine.png",
         "iconPath": "images/mine1.png"
       },
       {
         "pagePath": "pages/otherWish/otherWish",
-        "text": "朋友的愿望",
+        "text": "友",
         "selectedIconPath": "images/front.png",
         "iconPath": "images/front1.png"
       }
     ],
-    "color": "#929292",
-    "selectedColor": "#20492e"
+    "color": "#6a3906",
+    "selectedColor": "#353535"
   }
 }

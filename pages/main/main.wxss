@@ -23,14 +23,41 @@
 
 .userinfo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  background-color: #F08080;
+  background-color: #ffffff;
   width: 100%;
   padding: 30rpx;
   margin:0rpx;
 }
-
+.left{
+  width: 60%;
+  padding: 10rpx;
+  background-image: url("../../images/icon_bg.png");
+}
+.right {
+  width: 40%;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo{
+  width: 140rpx;
+  height: 50rpx;
+  margin: 15rpx;
+}
+.help{
+  font-size: 70%;
+  padding: 5rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 140rpx;
+  border-radius: 20rpx;
+  border: solid 1rpx #6a3906;
+  color: #ffffff;
+  background-color: #94ddf8;
+}
 
 .userinfo-avatar {
   width: 150rpx;

@@ -19,6 +19,12 @@ Page({
       userInfo: app.globalData.userInfo
     })
   },
+  help: function(e){
+    wx.navigateTo({
+      url: '../help/help',
+    })
+  },
+
   addWishList: function (e) {
     wx.navigateTo({
       url: '../wishList/wishList',

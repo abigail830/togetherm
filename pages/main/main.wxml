@@ -2,8 +2,15 @@
 <view class="container">
   <view class="fullwidth">
     <view class="userinfo">
-      <image bindtap="bindViewTap" class="userinfo-avatar" 
-      src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view class="left">
+        <image bindtap="bindViewTap" class="userinfo-avatar" 
+                src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      </view>
+      <view class="right">
+        <image class="logo" src="../../images/LOGO.png"></image>
+        <button bindtap="help" class="help"> 帮助 
+      </button>
+      </view>
     </view>
     <view class="countinfo">
       <view class="countcell">
