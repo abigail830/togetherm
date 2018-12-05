@@ -6,9 +6,12 @@
         <image bindtap="bindViewTap" class="userinfo-avatar" 
                 src="{{userInfo.avatarUrl}}" mode="cover"></image>
       </view>
+      <view class="middle">
+        <text>{{userInfo.nickName}}</text>
+      </view>
       <view class="right">
         <image class="logo" src="../../images/LOGO.png"></image>
-        <button bindtap="help" class="help"> 帮助 
+        <button bindtap="help" class="help"> 帮 助 
       </button>
       </view>
     </view>

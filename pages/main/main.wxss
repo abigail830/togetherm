@@ -27,13 +27,21 @@
   align-items: center;
   background-color: #ffffff;
   width: 100%;
-  padding: 30rpx;
+  padding: 10rpx;
   margin:0rpx;
 }
 .left{
-  width: 60%;
+  width: 30%;
   padding: 10rpx;
   background-image: url("../../images/icon_bg.png");
+  text-align: right;
+}
+.middle{
+  width: 30%;
+  color: #6a3906;
+  font-size: 80%;
+  text-align: left;
+  padding-top: 50rpx;
 }
 .right {
   width: 40%;
@@ -46,22 +54,23 @@
   width: 140rpx;
   height: 50rpx;
   margin: 15rpx;
+  margin-top: 5rpx;
 }
 .help{
   font-size: 70%;
-  padding: 5rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  padding: 3rpx;
+  height: 50rpx;
+  line-height: 40rpx;
   width: 140rpx;
-  border-radius: 20rpx;
-  border: solid 1rpx #6a3906;
+  border-radius: 15rpx;
+  border: solid 2rpx #6a3906;
   color: #ffffff;
   background-color: #94ddf8;
 }
 
 .userinfo-avatar {
-  width: 150rpx;
-  height: 150rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin: 10rpx;
   border-radius: 50%;
 }
