@@ -3,8 +3,11 @@
   <view class="fullwidth">
     <view class="userinfo">
       <view class="left">
-        <image bindtap="bindViewTap" class="userinfo-avatar" 
+      <view class="icon_out">
+      <image bindtap="bindViewTap" class="userinfo-avatar" 
                 src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                </view>
+        
       </view>
       <view class="middle">
         <text>{{userInfo.nickName}}</text>
