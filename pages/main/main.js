@@ -59,7 +59,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '友爱清单',
-      imageUrl: '../../images/guide1.jpg',
+      imageUrl: '../../images/LOGO.png',
       success: function (res) {
         // 转发成功s
         console.log("转发成功:" + JSON.stringify(res));
