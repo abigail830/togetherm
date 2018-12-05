@@ -33,7 +33,7 @@
 .left{
   width: 30%;
   padding: 10rpx;
-  background-image: url("../../images/icon_bg.png");
+  background-image: "../../images/icon_bg.png";
   text-align: right;
 }
 .middle{
@@ -101,7 +101,7 @@
   flex-direction: column;
   width: 47%;
   padding: 10rpx;
-  margin: 10rpx 20rpx; 
+  margin: 10rpx; 
   border-radius: 30rpx;
   border: solid 8rpx #6a3906; 
   margin-top: 0rpx;
