@@ -12,7 +12,7 @@
           </block>
           <block wx:else>
             <image class="userinfo-avatar" 
-                src="../../images/default_icon.png" mode="cover"></image>
+                src="../../images/default_icon_w.png" mode="cover"></image>
           </block>
         </view>        
       </view>
