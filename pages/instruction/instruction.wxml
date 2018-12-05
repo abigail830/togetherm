@@ -1,0 +1,25 @@
+<!--pages/instruction/instruction.wxml-->
+<view class="container">
+  <view>
+    <image class="logo" src="../../images/LOGO.png"></image>
+  </view>
+  <view class="description">
+  <view class="textArea">
+  <text class="header">标题1 \n</text>
+  <text>\t说明文字说明文字说明文字说明文字说明文字说明
+文字说明文字说明文字说明文字说明文字说明文字
+说明文字说明文字说明文字说明文字 \n\n</text>
+  <text class="header">标题2 \n</text>
+  <text>\t说明文字说明文字说明文字说明文字说明文字说明
+文字说明文字说明文字说明文字说明文字说明文字
+说明文字说明文字说明文字说明文字 \n\n</text>
+  <text class="header">标题3 \n</text>
+  <text>\t说明文字说明文字说明文字说明文字说明文字说明
+文字说明文字说明文字说明文字说明文字说明文字
+说明文字说明文字说明文字说明文字 \n\n</text>
+</view>
+</view>
+<view class='buttonView'>
+  <button class="main_btn" bindtap="toMain"> 开始使用 </button>
+  </view>
+</view>

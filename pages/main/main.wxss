@@ -33,7 +33,8 @@
 .left{
   width: 30%;
   padding: 10rpx;
-  background-image: "../../images/icon_bg.png";
+  /* todo url doesn't work here */
+  /* background-image: url("../../images/icon_bg.png"); */
   text-align: right;
 }
 .middle{

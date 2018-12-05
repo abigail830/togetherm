@@ -30,7 +30,9 @@ Page({
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
-    
+    console.info("onShow: login wx");
+    app.wxLogin();
+    console.info("onShow: open id : " + app.globalData.authInfo.openid)
   },
 
   /**
