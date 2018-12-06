@@ -307,7 +307,7 @@
     border-radius: 15rpx;
     border: solid 4rpx #6a3906;
     color: #6a3906;
-    background-color: #E59535;
+    background-color: #ffc000;
 }
 
 .timeline-entry {
@@ -359,6 +359,6 @@
   width: 100%;
   border-radius: 30rpx;
   background: #E60C12;
-  border: solid 1rpx #6A3906;
+  border: solid 5rpx #6A3906;
   color: #ffffff;
 }
