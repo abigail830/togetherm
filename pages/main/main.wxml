@@ -52,7 +52,7 @@
     </view>
 
 <view wx:if="{{hasWishList}}" class="timeline">
-    <block wx:for="{{timeline}}" wx:key="*this">
+    <block wx:for="{{timeline}}" wx:for-index='timeline_index' wx:key="index">
 
       <view class='timeline-asof'>
         <view class='timeline-timestamp'>{{item.asofMonth}}</view>
@@ -60,21 +60,23 @@
 
       <view class='timeline-line'></view>
 
-      <block wx:for="{{item.wishListDTOList}}" wx:key="*this">
+      <block wx:for="{{item.wishListDTOList}}"  wx:key="index" wx:for-index="inside_index" wx:for-item="wishListDTOList">
       <view class="timeline-entry">
         <view class="timeline-left">
           <view class="time-point-left">
             <view class='timeline-line-up'> </view>
             <view class='timeline-circle'></view>
+            <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index != timeline.length-1}}">
             <view class='timeline-line-down'> </view>
+            </block>
           </view>
           <view class="time-point-right">
-            <view>{{item.dateInMonth}}</view>
+            <view>{{wishListDTOList.dateInMonth}}</view>
           </view>
         </view>
 
         <view class='timeline-middle'>
-            <view>{{item.listDescription}}</view>
+            <view>{{wishListDTOList.listDescription}}</view>
         </view>
 
         <view class='timeline-right'>

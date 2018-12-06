@@ -108,7 +108,7 @@
   padding: 10rpx;
   margin: 10rpx; 
   border-radius: 30rpx;
-  border: solid 8rpx #6a3906; 
+  border: solid 10rpx #6a3906; 
   margin-top: 0rpx;
 }
 .red{
@@ -119,12 +119,15 @@
 }
 .countheader{
  font-size: 80%;
- margin: 10rpx;
- color: #6a3906;
+ margin: 5rpx;
+ padding: 10rpx;
+ color: #ffffff;
+ background-color:#6a3906; 
+ border-radius: 0 0 30rpx 30rpx;
 }
 
 .count {
-  font-size: 160%;
+  font-size: 140%;
   font-weight: bold;
 }
 .counttips {
@@ -255,14 +258,14 @@
 .timeline-line{
     margin-left: 20px;
     border-left: 1px solid #6a3906;
-    height: 28px;
+    height: 5px;
     background: #fff
 }
 
 .timeline-line-up{
     margin-left: 20px;
     border-left: 1px solid #6a3906;
-    height: 6px;
+    height: 10px;
     background: #fff
 }
 
@@ -279,16 +282,18 @@
 .timeline-line-down{
     margin-left: 20px;
     border-left: 1px solid #6a3906;
-    height: 22px;
+    height: 10px;
     background: #fff
 }
 
 .timeline-timestamp{
     border: 2px solid #6a3906;
-    border-radius: 5px;
+    border-radius: 20rpx;
     width: 80px;
     height: 20px;
+    padding: 5rpx 10rpx;
     border-color: #6a3906;
+    color: #6a3906;
 }
 
 .timeline-asof{
@@ -297,13 +302,12 @@
 
 .timeline-btn{
     font-size: 70%;
-    line-height: 40rpx;
-    height: 20px;
+    margin: 10rpx;
     width: 100%;
     border-radius: 15rpx;
-    border: solid 2rpx #6a3906;
-    color: #ffffff;
-    background-color: #94ddf8;
+    border: solid 4rpx #6a3906;
+    color: #6a3906;
+    background-color: #E59535;
 }
 
 .timeline-entry {
@@ -342,6 +346,8 @@
 
 .time-point-right {
     width: 40%;
+    color: #6A3906;
+    font-weight: bold;
 }
 
 .buttonView{
