@@ -202,11 +202,10 @@
 
 .btnblock {
   width: 100%;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction:column;
-  text-align: center;
-  padding: 20rpx;
+  border-radius: 30rpx;
+  background: #E60C12;
+  border: solid 1rpx #6A3906;
+  color: #ffffff;
 }
 .addwishbtn {
   color:#F08080;
@@ -243,4 +242,117 @@
 .touch-move-active  {
  -webkit-transform: translateX(0);
  transform: translateX(0);
+}
+
+
+.timeline{
+    width: 100%;
+    margin-top: 30rpx;
+    margin-left: 80rpx;
+    padding: 10rpx;
+}
+
+.timeline-line{
+    margin-left: 20px;
+    border-left: 1px solid #6a3906;
+    height: 28px;
+    background: #fff
+}
+
+.timeline-line-up{
+    margin-left: 20px;
+    border-left: 1px solid #6a3906;
+    height: 6px;
+    background: #fff
+}
+
+.timeline-circle{
+    margin-left: 15px;
+    border: 5px solid #6a3906;
+    border-radius: 5px;
+    width: 2px;
+    height: 2px;
+    border-color: #6a3906;
+    background-color: #6a3906;
+}
+
+.timeline-line-down{
+    margin-left: 20px;
+    border-left: 1px solid #6a3906;
+    height: 22px;
+    background: #fff
+}
+
+.timeline-timestamp{
+    border: 2px solid #6a3906;
+    border-radius: 5px;
+    width: 80px;
+    height: 20px;
+    border-color: #6a3906;
+}
+
+.timeline-asof{
+    font-size:14px;
+}
+
+.timeline-btn{
+    font-size: 70%;
+    line-height: 40rpx;
+    height: 20px;
+    width: 100%;
+    border-radius: 15rpx;
+    border: solid 2rpx #6a3906;
+    color: #ffffff;
+    background-color: #94ddf8;
+}
+
+.timeline-entry {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    background-color: #ffffff;
+    width: 90%;
+    margin:0rpx;
+}
+
+.timeline-left{
+    width: 30%;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+}
+.timeline-middle{
+    margin-top: 2px;
+    width: 50%;
+    color: #6a3906;
+    font-size: 80%;
+    text-align: left;
+    /* padding-top: 50rpx; */
+}
+.timeline-right {
+    width: 20%;
+    display: flex;
+    align-items: top;
+}
+
+.time-point-left {
+    width: 60%;
+
+}
+
+.time-point-right {
+    width: 40%;
+}
+
+.buttonView{
+  width: 65%;
+  margin: 20rpx; 
+  margin-bottom: 50rpx; 
+}
+.main_btn{
+  width: 100%;
+  border-radius: 30rpx;
+  background: #E60C12;
+  border: solid 1rpx #6A3906;
+  color: #ffffff;
 }

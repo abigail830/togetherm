@@ -63,13 +63,14 @@ Page({
     }
     else {
       return Promise.all([
-        util.request(app.globalData.apiBase + "/v1/wishes/lists?" + "openId=" + app.globalData.authInfo.openid)
+        util.request(app.globalData.apiBase + "/v1/wishes/lists/timeline?" + "openId=" + app.globalData.authInfo.openid)
           .then((res) => {
             console.log(res.data);
             app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
             app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
             app.globalData.wishLists = res.data.wishLists;
             app.globalData.hasWishList = res.data.hasWishList;
+            app.globalData.timeline = res.data.wishListTimelineEntryList;
             console.log(app.globalData);
             // this.setWishListData();
             // wx.hideLoading();

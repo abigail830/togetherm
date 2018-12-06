@@ -51,7 +51,44 @@
       </view>
     </view>
 
-    <view wx:if="{{hasWishList}}" class="content">
+<view wx:if="{{hasWishList}}" class="timeline">
+    <block wx:for="{{timeline}}" wx:key="*this">
+
+      <view class='timeline-asof'>
+        <view class='timeline-timestamp'>{{item.asofMonth}}</view>
+      </view>
+
+      <view class='timeline-line'></view>
+
+      <block wx:for="{{item.wishListDTOList}}" wx:key="*this">
+      <view class="timeline-entry">
+        <view class="timeline-left">
+          <view class="time-point-left">
+            <view class='timeline-line-up'> </view>
+            <view class='timeline-circle'></view>
+            <view class='timeline-line-down'> </view>
+          </view>
+          <view class="time-point-right">
+            <view>{{item.dateInMonth}}</view>
+          </view>
+        </view>
+
+        <view class='timeline-middle'>
+            <view>{{item.listDescription}}</view>
+        </view>
+
+        <view class='timeline-right'>
+          <navigator url="../wishList/wishList?wishListID={{item.listId}}" class="timeline-btn"> 查看 </navigator>
+        </view>
+      </view>
+      </block>
+    </block>
+</view>
+<view wx:else class="content">
+   <view class="empty_wish">{{empty_wish}}</view>
+ </view>
+
+    <!-- <view wx:if="{{hasWishList}}" class="content">
       <block wx:for="{{wishLists}}" wx:for-item="item" wx:key="listId">
 	      <view class="row-container"  bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
         <navigator class="con-info"  url="../wishList/wishList?wishListID={{item.listId}}" hover-class="navigator-hover" >
@@ -65,12 +102,14 @@
     </view>
     <view wx:else class="content">
       <view class="empty_wish">{{empty_wish}}</view>
-    </view>
+    </view> -->
 
-    <view class="btnblock">
-      <button bindtap="addWishList" class="addwishbtn"> 添加愿望清单 
+    <!-- <view class="btnblock">
+      <button bindtap="addWishList" class="addwishbtn"> 创建清单 
       </button>
-    </view>
-
+    </view> -->
+  <view class='buttonView'>
+    <button class="main_btn" bindtap="addWishList"> 创建清单 </button>
+  </view>
   </view>
 </view>

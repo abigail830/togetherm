@@ -152,6 +152,7 @@ App({
     myCompletedWishCount: null,
     myFriendsCompletedWishCount: null,
     wishLists:[],
-    hasWishList:false
+    hasWishList:false,
+    timeline:[]
   }
 });

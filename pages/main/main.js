@@ -12,7 +12,41 @@ Page({
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
     userInfo: {},
-    hasUserInfo: false
+    hasUserInfo: false,
+    timeline: [],
+    timedata1:
+        [{
+          "timestamp": "2018年12月",
+          "wish": [{
+            date: '07',
+            name: '圣诞节心愿清单',
+          },
+            {
+              date: '07',
+              name: '生日心愿清单12323',
+            },
+            {
+              date: '01',
+              name: '双十二心愿清单',
+            },
+            {
+              date: '07',
+              name: '生日心愿清单',
+            },
+            {
+              date: '15',
+              name: '测试心愿清单',
+            }]
+        },
+          {
+            "timestamp": "2018年11月",
+            "wish": [
+              {
+                date: '11',
+                name: '双十一心愿清单',
+              }]
+          }]
+
   },
 
   onLoad: function () {
@@ -43,7 +77,8 @@ Page({
         myCompletedWishCount: app.globalData.myCompletedWishCount,
         myFriendsCompletedWishCount: app.globalData.myFriendsCompletedWishCount,
         hasWishList: app.globalData.hasWishList,
-        wishLists: app.globalData.wishLists
+        wishLists: app.globalData.wishLists,
+        timeline: app.globalData.timeline 
       })
     }
   },
