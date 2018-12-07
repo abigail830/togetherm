@@ -158,6 +158,30 @@ Page({
     console.log(this.data.wishes);
   },
 
+  reload: function () {
+    wx.showLoading({
+      title: '加载中...',
+    });
+    console.log("reload timeline data");
+    return Promise.all([
+      util.request(app.globalData.apiBase + "/v1/wishes/lists/timeline?" + "openId=" + app.globalData.authInfo.openid)
+        .then((res) => {
+          console.log(res.data);
+          app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
+          app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
+          app.globalData.wishLists = res.data.wishLists;
+          app.globalData.hasWishList = res.data.hasWishList;
+          app.globalData.timeline = res.data.wishListTimelineEntryList;
+          console.log(app.globalData);
+        }, (res) => {
+          util.showModel('获取您的愿望清单', res.errMsg)
+        })
+    ]).then(() => {
+      wx.hideLoading();
+
+    });
+  },
+
   postWishList: function () {
     console.log("add wish list ");
     var myPage = this;
@@ -196,7 +220,7 @@ Page({
       console.log('Exception happen when update wish content!');
       console.log(e);
     }
-
+    this.reload();
   },
 
   addWish: function (itemID) {
@@ -238,6 +262,8 @@ Page({
       console.log('Exception happen when update wish content!');
       console.log(e);
     }
+    this.reload();
+
 
   },
 
@@ -281,6 +307,7 @@ Page({
       console.log('Exception happen when update wish content!');
       console.log(e);
     }
+
   },
 
   deleteWish: function (wishID) {
@@ -312,6 +339,8 @@ Page({
       console.log('Exception happen when delete wish !');
       console.log(e);
     }
+    this.reload();
+
   },
 
   bindDescCompleted: function (e) {

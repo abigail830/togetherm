@@ -13,40 +13,7 @@ Page({
     hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
-    timeline: [],
-    timedata1:
-        [{
-          "timestamp": "2018年12月",
-          "wish": [{
-            date: '07',
-            name: '圣诞节心愿清单',
-          },
-            {
-              date: '07',
-              name: '生日心愿清单12323',
-            },
-            {
-              date: '01',
-              name: '双十二心愿清单',
-            },
-            {
-              date: '07',
-              name: '生日心愿清单',
-            },
-            {
-              date: '15',
-              name: '测试心愿清单',
-            }]
-        },
-          {
-            "timestamp": "2018年11月",
-            "wish": [
-              {
-                date: '11',
-                name: '双十一心愿清单',
-              }]
-          }]
-
+    timeline: []
   },
 
   onLoad: function () {
@@ -82,6 +49,10 @@ Page({
       })
     }
   },
+
+
+
+
   /**
   * 生命周期函数--监听页面显示
   */
@@ -91,7 +62,8 @@ Page({
     //   app.wxLogin();
     // }
     // this.initWishLists();
-    // this.setWishListData();
+    console.log("onshow and refresh page data from app level.")
+    this.setWishListData();
   },
 
   /**

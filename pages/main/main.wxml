@@ -77,10 +77,17 @@
 
         <view class='timeline-middle'>
             <view>{{wishListDTOList.listDescription}}</view>
+            <view wx:if="{{wishListDTOList.progress === 100}}">
+              <view style="width: 100%; border: 2px solid #E60C12;"> </view>
+            </view>
+            <view wx:else>
+              <view style="width: {{wishListDTOList.progress}}%; border: 2px solid #FFC000;"> </view>
+            </view>
+            
         </view>
 
         <view class='timeline-right'>
-          <navigator url="../wishList/wishList?wishListID={{item.listId}}" class="timeline-btn"> 查看 </navigator>
+          <navigator url="../wishList/wishList?wishListID={{wishListDTOList.listId}}" class="timeline-btn"> 查看 </navigator>
         </view>
       </view>
       </block>

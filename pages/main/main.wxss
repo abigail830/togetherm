@@ -282,7 +282,7 @@
 .timeline-line-down{
     margin-left: 20px;
     border-left: 1px solid #6a3906;
-    height: 10px;
+    height: 14px;
     background: #fff
 }
 
@@ -327,6 +327,7 @@
 }
 .timeline-middle{
     margin-top: 2px;
+    margin-right: 20px;
     width: 50%;
     color: #6a3906;
     font-size: 80%;
