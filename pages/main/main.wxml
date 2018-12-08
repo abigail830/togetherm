@@ -77,13 +77,7 @@
 
         <view class='timeline-middle'>
             <view>{{wishListDTOList.listDescription}}</view>
-            <view wx:if="{{wishListDTOList.progress === 100}}">
-              <view style="width: 100%; border: 2px solid #E60C12;"> </view>
-            </view>
-            <view wx:else>
-              <view style="width: {{wishListDTOList.progress}}%; border: 2px solid #FFC000;"> </view>
-            </view>
-            
+            <progress percent="{{100-wishListDTOList.progress}}" activeColor="#009944" backgroundColor="#E60C12"/>
         </view>
 
         <view class='timeline-right'>
