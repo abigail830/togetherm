@@ -1,0 +1,6 @@
+<view bindtap='onCreate'>
+    <slot />
+</view>
+<view class="container">
+    <canvas id="weapp-poste" bind:success="onCreateSuccess" bind:fail="onCreateFail" canvas-id='canvasid' class="weapp-poste-canvas {{debug ? 'debug' : 'pro'}}" style='width: {{pxWidth}}px; height: {{pxHeight}}px;'></canvas>
+</view>
