@@ -1,0 +1,4 @@
+<poster id="weapp-poster" hideLoading config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+<view bindtap='createPoster'>
+    <slot />
+</view>

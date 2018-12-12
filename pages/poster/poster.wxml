@@ -1,0 +1,4 @@
+<view class="container log-list">
+    <poster id="weapp-poster" hideLoading config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+    <button bindtap="createPoster">生成</button>
+</view>

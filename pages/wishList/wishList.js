@@ -1,7 +1,7 @@
 // pages/wishList/wishList.js
 let util = require('../../utils/util.js');
 const app = getApp();
-let sdk = require('../../vendor/wafer2-client-sdk/index');
+let sdk = require('../../vendor/wafer2-client-sdk/index'),Poster;
 
 const currentYear = new Date().getFullYear();
 const currentMonth = util.formatNumber(new Date().getMonth() + 1);
@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    Poster = this.selectComponent("#wish-poster");
     if (options.wishListID==null){
       console.log("Going to create new wishlist ");
       this.postWishList();
@@ -49,7 +50,7 @@ Page({
               year: res.data.listDueTime.substring(0,4),
               month: res.data.listDueTime.substring(5, 7),
               currentDate: res.data.listDueTime.substring(8, 10),
-            })
+            }, ()=>{Poster.updatePosterConfig()})
           }, (res) => {
             util.showModel('获取您的愿望', res.errMsg)
           })
@@ -65,7 +66,7 @@ Page({
         console.log(res.data);
         this.setData({
           wishes: res.data.wishes
-        })
+        }, ()=>{Poster.updatePosterConfig()})
       });
   },
   /**
@@ -155,7 +156,7 @@ Page({
     var value = e.detail.value;
     var item = this.data.wishes[id];
     item.description = value;
-    console.log(this.data.wishes);
+    this.setData({wishes:this.data.wishes});
   },
 
   reload: function () {
@@ -173,12 +174,12 @@ Page({
           app.globalData.hasWishList = res.data.hasWishList;
           app.globalData.timeline = res.data.wishListTimelineEntryList;
           console.log(app.globalData);
+          Poster.updatePosterConfig();
         }, (res) => {
           util.showModel('获取您的愿望清单', res.errMsg)
         })
     ]).then(() => {
       wx.hideLoading();
-
     });
   },
 
@@ -225,6 +226,7 @@ Page({
 
   addWish: function (itemID) {
     var item = this.data.wishes[itemID];
+        Poster.updatePosterConfig();
     console.log("add wish id to be change " + item.wishID);
     console.log("add new wish to wishList id " + this.data.wishListID);
     try {
@@ -272,6 +274,8 @@ Page({
     console.log("update wish id to be change " + item.wishID);
     console.log("update wish desc changed to " + item.description);
     console.log("update wishList id " + this.data.wishListID);
+    Poster.updatePosterConfig();
+    console.warn(this.data.wishes)
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes`,
@@ -369,6 +373,7 @@ Page({
   },
 
   updateWishList: function () {
+    Poster.updatePosterConfig();
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes/lists`,
@@ -440,7 +445,7 @@ Page({
     newWishes.push(newWish);
     this.setData({
       wishes: newWishes,
-    });
+    },()=>{Poster.updatePosterConfig()});
   },
 
 
@@ -515,6 +520,18 @@ Page({
       this.deleteWish(this.data.wishes[index].wishID);
     }
     this.loadWish();
-  }
+  },
 
+  onPosterSuccess:function (e) {
+    const { detail } = e;
+    wx.previewImage({
+      current: detail,
+      urls: [detail]
+    });
+    // 保存
+    Poster.onSavePic();
+  },
+  onPosterFail:function (err) {
+    console.error(err);
+  },
 })

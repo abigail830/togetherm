@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "date-picker": "../../vendor/date-picker/date-picker"
+    "date-picker": "../../vendor/date-picker/date-picker",
+    "wish-poster": "../../vendor/weapp-poster/wish/index"
   }
 }

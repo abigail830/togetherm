@@ -7,7 +7,8 @@
     "pages/logs/logs",
     "pages/shareWish/shareWish",
     "pages/shareIndex/shareIndex",
-    "pages/instruction/instruction"
+    "pages/instruction/instruction",
+    "pages/poster/poster"
   ],
   "window": {
     "backgroundTextStyle": "light",

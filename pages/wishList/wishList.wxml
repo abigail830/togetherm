@@ -1,7 +1,7 @@
 <!--pages/wishList/wishList.wxml-->
 <view class="tab-header">
     <view class="flex_row_header">
-	      <view class="lable">愿望实现日期：</view>
+        <view class="lable">愿望实现日期：</view>
         <view bindtap="showDatePicker" >{{year}} - {{month}} - {{currentDate}}
         <image mode='aspectFill' class='arrow-img-header' src='https://kidneyhealty.com.cn/images/arrow-down-white.png'></image>
         </view>
@@ -15,7 +15,7 @@
 <view>
   <view class="content">
       <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
-	      <view class="row-container"  bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
+        <view class="row-container"  bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
           <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view> 
           <block wx:if="{{item.wishStatus!='NEW'}}" >
             <view class="con-info">{{item.description}}
@@ -29,7 +29,7 @@
               class="con-input" value="{{item.description}}" />
               <view data-index="{{index}}" bindtap = "delWish" class="del {{item.moveForDelete}}">X</view>
           </block>
-	      </view>
+        </view>
       </block>
   </view>
 
@@ -39,12 +39,14 @@
       </button>
       <button class="addwishbtn" data-name="shareBtn" open-type="share"> 分享清单 
       </button>
+      <!-- <button class="addwishbtn" bindtap="goTest">前往测试生成海报功能</button> -->
   </view>
+  <view> <wish-poster bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishname="{{listDescription}}" date='{{listDueTime}}'><button>测试生成海报功能</button></wish-poster></view>
 </view>
 
 <date-picker id="date-picker"
-			 value="{{datePickerValue}}"
-			 isShow="{{datePickerIsShow}}"
-			 bindsureclick="confirmDate"
-			 bindcancelclick="hideDatePicker"/>
+       value="{{datePickerValue}}"
+       isShow="{{datePickerIsShow}}"
+       bindsureclick="confirmDate"
+       bindcancelclick="hideDatePicker"/>
 
