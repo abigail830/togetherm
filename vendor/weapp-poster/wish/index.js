@@ -271,7 +271,7 @@ Component({
         console.log(this.data, userInfo);
       };
       if (app.globalData.userInfo) {
-        setUser(globalData.userInfo);
+        setUser(app.globalData.userInfo);
       } else if (this.data.canIUse) {
         app.userInfoReadyCallback = res => {
           setUser(res.userInfo);
