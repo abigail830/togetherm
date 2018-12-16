@@ -2,6 +2,10 @@ const app = getApp();
 let userInfo, Poster, PosterData;
 Component({
   properties: {
+    save: {
+      type: Boolean,
+      value: true
+    },
     date: {
       type: String,
       value: ""
@@ -15,6 +19,10 @@ Component({
       value: []
     },
     wishname: {
+      type: String,
+      value: ""
+    },
+    wishimage: {
       type: String,
       value: ""
     },
@@ -106,7 +114,7 @@ Component({
             x: 20.65 * 2
           },
           {
-            url: "/images/poster-default.png",
+            url: this.data.wishimage||"/images/poster-default.png",
             width: 335 * 2,
             height: 250 * 2,
             y: 60 * 2,
@@ -229,6 +237,8 @@ Component({
     },
     onSavePic() {
       const downloadImage = () => {
+        console.log(this.data.save);
+        if (!this.data.save)  return;
         wx.saveImageToPhotosAlbum({
           filePath: PosterData,
           success(res) {
@@ -288,6 +298,5 @@ Component({
   created() {
     Poster = this.selectComponent("#weapp-poster");
     this.getUserInfo();
-    console.log(this.data);
   }
 });

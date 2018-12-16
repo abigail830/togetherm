@@ -8,14 +8,13 @@ const currentMonth = util.formatNumber(new Date().getMonth() + 1);
 const currentDate = util.formatNumber(new Date().getDate());
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    wishes:[],
-    listDescription: '',
-    listDueTime: null,
+    wishes: [],
+    listDescription: "",
+    listDueTime: '',
     // headerText: "愿望列表",
     datePickerIsShow: false,
     datePickerValue: [currentYear, currentMonth, currentDate],
@@ -23,178 +22,213 @@ Page({
     month: currentMonth,
     currentDate: currentDate,
     wishListID: null,
-    touchMoveIndex: null
+    wishimage: "/images/poster-default2.png",
+    touchMoveIndex: null,
+    isPickerRender: false,
+    isPickerShow: false,
+    timePickerConfig: {
+      confirmColor: "#F08080",
+      column: "hour",
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     Poster = this.selectComponent("#wish-poster");
-    if (options.wishListID==null){
+    if (options.wishListID == null) {
       console.log("Going to create new wishlist ");
       this.postWishList();
-    }else{
+    } else {
       this.setData({
         wishListID: options.wishListID
-      })
+      });
       console.log(this.data.wishListID);
       return Promise.all([
-        util.request(app.globalData.apiBase + "/v1/wishes?" + "wishListId=" + options.wishListID)
-          .then((res) => {
-            console.log(res.data);
-            this.setData({
-              wishes: res.data.wishes,
-              listDescription: res.data.listDescription,
-              listDueTime: res.data.listDueTime,
-              year: res.data.listDueTime.substring(0,4),
-              month: res.data.listDueTime.substring(5, 7),
-              currentDate: res.data.listDueTime.substring(8, 10),
-            }, ()=>{Poster.updatePosterConfig()})
-          }, (res) => {
-            util.showModel('获取您的愿望', res.errMsg)
-          })
+        util
+          .request(
+            app.globalData.apiBase +
+              "/v1/wishes?" +
+              "wishListId=" +
+              options.wishListID
+          )
+          .then(
+            res => {
+              console.log(res.data);
+              this.setData(
+                {
+                  wishes: res.data.wishes,
+                  listDescription: res.data.listDescription,
+                  listDueTime: res.data.listDueTime,
+                  year: res.data.listDueTime.substring(0, 4),
+                  month: res.data.listDueTime.substring(5, 7),
+                  currentDate: res.data.listDueTime.substring(8, 10),
+                  timePickerConfig: { defaultDate: res.data.listDueTime.length < 11 ? res.data.listDueTime + ' 00:59:59' : res.data.listDueTime,...this.data.timePickerConfig}
+                },
+                () => {
+                  Poster.updatePosterConfig();
+                }
+              );
+            },
+            res => {
+              util.showModel("获取您的愿望", res.errMsg);
+            }
+          )
       ]).then(() => {
         wx.hideLoading();
       });
     }
   },
 
-  loadWish: function () {
-    util.request(app.globalData.apiBase + "/v1/wishes?" + "wishListId=" + this.data.wishListID)
-      .then((res) => {
+  loadWish: function() {
+    util
+      .request(
+        app.globalData.apiBase +
+          "/v1/wishes?" +
+          "wishListId=" +
+          this.data.wishListID
+      )
+      .then(res => {
         console.log(res.data);
-        this.setData({
-          wishes: res.data.wishes
-        }, ()=>{Poster.updatePosterConfig()})
+        this.setData(
+          {
+            wishes: res.data.wishes
+          },
+          () => {
+            Poster.updatePosterConfig();
+          }
+        );
       });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (options) {
-    if (options.from == 'button') {
-      console.log(this.data.wishListID);    
+  onShareAppMessage: function(options) {
+    if (options.from == "button") {
+      console.log(this.data.wishListID);
       var nick_name = app.globalData.userInfo.nickName;
       return {
-        title: nick_name +'的小心愿',
-        path: '/pages/shareIndex/shareIndex?wishListId=' + this.data.wishListID + '&nickName=' + nick_name,
-        imageUrl: '../../images/guide1.jpg',
-        success: function (res) {
+        title: nick_name + "的小心愿",
+        path:
+          "/pages/shareIndex/shareIndex?wishListId=" +
+          this.data.wishListID +
+          "&nickName=" +
+          nick_name,
+        imageUrl: "../../images/guide1.jpg",
+        success: function(res) {
           console.log("清单分享成功:" + JSON.stringify(res));
         },
-        fail: function (res) {
+        fail: function(res) {
           console.log("清单分享失败:" + JSON.stringify(res));
         }
-      }
-    }else{
+      };
+    } else {
       return {
-        title: '友爱清单',
-        imageUrl: '../../images/guide1.jpg',
-        success: function (res) {
+        title: "友爱清单",
+        imageUrl: "../../images/guide1.jpg",
+        success: function(res) {
           // 转发成功
           console.log("转发成功:" + JSON.stringify(res));
         },
-        fail: function (res) {
+        fail: function(res) {
           // 转发失败
           console.log("转发失败:" + JSON.stringify(res));
         }
-      }
-    }  
+      };
+    }
   },
 
-  bindKeyInput: function (e) {
+  bindKeyInput: function(e) {
     this.setData({
       listDescription: e.detail.value
-    })
+    });
   },
 
-  bindWishKeyInput: function (e) {
+  bindWishKeyInput: function(e) {
     var id = e.currentTarget.dataset.id;
     var value = e.detail.value;
     var item = this.data.wishes[id];
     item.description = value;
-    this.setData({wishes:this.data.wishes});
+    this.setData({ wishes: this.data.wishes });
   },
 
-  reload: function () {
+  reload: function() {
     wx.showLoading({
-      title: '加载中...',
+      title: "加载中..."
     });
     console.log("reload timeline data");
     return Promise.all([
-      util.request(app.globalData.apiBase + "/v1/wishes/lists/timeline?" + "openId=" + app.globalData.authInfo.openid)
-        .then((res) => {
-          console.log(res.data);
-          app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
-          app.globalData.myFriendsCompletedWishCount = res.data.myFriendsCompletedWishCount;
-          app.globalData.wishLists = res.data.wishLists;
-          app.globalData.hasWishList = res.data.hasWishList;
-          app.globalData.timeline = res.data.wishListTimelineEntryList;
-          console.log(app.globalData);
-          Poster.updatePosterConfig();
-        }, (res) => {
-          util.showModel('获取您的愿望清单', res.errMsg)
-        })
+      util
+        .request(
+          app.globalData.apiBase +
+            "/v1/wishes/lists/timeline?" +
+            "openId=" +
+            app.globalData.authInfo.openid
+        )
+        .then(
+          res => {
+            console.log(res.data);
+            app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
+            app.globalData.myFriendsCompletedWishCount =
+              res.data.myFriendsCompletedWishCount;
+            app.globalData.wishLists = res.data.wishLists;
+            app.globalData.hasWishList = res.data.hasWishList;
+            app.globalData.timeline = res.data.wishListTimelineEntryList;
+            console.log(app.globalData);
+            Poster.updatePosterConfig();
+          },
+          res => {
+            util.showModel("获取您的愿望清单", res.errMsg);
+          }
+        )
     ]).then(() => {
       wx.hideLoading();
     });
   },
 
-  postWishList: function () {
+  postWishList: function() {
     console.log("add wish list ");
     var myPage = this;
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes/lists`,
-        method: 'POST',
+        method: "POST",
         header: { "Content-Type": "application/json" },
         data: {
-          "listDescription": "我的新愿望",
-          "listDueTime": currentYear + "-" + currentMonth + "-" + currentDate,
-          "listOpenId": app.globalData.authInfo.openid
+          listDescription: "我的新愿望",
+          listDueTime: currentYear + "-" + currentMonth + "-" + currentDate,
+          listOpenId: app.globalData.authInfo.openid
         },
         success(result) {
           console.log("请求成功");
@@ -206,38 +240,37 @@ Page({
           });
           if (result.data.error) {
             console.log(result.data.error);
-          } 
-
+          }
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
       });
     } catch (e) {
       this.setData({
-        hiddenLoading: true,
+        hiddenLoading: true
       });
-      console.log('Exception happen when update wish content!');
+      console.log("Exception happen when update wish content!");
       console.log(e);
     }
     this.reload();
   },
 
-  addWish: function (itemID) {
+  addWish: function(itemID) {
     var item = this.data.wishes[itemID];
-        Poster.updatePosterConfig();
+    Poster.updatePosterConfig();
     console.log("add wish id to be change " + item.wishID);
     console.log("add new wish to wishList id " + this.data.wishListID);
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes`,
-        method: 'POST',
+        method: "POST",
         header: { "Content-Type": "application/json" },
         data: {
-          "description": item.description,
-          "wishListID": this.data.wishListID,
-          "wishStatus": "NEW"
+          description: item.description,
+          wishListID: this.data.wishListID,
+          wishStatus: "NEW"
         },
         success(result) {
           console.log("请求成功");
@@ -249,43 +282,40 @@ Page({
           item.lastUpdateTime = result.data.lastUpdateTime;
           if (result.data.error) {
             console.log(result.data.error);
-          } 
-
+          }
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
       });
     } catch (e) {
       this.setData({
-        hiddenLoading: true,
+        hiddenLoading: true
       });
-      console.log('Exception happen when update wish content!');
+      console.log("Exception happen when update wish content!");
       console.log(e);
     }
     this.reload();
-
-
   },
 
-  updateWish: function (itemID) {
+  updateWish: function(itemID) {
     var item = this.data.wishes[itemID];
     console.log("update wish id to be change " + item.wishID);
     console.log("update wish desc changed to " + item.description);
     console.log("update wishList id " + this.data.wishListID);
     Poster.updatePosterConfig();
-    console.warn(this.data.wishes)
+    console.warn(this.data.wishes);
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes`,
-        method: 'PUT',
+        method: "PUT",
         header: { "Content-Type": "application/json" },
         data: {
-          "wishID": item.wishID,
-          "description": item.description,
-          "wishListID": this.data.wishListID,
-          "wishStatus": item.wishStatus
+          wishID: item.wishID,
+          description: item.description,
+          wishListID: this.data.wishListID,
+          wishStatus: item.wishStatus
         },
         success(result) {
           console.log("请求成功");
@@ -294,95 +324,94 @@ Page({
             console.log(result.data.error);
           } else {
             wx.redirectTo({
-              url: '../main/main'
+              url: "../main/main"
             });
           }
-
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
       });
     } catch (e) {
       this.setData({
-        hiddenLoading: true,
+        hiddenLoading: true
       });
-      console.log('Exception happen when update wish content!');
+      console.log("Exception happen when update wish content!");
       console.log(e);
     }
-
   },
 
-  deleteWish: function (wishID) {
+  deleteWish: function(wishID) {
     console.log("Going to delete wish id: " + wishID);
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes`,
-        method: 'DELETE',
+        method: "DELETE",
         header: { "Content-Type": "application/json" },
         data: {
-          "wishID": wishID
+          wishID: wishID
         },
         success(result) {
           console.log("请求成功");
           console.log(result);
           if (result.data.error) {
             console.log(result.data.error);
-          } 
+          }
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
       });
     } catch (e) {
       this.setData({
-        hiddenLoading: true,
+        hiddenLoading: true
       });
-      console.log('Exception happen when delete wish !');
+      console.log("Exception happen when delete wish !");
       console.log(e);
     }
     this.reload();
-
   },
 
-  bindDescCompleted: function (e) {
+  bindDescCompleted: function(e) {
     var id = e.currentTarget.dataset.id;
     var item = this.data.wishes[id];
     console.log("wish id to be change " + item.wishID);
     console.log("wish desc changed to " + item.description);
     console.log("wishList id " + this.data.wishListID);
     if (item.description && item.description.length > 0) {
-
       if (item.wishID > 0) {
         this.updateWish(id);
       } else {
         this.addWish(id);
       }
-
     } else {
-      console.info("Wish desciption is empty, ignore...")
+      console.info("Wish desciption is empty, ignore...");
     }
-
   },
 
-  bindListDescCompleted: function (e) {
-    console.log("detect description change, udpate description " + this.data.listDescription + " for " + this.data.wishListID);
+  bindListDescCompleted: function(e) {
+    console.log(
+      "detect description change, udpate description " +
+        this.data.listDescription +
+        " for " +
+        this.data.wishListID
+    );
     this.updateWishList();
   },
 
-  updateWishList: function () {
+  updateWishList: function() {
     Poster.updatePosterConfig();
     try {
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes/lists`,
-        method: 'PUT',
+        method: "PUT",
         header: { "Content-Type": "application/json" },
         data: {
-          "listId": this.data.wishListID,
-          "listDescription": this.data.listDescription,
-          "listDueTime": this.data.listDueTime
+          listId: this.data.wishListID,
+          listDescription: this.data.listDescription,
+          listDueTime: this.data.listDueTime
         },
         success(result) {
           console.log("请求成功");
@@ -391,70 +420,73 @@ Page({
             console.log(result.data.error);
           } else {
             wx.redirectTo({
-              url: '../main/main'
+              url: "../main/main"
             });
           }
-
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
       });
     } catch (e) {
       this.setData({
-        hiddenLoading: true,
+        hiddenLoading: true
       });
-      console.log('Exception happen when update wish content!');
+      console.log("Exception happen when update wish content!");
       console.log(e);
     }
   },
 
-
-  showDatePicker: function (e) {
-    this.setData({
-      datePickerIsShow: true,
-      datePickerValue: [this.data.year, this.data.month, this.data.currentDate]
-    });
+  showDatePicker: function(e) {
+    // this.setData({
+    //   datePickerIsShow: true,
+    //   datePickerValue: [this.data.year, this.data.month, this.data.currentDate]
+    // });
+    this.pickerShow();
   },
-  hideDatePicker: function (e) {
+  hideDatePicker: function(e) {
     this.setData({
-      datePickerIsShow: false,
-    });
-  },
-  confirmDate: function (e) {
-    console.log(e);
-    let dateArr = e.detail.value;
-    this.setData({
-      year: dateArr[0],
-      month: dateArr[1],
-      currentDate: dateArr[2],
-      listDueTime: dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2],
       datePickerIsShow: false
     });
-    console.log(this.data.listDueTime);
+  },
+  confirmDate: function(e) {
+    console.log(e);
+    // let dateArr = e.detail.value;
+    // this.setData({
+    //   year: dateArr[0],
+    //   month: dateArr[1],
+    //   currentDate: dateArr[2],
+    //   listDueTime: dateArr[0] + "-" + dateArr[1] + "-" + dateArr[2],
+    //   datePickerIsShow: false
+    // });
+    // console.log(this.data.listDueTime);
     this.updateWishList();
   },
- 
+
   addWishList: function(e) {
     console.log("add wish event");
     var newWishes = this.data.wishes;
-    var tempId = (Math.floor(Math.random() * 100000) + 1) * -1; 
-    console.log("tempID is " + tempId)
-    var newWish = { "wishStatus": "NEW", "description": "","wishID":tempId};
+    var tempId = (Math.floor(Math.random() * 100000) + 1) * -1;
+    console.log("tempID is " + tempId);
+    var newWish = { wishStatus: "NEW", description: "", wishID: tempId };
     newWishes.push(newWish);
-    this.setData({
-      wishes: newWishes,
-    },()=>{Poster.updatePosterConfig()});
+    this.setData(
+      {
+        wishes: newWishes
+      },
+      () => {
+        Poster.updatePosterConfig();
+      }
+    );
   },
 
-
-  confirmAndBack: function(e){
+  confirmAndBack: function(e) {
     //This is going for HTTP POST/PUT for info update
     try {
       sdk.request({
         url: app.globalData.apiBase + `/wishes`,
-        method: 'POST',
+        method: "POST",
         header: { "Content-Type": "application/json" },
         data: {
           wishes: this.data.wishes,
@@ -465,53 +497,52 @@ Page({
           console.log("请求成功");
           console.log(result.data);
 
-          //http response code 200/404/500..etc 
-          if (result.data.error){
+          //http response code 200/404/500..etc
+          if (result.data.error) {
             console.log(result.data.error);
           }
-          
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
       });
     } catch (e) {
       this.setData({
-        hiddenLoading: true,
+        hiddenLoading: true
       });
-      console.log('Exception happen when update wish content!');
+      console.log("Exception happen when update wish content!");
       console.log(e);
     }
   },
 
-  touchstart: function (e) {
+  touchstart: function(e) {
     this.setData({
       startX: e.changedTouches[0].clientX,
       startY: e.changedTouches[0].clientY,
       moveIndex: e.currentTarget.dataset.index
-    })
+    });
   },
 
-  touchmove: function (e) {
+  touchmove: function(e) {
     var that = this;
-    var  index = e.currentTarget.dataset.index;
-    var  startX = that.data.startX;
-    var  touchMoveX = e.changedTouches[0].clientX;
-    if ((startX - touchMoveX) > 50) {
+    var index = e.currentTarget.dataset.index;
+    var startX = that.data.startX;
+    var touchMoveX = e.changedTouches[0].clientX;
+    if (startX - touchMoveX > 50) {
       console.info("left move for " + index);
       this.data.wishes[index].moveForDelete = "touch-move-active";
     }
-    if ((touchMoveX - startX) > 50) {
+    if (touchMoveX - startX > 50) {
       console.info("right move for " + index);
       this.data.wishes[index].moveForDelete = "";
     }
     that.setData({
       wishes: that.data.wishes
-    })
+    });
   },
 
-  delWish: function (e) {
+  delWish: function(e) {
     var index = e.currentTarget.dataset.index;
     var wishID = this.data.wishes[index].wishID;
     console.info("delete wish id " + wishID + " with index " + index);
@@ -522,7 +553,7 @@ Page({
     this.loadWish();
   },
 
-  onPosterSuccess:function (e) {
+  onPosterSuccess: function(e) {
     const { detail } = e;
     wx.previewImage({
       current: detail,
@@ -531,7 +562,23 @@ Page({
     // 保存
     Poster.onSavePic();
   },
-  onPosterFail:function (err) {
+  onPosterFail: function(err) {
     console.error(err);
   },
-})
+  pickerHide: function() {
+    this.setData({
+      isPickerShow: false
+    });
+  },
+  setPickerTime: function(val) {
+    let data = val.detail;
+    this.setData({ listDueTime: data.startTime.substr(0, 14) + '59:59'});
+    this.confirmDate();
+  },
+  pickerShow: function() {
+    this.setData({
+      isPickerShow: true,
+      isPickerRender: true
+    });
+  }
+});

@@ -1,0 +1,80 @@
+.picker-item {
+  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weapp-time-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: -320px;
+  left: 0;
+  transition: height 0.5s;
+  z-index: 2000;
+  background: white;
+  border-top: 1px solid #efeff4;
+}
+.sensorType-screen {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 1999;
+  color: #fff;
+}
+.sensorTypePicker {
+  width: 690rpx;
+  height: 120px;
+}
+.picker-item {
+  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  /* overflow: hidden; */
+}
+.box {
+  padding: 0 10px;
+}
+
+.to {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(138, 138, 138);
+  /* font-size:30rpx; */
+}
+.sure {
+  width: 100%;
+  height: 45px;
+  border-top: 1px solid #efeff4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(36, 123, 255);
+  font-size: 16px;
+}
+
+.btn-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.pick_btn {
+  padding: 7px 15px;
+  color: #ccc;
+}
