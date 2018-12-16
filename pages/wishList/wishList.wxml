@@ -57,6 +57,7 @@
     </view>
   </view>
 </view>
+<time-picker pickerShow="{{isPickerShow}}" wx:if="{{isPickerRender}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{timePickerConfig}}"></time-picker>
 <!-- <view class="tab-header">
   <view class="flex_row_header">
     <view class="lable">愿望实现日期：</view>
@@ -96,7 +97,6 @@
     <button class="addwishbtn" bindtap="goTest">前往测试生成海报功能</button>
   </view>
   <view>
-    <time-picker pickerShow="{{isPickerShow}}" wx:if="{{isPickerRender}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{timePickerConfig}}"></time-picker>
     <wish-poster wishimage="{{wishimage}}" save="{{false}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
       <button>测试生成海报功能</button>
     </wish-poster>

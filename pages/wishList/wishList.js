@@ -3,14 +3,9 @@ let util = require("../../utils/util.js");
 const app = getApp();
 let sdk = require("../../vendor/wafer2-client-sdk/index"),
   Poster;
-  
+
 // 封面图列表
-const pics = [
-  "/images/poster-default.png",
-  "/images/poster-default2.png",
-  "/images/poster-default.png",
-  "/images/poster-default2.png"
-];
+const pics = util.posterImages;
 const currentYear = new Date().getFullYear();
 const currentMonth = util.formatNumber(new Date().getMonth() + 1);
 const currentDate = util.formatNumber(new Date().getDate());
@@ -154,13 +149,11 @@ Page({
     if (options.from == "button") {
       console.log(this.data.wishListID);
       var nick_name = app.globalData.userInfo.nickName;
+      const path = "/pages/shareIndex/shareIndex?wishListId=" + this.data.wishListID + "&wishimageId=" + this.data.selectPicIndex + "&nickName=" + nick_name;
+      console.log(path);
       return {
         title: nick_name + "的小心愿",
-        path:
-          "/pages/shareIndex/shareIndex?wishListId=" +
-          this.data.wishListID +
-          "&nickName=" +
-          nick_name,
+        path: path,
         imageUrl: "../../images/guide1.jpg",
         success: function(res) {
           console.log("清单分享成功:" + JSON.stringify(res));

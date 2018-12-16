@@ -360,12 +360,8 @@
   color: #ffffff;
 }
 .timeline-middle view {
-  display: -webkit-box;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
-  word-wrap: break-word;
-  white-space: normal !important;
-  -webkit-line-clamp: 1;
   width: 360rpx;
-  -webkit-box-orient: vertical;
 }

@@ -159,4 +159,11 @@ module.exports = {
   getCurrentPageUrlWithArgs: getCurrentPageUrlWithArgs,
   networkTypePromise: networkTypePromise,
   request: request,
+  // 封面图列表
+  posterImages: [
+    "/images/poster-default.png",
+    "/images/poster-default2.png",
+    "/images/poster-default.png",
+    "/images/poster-default2.png"
+  ]
 };

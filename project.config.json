@@ -36,13 +36,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "wishListID=60",
 					"pathName": "pages/wishList/wishList",
 					"query": "wishListID=60"
+				},
+				{
+					"id": 1,
+					"name": "shareWish",
+					"pathName": "pages/shareWish/shareWish",
+					"query": "wishListId=60&wishimageId=3&nickName=暗影浅‮"
 				}
 			]
 		}

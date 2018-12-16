@@ -1,28 +1,47 @@
-<!--pages/wishList/wishList.wxml-->
-<view class="tab-header">
-    <view class="headerText">{{nickName}}的小心愿</view>
-    <view class="flex_row_header">
-	      <view class="lable">{{listDescription}}, 希望在{{year}}/{{month}}/{{currentDate}}可以实现。 你, 最希望帮他实现那个愿望呢？</view>
+<view class="boxs">
+  <image mode='aspectFill' class="logo" src='/images/LOGO.png' />
+  <image mode='aspectFill' class="poster" src='{{wishimage}}' />
+  <view class="row-text">{{listDescription}}</view>
+  <view class="row-text row-text-nickname">-- {{nickName}}</view>
+  <view class="content_lists_new">
+    <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
+      <view class="input_new list_input hr">
+        <view class="lable list_input_label">{{index+1}}</view>
+        <view class="list_input_box row-text">{{item.description}}</view>
+        <view wx:if="{{item.wishStatus=='NEW'}}" data-index="{{index}}" bindtap="takeupWish">
+          <image class="list_icon" mode='aspectFill' src="/images/poster-btn.png" />
+        </view>
       </view>
+    </block>
+  </view>
+  <view class="time">实现日期：{{listDueTime}}</view>
+  <image bindtap="createMe" class="create-btn" mode='aspectFill' src="/images/create-me.png" />
 </view>
-
+<!-- <view class="tab-header">
+  <view class="headerText">{{nickName}}的小心愿</view>
+  <view class="flex_row_header">
+    <view class="lable">
+      {{listDescription}}, 希望在{{year}}/{{month}}/{{currentDate}}可以实现。 你, 最希望帮他实现那个愿望呢？
+    </view>
+  </view>
+</view>
 <view>
   <view class="content">
-      <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
-	      <view class="row-container" data-index="{{index}}">
-            <view><image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png' ></image></view>    
-            <view class="con-info">{{item.description}}
-              <view class="con-status">{{item.wishStatus}}</view>
-            </view>
-            <block wx:if="{{item.wishStatus=='NEW'}}" >
-              <view>
-                <view data-index="{{index}}" bindtap = "takeupWish" class="takeup">Takeup</view>
-              </view>
-            </block>
-	      </view>
-      </block>
+    <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
+      <view class="row-container" data-index="{{index}}">
+        <view>
+          <image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png'></image>
+        </view>
+        <view class="con-info">
+          {{item.description}}
+          <view class="con-status">{{item.wishStatus}}</view>
+        </view>
+        <block wx:if="{{item.wishStatus=='NEW'}}">
+          <view>
+            <view data-index="{{index}}" bindtap="takeupWish" class="takeup">Takeup</view>
+          </view>
+        </block>
+      </view>
+    </block>
   </view>
-
-</view>
-
-
+</view> -->
