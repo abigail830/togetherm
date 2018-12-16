@@ -36,23 +36,41 @@
       </view>
     </view>
   </view>
+  <view>
+    <view class="pic_title">
+      选择分享图片
+      <image bindtap="onDeleteWish" class="wish-detele-btn" src="/images/wish-detele.png" />
+    </view>
+    <scroll-view class="pic_items" scroll-x style="height: 200rpx;">
+      <view class="pic_item" wx:for="{{pics}}" wx:key="{{index}}" wx:for-item="item">
+        <image wx:if="{{selectPicIndex==index}}" class="pic_icon" mode='aspectFill' src="/images/icon-select.png" />
+        <image bindtap="onSelectPic" data-id="{{index}}" class="pic_image" mode='aspectFill' src="{{item}}" />
+      </view>
+    </scroll-view>
+    <view class="wish-btns">
+      <wish-poster wishimage="{{wishimage}}" save="{{false}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
+        <image class="wish-save-btn" src="/images/wish-save.png" />
+      </wish-poster>
+      <button class="wish-save-btn" open-type="share">
+        <image class="wish-share-btn" src="/images/wish-share.png" />
+      </button>
+    </view>
+  </view>
 </view>
-<view class="tab-header">
+<!-- <view class="tab-header">
   <view class="flex_row_header">
     <view class="lable">愿望实现日期：</view>
     <view bindtap="showDatePicker">
-      <!-- {{year}} - {{month}} - {{currentDate}} -->
       {{listDueTime}}
-      <!-- <image mode='aspectFill' class='arrow-img-header' src='https://kidneyhealty.com.cn/images/arrow-down-white.png'></image> -->
     </view>
   </view>
   <view class="flex_row_header">
     <view class="lable">愿望列表名：</view>
     <input bindinput="bindKeyInput" bindblur="bindListDescCompleted" class="description" value="{{listDescription}}" />
   </view>
-</view>
+</view> -->
 <view>
-  <view class="content">
+  <!-- <view class="content">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="row-container" bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
         <view>
@@ -70,18 +88,18 @@
         </block>
       </view>
     </block>
-  </view>
-  <view class="btnblock">
+  </view> -->
+  <!-- <view class="btnblock">
     <button bindtap="pickerShow" class="addwishbtn">测试时间</button>
     <button bindtap="addWishList" class="addwishbtn">添加愿望</button>
     <button class="addwishbtn" data-name="shareBtn" open-type="share">分享清单</button>
-    <!-- <button class="addwishbtn" bindtap="goTest">前往测试生成海报功能</button> -->
+    <button class="addwishbtn" bindtap="goTest">前往测试生成海报功能</button>
   </view>
   <view>
     <time-picker pickerShow="{{isPickerShow}}" wx:if="{{isPickerRender}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{timePickerConfig}}"></time-picker>
     <wish-poster wishimage="{{wishimage}}" save="{{false}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
       <button>测试生成海报功能</button>
     </wish-poster>
-  </view>
+  </view> -->
 </view>
-<date-picker id="date-picker" value="{{datePickerValue}}" isShow="{{datePickerIsShow}}" bindsureclick="confirmDate" bindcancelclick="hideDatePicker" />
+<!-- <date-picker id="date-picker" value="{{datePickerValue}}" isShow="{{datePickerIsShow}}" bindsureclick="confirmDate" bindcancelclick="hideDatePicker" /> -->

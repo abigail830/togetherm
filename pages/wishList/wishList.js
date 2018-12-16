@@ -1,8 +1,16 @@
 // pages/wishList/wishList.js
-let util = require('../../utils/util.js');
+let util = require("../../utils/util.js");
 const app = getApp();
-let sdk = require('../../vendor/wafer2-client-sdk/index'),Poster;
-
+let sdk = require("../../vendor/wafer2-client-sdk/index"),
+  Poster;
+  
+// 封面图列表
+const pics = [
+  "/images/poster-default.png",
+  "/images/poster-default2.png",
+  "/images/poster-default.png",
+  "/images/poster-default2.png"
+];
 const currentYear = new Date().getFullYear();
 const currentMonth = util.formatNumber(new Date().getMonth() + 1);
 const currentDate = util.formatNumber(new Date().getDate());
@@ -14,7 +22,7 @@ Page({
   data: {
     wishes: [],
     listDescription: "",
-    listDueTime: '',
+    listDueTime: "",
     // headerText: "愿望列表",
     datePickerIsShow: false,
     datePickerValue: [currentYear, currentMonth, currentDate],
@@ -28,8 +36,10 @@ Page({
     isPickerShow: false,
     timePickerConfig: {
       confirmColor: "#F08080",
-      column: "hour",
-    }
+      column: "hour"
+    },
+    selectPicIndex: 0,
+    pics: pics
   },
 
   /**
@@ -64,7 +74,13 @@ Page({
                   year: res.data.listDueTime.substring(0, 4),
                   month: res.data.listDueTime.substring(5, 7),
                   currentDate: res.data.listDueTime.substring(8, 10),
-                  timePickerConfig: { defaultDate: res.data.listDueTime.length < 11 ? res.data.listDueTime + ' 00:59:59' : res.data.listDueTime,...this.data.timePickerConfig}
+                  timePickerConfig: {
+                    defaultDate:
+                      res.data.listDueTime.length < 11
+                        ? res.data.listDueTime + " 00:59:59"
+                        : res.data.listDueTime,
+                    ...this.data.timePickerConfig
+                  }
                 },
                 () => {
                   Poster.updatePosterConfig();
@@ -353,6 +369,7 @@ Page({
           wishID: wishID
         },
         success(result) {
+          wx.navigateBack();
           console.log("请求成功");
           console.log(result);
           if (result.data.error) {
@@ -572,7 +589,7 @@ Page({
   },
   setPickerTime: function(val) {
     let data = val.detail;
-    this.setData({ listDueTime: data.startTime.substr(0, 14) + '59:59'});
+    this.setData({ listDueTime: data.startTime.substr(0, 14) + "59:59" });
     this.confirmDate();
   },
   pickerShow: function() {
@@ -580,5 +597,15 @@ Page({
       isPickerShow: true,
       isPickerRender: true
     });
+  },
+  onSelectPic: function(e) {
+    const dataset = e.target.dataset;
+    this.setData({
+      selectPicIndex: dataset.id,
+      wishimage: this.data.pics[dataset.id]
+    });
+  },
+  onDeleteWish: function() {
+    this.deleteWish(this.data.wishListID);
   }
 });

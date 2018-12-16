@@ -145,54 +145,115 @@
   transform: translateX(0);
 }
 
-.content_new{
+.content_new {
   background-color: #f8f8f8;
   padding: 20rpx 0;
 }
-.header_new{
+.header_new {
   background-color: #fff;
-  border-top: 1rpx solid  #E5E5E5;
-  border-bottom: 1rpx solid  #E5E5E5;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
 }
 .input_new {
   display: flex;
   flex-direction: row;
-  padding:10rpx 20rpx;
+  padding: 10rpx 20rpx;
   font-size: 34rpx;
   position: relative;
 }
-.input_new.hr::after{
-  border-bottom: 1rpx solid #E5E5E5;
+.input_new.hr::after {
+  border-bottom: 1rpx solid #e5e5e5;
   content: "";
   width: 98%;
   right: 0;
   bottom: 0;
   position: absolute;
 }
-.value_new{
+.value_new {
   font-size: 30rpx;
+  width: 540rpx;
 }
-.placeholder_new{
+.list_input_box .value_new {
+  width: 500rpx;
+}
+.placeholder_new {
   font-size: 30rpx;
   color: #b2b2b2;
 }
-.content_lists_new{
+.content_lists_new {
   margin: 40rpx;
   /* padding: 60rpx; */
-  border: 4rpx solid #6A3906;
+  border: 4rpx solid #6a3906;
   border-radius: 25rpx;
   background-color: #fff;
 }
-.input_new.list_input{
-  padding:30rpx 20rpx;
+.input_new.list_input {
+  padding: 20rpx;
 }
-.list_input_label{
-  min-width: 60rpx
+.list_input_label {
+  min-width: 60rpx;
 }
-.list_input_box{
-  flex: 1
+.list_input_box {
+  flex: 1;
 }
-.list_icon{
-width: 44rpx;
-height: 44rpx;
+.list_icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+.pic_title {
+  padding: 0 40rpx 20rpx;
+  font-size: 30rpx;
+  position: relative;
+}
+.pic_items {
+  display: flex;
+  box-sizing: border-box;
+  white-space: nowrap;
+  width: 670rpx;
+  padding: 0 10rpx;
+  margin: auto;
+}
+.pic_image {
+  width: 180rpx;
+  height: 180rpx;
+}
+.pic_icon {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -15rpx;
+}
+.pic_item {
+  position: relative;
+  display: inline-block;
+  width: 180rpx;
+  height: 180rpx;
+  text-align: center;
+  margin: 18rpx;
+  box-shadow: 1rpx 2rpx 5rpx #999;
+}
+.wish-detele-btn {
+  width: 170rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.wish-btns {
+  text-align: center;
+  padding-bottom: 50rpx;
+}
+.wish-save-btn {
+  margin-top: 40rpx;
+  width: 562rpx;
+  height: 100rpx;
+  padding: 0;
+}
+.wish-share-btn {
+  margin: auto;
+  width: 562rpx;
+  height: 100rpx;
+}
+button::after {
+  border: none;
 }
