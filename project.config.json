@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -49,6 +49,11 @@
 					"name": "shareWish",
 					"pathName": "pages/shareWish/shareWish",
 					"query": "wishListId=60&wishimageId=3&nickName=暗影浅‮"
+				},
+				{
+					"id": -1,
+					"name": "main_new",
+					"pathName": "pages/main_new/main"
 				}
 			]
 		}

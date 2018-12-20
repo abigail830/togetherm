@@ -146,15 +146,22 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(options) {
+    let imageUrl = pics[this.data.selectPicIndex];
     if (options.from == "button") {
       console.log(this.data.wishListID);
       var nick_name = app.globalData.userInfo.nickName;
-      const path = "/pages/shareIndex/shareIndex?wishListId=" + this.data.wishListID + "&wishimageId=" + this.data.selectPicIndex + "&nickName=" + nick_name;
+      const path =
+        "/pages/shareIndex/shareIndex?wishListId=" +
+        this.data.wishListID +
+        "&wishimageId=" +
+        this.data.selectPicIndex +
+        "&nickName=" +
+        nick_name;
       console.log(path);
       return {
         title: nick_name + "的小心愿",
         path: path,
-        imageUrl: "../../images/guide1.jpg",
+        imageUrl: imageUrl,
         success: function(res) {
           console.log("清单分享成功:" + JSON.stringify(res));
         },
@@ -165,7 +172,7 @@ Page({
     } else {
       return {
         title: "友爱清单",
-        imageUrl: "../../images/guide1.jpg",
+        imageUrl: imageUrl,
         success: function(res) {
           // 转发成功
           console.log("转发成功:" + JSON.stringify(res));
@@ -329,13 +336,14 @@ Page({
         success(result) {
           console.log("请求成功");
           console.log(result);
-          if (result.data.error) {
-            console.log(result.data.error);
-          } else {
-            wx.redirectTo({
-              url: "../main/main"
-            });
-          }
+          // if (result.data.error) {
+          //   console.log(result.data.error);
+          // } else {
+
+          //   wx.redirectTo({
+          //     url: "../main/main"
+          //   });
+          // }
         },
         fail(error) {
           util.showModel("请求失败,请检查网络", error);
@@ -351,7 +359,7 @@ Page({
     }
   },
 
-  deleteWish: function(wishID) {
+  deleteWish: function(wishID, back) {
     console.log("Going to delete wish id: " + wishID);
     try {
       sdk.request({
@@ -362,7 +370,7 @@ Page({
           wishID: wishID
         },
         success(result) {
-          wx.navigateBack();
+          if (back) wx.navigateBack();
           console.log("请求成功");
           console.log(result);
           if (result.data.error) {
@@ -387,17 +395,19 @@ Page({
   bindDescCompleted: function(e) {
     var id = e.currentTarget.dataset.id;
     var item = this.data.wishes[id];
-    console.log("wish id to be change " + item.wishID);
-    console.log("wish desc changed to " + item.description);
-    console.log("wishList id " + this.data.wishListID);
-    if (item.description && item.description.length > 0) {
-      if (item.wishID > 0) {
-        this.updateWish(id);
+    if (item) {
+      console.log("wish id to be change " + item.wishID);
+      console.log("wish desc changed to " + item.description);
+      console.log("wishList id " + this.data.wishListID);
+      if (item.description && item.description.length > 0) {
+        if (item.wishID > 0) {
+          this.updateWish(id);
+        } else {
+          this.addWish(id);
+        }
       } else {
-        this.addWish(id);
+        console.info("Wish desciption is empty, ignore...");
       }
-    } else {
-      console.info("Wish desciption is empty, ignore...");
     }
   },
 
@@ -429,9 +439,10 @@ Page({
           if (result.data.error) {
             console.log(result.data.error);
           } else {
-            wx.redirectTo({
-              url: "../main/main"
-            });
+            // wx.navigateTo({ url: "../main_new/main" });
+            // wx.redirectTo({
+            //   url: "../main/main"
+            // });
           }
         },
         fail(error) {
@@ -582,6 +593,8 @@ Page({
   },
   setPickerTime: function(val) {
     let data = val.detail;
+    console.log(data);
+
     this.setData({ listDueTime: data.startTime.substr(0, 14) + "59:59" });
     this.confirmDate();
   },
@@ -599,6 +612,22 @@ Page({
     });
   },
   onDeleteWish: function() {
-    this.deleteWish(this.data.wishListID);
+    let that = this;
+    sdk.request({
+      url: app.globalData.apiBase + `/v1/wishes/lists`,
+      method: "DELETE",
+      header: { "Content-Type": "application/json" },
+      data: {
+        listId: this.data.wishListID,
+        listOpenId: app.globalData.authInfo.openid
+      },
+      success(res) {
+        wx.navigateBack();
+      },
+      fail(error) {
+        util.showModel("请求失败,请检查网络", error);
+        console.log("request fail", error);
+      }
+    });
   }
 });

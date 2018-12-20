@@ -48,7 +48,7 @@
       </view>
     </scroll-view>
     <view class="wish-btns">
-      <wish-poster wishimage="{{wishimage}}" save="{{false}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
+      <wish-poster wishimage="{{wishimage}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
         <image class="wish-save-btn" src="/images/wish-save.png" />
       </wish-poster>
       <button class="wish-save-btn" open-type="share">

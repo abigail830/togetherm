@@ -1,3 +1,12 @@
+const getDate = date => {
+  console.log(date);
+
+  return typeof date === "string"
+    ? new Date(date.replace(/ /g, "T"))
+    : !!date
+    ? new Date(date)
+    : new Date();
+};
 Component({
   properties: {
     pickerShow: {
@@ -77,20 +86,20 @@ Component({
   methods: {
     readConfig() {
       let conf = this.data.config || {};
-      let data = new Date();
+      let data = getDate();
       let currentYear = data.getFullYear();
       let limitEndTime = data.getTime();
       let limitStartTime = data.getTime() - 1000 * 60 * 60 * 24 * 30;
       if (conf) {
         if (typeof conf.dateLimit == "number") {
           limitStartTime =
-            new Date().getTime() - 1000 * 60 * 60 * 24 * conf.dateLimit;
+            getDate().getTime() - 1000 * 60 * 60 * 24 * conf.dateLimit;
         }
         if (conf.limitStartTime) {
-          limitStartTime = new Date(conf.limitStartTime).getTime();
+          limitStartTime = getDate(conf.limitStartTime).getTime();
         }
         if (conf.limitEndTime) {
-          limitEndTime = new Date(conf.limitEndTime).getTime();
+          limitEndTime = getDate(conf.limitEndTime).getTime();
         }
 
         this.setData({
@@ -117,8 +126,8 @@ Component({
       });
     },
     onConfirm: function() {
-      let startTime = new Date(this.data.startPickTime);
-      let endTime = new Date(this.data.endPickTime);
+      let startTime = getDate(this.data.startPickTime);
+      let endTime = getDate(this.data.endPickTime);
       if (startTime <= endTime || !this.data.endDate) {
         this.setData({
           startTime,
@@ -200,7 +209,7 @@ Component({
 
       let start = this.data.limitStartTime;
       let end = this.data.limitEndTime;
-      let timeNum = new Date(time).getTime();
+      let timeNum = getDate(time).getTime();
       let year, month, day, hour, min, sec, limitDate;
       let tempArr = [];
 
@@ -213,9 +222,9 @@ Component({
           this.data.MinuteList[val[4]],
           this.data.SecondList[val[5]]
         ];
-      } else if (type == "start" && timeNum > new Date(this.data.endPickTime)) {
+      } else if (type == "start" && timeNum > getDate(this.data.endPickTime)) {
         limitDate = formatTime(this.data.endPickTime).arr;
-      } else if (type == "end" && timeNum < new Date(this.data.startPickTime)) {
+      } else if (type == "end" && timeNum < getDate(this.data.startPickTime)) {
         limitDate = formatTime(this.data.startPickTime).arr;
       } else if (timeNum < start) {
         limitDate = this.data.limitStartTimeArr.arr;
@@ -256,8 +265,8 @@ Component({
       }
     },
     initPick: function() {
-      const date = new Date();
-      const startDate = new Date(date.getTime() - 1000 * 60 * 60 * 24);
+      const date = getDate();
+      const startDate = getDate(date.getTime() - 1000 * 60 * 60 * 24);
       const nowYear = date.getFullYear();
       const nowMonth = date.getMonth() + 1;
       const nowDay = date.getDate();
@@ -313,7 +322,7 @@ Component({
       });
 
       let conf = this.data.config;
-      let defaultDate = conf.defaultDate ? new Date(conf.defaultDate) : false;
+      let defaultDate = conf.defaultDate ? getDate(conf.defaultDate) : false;
 
       if (defaultDate) {
         this.setStartDate(
@@ -481,8 +490,8 @@ Component({
 });
 
 function formatTime(date) {
-  if (typeof date == "string" || "number") {
-    date = new Date(date);
+  if (typeof date === "string" || typeof date === "number") {
+    date = getDate(date);
   }
 
   const year = date.getFullYear();

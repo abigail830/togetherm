@@ -2,6 +2,7 @@
   "pages": [
     "pages/index_new/index_new",
     "pages/main/main",
+    "pages/main_new/main",
     "pages/otherWish/otherWish",
     "pages/wishList/wishList",
     "pages/logs/logs",
@@ -15,23 +16,5 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "友爱清单",
     "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/main/main",
-        "text": "我的愿望",
-        "selectedIconPath": "images/mine.png",
-        "iconPath": "images/mine1.png"
-      },
-      {
-        "pagePath": "pages/otherWish/otherWish",
-        "text": "友的愿望",
-        "selectedIconPath": "images/f_selected.png",
-        "iconPath": "images/f.png"
-      }
-    ],
-    "color": "#929292",
-    "selectedColor": "#6a3906"
   }
 }
