@@ -16,7 +16,7 @@ Page({
     hasUserInfo: false,
     timeline: [],
     friendTimeline: [],
-    showType: "me" //me ,friend
+    showType: "friend" //me ,friend
   },
 
   onLoad: function() {
@@ -162,7 +162,35 @@ Page({
         res => {
           console.log(res.data);
           this.setData({
-            takenUpWishes: res.data
+            friendTimeline: [
+              {
+                asofMonth: "2028年12月",
+                wishListDTOList: [
+                  {
+                    wishID: 85,
+                    wishListID: 24,
+                    wishStatus: "DONE",
+                    listId: 82,
+                    description: "吃大餐",
+                    listDescription: "我的愿望是什么",
+                    listDueTime: "2028-12-19 00:59:59",
+                    dateInMonth: "19",
+                    yearAndMonth: "2028-12"
+                  },
+                  {
+                    wishID: 85,
+                    wishListID: 24,
+                    wishStatus: "TAKEUP",
+                    listId: 82,
+                    description: "吃大餐222",
+                    listDescription: "我的愿望是什么",
+                    listDueTime: "2028-12-19 00:59:59",
+                    dateInMonth: "19",
+                    yearAndMonth: "2028-12"
+                  }
+                ]
+              }
+            ]
           });
           wx.hideLoading();
         },
@@ -171,7 +199,43 @@ Page({
         }
       );
   },
-  selectMe() {
+  doneWish(e) {
+    let wishID = e.target.dataset.wishid;
+    var page = this;
+    var openID = app.globalData.authInfo.openid;
+    wx.showLoading({
+      title: '加载中...',
+    });
+    try {
+      sdk.request({
+        url: app.globalData.apiBase + `/v1/wishes/completed?` + "id=" + wishID + "&openId=" + openID,
+        method: 'PUT',
+        header: { "Content-Type": "application/json" },
+        success(res) {
+          page.selectFriend()
+          console.log(res.data);
+          // page.setData(
+          //   {
+          //     takenUpWishes: res.data
+          //   }
+          // );
+          wx.hideLoading();
+
+        },
+        fail(error) {
+          util.showModel('请求失败,请检查网络', error);
+          console.log('request fail', error);
+          wx.hideLoading();
+
+        }
+      });
+    } catch (e) {
+      wx.hideLoading();
+      console.log('Exception happen when update wish content!');
+      console.log(e);
+    }
+  },
+    selectMe() {
     console.log("selectMe");
     this.setData({ showType: "me" });
     util

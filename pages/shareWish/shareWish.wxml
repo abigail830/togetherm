@@ -3,6 +3,7 @@
   <image mode='aspectFill' class="poster" src='{{wishimage}}' />
   <view class="row-text">{{listDescription}}</view>
   <view class="row-text row-text-nickname">-- {{nickName}}</view>
+  <view class="row-text-info">{{listDescription2}}</view>
   <view class="content_lists_new">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="input_new list_input hr">

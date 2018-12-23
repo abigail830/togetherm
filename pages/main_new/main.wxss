@@ -343,7 +343,6 @@
   color: #6a3906;
   font-size: 80%;
   text-align: left;
-  /* padding-top: 50rpx; */
 }
 .timeline-right {
   width: 18%;
@@ -395,4 +394,71 @@
   width: 130rpx;
   height: 50rpx;
   vertical-align: middle;
+}
+.friend-timeline .timeline-entry {
+  height: 160rpx;
+}
+.friend-timeline .time-point-right {
+  line-height: 160rpx;
+}
+.friend-timeline .timeline-line-up {
+  height: 70rpx;
+}
+.friend-timeline .timeline-line-down {
+  height: 70rpx;
+}
+.friend-timeline .description {
+  font-size: 25rpx;
+  background: #ffd45a;
+  display: inline-block;
+  padding: 3rpx 14rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #e8b90b;
+  width: auto;
+  position: relative;
+  margin-bottom: 15rpx;
+}
+.friend-timeline .description-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 330rpx;
+  display: inline-block;
+  max-width: 330rpx;
+  overflow: hidden;
+}
+.friend-timeline .description view.bot,
+.friend-timeline .description view.top {
+  width: 0;
+  height: 0;
+  font-size: 0;
+  overflow: hidden;
+  position: absolute;
+}
+.friend-timeline .description view.bot {
+  border-width: 10rpx;
+  border-style: solid dashed dashed;
+  border-color: #e8b90b transparent transparent;
+  left: 10rpx;
+  bottom: -20rpx;
+}
+.friend-timeline .timeline-middle view {
+  overflow: visible;
+  width: auto;
+}
+.friend-timeline .description view.top {
+  border-width: 10rpx;
+  border-style: solid dashed dashed;
+  border-color: #ffd45a transparent transparent;
+  left: 10rpx;
+  bottom: -20rpx;
+}
+.friend-timeline .timeline-right {
+  display: inline-block;
+}
+.friend-timeline .icon-see {
+  margin-top: 20rpx;
+}
+
+.friend-timeline .timeline-middle {
+  padding-top: 25rpx;
 }

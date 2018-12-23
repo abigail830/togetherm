@@ -17,6 +17,7 @@ Page({
     wishes: [],
     wishimage:'',
     listDescription: "",
+    listDescription2: "",
     listDueTime: "",
     // headerText: "愿望列表",
     datePickerIsShow: false,
@@ -109,6 +110,7 @@ Page({
             this.setData({
               wishes: res.data.wishes,
               listDescription: res.data.listDescription,
+              listDescription2: res.data.listDescription2,
               listDueTime: res.data.listDueTime,
               year: res.data.listDueTime.substring(0, 4),
               month: res.data.listDueTime.substring(5, 7),

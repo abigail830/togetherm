@@ -101,8 +101,10 @@
 }
 
 .lable {
-  margin: 5rpx 8rpx;
-  font-size: 90%;
+  margin: 0 8rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  width: 160rpx;
 }
 .description {
   color: #ffffff;
@@ -158,7 +160,7 @@
 .input_new {
   display: flex;
   flex-direction: row;
-  padding: 10rpx 20rpx;
+  padding: 15rpx 20rpx;
   font-size: 34rpx;
   position: relative;
 }
@@ -172,7 +174,14 @@
 }
 .value_new {
   font-size: 30rpx;
-  width: 540rpx;
+  width: 550rpx;
+  display: block;
+  height: 60rpx;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: UICTFontTextStyleBody;
+  min-height: 60rpx;
 }
 .list_input_box .value_new {
   width: 500rpx;

@@ -175,3 +175,8 @@
   height: 160rpx;
   padding-bottom: 40rpx;
 }
+.row-text-info{
+  font-size: 32rpx;
+  color: #6A3906;
+  padding  :5rpx 0 30rpx;
+}

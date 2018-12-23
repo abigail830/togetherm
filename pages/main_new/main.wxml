@@ -82,7 +82,7 @@
     </view>
   </block>
   <block wx:if="{{showType!=='me'}}">
-    <view wx:if="{{friendTimeline.length>0}}" class="timeline">
+    <view wx:if="{{friendTimeline.length>0}}" class="timeline  friend-timeline">
       <block wx:for="{{friendTimeline}}" wx:for-index='timeline_index' wx:key="index">
         <view class='timeline-asof'>
           <view class='timeline-timestamp'>{{item.asofMonth}}</view>
@@ -94,7 +94,7 @@
               <view class="time-point-left">
                 <view class='timeline-line-up'></view>
                 <view class='timeline-circle'></view>
-                <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index != timeline.length-1}}">
+                <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index !=  friendTimeline.length-1}}">
                   <view class='timeline-line-down'></view>
                 </block>
               </view>
@@ -103,13 +103,18 @@
               </view>
             </view>
             <view class='timeline-middle'>
+              <view class="description">
+                <view class="bot"></view>
+                <view class="top"></view>
+                <text class="description-text">{{wishListDTOList.description}}</text>
+              </view>
               <view>{{wishListDTOList.listDescription}}</view>
-              <progress percent="{{100-wishListDTOList.progress}}" activeColor="#009944" backgroundColor="#E60C12" />
             </view>
             <view class='timeline-right'>
-              <navigator hover-class="none" url="../wishList/wishList?wishListID={{wishListDTOList.listId}}" class="timeline-btn">
-                <image class="icon-see" src="/images/icon-see.png" />
-              </navigator>
+              <block wx:if="{{wishListDTOList.wishStatus!=='DONE'}}">
+                <image data-wishid="{{wishListDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
+                <image class="icon-see" src="/images/icon-cancel.png" />
+              </block>
             </view>
           </view>
         </block>

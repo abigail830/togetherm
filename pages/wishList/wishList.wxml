@@ -3,9 +3,7 @@
   <view class="header_new">
     <view class="input_new hr">
       <view class="lable">有效日期：</view>
-      <view bindtap="showDatePicker">
-        <input class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
-      </view>
+        <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
     </view>
     <view class="input_new hr">
       <view class="lable">心愿标题：</view>
@@ -13,7 +11,7 @@
     </view>
     <view class="input_new">
       <view class="lable">心愿描述：</view>
-      <textarea  auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写心愿描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
+      <input auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写心愿描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
     </view>
   </view>
   <view class="content_lists_new">
