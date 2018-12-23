@@ -161,9 +161,14 @@ module.exports = {
   request: request,
   // 封面图列表
   posterImages: [
-    "/images/poster-default.png",
-    "/images/poster-default2.png",
-    "/images/poster-default.png",
-    "/images/poster-default2.png"
+    "/images/0.jpg",
+    "/images/1.jpg",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.jpg",
+    "/images/5.jpg",
+    "/images/6.jpg",
+    "/images/7.jpg",
+    "/images/8.jpg",
   ]
 };

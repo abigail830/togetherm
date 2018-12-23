@@ -8,13 +8,15 @@ const app = getApp();
 Page({
   data: {
     empty_wish: "还没你的愿望清单哦 6_6",
+    empty_wish2: "你还没GET过朋友的愿望清单哦 6_6",
     myCompletedWishCount: 0,
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
     timeline: [],
-    showType: "me"
+    friendTimeline: [],
+    showType: "me" //me ,friend
   },
 
   onLoad: function() {
@@ -55,40 +57,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    // if (app.globalData.authInfo.openid == null) {
-    //   console.log("openID is null - try to login wx again");
-    //   app.wxLogin();
-    // }
-    // this.initWishLists();
-    console.log("onshow and refresh page data from app level.");
-    // this.setWishListData();
-    console.log("老实的更新");
-
-    Promise.all([
-      util
-        .request(
-          app.globalData.apiBase +
-            "/v1/wishes/lists/timeline?" +
-            "openId=" +
-            app.globalData.authInfo.openid
-        )
-        .then(
-          res => {
-            console.log(res.data);
-            app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
-            app.globalData.myFriendsCompletedWishCount =
-              res.data.myFriendsCompletedWishCount;
-            app.globalData.wishLists = res.data.wishLists;
-            app.globalData.hasWishList = res.data.hasWishList;
-            app.globalData.timeline = res.data.wishListTimelineEntryList;
-            console.log(app.globalData);
-            this.setWishListData();
-          },
-          res => {
-            util.showModel("获取您的愿望清单", res.errMsg);
-          }
-        )
-    ]).then(() => {});
+    if (this.data.showType === "me") {
+      this.selectMe();
+    } else {
+      this.selectFriend();
+    }
   },
 
   /**

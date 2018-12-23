@@ -1,11 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <block wx:if="{{!hasUserInfo && canIUse}}" >
+  <!-- <block wx:if="{{!hasUserInfo && canIUse}}" >
     <view class="fullwidth">
       <button wx:if="{{!hasUserInfo && canIUse}}" 
           open-type="getUserInfo" 
           bindgetuserinfo="getUserInfo" class="authorizebtn"> 为{{nickName}}开启愿望之旅 
     </button>
   </view>
-  </block>
+  </block> -->
 </view>

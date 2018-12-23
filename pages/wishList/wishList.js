@@ -17,6 +17,7 @@ Page({
   data: {
     wishes: [],
     listDescription: "",
+    listDescription2:"",
     listDueTime: "",
     // headerText: "愿望列表",
     datePickerIsShow: false,
@@ -25,7 +26,7 @@ Page({
     month: currentMonth,
     currentDate: currentDate,
     wishListID: null,
-    wishimage: "/images/poster-default2.png",
+    wishimage: pics[0],
     touchMoveIndex: null,
     isPickerRender: false,
     isPickerShow: false,
@@ -65,6 +66,7 @@ Page({
                 {
                   wishes: res.data.wishes,
                   listDescription: res.data.listDescription,
+                  listDescription2: res.data.listDescription2,
                   listDueTime: res.data.listDueTime,
                   year: res.data.listDueTime.substring(0, 4),
                   month: res.data.listDueTime.substring(5, 7),
@@ -190,7 +192,9 @@ Page({
       listDescription: e.detail.value
     });
   },
-
+  bindTitleInput:function(e){
+    this.setData({ listDescription2: e.detail.value });
+  },
   bindWishKeyInput: function(e) {
     var id = e.currentTarget.dataset.id;
     var value = e.detail.value;
@@ -242,6 +246,7 @@ Page({
         method: "POST",
         header: { "Content-Type": "application/json" },
         data: {
+          listDescription2: "我的新愿望",
           listDescription: "我的新愿望",
           listDueTime: currentYear + "-" + currentMonth + "-" + currentDate,
           listOpenId: app.globalData.authInfo.openid
@@ -251,6 +256,7 @@ Page({
           console.log(result);
           myPage.setData({
             wishListID: result.data.listId,
+            listDescription2: result.data.listDescription2,
             listDescription: result.data.listDescription,
             listDueTime: result.data.listDueTime
           });
@@ -430,6 +436,7 @@ Page({
         header: { "Content-Type": "application/json" },
         data: {
           listId: this.data.wishListID,
+          listDescription2: this.data.listDescription2,
           listDescription: this.data.listDescription,
           listDueTime: this.data.listDueTime
         },

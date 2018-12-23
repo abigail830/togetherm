@@ -26,6 +26,9 @@ Page({
       })
     }
     app.wxLogin();
+    wx.navigateTo({
+      url: '../shareWish/shareWish?wishListId=' + this.data.wishListId + '&nickName=' + this.data.nickName,
+    })
   },
 
   getUserInfo: function (e) {

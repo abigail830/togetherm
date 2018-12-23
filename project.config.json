@@ -36,24 +36,25 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 1,
 			"list": [
 				{
-					"id": -1,
-					"name": "wishListID=60",
+					"id": 0,
+					"name": "wishListID=82",
 					"pathName": "pages/wishList/wishList",
-					"query": "wishListID=60"
+					"query": "wishListID=82"
 				},
 				{
 					"id": 1,
 					"name": "shareWish",
-					"pathName": "pages/shareWish/shareWish",
-					"query": "wishListId=60&wishimageId=3&nickName=暗影浅‮"
+					"pathName": "pages/shareIndex/shareIndex",
+					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
 				},
 				{
 					"id": -1,
 					"name": "main_new",
-					"pathName": "pages/main_new/main"
+					"pathName": "pages/main_new/main",
+					"query": ""
 				}
 			]
 		}

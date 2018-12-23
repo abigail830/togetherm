@@ -75,6 +75,7 @@
   margin: 10rpx;
   width: 120rpx;
   height: 120rpx;
+  overflow: hidden;
   border-radius: 50%;
   background-color: #94ddf8;
 }
@@ -109,6 +110,15 @@
   border: solid 10rpx #6a3906;
   margin-top: 0rpx;
 }
+
+.noactive.countcell {
+  border-color: #745f49;
+}
+
+.noactive .countheader {
+  background-color: #745f49;
+}
+
 .red {
   color: #e60c12;
 }

@@ -1,20 +1,15 @@
-<!-- index.wxml -->
 <view class="container">
-  <!-- <view class="fullwidth"> -->
   <view class="userinfo">
     <view class="left">
       <view class="icon_out">
         <image class="icon_bg" src="../../images/icon_bg.png"></image>
-        <block wx:if="{{hasUserInfo}}">
-          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        </block>
-        <block wx:else>
-          <image class="userinfo-avatar" src="../../images/default_icon_w.png" mode="cover"></image>
-        </block>
+        <image wx:if="{{hasUserInfo}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <open-data wx:else class="userinfo-avatar" type="userAvatarUrl"></open-data>
       </view>
     </view>
     <view class="middle">
-      <text>{{userInfo.nickName}}</text>
+      <text wx:if="{{hasUserInfo}}">{{userInfo.nickName}}</text>
+      <open-data wx:else type="userNickName"></open-data>
     </view>
     <view class="right">
       <image class="logo" src="../../images/LOGO.png"></image>
@@ -22,7 +17,7 @@
     </view>
   </view>
   <view class="countinfo">
-    <view class="countcell" bindtap="selectMe">
+    <view class="countcell {{showType!=='me'&&'noactive'}}" bindtap="selectMe">
       <view class="count red">
         <text class="counttips">Get</text>
         {{myCompletedWishCount}}
@@ -33,7 +28,7 @@
       </view>
       <view class="countheader">我的愿望</view>
     </view>
-    <view class="countcell" bindtap="selectFriend">
+    <view class="countcell {{showType==='me'&&'noactive'}}" bindtap="selectFriend">
       <view class="count yellow">
         <text class="counttips">Get</text>
         {{myFriendsCompletedWishCount}}
@@ -86,5 +81,42 @@
       <button class="main_btn" bindtap="addWishList">创建清单</button>
     </view>
   </block>
-  <!-- </view> -->
+  <block wx:if="{{showType!=='me'}}">
+    <view wx:if="{{friendTimeline.length>0}}" class="timeline">
+      <block wx:for="{{friendTimeline}}" wx:for-index='timeline_index' wx:key="index">
+        <view class='timeline-asof'>
+          <view class='timeline-timestamp'>{{item.asofMonth}}</view>
+        </view>
+        <view class='timeline-line'></view>
+        <block wx:for="{{item.wishListDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="wishListDTOList">
+          <view class="timeline-entry">
+            <view class="timeline-left">
+              <view class="time-point-left">
+                <view class='timeline-line-up'></view>
+                <view class='timeline-circle'></view>
+                <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index != timeline.length-1}}">
+                  <view class='timeline-line-down'></view>
+                </block>
+              </view>
+              <view class="time-point-right">
+                <view>{{wishListDTOList.dateInMonth}}</view>
+              </view>
+            </view>
+            <view class='timeline-middle'>
+              <view>{{wishListDTOList.listDescription}}</view>
+              <progress percent="{{100-wishListDTOList.progress}}" activeColor="#009944" backgroundColor="#E60C12" />
+            </view>
+            <view class='timeline-right'>
+              <navigator hover-class="none" url="../wishList/wishList?wishListID={{wishListDTOList.listId}}" class="timeline-btn">
+                <image class="icon-see" src="/images/icon-see.png" />
+              </navigator>
+            </view>
+          </view>
+        </block>
+      </block>
+    </view>
+    <view wx:else class="content">
+      <view class="empty_wish">{{empty_wish2}}</view>
+    </view>
+  </block>
 </view>
