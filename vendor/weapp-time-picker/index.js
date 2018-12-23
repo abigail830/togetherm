@@ -1,11 +1,12 @@
 const getDate = date => {
-  console.log(date);
-
-  return typeof date === "string"
-    ? new Date(date.replace(/ /g, "T"))
-    : !!date
-    ? new Date(date)
-    : new Date();
+  const res =
+    typeof date === "string"
+      ? new Date(date.replace(/ /g, "T"))
+      : !!date
+      ? new Date(date)
+      : new Date();
+  console.log(res, date);
+  return res;
 };
 Component({
   properties: {

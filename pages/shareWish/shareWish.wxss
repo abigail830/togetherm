@@ -118,6 +118,7 @@
   margin-top: 20rpx;
   border-radius: 25rpx;
   border: 6px solid #6a3906;
+  box-sizing: border-box;
 }
 .row-text {
   font-size: 36rpx;
@@ -135,6 +136,7 @@
   border-radius: 25rpx;
   background-color: #fff;
   min-height: 100rpx;
+  box-sizing: border-box;
 }
 .input_new.list_input {
   padding: 20rpx;
@@ -175,8 +177,8 @@
   height: 160rpx;
   padding-bottom: 40rpx;
 }
-.row-text-info{
+.row-text-info {
   font-size: 32rpx;
-  color: #6A3906;
-  padding  :5rpx 0 30rpx;
+  color: #6a3906;
+  padding: 5rpx 0 30rpx;
 }
