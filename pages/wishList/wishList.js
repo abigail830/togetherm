@@ -17,7 +17,7 @@ Page({
   data: {
     wishes: [],
     listDescription: "",
-    listDescription2:"",
+    listDescription2: "",
     listDueTime: "",
     // headerText: "愿望列表",
     datePickerIsShow: false,
@@ -26,6 +26,7 @@ Page({
     month: currentMonth,
     currentDate: currentDate,
     wishListID: null,
+    canDelete: true,
     wishimage: pics[0],
     touchMoveIndex: null,
     isPickerRender: false,
@@ -62,8 +63,18 @@ Page({
           .then(
             res => {
               console.log(res.data);
+              let canDelete = true;
+              let arr = res.data.wishes;
+              let len = arr.length;
+              for (let i = 0; i < len; i += 1) {
+                if (arr[i].wishStatus !== "NEW") {
+                  canDelete = false;
+                  break;
+                }
+              }
               this.setData(
                 {
+                  canDelete: canDelete,
                   wishes: res.data.wishes,
                   listDescription: res.data.listDescription,
                   listDescription2: res.data.listDescription2,
@@ -192,7 +203,7 @@ Page({
       listDescription: e.detail.value
     });
   },
-  bindTitleInput:function(e){
+  bindTitleInput: function(e) {
     this.setData({ listDescription2: e.detail.value });
   },
   bindWishKeyInput: function(e) {

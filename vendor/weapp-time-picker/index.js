@@ -1,13 +1,39 @@
 const getDate = date => {
-  const res =
-    typeof date === "string"
-      ? new Date(date.replace(/ /g, "T"))
-      : !!date
-      ? new Date(date)
-      : new Date();
-  console.log(res, date);
-  return res;
+  return typeof date === "string"
+    ? new Date(date.replace(new RegExp(/-/gm), "/"))
+    : !!date
+    ? new Date(date)
+    : new Date();
 };
+const format0 = function(num) {
+  return num < 10 ? "0" + num : num;
+};
+
+const formatTime = date => {
+  if (typeof date === "string" || typeof date === "number") {
+    date = getDate(date);
+  }
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+
+  return {
+    str:
+      [year, month, day].map(formatNumber).join("-") +
+      " " +
+      [hour, minute, second].map(formatNumber).join(":"),
+    arr: [year, month, day, hour, minute, second]
+  };
+};
+const formatNumber = n => {
+  n = n.toString();
+  return n[1] ? n : "0" + n;
+};
+
 Component({
   properties: {
     pickerShow: {
@@ -71,10 +97,10 @@ Component({
     },
     config: Object
   },
-  data: {},
-  detached: function() {
-    console.log("detached");
+  data: {
+    btnStatus: true
   },
+  detached: function() {},
   attached: function() {},
   ready: function() {
     this.readConfig();
@@ -102,7 +128,7 @@ Component({
         if (conf.limitEndTime) {
           limitEndTime = getDate(conf.limitEndTime).getTime();
         }
-
+        wx.test = this;
         this.setData({
           yearStart: conf.yearStart || currentYear,
           yearEnd: conf.yearEnd || currentYear + 10,
@@ -127,6 +153,7 @@ Component({
       });
     },
     onConfirm: function() {
+      if (!this.data.btnStatus) return;
       let startTime = getDate(this.data.startPickTime);
       let endTime = getDate(this.data.endPickTime);
       if (startTime <= endTime || !this.data.endDate) {
@@ -136,9 +163,6 @@ Component({
         });
         let startArr = formatTime(startTime).arr;
         let endArr = formatTime(endTime).arr;
-        let format0 = function(num) {
-          return num < 10 ? "0" + num : num;
-        };
 
         let startTimeBack =
           startArr[0] +
@@ -180,10 +204,10 @@ Component({
       }
     },
     hideModal: function() {
-      this.triggerEvent("hidePicker", {});
+      if (this.data.btnStatus) this.triggerEvent("hidePicker", {});
     },
     changeStartDateTime: function(e) {
-      let val = e.detail.value;
+      const val = e.detail.value;
       this.compareTime(val, "start");
     },
 
@@ -213,7 +237,6 @@ Component({
       let timeNum = getDate(time).getTime();
       let year, month, day, hour, min, sec, limitDate;
       let tempArr = [];
-
       if (!this.data.dateLimit) {
         limitDate = [
           this.data.YearList[val[0]],
@@ -223,9 +246,9 @@ Component({
           this.data.MinuteList[val[4]],
           this.data.SecondList[val[5]]
         ];
-      } else if (type == "start" && timeNum > getDate(this.data.endPickTime)) {
+      } else if (type == "start" && timeNum > +getDate(this.data.endPickTime)) {
         limitDate = formatTime(this.data.endPickTime).arr;
-      } else if (type == "end" && timeNum < getDate(this.data.startPickTime)) {
+      } else if (type == "end" && timeNum < +getDate(this.data.startPickTime)) {
         limitDate = formatTime(this.data.startPickTime).arr;
       } else if (timeNum < start) {
         limitDate = this.data.limitStartTimeArr.arr;
@@ -241,14 +264,12 @@ Component({
           this.data.SecondList[val[5]]
         ];
       }
-
       year = limitDate[0];
       month = limitDate[1];
       day = limitDate[2];
       hour = limitDate[3];
       min = limitDate[4];
       sec = limitDate[5];
-
       if (type == "start") {
         this.setStartDate(year, month, day, hour, min, sec);
       } else if (type == "end") {
@@ -437,9 +458,9 @@ Component({
         startPickTime:
           this.data.YearList[pickerDateArr.yearIdx] +
           "-" +
-          this.data.MonthList[pickerDateArr.monthIdx] +
+          format0(this.data.MonthList[pickerDateArr.monthIdx]) +
           "-" +
-          this.data.DayList[pickerDateArr.dayIdx] +
+          format0(this.data.DayList[pickerDateArr.dayIdx]) +
           " " +
           this.data.HourList[pickerDateArr.hourIdx] +
           ":" +
@@ -486,31 +507,12 @@ Component({
           ":" +
           this.data.SecondList[pickerDateArr.secondIdx]
       });
+    },
+    startDateTime: function() {
+      this.setData({ btnStatus: false });
+    },
+    endDateTime: function() {
+      this.setData({ btnStatus: true });
     }
   }
 });
-
-function formatTime(date) {
-  if (typeof date === "string" || typeof date === "number") {
-    date = getDate(date);
-  }
-
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
-
-  return {
-    str:
-      [year, month, day].map(formatNumber).join("-") +
-      " " +
-      [hour, minute, second].map(formatNumber).join(":"),
-    arr: [year, month, day, hour, minute, second]
-  };
-}
-function formatNumber(n) {
-  n = n.toString();
-  return n[1] ? n : "0" + n;
-}

@@ -199,43 +199,70 @@ Page({
         }
       );
   },
-  doneWish(e) {
+  cancelWish(e) {
     let wishID = e.target.dataset.wishid;
-    var page = this;
-    var openID = app.globalData.authInfo.openid;
+    let page = this;
+    let openID = app.globalData.authInfo.openid;
     wx.showLoading({
-      title: '加载中...',
+      title: "加载中..."
     });
     try {
       sdk.request({
-        url: app.globalData.apiBase + `/v1/wishes/completed?` + "id=" + wishID + "&openId=" + openID,
-        method: 'PUT',
+        url: app.globalData.apiBase + `/v1/wishes/taken?id=${wishID}`,
+        method: "DELETE",
         header: { "Content-Type": "application/json" },
         success(res) {
-          page.selectFriend()
-          console.log(res.data);
-          // page.setData(
-          //   {
-          //     takenUpWishes: res.data
-          //   }
-          // );
           wx.hideLoading();
-
+          page.selectFriend();
+          console.log(res.data);
         },
         fail(error) {
-          util.showModel('请求失败,请检查网络', error);
-          console.log('request fail', error);
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
           wx.hideLoading();
-
         }
       });
     } catch (e) {
       wx.hideLoading();
-      console.log('Exception happen when update wish content!');
+      console.log("Exception happen when update wish content!");
       console.log(e);
     }
   },
-    selectMe() {
+  doneWish(e) {
+    let wishID = e.target.dataset.wishid;
+    let page = this;
+    let openID = app.globalData.authInfo.openid;
+    wx.showLoading({
+      title: "加载中..."
+    });
+    try {
+      sdk.request({
+        url:
+          app.globalData.apiBase +
+          `/v1/wishes/completed?` +
+          "id=" +
+          wishID +
+          "&openId=" +
+          openID,
+        method: "PUT",
+        header: { "Content-Type": "application/json" },
+        success(res) {
+          wx.hideLoading();
+          page.selectFriend();
+        },
+        fail(error) {
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
+          wx.hideLoading();
+        }
+      });
+    } catch (e) {
+      wx.hideLoading();
+      console.log("Exception happen when update wish content!");
+      console.log(e);
+    }
+  },
+  selectMe() {
     console.log("selectMe");
     this.setData({ showType: "me" });
     util

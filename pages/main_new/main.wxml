@@ -113,7 +113,7 @@
             <view class='timeline-right'>
               <block wx:if="{{wishListDTOList.wishStatus!=='DONE'}}">
                 <image data-wishid="{{wishListDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
-                <image class="icon-see" src="/images/icon-cancel.png" />
+                <image data-wishid="{{wishListDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
               </block>
             </view>
           </view>

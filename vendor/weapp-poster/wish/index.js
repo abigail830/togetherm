@@ -114,7 +114,7 @@ Component({
             x: 20.65 * 2
           },
           {
-            url: this.data.wishimage||"/images/poster-default.png",
+            url: this.data.wishimage || "/images/poster-default.png",
             width: 335 * 2,
             height: 250 * 2,
             y: 60 * 2,
@@ -185,7 +185,8 @@ Component({
             y: top - padding / 2,
             lineNum: 1,
             x: boxLeft + 30,
-            color: fontColor
+            color: fontColor,
+            width: 500
           });
           images.push({
             url: "/images/poster-btn.png",
@@ -238,7 +239,7 @@ Component({
     onSavePic() {
       const downloadImage = () => {
         console.log(this.data.save);
-        if (!this.data.save)  return;
+        if (!this.data.save) return;
         wx.saveImageToPhotosAlbum({
           filePath: PosterData,
           success(res) {

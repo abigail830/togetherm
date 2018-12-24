@@ -34,7 +34,6 @@
   padding: 10rpx;
   margin: 0;
   background-color: #ffffff;
-
   z-index: 5;
   transition: left 0.2s ease-in-out;
   white-space: nowrap;
@@ -172,6 +171,17 @@
   bottom: 0;
   position: absolute;
 }
+.takeup_hr::after {
+  border-bottom: 8rpx solid #f9cc74;
+  content: "";
+  width: 90%;
+  left: -20rpx;
+  bottom: 0;
+  position: absolute;
+}
+.takeup_hr input {
+  color: #999;
+}
 .value_new {
   font-size: 30rpx;
   width: 550rpx;
@@ -184,7 +194,7 @@
   min-height: 60rpx;
 }
 .list_input_box .value_new {
-  width: 500rpx;
+  width: 450rpx;
 }
 .placeholder_new {
   font-size: 30rpx;
@@ -201,11 +211,17 @@
   padding: 20rpx;
 }
 .list_input_label {
-  min-width: 60rpx;
+  width: 60rpx;
 }
 .list_input_box {
   flex: 1;
+  position: relative;
 }
+/* .list_input_box .takeup_hr {
+  position: absolute;
+  border-bottom: 2rpx solid;
+  width: 100%;
+} */
 .list_icon {
   width: 44rpx;
   height: 44rpx;

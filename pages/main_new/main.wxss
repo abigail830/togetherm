@@ -389,6 +389,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 360rpx;
+  font-size: 30rpx;
 }
 .icon-see {
   width: 130rpx;
@@ -413,7 +414,7 @@
   display: inline-block;
   padding: 3rpx 14rpx;
   border-radius: 10rpx;
-  border: 1rpx solid #e8b90b;
+  border: 2rpx solid #e8b90b;
   width: auto;
   position: relative;
   margin-bottom: 15rpx;
@@ -425,6 +426,7 @@
   display: inline-block;
   max-width: 330rpx;
   overflow: hidden;
+  line-height: 25rpx;
 }
 .friend-timeline .description view.bot,
 .friend-timeline .description view.top {
@@ -433,12 +435,13 @@
   font-size: 0;
   overflow: hidden;
   position: absolute;
+  z-index: 1;
+  left: 14rpx;
 }
 .friend-timeline .description view.bot {
   border-width: 10rpx;
   border-style: solid dashed dashed;
   border-color: #e8b90b transparent transparent;
-  left: 10rpx;
   bottom: -20rpx;
 }
 .friend-timeline .timeline-middle view {
@@ -449,8 +452,7 @@
   border-width: 10rpx;
   border-style: solid dashed dashed;
   border-color: #ffd45a transparent transparent;
-  left: 10rpx;
-  bottom: -20rpx;
+  bottom: -18rpx;
 }
 .friend-timeline .timeline-right {
   display: inline-block;

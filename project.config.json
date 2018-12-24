@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -55,6 +55,12 @@
 					"name": "main_new",
 					"pathName": "pages/main_new/main",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "log",
+					"pathName": "pages/logs/logs",
+					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
 				}
 			]
 		}

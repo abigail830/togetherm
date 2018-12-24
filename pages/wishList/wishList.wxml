@@ -3,7 +3,7 @@
   <view class="header_new">
     <view class="input_new hr">
       <view class="lable">有效日期：</view>
-        <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
+      <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
     </view>
     <view class="input_new hr">
       <view class="lable">心愿标题：</view>
@@ -18,15 +18,15 @@
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="input_new list_input hr">
         <view class="lable list_input_label">{{index+1}}</view>
-        <view class="list_input_box">
-          <input bindinput="bindWishKeyInput" data-id="{{index}}" bindblur="bindDescCompleted" value="{{item.description}}" class="value_new" type="text" placeholder-class="placeholder_new" placeholder="请输入内容..." />
+        <view class="list_input_box {{item.wishStatus==='TAKEUP'?'takeup_hr':''}}">
+          <input disabled="{{item.wishStatus!=='NEW'}}" bindinput="bindWishKeyInput" data-id="{{index}}" bindblur="bindDescCompleted" value="{{item.description}}" class="value_new" type="text" placeholder-class="placeholder_new" placeholder="请输入内容..." />
         </view>
-        <view data-index="{{index}}" bindtap="delWish">
+        <view wx:if="{{item.wishStatus==='NEW'}}" data-index="{{index}}" bindtap="delWish">
           <image class="list_icon" mode='aspectFill' src="/images/icon-delete.png" />
         </view>
       </view>
     </block>
-    <view class="input_new list_input hr">
+    <view class="input_new list_input">
       <view class="lable list_input_label"></view>
       <view class="list_input_box"></view>
       <view bindtap="addWishList">
@@ -37,7 +37,7 @@
   <view>
     <view class="pic_title">
       选择分享图片
-      <image bindtap="onDeleteWish" class="wish-detele-btn" src="/images/wish-detele.png" />
+      <image wx:if="{{canDelete}}" bindtap="onDeleteWish" class="wish-detele-btn" src="/images/wish-detele.png" />
     </view>
     <scroll-view class="pic_items" scroll-x style="height: 200rpx;">
       <view class="pic_item" wx:for="{{pics}}" wx:key="{{index}}" wx:for-item="item">
@@ -46,7 +46,7 @@
       </view>
     </scroll-view>
     <view class="wish-btns">
-      <wish-poster wishimage="{{wishimage}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}"  wishinfo="{{listDescription2}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
+      <wish-poster wishimage="{{wishimage}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishinfo="{{listDescription2}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
         <image class="wish-save-btn" src="/images/wish-save.png" />
       </wish-poster>
       <button class="wish-save-btn" open-type="share">

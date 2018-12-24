@@ -1,6 +1,5 @@
-<!--logs.wxml-->
+<!-- logs.wxml -->
 <view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+  <view bindtap="pickerShow">时间 : {{listDueTime}}</view>
+  <time-picker pickerShow="{{isPickerShow}}" wx:if="{{isPickerRender}}" bind:hidePicker="pickerHide" bind:setPickerTime="setPickerTime" config="{{timePickerConfig}}"></time-picker>
 </view>
