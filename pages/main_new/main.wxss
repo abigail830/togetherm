@@ -361,7 +361,7 @@
 }
 
 .buttonView {
-  width: 750rpx;
+  /* width: 750rpx; */
   margin: auto;
   position: fixed;
   bottom: 0;
@@ -375,6 +375,7 @@
   right: 0;
   padding: 25rpx 50rpx;
   box-sizing: border-box;
+  text-align: center;
 }
 .main_btn {
   width: 562rpx;
@@ -463,4 +464,16 @@
 
 .friend-timeline .timeline-middle {
   padding-top: 25rpx;
+}
+
+.wish-save-btn {
+  margin-top: 40rpx;
+  width: 562rpx;
+  height: 100rpx;
+  padding: 0;
+}
+.wish-share-btn {
+  margin: auto;
+  width: 562rpx;
+  height: 100rpx;
 }

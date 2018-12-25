@@ -52,9 +52,10 @@
 }
 
 .buttonView{
-  width: 65%;
+  /* width: 65%; */
   margin: 20rpx; 
   margin-bottom: 50rpx; 
+  text-align: center;
 }
 .main_btn{
   width: 100%;
@@ -62,4 +63,16 @@
   background: #E60C12;
   border: solid 1rpx #6A3906;
   color: #ffffff;
+}
+
+.wish-save-btn {
+  margin-top: 40rpx;
+  width: 562rpx;
+  height: 100rpx;
+  padding: 0;
+}
+.wish-share-btn {
+  margin: auto;
+  width: 562rpx;
+  height: 100rpx;
 }

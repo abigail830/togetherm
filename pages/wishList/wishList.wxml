@@ -9,10 +9,10 @@
       <view class="lable">心愿标题：</view>
       <input class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写心愿标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
     </view>
-    <view class="input_new">
+    <!-- <view class="input_new">
       <view class="lable">心愿描述：</view>
       <input auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写心愿描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
-    </view>
+    </view> -->
   </view>
   <view class="content_lists_new">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">

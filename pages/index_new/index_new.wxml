@@ -7,8 +7,12 @@
     <image class="intro" src="../../images/intro.png"></image>
   </view>
   <view class="userinfo">
-    <button class="login_btn" wx:if="{{!hasUserInfo && canIUse}}" 
-    open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登陆 </button>
+    <button class="wish-save-btn" wx:if="{{!hasUserInfo && canIUse}}" 
+    open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+      <image class="wish-share-btn" src="/images/login.png" />
+    </button>
+    <!-- <button class="login_btn" wx:if="{{!hasUserInfo && canIUse}}" 
+    open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登陆 </button> -->
   </view>
   <view class="description">
   <text>说明文字说明文字说明文字说明文字说明文字说明
