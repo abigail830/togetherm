@@ -36,7 +36,8 @@ Page({
       column: "hour"
     },
     selectPicIndex: 0,
-    pics: pics
+    pics: pics,
+    timeout:false
   },
 
   /**
@@ -82,6 +83,7 @@ Page({
                   year: res.data.listDueTime.substring(0, 4),
                   month: res.data.listDueTime.substring(5, 7),
                   currentDate: res.data.listDueTime.substring(8, 10),
+                  timeout: new Date(res.data.listDueTime.replace(new RegExp(/-/gm), "/")) < new Date(),
                   timePickerConfig: {
                     defaultDate:
                       res.data.listDueTime.length < 11
@@ -172,7 +174,7 @@ Page({
         nick_name;
       console.log(path);
       return {
-        title: nick_name + "的小心愿",
+        title: nick_name + "的" + this.data.listDescription,
         path: path,
         imageUrl: imageUrl,
         success: function(res) {
@@ -197,7 +199,6 @@ Page({
       };
     }
   },
-
   bindKeyInput: function(e) {
     this.setData({
       listDescription: e.detail.value
@@ -478,10 +479,7 @@ Page({
   },
 
   showDatePicker: function(e) {
-    // this.setData({
-    //   datePickerIsShow: true,
-    //   datePickerValue: [this.data.year, this.data.month, this.data.currentDate]
-    // });
+    if(this.data.timeout)return
     this.pickerShow();
   },
   hideDatePicker: function(e) {

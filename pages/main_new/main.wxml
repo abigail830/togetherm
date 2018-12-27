@@ -63,7 +63,7 @@
             </view>
             <view class='timeline-middle'>
               <view>{{wishListDTOList.listDescription}}</view>
-              <progress percent="{{100-wishListDTOList.progress}}" activeColor="#009944" backgroundColor="#E60C12" />
+              <progress percent="{{100-wishListDTOList.progress}}" activeColor="#ffd45a" backgroundColor="#E60C12" />
             </view>
             <view class='timeline-right'>
               <navigator hover-class="none" url="../wishList/wishList?wishListID={{wishListDTOList.listId}}" class="timeline-btn">
@@ -78,7 +78,7 @@
       <view class="empty_wish">{{empty_wish}}</view>
     </view>
     <view class='buttonView'>
-    <!-- <button class="wish-save-btn" bindtap="addWishList">
+      <!-- <button class="wish-save-btn" bindtap="addWishList">
       <image class="wish-share-btn" src="/images/create.png" />
     </button> -->
       <button class="main_btn" bindtap="addWishList">创建清单</button>

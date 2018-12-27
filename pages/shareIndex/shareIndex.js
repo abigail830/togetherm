@@ -9,7 +9,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     wishListId: null,
-    nickName: null
+    nickName: null,
+    wishimage:0
   },
 
   onLoad: function (options) {
@@ -22,7 +23,8 @@ Page({
       console.log(options.nickName);
       this.setData({
         wishListId: options.wishListId,
-        nickName: options.nickName
+        nickName: options.nickName,
+        wishimage:options.wishimageId,
       })
     }
     app.wxLogin();
@@ -30,7 +32,7 @@ Page({
       url:
         "../shareWish/shareWish?wishListId=" +
         this.data.wishListId +
-        "&nickName=" +
+        "&wishimageId="+ this.data.wishimage +"&nickName=" +
         this.data.nickName
     });
   },

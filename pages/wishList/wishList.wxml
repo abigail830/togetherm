@@ -7,26 +7,30 @@
     </view>
     <view class="input_new hr">
       <view class="lable">心愿标题：</view>
-      <input class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写心愿标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
+      <input disabled="{{timeout}}" class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写心愿标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
     </view>
     <!-- <view class="input_new">
       <view class="lable">心愿描述：</view>
       <input auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写心愿描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
     </view> -->
   </view>
-  <view class="content_lists_new">
+  <view wx:if="{{wishes.length>0}}" class="content_lists_new {{timeout&&'timeout'}}">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="input_new list_input hr">
         <view class="lable list_input_label">{{index+1}}</view>
         <view class="list_input_box {{item.wishStatus==='TAKEUP'?'takeup_hr':''}}">
-          <input disabled="{{item.wishStatus!=='NEW'}}" bindinput="bindWishKeyInput" data-id="{{index}}" bindblur="bindDescCompleted" value="{{item.description}}" class="value_new" type="text" placeholder-class="placeholder_new" placeholder="请输入内容..." />
+          <input disabled="{{item.wishStatus!=='NEW'||timeout}}" bindinput="bindWishKeyInput" data-id="{{index}}" bindblur="bindDescCompleted" value="{{item.description}}" class="value_new" type="text" placeholder-class="placeholder_new" placeholder="请输入内容..." />
         </view>
-        <view wx:if="{{item.wishStatus==='NEW'}}" data-index="{{index}}" bindtap="delWish">
+        <view wx:if="{{!timeout&&item.wishStatus==='NEW'}}" data-index="{{index}}" bindtap="delWish">
           <image class="list_icon" mode='aspectFill' src="/images/icon-delete.png" />
+        </view>
+        <view wx:if="{{timeout}}" class="implementor">
+          <text wx:if="{{implementor}}">{{implementor}}</text>
+          <text wx:else class="not">还没人认领</text>
         </view>
       </view>
     </block>
-    <view class="input_new list_input">
+    <view class="input_new list_input" wx:if="{{!timeout}}">
       <view class="lable list_input_label"></view>
       <view class="list_input_box"></view>
       <view bindtap="addWishList">
@@ -34,6 +38,7 @@
       </view>
     </view>
   </view>
+<view wx:else class="wishes-not">您没建立任何愿望</view>
   <view>
     <view class="pic_title">
       选择分享图片

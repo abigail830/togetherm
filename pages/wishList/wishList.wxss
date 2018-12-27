@@ -174,9 +174,9 @@
 .takeup_hr::after {
   border-bottom: 8rpx solid #f9cc74;
   content: "";
-  width: 90%;
+  width: 105%;
   left: -20rpx;
-  bottom: 0;
+  bottom: -10rpx;
   position: absolute;
 }
 .takeup_hr input {
@@ -206,6 +206,7 @@
   border: 4rpx solid #6a3906;
   border-radius: 25rpx;
   background-color: #fff;
+  overflow: hidden;
 }
 .input_new.list_input {
   padding: 20rpx;
@@ -282,4 +283,25 @@
 }
 button::after {
   border: none;
+}
+.timeout .list_input_box .value_new {
+  width: 400rpx;
+}
+.implementor {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: red;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  text-align: right;
+}
+.implementor .not {
+  color: #b2b2b2;
+}
+.wishes-not {
+  text-align: center;
+  height: 300rpx;
+  line-height: 300rpx;
+  color: #b2b2b2;
 }

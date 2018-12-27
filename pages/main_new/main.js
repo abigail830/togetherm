@@ -16,7 +16,7 @@ Page({
     hasUserInfo: false,
     timeline: [],
     friendTimeline: [],
-    showType: "friend" //me ,friend
+    showType: "me" //me ,friend
   },
 
   onLoad: function() {
@@ -178,7 +178,7 @@ Page({
                     yearAndMonth: "2028-12"
                   },
                   {
-                    wishID: 85,
+                    wishID: 230,
                     wishListID: 24,
                     wishStatus: "TAKEUP",
                     listId: 82,
