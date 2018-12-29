@@ -32,9 +32,9 @@
     </view>
   </view>
   <view class='buttonView'>
-    <button class="wish-save-btn" bindtap="toMain">
-      <image class="wish-share-btn" src="/images/begin.png" />
-    </button>
+    <!-- <button class="wish-save-btn" > -->
+      <image class="wish-share-btn" bindtap="toMain" src="/images/begin.png" />
+    <!-- </button> -->
     <!-- <button class="main_btn" bindtap="toMain"> 开始使用 </button> -->
   </view>
 </view>

@@ -42,6 +42,7 @@
   font-size: 32rpx;
   text-align: center;
   font-weight: bold;
+  margin-bottom: 40rpx;
 }
 .textArea {
   margin-top: 30rpx;
