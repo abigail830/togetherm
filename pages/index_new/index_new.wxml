@@ -6,6 +6,7 @@
   <view>
     <image class="intro" src="../../images/intro.png"></image>
   </view>
+    <view>友爱契约</view>
   <view class="userinfo">
     <button class="wish-save-btn" wx:if="{{!hasUserInfo && canIUse}}" 
     open-type="getUserInfo" bindgetuserinfo="getUserInfo">
@@ -15,8 +16,6 @@
     open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登陆 </button> -->
   </view>
   <view class="description">
-  <text>说明文字说明文字说明文字说明文字说明文字说明
-文字说明文字说明文字说明文字说明文字说明文字
-说明文字说明文字说明文字说明文字</text
-></view>
+  <text>与众一同，履行心中所爱\n\nTogether, to get them.</text>
+</view>
 </view>

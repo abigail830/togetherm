@@ -35,7 +35,7 @@
         <view class="blocker">
           <image class="blocker" src="../../images/count_block.png"></image>
         </view>
-        <view class="countheader">我的愿望</view>      
+        <view class="countheader">我的契约</view>      
       </view>
 
       <view class="countcell">
@@ -47,7 +47,7 @@
         <view class="blocker">
           <image class="blocker" src="../../images/count_block.png"></image>
         </view>
-        <view class="countheader">友的愿望</view>      
+        <view class="countheader">友的契约</view>      
       </view>
     </view>
 
@@ -108,11 +108,11 @@
     </view> -->
 
     <!-- <view class="btnblock">
-      <button bindtap="addWishList" class="addwishbtn"> 创建清单 
+      <button bindtap="addWishList" class="addwishbtn"> 创建契约 
       </button>
     </view> -->
   <view class='buttonView'>
-    <button class="main_btn" bindtap="addWishList"> 创建清单 </button>
+    <button class="main_btn" bindtap="addWishList"> 创建契约 </button>
   </view>
   </view>
 </view>

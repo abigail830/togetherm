@@ -26,7 +26,7 @@
       <view class="blocker">
         <image class="blocker" src="../../images/count_block.png"></image>
       </view>
-      <view class="countheader">我的愿望</view>
+      <view class="countheader">我的契约</view>
     </view>
     <view class="countcell {{showType==='me'&&'noactive'}}" bindtap="selectFriend">
       <view class="count yellow">
@@ -37,7 +37,7 @@
       <view class="blocker">
         <image class="blocker" src="../../images/count_block.png"></image>
       </view>
-      <view class="countheader">友的愿望</view>
+      <view class="countheader">友的契约</view>
     </view>
   </view>
   <block wx:if="{{showType==='me'}}">
@@ -59,6 +59,7 @@
               </view>
               <view class="time-point-right">
                 <view>{{wishListDTOList.dateInMonth}}</view>
+                <view class="mini-time">{{wishListDTOList.dateInTime}}</view>
               </view>
             </view>
             <view class='timeline-middle'>
@@ -81,7 +82,7 @@
       <!-- <button class="wish-save-btn" bindtap="addWishList">
       <image class="wish-share-btn" src="/images/create.png" />
     </button> -->
-      <button class="main_btn" bindtap="addWishList">创建清单</button>
+      <button class="main_btn" bindtap="addWishList">创建契约</button>
     </view>
   </block>
   <block wx:if="{{showType!=='me'}}">

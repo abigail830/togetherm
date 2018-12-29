@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    empty_wish: "还没找到你认领的朋友愿望清单哦 6_6",
+    empty_wish: "还没找到你认领的朋友契约契约哦 6_6",
     hasWishList: false,
     userInfo: {},
     hasUserInfo: false,
@@ -71,7 +71,7 @@ Page({
           );
           wx.hideLoading();
         }, (res) => {
-          util.showModel('获取您的认领愿望', res.errMsg)
+          util.showModel('获取您的认领契约', res.errMsg)
         })
     ]).then(() => {
       wx.hideLoading();
@@ -168,7 +168,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '友爱清单',
+      title: '友爱契约',
       imageUrl: '../../images/guide1.jpg',
       success: function (res) {
         // 转发成功s

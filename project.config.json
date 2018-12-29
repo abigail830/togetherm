@@ -36,11 +36,11 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
-					"name": "wishListID=82",
+					"name": "wishListID=83",
 					"pathName": "pages/wishList/wishList",
 					"query": "wishListID=82"
 				},
@@ -48,7 +48,7 @@
 					"id": 1,
 					"name": "shareWish",
 					"pathName": "pages/shareIndex/shareIndex",
-					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
+					"query": "wishListId=82&wishimageId=2&nickName=暗影浅‮"
 				},
 				{
 					"id": -1,
@@ -60,6 +60,24 @@
 					"id": -1,
 					"name": "log",
 					"pathName": "pages/logs/logs",
+					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
+				},
+				{
+					"id": -1,
+					"name": "help",
+					"pathName": "pages/instruction/instruction",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "shareWish",
+					"pathName": "pages/shareWish/shareWish",
+					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
+				},
+				{
+					"id": -1,
+					"name": "shareWish",
+					"pathName": "pages/instruction/instruction",
 					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
 				}
 			]

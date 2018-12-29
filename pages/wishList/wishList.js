@@ -19,7 +19,7 @@ Page({
     listDescription: "",
     listDescription2: "",
     listDueTime: "",
-    // headerText: "愿望列表",
+    // headerText: "契约列表",
     datePickerIsShow: false,
     datePickerValue: [currentYear, currentMonth, currentDate],
     year: currentYear,
@@ -98,7 +98,7 @@ Page({
               );
             },
             res => {
-              util.showModel("获取您的愿望", res.errMsg);
+              util.showModel("获取您的契约", res.errMsg);
             }
           )
       ]).then(() => {
@@ -165,8 +165,10 @@ Page({
     if (options.from == "button") {
       console.log(this.data.wishListID);
       var nick_name = app.globalData.userInfo.nickName;
+      // const path = "/pages/shareIndex/shareIndex?wishListId=" + this.data.wishListID + "&wishimageId=" + this.data.selectPicIndex + "&nickName=" +  nick_name;
+
       const path =
-        "/pages/shareIndex/shareIndex?wishListId=" +
+        "/pages/shareWish/shareWish?wishListId=" +
         this.data.wishListID +
         "&wishimageId=" +
         this.data.selectPicIndex +
@@ -178,15 +180,15 @@ Page({
         path: path,
         imageUrl: imageUrl,
         success: function(res) {
-          console.log("清单分享成功:" + JSON.stringify(res));
+          console.log("契约分享成功:" + JSON.stringify(res));
         },
         fail: function(res) {
-          console.log("清单分享失败:" + JSON.stringify(res));
+          console.log("契约分享失败:" + JSON.stringify(res));
         }
       };
     } else {
       return {
-        title: "友爱清单",
+        title: "友爱契约",
         imageUrl: imageUrl,
         success: function(res) {
           // 转发成功
@@ -241,7 +243,7 @@ Page({
             Poster.updatePosterConfig();
           },
           res => {
-            util.showModel("获取您的愿望清单", res.errMsg);
+            util.showModel("获取您的契约契约", res.errMsg);
           }
         )
     ]).then(() => {
@@ -258,8 +260,8 @@ Page({
         method: "POST",
         header: { "Content-Type": "application/json" },
         data: {
-          listDescription2: "我的新愿望",
-          listDescription: "我的新愿望",
+          listDescription2: "我的新契约",
+          listDescription: "我的新契约",
           listDueTime: currentYear + "-" + currentMonth + "-" + currentDate,
           listOpenId: app.globalData.authInfo.openid
         },
@@ -479,7 +481,7 @@ Page({
   },
 
   showDatePicker: function(e) {
-    if(this.data.timeout)return
+    // if(this.data.timeout)return
     this.pickerShow();
   },
   hideDatePicker: function(e) {

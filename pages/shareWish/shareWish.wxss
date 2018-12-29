@@ -173,8 +173,8 @@
   padding: 20px 0;
 }
 .create-btn {
-  width: 670rpx;
-  height: 160rpx;
+  width: 672rpx;
+  height: 140rpx;
   padding-bottom: 40rpx;
 }
 .row-text-info {

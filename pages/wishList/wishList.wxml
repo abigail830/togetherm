@@ -6,12 +6,12 @@
       <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
     </view>
     <view class="input_new hr">
-      <view class="lable">心愿标题：</view>
-      <input disabled="{{timeout}}" class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写心愿标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
+      <view class="lable">契约标题：</view>
+      <input disabled="{{timeout}}" class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写契约标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
     </view>
     <!-- <view class="input_new">
-      <view class="lable">心愿描述：</view>
-      <input auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写心愿描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
+      <view class="lable">契约描述：</view>
+      <input auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写契约描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
     </view> -->
   </view>
   <view wx:if="{{wishes.length>0}}" class="content_lists_new {{timeout&&'timeout'}}">
@@ -25,8 +25,9 @@
           <image class="list_icon" mode='aspectFill' src="/images/icon-delete.png" />
         </view>
         <view wx:if="{{timeout}}" class="implementor">
-          <text wx:if="{{implementor}}">{{implementor}}</text>
-          <text wx:else class="not">还没人认领</text>
+          <text wx:if="{{implementor&&item.wishStatus!=='NEW'}}">{{implementor}}</text>
+          <text wx:if="{{!implementor&&item.wishStatus!=='NEW'}}" class="not">匿名</text>
+          <text wx:if="{{item.wishStatus==='NEW'}}" class="not">还没人认领</text>
         </view>
       </view>
     </block>
@@ -38,7 +39,7 @@
       </view>
     </view>
   </view>
-<view wx:else class="wishes-not">您没建立任何愿望</view>
+<view wx:else class="wishes-not">您没建立任何契约</view>
   <view>
     <view class="pic_title">
       选择分享图片

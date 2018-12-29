@@ -155,7 +155,7 @@ Component({
           });
           wishlist.push(
             {
-              text: `实现日期：`,
+              text: `有效日期：`,
               fontBold: true,
               fontSize: 36,
               y: top + 30 + 36,

@@ -15,34 +15,6 @@
       </view>
     </block>
   </view>
-  <view class="time">实现日期：{{listDueTime}}</view>
+  <view class="time">有效日期：{{listDueTime}}</view>
   <image bindtap="createMe" class="create-btn" mode='aspectFill' src="/images/create-me.png" />
 </view>
-<!-- <view class="tab-header">
-  <view class="headerText">{{nickName}}的小心愿</view>
-  <view class="flex_row_header">
-    <view class="lable">
-      {{listDescription}}, 希望在{{year}}/{{month}}/{{currentDate}}可以实现。 你, 最希望帮他实现那个愿望呢？
-    </view>
-  </view>
-</view>
-<view>
-  <view class="content">
-    <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
-      <view class="row-container" data-index="{{index}}">
-        <view>
-          <image mode='aspectFill' class="con-trimg" src='https://kidneyhealty.com.cn/images/item_icon.png'></image>
-        </view>
-        <view class="con-info">
-          {{item.description}}
-          <view class="con-status">{{item.wishStatus}}</view>
-        </view>
-        <block wx:if="{{item.wishStatus=='NEW'}}">
-          <view>
-            <view data-index="{{index}}" bindtap="takeupWish" class="takeup">Takeup</view>
-          </view>
-        </block>
-      </view>
-    </block>
-  </view>
-</view> -->

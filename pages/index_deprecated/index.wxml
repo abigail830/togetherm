@@ -4,7 +4,7 @@
     <view class="fullwidth">
       <button wx:if="{{!hasUserInfo && canIUse}}" 
           open-type="getUserInfo" 
-          bindgetuserinfo="getUserInfo" class="authorizebtn"> 开启我的愿望之旅 
+          bindgetuserinfo="getUserInfo" class="authorizebtn"> 开启我的契约之旅 
     </button>
   </view>
   </block>

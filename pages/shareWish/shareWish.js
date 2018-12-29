@@ -19,7 +19,7 @@ Page({
     listDescription: "",
     listDescription2: "",
     listDueTime: "",
-    // headerText: "愿望列表",
+    // headerText: "契约列表",
     datePickerIsShow: false,
     datePickerValue: [currentYear, currentMonth, currentDate],
     year: currentYear,
@@ -118,7 +118,7 @@ Page({
             });
           },
           res => {
-            util.showModel("获取您的愿望", res.errMsg);
+            util.showModel("获取您的契约", res.errMsg);
           }
         )
     ]).then(() => {

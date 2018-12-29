@@ -174,10 +174,13 @@
 .takeup_hr::after {
   border-bottom: 8rpx solid #f9cc74;
   content: "";
-  width: 105%;
+  width:490rpx;
   left: -20rpx;
   bottom: -10rpx;
   position: absolute;
+}
+.timeout .takeup_hr::after{
+  width:430rpx;
 }
 .takeup_hr input {
   color: #999;
@@ -295,6 +298,8 @@ button::after {
   font-size: 26rpx;
   line-height: 60rpx;
   text-align: right;
+  width:130rpx;
+  text-align: center;
 }
 .implementor .not {
   color: #b2b2b2;

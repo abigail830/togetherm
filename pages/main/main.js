@@ -7,7 +7,7 @@ const app = getApp()
 
 Page({
   data: {
-    empty_wish: "还没你的愿望清单哦 6_6",
+    empty_wish: "还没你的契约契约哦 6_6",
     myCompletedWishCount: 0,
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
@@ -71,7 +71,7 @@ Page({
  */
   onShareAppMessage: function () {
     return {
-      title: '友爱清单',
+      title: '友爱契约',
       imageUrl: '../../images/LOGO.png',
       success: function (res) {
         // 转发成功s

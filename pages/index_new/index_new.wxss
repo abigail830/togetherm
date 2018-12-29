@@ -10,8 +10,8 @@
 }
 
 .logo{
-  width: 250rpx;
-  height: 80rpx;
+  width: 353.8rpx;
+  height: 94.48rpx;
   margin: 10rpx;
   margin-top: 100rpx;
 }
@@ -50,4 +50,7 @@
   margin: auto;
   width: 562rpx;
   height: 100rpx;
+}
+view{
+  color: #6A3906
 }

@@ -83,7 +83,7 @@ Page({
               // wx.hideLoading();
             },
             res => {
-              util.showModel("获取您的愿望清单", res.errMsg);
+              util.showModel("获取您的契约契约", res.errMsg);
             }
           )
       ]).then(() => {
@@ -100,7 +100,7 @@ Page({
    */
   onShareAppMessage: function() {
     return {
-      title: "友爱清单",
+      title: "友爱契约",
       imageUrl: "../../images/LOGO.png",
       success: function(res) {
         // 转发成功s

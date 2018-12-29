@@ -39,7 +39,7 @@ Page({
    */
   onShareAppMessage: function() {
     return {
-      title: "友爱清单",
+      title: "友爱契约",
       imageUrl: "../../images/guide1.jpg",
       success: function(res) {
         // 转发成功s

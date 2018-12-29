@@ -51,8 +51,8 @@
 }
 
 .logo {
-  width: 140rpx;
-  height: 50rpx;
+  width:127.96rpx;
+  height:34.12rpx;
   margin: 15rpx;
   margin-top: 5rpx;
 }
@@ -293,7 +293,7 @@
 .timeline-line-down {
   margin-left: 20px;
   border-left: 1px solid #6a3906;
-  height: 14px;
+  height: 20px;
   background: #fff;
 }
 
@@ -351,13 +351,14 @@
 }
 
 .time-point-left {
-  width: 60%;
+  width: 58%;
 }
 
 .time-point-right {
   width: 40%;
   color: #6a3906;
   font-weight: bold;
+  text-align: center
 }
 
 .buttonView {
@@ -476,4 +477,8 @@
   margin: auto;
   width: 562rpx;
   height: 100rpx;
+}
+.mini-time{
+  font-size: 20rpx;
+  font-weight: normal;
 }

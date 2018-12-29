@@ -7,8 +7,8 @@ const app = getApp();
 
 Page({
   data: {
-    empty_wish: "还没你的愿望清单哦 6_6",
-    empty_wish2: "你还没GET过朋友的愿望清单哦 6_6",
+    empty_wish: "还没你的契约契约哦 6_6",
+    empty_wish2: "你还没GET过朋友的契约契约哦 6_6",
     myCompletedWishCount: 0,
     myFriendsCompletedWishCount: 0,
     hasWishList: false,
@@ -27,7 +27,7 @@ Page({
       });
     }
 
-    this.setWishListData();
+    // this.setWishListData();
   },
   help: function(e) {
     wx.navigateTo({
@@ -69,7 +69,7 @@ Page({
    */
   onShareAppMessage: function() {
     return {
-      title: "友爱清单",
+      title: "友爱契约",
       imageUrl: "../../images/LOGO.png",
       success: function(res) {
         // 转发成功s
@@ -172,7 +172,7 @@ Page({
                     wishStatus: "DONE",
                     listId: 82,
                     description: "吃大餐",
-                    listDescription: "我的愿望是什么",
+                    listDescription: "我的契约是什么",
                     listDueTime: "2028-12-19 00:59:59",
                     dateInMonth: "19",
                     yearAndMonth: "2028-12"
@@ -183,7 +183,7 @@ Page({
                     wishStatus: "TAKEUP",
                     listId: 82,
                     description: "吃大餐222",
-                    listDescription: "我的愿望是什么",
+                    listDescription: "我的契约是什么",
                     listDueTime: "2028-12-19 00:59:59",
                     dateInMonth: "19",
                     yearAndMonth: "2028-12"
@@ -195,7 +195,7 @@ Page({
           wx.hideLoading();
         },
         res => {
-          util.showModel("获取您的认领愿望", res.errMsg);
+          util.showModel("获取您的认领契约", res.errMsg);
         }
       );
   },
@@ -275,18 +275,26 @@ Page({
       .then(
         res => {
           console.log(res.data);
+          let timeline = res.data.wishListTimelineEntryList.map(e => {
+            e.wishListDTOList = e.wishListDTOList.map(e => {
+              let date = new Date(e.listDueTime.replace(/ /g, "T"));
+              e.dateInTime = date.getHours() + ":" + date.getMinutes();
+              return e;
+            });
+            return e;
+          });
           app.globalData.myCompletedWishCount = res.data.myCompletedWishCount;
           app.globalData.myFriendsCompletedWishCount =
             res.data.myFriendsCompletedWishCount;
           app.globalData.wishLists = res.data.wishLists;
           app.globalData.hasWishList = res.data.hasWishList;
-          app.globalData.timeline = res.data.wishListTimelineEntryList;
-          console.log(app.globalData);
+          app.globalData.timeline = timeline;
+          //new Date('2018-12-24 13:19:29'.replace(/ /g,"T"))
           this.setWishListData();
           wx.hideLoading();
         },
         res => {
-          util.showModel("获取您的愿望清单", res.errMsg);
+          util.showModel("获取您的契约契约", res.errMsg);
         }
       );
   }

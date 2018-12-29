@@ -7,27 +7,28 @@
     <view class="textArea">
       <view class="header">
         <image src="/images/icon-title.png" />
-        友爱清单是什么？
+        友爱契约是什么？
       </view>
       <view class="box">
-        <text>让你召集小伙伴出来哈皮更方便的小程序。\n让小伙伴能帮助你实现心中所想的小程序。\n让你能为小伙伴做出有效贡献的小程序。\n</text>
+        <text>是协助你与圈中好友订立约定的小程序。</text>
       </view>
       <view class="header">
         <image src="/images/icon-title.png" />
-        友爱清单怎么玩？
+        友爱契约怎么玩？
       </view>
       <view class="box">
         <view>
           <view class="icon-btn">创建</view>
-          选择清单有效期，填好清单标题（纪念日or 节庆or 聚会），简单描述活动内容，列出事项。分享给小伙伴，让小伙伴认领你的心中所想。
+          填好契约标题，选择契约有效期，简单描述契约描述，订立契约条款。分享给小伙伴，共同履行你们的约定。
         </view>
         <view>
           <view class="icon-btn">认领</view>
-          打开小伙伴的清单，为小伙伴认领他们的心中所想，让你们友谊的小船更加坚固。
+          打开小伙伴的契约，认领契约条款，让友谊的小船更加稳固。
         </view>
         <view>
-          <view class="icon-btn">分享</view>保存海报，把清单分享到朋友圈，让更多好友认领。</view>
+          <view class="icon-btn">分享</view>保存海报，把契约分享到朋友圈，看有多少小伙伴愿意认领，考验你的RP。</view>
       </view>
+      <view class="tip">答应过的事情要努力做到哟！</view>
     </view>
   </view>
   <view class='buttonView'>
