@@ -10,7 +10,7 @@
         友爱契约是什么？
       </view>
       <view class="box">
-        <text>是协助你与圈中好友订立约定的小程序。</text>
+        <text class="icon-detail">是协助你与圈中好友订立约定的小程序。</text>
       </view>
       <view class="header">
         <image src="/images/icon-title.png" />
@@ -19,14 +19,15 @@
       <view class="box">
         <view>
           <view class="icon-btn">创建</view>
-          填好契约标题，选择契约有效期，简单描述契约描述，订立契约条款。分享给小伙伴，共同履行你们的约定。
+          <view class="icon-detail">填好契约标题，选择契约有效期，简单描述契约描述，订立契约条款。分享给小伙伴，共同履行你们的约定。</view>
         </view>
         <view>
           <view class="icon-btn">认领</view>
-          打开小伙伴的契约，认领契约条款，让友谊的小船更加稳固。
+          <view class="icon-detail">打开小伙伴的契约，认领契约条款，让友谊的小船更加稳固。</view>
         </view>
         <view>
-          <view class="icon-btn">分享</view>保存海报，把契约分享到朋友圈，看有多少小伙伴愿意认领，考验你的RP。</view>
+          <view class="icon-btn">分享</view>
+          <view class="icon-detail">保存海报，把契约分享到朋友圈，看有多少小伙伴愿意认领，考验你的RP。</view></view>
       </view>
       <view class="tip">答应过的事情要努力做到哟！</view>
     </view>

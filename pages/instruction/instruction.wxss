@@ -13,7 +13,7 @@
   width: 353.8rpx;
   height: 94.48rpx;
   margin: 10rpx;
-  margin-top: 100rpx;
+  margin-top: 35rpx;
 }
 
 .intro {
@@ -26,7 +26,7 @@
   margin: 30rpx;
   width: 80%;
   color: #6a3906;
-  font-size: 70%;
+  font-size: 80%;
   border: #6a3906;
   border-style: solid;
   border-width: 3px;
@@ -48,7 +48,7 @@
   margin-top: 30rpx;
   width: 100%;
   color: #6a3906;
-  font-size: 24rpx;
+  font-size: 25rpx;
   text-align: left;
   line-height: 48rpx;
 }
@@ -76,7 +76,13 @@
   vertical-align: bottom;
 }
 .box {
-  margin-bottom: 30rpx;
+  margin: 30rpx 10rpx;
+  line-height: 120%;
+}
+.icon-detail{
+  margin-top: 10rpx;
+  line-height: 150%;
+  margin-left: 10rpx;
 }
 .buttonView {
   /* width: 65%; */
