@@ -51,8 +51,8 @@
 }
 
 .logo {
-  width:127.96rpx;
-  height:34.12rpx;
+  width: 127.96rpx;
+  height: 34.12rpx;
   margin: 15rpx;
   margin-top: 5rpx;
 }
@@ -111,7 +111,7 @@
   margin-top: 0rpx;
 }
 
-.noactive{
+.noactive {
   filter: grayscale(80%);
   -webkit-filter: grayscale(80%);
 }
@@ -363,7 +363,7 @@
   width: 40%;
   color: #6a3906;
   font-weight: bold;
-  text-align: center
+  text-align: center;
 }
 
 .buttonView {
@@ -408,7 +408,7 @@
 }
 .friend-timeline .time-point-right {
   line-height: 160rpx;
-  font-family: TrebuchetMS,Rotobo,"Microsoft YaHei",sans-serif;
+  font-family: TrebuchetMS, Rotobo, "Microsoft YaHei", sans-serif;
 }
 .friend-timeline .timeline-line-up {
   height: 70rpx;
@@ -484,7 +484,7 @@
   width: 562rpx;
   height: 100rpx;
 }
-.mini-time{
+.mini-time {
   font-size: 20rpx;
   font-weight: normal;
 }
