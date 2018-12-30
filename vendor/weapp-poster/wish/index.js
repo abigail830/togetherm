@@ -108,7 +108,7 @@ Component({
         images = [
           {
             url: "/images/LOGO.png",
-            width: 167,
+            width: 199.68, // 355 96
             height: 54,
             y: 20.7 * 2,
             x: 20.65 * 2
@@ -117,10 +117,10 @@ Component({
             url: this.data.wishimage || "/images/poster-default.png",
             width: 335 * 2,
             height: 250 * 2,
-            y: 60 * 2,
-            x: 20 * 2,
+            y: 120,
+            x: 40,
             borderRadius: 25,
-            borderWidth: 6,
+            borderWidth: 12,
             borderColor: "#6A3906"
           }
         ];

@@ -36,19 +36,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "wishListID=83",
 					"pathName": "pages/wishList/wishList",
-					"query": "wishListID=82"
+					"query": "wishListID=121"
 				},
 				{
 					"id": 1,
 					"name": "shareWish",
 					"pathName": "pages/shareIndex/shareIndex",
-					"query": "wishListId=82&wishimageId=2&nickName=暗影浅‮"
+					"query": "wishListId=121&wishimageId=1&nickName=暗影浅‮"
 				},
 				{
 					"id": -1,
@@ -72,13 +72,7 @@
 					"id": 5,
 					"name": "shareWish",
 					"pathName": "pages/shareWish/shareWish",
-					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
-				},
-				{
-					"id": -1,
-					"name": "shareWish",
-					"pathName": "pages/instruction/instruction",
-					"query": "wishListId=82&wishimageId=0&nickName=暗影浅‮"
+					"query": "wishListId=83&wishimageId=0&nickName=暗影浅‮"
 				}
 			]
 		}

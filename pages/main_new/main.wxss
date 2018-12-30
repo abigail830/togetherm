@@ -111,13 +111,18 @@
   margin-top: 0rpx;
 }
 
-.noactive.countcell {
+.noactive{
+  filter: grayscale(80%);
+  -webkit-filter: grayscale(80%);
+}
+
+/* .noactive.countcell {
   border-color: #8d775e;
 }
 
 .noactive .countheader {
   background-color: #8d775e;
-}
+} */
 
 .red {
   color: #e60c12;
@@ -403,6 +408,7 @@
 }
 .friend-timeline .time-point-right {
   line-height: 160rpx;
+  font-family: TrebuchetMS,Rotobo,"Microsoft YaHei",sans-serif;
 }
 .friend-timeline .timeline-line-up {
   height: 70rpx;

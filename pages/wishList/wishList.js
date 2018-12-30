@@ -481,7 +481,7 @@ Page({
   },
 
   showDatePicker: function(e) {
-    // if(this.data.timeout)return
+    if(this.data.timeout || !this.data.canDelete) return
     this.pickerShow();
   },
   hideDatePicker: function(e) {

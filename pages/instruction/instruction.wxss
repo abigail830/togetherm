@@ -1,6 +1,6 @@
 /* pages/instruction/instruction.wxss */
 .container {
-  margin: 10rpx;
+  /* margin: 10rpx; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@
   width: 353.8rpx;
   height: 94.48rpx;
   margin: 10rpx;
-  margin-top: 35rpx;
+  /* margin-top: 35rpx; */
 }
 
 .intro {

@@ -7,14 +7,14 @@
     </view>
     <view class="input_new hr">
       <view class="lable">契约标题：</view>
-      <input disabled="{{timeout}}" class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写契约标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
+      <input disabled="{{timeout || !canDelete}}" class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写契约标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
     </view>
     <view class="input_new">
       <view class="lable">契约描述：</view>
-      <input auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写契约描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
+      <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写契约描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
     </view>
   </view>
-  <view wx:if="{{wishes.length>0}}" class="content_lists_new {{timeout&&'timeout'}}">
+  <view wx:if="{{wishes.length>0 || !timeout}}" class="content_lists_new {{timeout&&'timeout'}}">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="input_new list_input hr">
         <view class="lable list_input_label">{{index+1}}</view>
@@ -24,9 +24,9 @@
         <view wx:if="{{!timeout&&item.wishStatus==='NEW'}}" data-index="{{index}}" bindtap="delWish">
           <image class="list_icon" mode='aspectFill' src="/images/icon-delete.png" />
         </view>
-        <view wx:if="{{timeout}}" class="implementor">
-          <text wx:if="{{implementor&&item.wishStatus!=='NEW'}}">{{implementor}}</text>
-          <text wx:if="{{!implementor&&item.wishStatus!=='NEW'}}" class="not">匿名</text>
+        <view wx:if="{{timeout || item.implementor}}" class="implementor">
+          <text wx:if="{{item.implementor&&item.wishStatus!=='NEW'}}">{{item.implementor.nickName}}</text>
+          <text wx:if="{{!item.implementor&&item.wishStatus!=='NEW'}}" class="not">匿名</text>
           <text wx:if="{{item.wishStatus==='NEW'}}" class="not">还没人认领</text>
         </view>
       </view>

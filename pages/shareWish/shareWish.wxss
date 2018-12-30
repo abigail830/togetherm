@@ -108,8 +108,8 @@
   color: #6a3906;
 }
 .logo {
-  width: 167rpx;
-  height: 54rpx;
+  width:199.68rpx;
+  height:54rpx;   
   /* margin-top: 41.4rpx ; */
 }
 .poster {
@@ -117,7 +117,7 @@
   height: 500rpx;
   margin-top: 20rpx;
   border-radius: 25rpx;
-  border: 6px solid #6a3906;
+  border: 6rpx solid #6a3906;
   box-sizing: border-box;
 }
 .row-text {
@@ -137,6 +137,7 @@
   background-color: #fff;
   min-height: 100rpx;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .input_new.list_input {
   padding: 20rpx;
