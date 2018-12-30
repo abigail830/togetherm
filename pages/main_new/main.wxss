@@ -112,11 +112,11 @@
 }
 
 .noactive.countcell {
-  border-color: #745f49;
+  border-color: #8d775e;
 }
 
 .noactive .countheader {
-  background-color: #745f49;
+  background-color: #8d775e;
 }
 
 .red {
