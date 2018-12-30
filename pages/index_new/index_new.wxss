@@ -37,7 +37,8 @@
   margin: 30rpx;
   width: 100%;
   color:#6A3906;
-  font-size: 70%;
+  font-size: 85%;
+  line-height: 100%;
 }
 
 .wish-save-btn {

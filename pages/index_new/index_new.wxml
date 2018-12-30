@@ -3,10 +3,14 @@
   <view>
     <image class="logo" src="../../images/LOGO.png"></image>
   </view>
+
   <view>
     <image class="intro" src="../../images/intro.png"></image>
   </view>
-    <view>友爱契约</view>
+
+    <view class="description">
+  <text>与众一同，履行心中所爱\n\nTogether, to get them.</text>
+</view>
   <view class="userinfo">
     <button class="wish-save-btn" wx:if="{{!hasUserInfo && canIUse}}" 
     open-type="getUserInfo" bindgetuserinfo="getUserInfo">
@@ -15,7 +19,5 @@
     <!-- <button class="login_btn" wx:if="{{!hasUserInfo && canIUse}}" 
     open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登陆 </button> -->
   </view>
-  <view class="description">
-  <text>与众一同，履行心中所爱\n\nTogether, to get them.</text>
-</view>
+      <!-- <view>友爱契约</view> -->
 </view>
