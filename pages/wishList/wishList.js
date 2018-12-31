@@ -8,7 +8,7 @@ let sdk = require("../../vendor/wafer2-client-sdk/index"),
 const pics = util.posterImages;
 const currentYear = new Date().getFullYear();
 const currentMonth = util.formatNumber(new Date().getMonth() + 1);
-const currentDate = util.formatNumber(new Date().getDate());
+const currentDate = util.formatNumber(new Date().getDate()+5);
 
 Page({
   /**
