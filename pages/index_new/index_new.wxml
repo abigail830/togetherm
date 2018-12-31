@@ -9,7 +9,7 @@
   </view>
 
     <view class="description">
-  <text>与众一同，履行心中所爱\n\nTogether, to get them.</text>
+  <text>契约精神挽救地球，真爱信诺拯救朋友圈\n\nTogether, to get them.</text>
 </view>
   <view class="userinfo">
     <button class="wish-save-btn" wx:if="{{!hasUserInfo && canIUse}}" 
