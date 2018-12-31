@@ -92,32 +92,32 @@
           <view class='timeline-timestamp'>{{item.asofMonth}}</view>
         </view>
         <view class='timeline-line'></view>
-        <block wx:for="{{item.wishListDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="wishListDTOList">
+        <block wx:for="{{item.takenWishDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="takenWishDTOList">
           <view class="timeline-entry">
             <view class="timeline-left">
               <view class="time-point-left">
                 <view class='timeline-line-up'></view>
                 <view class='timeline-circle'></view>
-                <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index !=  friendTimeline.length-1}}">
+                <block wx:if="{{inside_index !=item.takenWishDTOList.length-1 || timeline_index !=  friendTimeline.length-1}}">
                   <view class='timeline-line-down'></view>
                 </block>
               </view>
               <view class="time-point-right">
-                <view>{{wishListDTOList.dateInMonth}}</view>
+                <view>{{takenWishDTOList.dateInMonth}}</view>
               </view>
             </view>
             <view class='timeline-middle'>
               <view class="description">
                 <view class="bot"></view>
                 <view class="top"></view>
-                <text class="description-text">{{wishListDTOList.description}}</text>
+                <text class="description-text">{{takenWishDTOList.creator.nickName}}</text>
               </view>
-              <view>{{wishListDTOList.listDescription}}</view>
+              <view>{{takenWishDTOList.description}}</view>
             </view>
             <view class='timeline-right'>
-              <block wx:if="{{wishListDTOList.wishStatus!=='DONE'}}">
-                <image data-wishid="{{wishListDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
-                <image data-wishid="{{wishListDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
+              <block wx:if="{{takenWishDTOList.wishStatus!=='DONE'}}">
+                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
+                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
               </block>
             </view>
           </view>

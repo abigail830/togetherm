@@ -147,58 +147,93 @@ Page({
     }
   },
 
-  selectFriend() {
+  selectFriend: function () {
+    wx.showLoading({
+      title: '加载中...',
+    });
     console.log("selectFriend");
-
     this.setData({ showType: "friend" });
-    util
-      .request(
-        app.globalData.apiBase +
-          "/v1/wishes/taken?" +
-          "openId=" +
-          app.globalData.authInfo.openid
-      )
-      .then(
-        res => {
+    Promise.all([
+      util.request(app.globalData.apiBase + "/v1/wishes/taken/timeline?" + "openId=" + app.globalData.authInfo.openid)
+        .then((res) => {
           console.log(res.data);
-          this.setData({
-            friendTimeline: [
-              {
-                asofMonth: "2028年12月",
-                wishListDTOList: [
-                  {
-                    wishID: 85,
-                    wishListID: 24,
-                    wishStatus: "DONE",
-                    listId: 82,
-                    description: "吃大餐",
-                    listDescription: "我的契约是什么",
-                    listDueTime: "2028-12-19 00:59:59",
-                    dateInMonth: "19",
-                    yearAndMonth: "2028-12"
-                  },
-                  {
-                    wishID: 230,
-                    wishListID: 24,
-                    wishStatus: "TAKEUP",
-                    listId: 82,
-                    description: "吃大餐222",
-                    listDescription: "我的契约是什么",
-                    listDueTime: "2028-12-19 00:59:59",
-                    dateInMonth: "19",
-                    yearAndMonth: "2028-12"
-                  }
-                ]
-              }
-            ]
+          let friendTimeline = res.data.takenWishTimelineEntryList.map(e => {
+            e.takenWishDTOList = e.takenWishDTOList.map(e => {
+              let date = new Date(e.listDueTime.replace(/ /g, "T"));
+              e.dateInTime = date.getHours() + ":" + date.getMinutes();
+              return e;
+            });
+            return e;
           });
+          
+          this.setData(
+            {
+              friendTimeline: friendTimeline
+            }
+          );
+          console.log(this.data.friendTimeline);
+
           wx.hideLoading();
-        },
-        res => {
-          util.showModel("获取您的认领契约", res.errMsg);
-        }
-      );
+        }, (res) => {
+          util.showModel('获取您的认领契约', res.errMsg)
+        })
+    ]).then(() => {
+      wx.hideLoading();
+    });
   },
+
+  // selectFriend() {
+  //   console.log("selectFriend");
+
+  //   this.setData({ showType: "friend" });
+  //   util
+  //     .request(
+  //       app.globalData.apiBase +
+  //         "/v1/wishes/taken?" +
+  //         "openId=" +
+  //         app.globalData.authInfo.openid
+  //     )
+  //     .then(
+  //       res => {
+  //         console.log(res.data);
+  //         this.setData({
+  //           friendTimeline: [
+  //             {
+  //               asofMonth: "2028年12月",
+  //               wishListDTOList: [
+  //                 {
+  //                   wishID: 85,
+  //                   wishListID: 24,
+  //                   wishStatus: "DONE",
+  //                   listId: 82,
+  //                   description: "吃大餐",
+  //                   listDescription: "我的契约是什么",
+  //                   listDueTime: "2028-12-19 00:59:59",
+  //                   dateInMonth: "19",
+  //                   yearAndMonth: "2028-12"
+  //                 },
+  //                 {
+  //                   wishID: 230,
+  //                   wishListID: 24,
+  //                   wishStatus: "TAKEUP",
+  //                   listId: 82,
+  //                   description: "吃大餐222",
+  //                   listDescription: "我的契约是什么",
+  //                   listDueTime: "2028-12-19 00:59:59",
+  //                   dateInMonth: "19",
+  //                   yearAndMonth: "2028-12"
+  //                 }
+  //               ]
+  //             }
+  //           ]
+  //         });
+  //         wx.hideLoading();
+  //       },
+  //       res => {
+  //         util.showModel("获取您的认领契约", res.errMsg);
+  //       }
+  //     );
+  // },
   cancelWish(e) {
     let wishID = e.target.dataset.wishid;
     let page = this;
