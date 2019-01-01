@@ -19,7 +19,7 @@ Page({
     hasUserInfo: false,
     timeline: [],
     friendTimeline: [],
-    showType: "friend" //me ,friend
+    showType: "me" //me ,friend
   },
 
   onLoad: function() {
