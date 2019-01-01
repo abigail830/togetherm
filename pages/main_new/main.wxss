@@ -470,7 +470,7 @@
   display: inline-block;
 }
 .friend-timeline .icon-see+.icon-see {
-  margin-top: 20rpx;
+  margin-top: 10rpx;
 }
 
 .friend-timeline .timeline-middle {
