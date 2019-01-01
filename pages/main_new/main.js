@@ -4,6 +4,9 @@ let util = require("../../utils/util.js");
 let sdk = require("../../vendor/wafer2-client-sdk/index");
 
 const app = getApp();
+const format0 = function(num) {
+  return num < 10 ? "0" + num : num;
+};
 
 Page({
   data: {
@@ -16,7 +19,7 @@ Page({
     hasUserInfo: false,
     timeline: [],
     friendTimeline: [],
-    showType: "me" //me ,friend
+    showType: "friend" //me ,friend
   },
 
   onLoad: function() {
@@ -160,7 +163,7 @@ Page({
           let friendTimeline = res.data.takenWishTimelineEntryList.map(e => {
             e.takenWishDTOList = e.takenWishDTOList.map(e => {
               let date = new Date(e.listDueTime.replace(/ /g, "T"));
-              e.dateInTime = date.getHours() + ":" + date.getMinutes();
+              e.dateInTime = format0(date.getHours()) + ":" + format0(date.getMinutes());
               return e;
             });
             return e;
@@ -313,7 +316,7 @@ Page({
           let timeline = res.data.wishListTimelineEntryList.map(e => {
             e.wishListDTOList = e.wishListDTOList.map(e => {
               let date = new Date(e.listDueTime.replace(/ /g, "T"));
-              e.dateInTime = date.getHours() + ":" + date.getMinutes();
+              e.dateInTime = format0(date.getHours()) + ":" + format0(date.getMinutes());
               return e;
             });
             return e;

@@ -281,7 +281,7 @@
 .timeline-line-up {
   margin-left: 20px;
   border-left: 1px solid #6a3906;
-  height: 10px;
+  height: 25px;
   background: #fff;
 }
 
@@ -298,7 +298,7 @@
 .timeline-line-down {
   margin-left: 20px;
   border-left: 1px solid #6a3906;
-  height: 20px;
+  height: 25px;
   background: #fff;
 }
 
@@ -334,7 +334,9 @@
   width: 94%;
   margin: 0rpx;
 }
-
+.timeline-middle progress{
+  margin-top: 14rpx
+}
 .timeline-left {
   width: 30%;
   text-align: left;
@@ -347,6 +349,7 @@
   width: 52%;
   color: #6a3906;
   font-size: 80%;
+  padding-top: 25rpx;
   text-align: left;
 }
 .timeline-right {
@@ -361,9 +364,11 @@
 
 .time-point-right {
   width: 40%;
+  padding-top: 20rpx;
   color: #6a3906;
   font-weight: bold;
   text-align: center;
+  font-family: TrebuchetMS, Rotobo, "Microsoft YaHei", sans-serif;
 }
 
 .buttonView {
@@ -404,17 +409,16 @@
   vertical-align: middle;
 }
 .friend-timeline .timeline-entry {
-  height: 160rpx;
+  /* height: 160rpx; */
 }
 .friend-timeline .time-point-right {
-  line-height: 160rpx;
-  font-family: TrebuchetMS, Rotobo, "Microsoft YaHei", sans-serif;
+  /* line-height: 160rpx; */
 }
 .friend-timeline .timeline-line-up {
-  height: 70rpx;
+  /* height: 70rpx; */
 }
 .friend-timeline .timeline-line-down {
-  height: 70rpx;
+  /* height: 72rpx; */
 }
 .friend-timeline .description {
   font-size: 25rpx;
@@ -465,12 +469,12 @@
 .friend-timeline .timeline-right {
   display: inline-block;
 }
-.friend-timeline .icon-see {
+.friend-timeline .icon-see+.icon-see {
   margin-top: 20rpx;
 }
 
 .friend-timeline .timeline-middle {
-  padding-top: 25rpx;
+  padding-top: 5rpx;
 }
 
 .wish-save-btn {

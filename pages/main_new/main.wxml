@@ -104,6 +104,7 @@
               </view>
               <view class="time-point-right">
                 <view>{{takenWishDTOList.dateInMonth}}</view>
+                <view class="mini-time">{{takenWishDTOList.dateInTime}}</view>
               </view>
             </view>
             <view class='timeline-middle'>
