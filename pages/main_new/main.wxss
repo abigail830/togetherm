@@ -298,7 +298,7 @@
 .timeline-line-down {
   margin-left: 20px;
   border-left: 1px solid #6a3906;
-  height: 25px;
+  height: 50rpx;
   background: #fff;
 }
 
@@ -406,8 +406,18 @@
 .icon-see {
   width: 130rpx;
   height: 50rpx;
+  margin-top: 25rpx;
   vertical-align: middle;
 }
+.friend-timeline .icon-see {
+  /* width: 104rpx;
+  height: 40rpx; */
+  margin-top: 0rpx;
+}
+.friend-timeline .icon-see+.icon-see {
+  margin-top: 5rpx;
+}
+
 .friend-timeline .timeline-entry {
   /* height: 160rpx; */
 }
@@ -418,7 +428,7 @@
   /* height: 70rpx; */
 }
 .friend-timeline .timeline-line-down {
-  /* height: 72rpx; */
+  height: 55rpx;
 }
 .friend-timeline .description {
   font-size: 25rpx;
@@ -468,9 +478,6 @@
 }
 .friend-timeline .timeline-right {
   display: inline-block;
-}
-.friend-timeline .icon-see+.icon-see {
-  margin-top: 10rpx;
 }
 
 .friend-timeline .timeline-middle {
