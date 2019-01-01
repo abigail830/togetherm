@@ -153,6 +153,7 @@
 .list_icon {
   width: 130rpx;
   height: 50rpx;
+  padding: 0;
 }
 .input_new {
   display: flex;
@@ -182,4 +183,13 @@
   font-size: 32rpx;
   color: #6a3906;
   padding: 5rpx 0 30rpx;
+}
+
+.list_btn {
+  width: 130rpx;
+  height: 55rpx;
+  padding: 0;
+  background-color: none;
+  border: none;
+  border-color: transparent;
 }

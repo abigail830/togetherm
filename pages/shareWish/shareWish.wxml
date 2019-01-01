@@ -9,9 +9,12 @@
       <view class="input_new list_input hr">
         <view class="lable list_input_label">{{index+1}}</view>
         <view class="list_input_box row-text">{{item.description}}</view>
-        <view wx:if="{{item.wishStatus=='NEW'}}" data-index="{{index}}" bindtap="takeupWish">
-          <image class="list_icon" mode='aspectFill' src="/images/poster-btn.png" />
-        </view>
+        <form wx:if="{{item.wishStatus=='NEW'}}" data-index="{{index}}" bind:submit="takeupWish" report-submit="true">
+          <button class="list_btn" form-type="submit">
+            <image class="list_icon" mode='aspectFill' src="/images/poster-btn.png" ></image>
+          </button>
+          <!-- <image class="list_icon" mode='aspectFill' src="/images/poster-btn.png" ></image> -->
+        </form>
       </view>
     </block>
   </view>

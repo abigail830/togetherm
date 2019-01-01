@@ -50,11 +50,11 @@ Page({
     var index = e.currentTarget.dataset.index;
     var item = this.data.wishes[index];
     console.log(item);
-    console.log("wish id to be take up " + item.wishID);
-    this.takenWish(item.wishID, app.globalData.authInfo.openid);
+    console.log("wish id to be take up " + item.wishID + " form id " + e.detail.formId);
+    this.takenWish(item.wishID, app.globalData.authInfo.openid, e.detail.formId);
   },
 
-  takenWish: function(wishID, openID) {
+  takenWish: function(wishID, openID, formID) {
     var page = this;
     wx.showLoading({
       title: "加载中..."
@@ -67,7 +67,9 @@ Page({
           "id=" +
           wishID +
           "&openId=" +
-          openID,
+          openID +
+          "&formId=" +
+          formID,
         method: "PUT",
         header: { "Content-Type": "application/json" },
         success(res) {
