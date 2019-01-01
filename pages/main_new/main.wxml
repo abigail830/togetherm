@@ -120,6 +120,7 @@
                 <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
                 <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
               </block>
+              <image wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class="icon-star" src="/images/icon-star.png" />
             </view>
           </view>
         </block>

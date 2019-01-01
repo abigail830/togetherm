@@ -19,11 +19,13 @@
       <view class="box">
         <view>
           <view class="icon-btn">创建</view>
-          <view class="icon-detail">填好契约标题，选择契约有效期，简单描述契约描述，订立契约条款。分享给小伙伴，共同履行你们的约定。</view>
+          <view class="icon-detail">选定契约有效期，按步骤填好和谁约定，为何约定，并列清约定事项。</view>
+     <view class="icon-detail">向小伙伴发出契约，和小伙伴们共同履行约定。</view>
+     <view class="icon-detail">请注意，一旦双方达成协议，即立字为据。小伙伴认领约定事项后，这张契约和约定事项将无法删除。</view>
         </view>
         <view>
           <view class="icon-btn">认领</view>
-          <view class="icon-detail">打开小伙伴的契约，认领契约条款，让友谊的小船更加稳固。</view>
+          <view class="icon-detail">打开小伙伴的契约，勾选认领约定事项，在完成约定后点 Done。让友谊的小船更加稳固！</view>
         </view>
         <view>
           <view class="icon-btn">分享</view>

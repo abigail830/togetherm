@@ -176,7 +176,7 @@ Page({
         nick_name;
       console.log(path);
       return {
-        title: nick_name + "的" + this.data.listDescription,
+        title: nick_name + " " + this.data.listDescription,
         path: path,
         imageUrl: imageUrl,
         success: function(res) {

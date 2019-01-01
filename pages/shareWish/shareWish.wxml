@@ -11,9 +11,13 @@
         <view class="list_input_box row-text">{{item.description}}</view>
         <form wx:if="{{item.wishStatus=='NEW'}}" data-index="{{index}}" bind:submit="takeupWish" report-submit="true">
           <button class="list_btn" form-type="submit">
-            <image class="list_icon" mode='aspectFill' src="/images/poster-btn.png" ></image>
+            <image class="list_icon" mode='aspectFill' src="/images/icon-btn-1.png"></image>
           </button>
-          <!-- <image class="list_icon" mode='aspectFill' src="/images/poster-btn.png" ></image> -->
+        </form>
+        <form wx:if="{{item.wishStatus==='DONE'}}">
+        <button class="list_btn">
+          <image class="list_icon" mode='aspectFill' src="/images/icon-btn-2.png"></image>
+        </button>
         </form>
       </view>
     </block>

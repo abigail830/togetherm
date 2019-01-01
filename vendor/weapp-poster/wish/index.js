@@ -48,8 +48,6 @@ Component({
     },
 
     updatePosterConfig(fn) {
-      console.log(this.data);
-
       const fontColor = "#6A3906";
       const boxWidth = 672;
       const boxLeft = 40;
@@ -188,13 +186,15 @@ Component({
             color: fontColor,
             width: 500
           });
+
           images.push({
-            url: "/images/poster-btn.png",
-            width: 130,
-            height: 50,
-            y: top - padding - 6,
-            x: 278 * 2
+            url:e.wishStatus==='DONE'? "/images/icon-btn-2.png": "/images/icon-btn-1.png",
+            width: 60,
+            height: 60,
+            y: top - padding - 12,
+            x: 278 * 2 + 50
           });
+
           if (i < wishlistLen - 1) {
             lines.push({
               startY: top,

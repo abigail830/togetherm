@@ -108,8 +108,8 @@
   color: #6a3906;
 }
 .logo {
-  width:199.68rpx;
-  height:54rpx;   
+  width: 199.68rpx;
+  height: 54rpx;
   /* margin-top: 41.4rpx ; */
 }
 .poster {
@@ -147,11 +147,11 @@
 }
 .list_input_box {
   flex: 1;
-  max-width: 400rpx;
+  width: 480rpx;
   font-weight: normal !important;
 }
 .list_icon {
-  width: 130rpx;
+  width: 50rpx;
   height: 50rpx;
   padding: 0;
 }
@@ -170,6 +170,12 @@
   bottom: 0;
   position: absolute;
 }
+button ,.button-hover{
+  background: none;
+}
+button::after {
+  border: none;
+}
 .time {
   font-size: 34rpx;
   padding: 20px 0;
@@ -186,9 +192,8 @@
 }
 
 .list_btn {
-  width: 130rpx;
-  height: 55rpx;
-  padding: 0;
+  line-height: 0;
+  padding:10rpx 0 0 10rpx;
   background-color: none;
   border: none;
   border-color: transparent;

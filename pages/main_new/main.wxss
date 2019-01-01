@@ -301,7 +301,9 @@
   height: 50rpx;
   background: #fff;
 }
-
+.timeline.friend-timeline {
+  padding-bottom: 50rpx;
+}
 .timeline-timestamp {
   border: 2px solid #6a3906;
   border-radius: 20rpx;
@@ -334,8 +336,8 @@
   width: 94%;
   margin: 0rpx;
 }
-.timeline-middle progress{
-  margin-top: 14rpx
+.timeline-middle progress {
+  margin-top: 14rpx;
 }
 .timeline-left {
   width: 30%;
@@ -414,7 +416,7 @@
   height: 40rpx; */
   margin-top: 0rpx;
 }
-.friend-timeline .icon-see+.icon-see {
+.friend-timeline .icon-see + .icon-see {
   margin-top: 5rpx;
 }
 
@@ -498,4 +500,9 @@
 .mini-time {
   font-size: 20rpx;
   font-weight: normal;
+}
+.icon-star{
+  width: 56rpx;
+  height: 54rpx;
+  padding-top: 20rpx;
 }

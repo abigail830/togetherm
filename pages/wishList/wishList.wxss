@@ -204,7 +204,7 @@
   color: #b2b2b2;
 }
 .content_lists_new {
-  margin: 40rpx;
+  margin:20rpx 40rpx 40rpx;
   /* padding: 60rpx; */
   border: 4rpx solid #6a3906;
   border-radius: 25rpx;
@@ -309,4 +309,9 @@ button::after {
   height: 300rpx;
   line-height: 300rpx;
   color: #b2b2b2;
+}
+.items-title{
+  color: #6a3906;
+  padding:20rpx 0 0 40rpx ;
+  font-size: 30rpx;
 }
