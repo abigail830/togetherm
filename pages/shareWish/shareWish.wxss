@@ -125,9 +125,14 @@
   font-weight: 700;
   overflow: hidden;
   white-space: nowrap;
-  margin: 10rpx 0;
+  margin: 10rpx 0 0;
   text-overflow: ellipsis;
 }
+.row-text-nickname.row-text {
+  margin-top: 0;
+  margin-bottom: 10rpx;
+}
+
 .row-text-nickname {
   text-align: right;
 }
@@ -170,7 +175,8 @@
   bottom: 0;
   position: absolute;
 }
-button ,.button-hover{
+button,
+.button-hover {
   background: none;
 }
 button::after {
@@ -193,7 +199,7 @@ button::after {
 
 .list_btn {
   line-height: 0;
-  padding:10rpx 0 0 10rpx;
+  padding: 10rpx 0 0 10rpx;
   background-color: none;
   border: none;
   border-color: transparent;

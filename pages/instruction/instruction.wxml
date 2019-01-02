@@ -1,10 +1,13 @@
 <!-- pages/instruction/instruction.wxml -->
 <view class="container">
   <view>
-    <image class="logo" src="../../images/LOGO.png"></image>
+    <image bindtap='showEntrance' class="logo" src="../../images/LOGO.png"></image>
   </view>
   <view class="description">
-    <view class="textArea">
+    <view class="entrance" wx:if="{{entranceState}}">
+      <button bindtap="selectEntrance" wx:for="{{entrances}}" wx:key='item.id' data-id="{{item.id}}">{{item.name}}</button>
+    </view>
+    <view wx:else class="textArea">
       <view class="header">
         <image src="/images/icon-title.png" />
         友爱契约是什么？
@@ -19,9 +22,9 @@
       <view class="box">
         <view>
           <view class="icon-btn">创建</view>
-          <view class="icon-detail">选定契约有效期，按步骤填好和谁约定，为何约定，并列清约定事项。</view>
-     <view class="icon-detail">向小伙伴发出契约，和小伙伴们共同履行约定。</view>
-     <view class="icon-detail">请注意，一旦双方达成协议，即立字为据。小伙伴认领约定事项后，这张契约和约定事项将无法删除。</view>
+          <view class="icon-detail">● 选定契约有效期，按步骤填好和谁约定，为何约定，并列清约定事项。</view>
+          <view class="icon-detail">● 向小伙伴发出契约，和小伙伴们共同履行约定。</view>
+          <view class="icon-detail">● 请注意，一旦双方达成协议，即立字为据。小伙伴认领约定事项后，这张契约和约定事项将无法删除。</view>
         </view>
         <view>
           <view class="icon-btn">认领</view>
@@ -29,14 +32,15 @@
         </view>
         <view>
           <view class="icon-btn">分享</view>
-          <view class="icon-detail">保存海报，把契约分享到朋友圈，看有多少小伙伴愿意认领，考验你的RP。</view></view>
+          <view class="icon-detail">保存海报，把契约分享到朋友圈，看有多少小伙伴愿意认领，考验你的RP。</view>
+        </view>
       </view>
       <view class="tip">答应过的事情要努力做到哟！</view>
     </view>
   </view>
   <view class='buttonView'>
     <!-- <button class="wish-save-btn" > -->
-      <image class="wish-share-btn" bindtap="toMain" src="/images/begin.png" />
+    <image class="wish-share-btn" bindtap="toMain" src="/images/begin.png" />
     <!-- </button> -->
     <!-- <button class="main_btn" bindtap="toMain"> 开始使用 </button> -->
   </view>

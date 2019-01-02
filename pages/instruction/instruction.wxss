@@ -80,13 +80,13 @@
   margin: 30rpx 10rpx;
   line-height: 120%;
 }
-.icon-detail{
+.icon-detail {
   margin-top: 10rpx;
   line-height: 150%;
   margin-left: 10rpx;
 }
 .buttonView {
-  width:562rpx;
+  width: 562rpx;
   margin: auto;
   /* margin-bottom: 50rpx; */
   text-align: center;
@@ -113,4 +113,10 @@
   margin: auto;
   width: 562rpx;
   height: 100rpx;
+}
+.entrance {
+  padding: 20rpx;
+}
+.entrance button {
+  margin: 10rpx;
 }

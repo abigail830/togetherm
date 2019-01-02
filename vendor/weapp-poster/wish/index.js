@@ -59,7 +59,7 @@ Component({
         return {
           x: boxLeft,
           y: boxTop,
-          width: boxWidth,
+          width: boxWidth - 40,
           fontBold: true,
           text: this.data.wishname,
           fontSize: titleHeight,
@@ -73,10 +73,9 @@ Component({
         return {
           x: boxLeft / 2 + boxWidth,
           textAlign: "right",
-          //   x: boxLeft,
-          y: boxTop + titleHeight + boxSpacing,
+          y: boxTop + titleHeight + boxSpacing - 10,
           width: boxWidth,
-          text: " -- " + this.data.nickname,
+          text: this.data.nickname,
           fontSize: titleHeight - 4,
           fontBold: true,
           color: fontColor,
@@ -87,7 +86,7 @@ Component({
       const contentData = (() => {
         let data = {
           x: boxLeft + 5,
-          y: nicknameData.y + nicknameData.h + boxSpacing,
+          y: nicknameData.y + nicknameData.h + boxSpacing+10,
           width: boxWidth - 10,
           text: this.data.wishinfo,
           fontSize: 32,
@@ -188,7 +187,10 @@ Component({
           });
 
           images.push({
-            url:e.wishStatus==='DONE'? "/images/icon-btn-2.png": "/images/icon-btn-1.png",
+            url:
+              e.wishStatus !== "NEW"
+                ? "/images/icon-btn-2.png"
+                : "/images/icon-btn-1.png",
             width: 60,
             height: 60,
             y: top - padding - 12,

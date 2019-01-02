@@ -15,7 +15,7 @@ Page({
    */
   data: {
     wishes: [],
-    wishimage:'',
+    wishimage: "",
     listDescription: "",
     listDescription2: "",
     listDueTime: "",
@@ -34,11 +34,14 @@ Page({
    */
   onLoad: function(options) {
     console.log(options);
+    app.globalData.entrance = options.entrance
+      ? options.entrance
+      : app.globalData.entrance || "";
     if (options.wishListId == null) {
       console.log("wishListId is null");
     } else {
       this.setData({
-        wishimage: pics[options.wishimageId||0],
+        wishimage: pics(options.wishimageId || 0),
         wishListId: options.wishListId,
         nickName: options.nickName
       });
@@ -50,8 +53,14 @@ Page({
     var index = e.currentTarget.dataset.index;
     var item = this.data.wishes[index];
     console.log(item);
-    console.log("wish id to be take up " + item.wishID + " form id " + e.detail.formId);
-    this.takenWish(item.wishID, app.globalData.authInfo.openid, e.detail.formId);
+    console.log(
+      "wish id to be take up " + item.wishID + " form id " + e.detail.formId
+    );
+    this.takenWish(
+      item.wishID,
+      app.globalData.authInfo.openid,
+      e.detail.formId
+    );
   },
 
   takenWish: function(wishID, openID, formID) {
@@ -160,7 +169,7 @@ Page({
   onReachBottom: function() {},
 
   createMe: function() {
-    console.log('go go go')
+    console.log("go go go");
     wx.navigateTo({ url: "../index_new/index_new" });
   }
 });

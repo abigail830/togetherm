@@ -451,6 +451,8 @@
   max-width: 330rpx;
   overflow: hidden;
   line-height: 25rpx;
+  min-width: 60rpx;
+  text-align: center;
 }
 .friend-timeline .description view.bot,
 .friend-timeline .description view.top {
@@ -501,7 +503,7 @@
   font-size: 20rpx;
   font-weight: normal;
 }
-.icon-star{
+.icon-star {
   width: 56rpx;
   height: 54rpx;
   padding-top: 20rpx;

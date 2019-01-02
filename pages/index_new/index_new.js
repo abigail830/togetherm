@@ -10,7 +10,10 @@ Page({
     canIUse: wx.canIUse("button.open-type.getUserInfo")
   },
 
-  onLoad: function() {
+  onLoad: function(options) {
+    app.globalData.entrance = options.entrance
+    ? options.entrance
+    : app.globalData.entrance || "";
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

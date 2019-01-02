@@ -8,7 +8,7 @@ let sdk = require("../../vendor/wafer2-client-sdk/index"),
 const pics = util.posterImages;
 const currentYear = new Date().getFullYear();
 const currentMonth = util.formatNumber(new Date().getMonth() + 1);
-const currentDate = util.formatNumber(new Date().getDate()+5);
+const currentDate = util.formatNumber(new Date().getDate() + 5);
 
 Page({
   /**
@@ -27,7 +27,7 @@ Page({
     currentDate: currentDate,
     wishListID: null,
     canDelete: true,
-    wishimage: pics[0],
+    wishimage: '',
     touchMoveIndex: null,
     isPickerRender: false,
     isPickerShow: false,
@@ -36,8 +36,8 @@ Page({
       column: "hour"
     },
     selectPicIndex: 0,
-    pics: pics,
-    timeout:false
+    pics: [],
+    timeout: false
   },
 
   /**
@@ -50,7 +50,9 @@ Page({
       this.postWishList();
     } else {
       this.setData({
-        wishListID: options.wishListID
+        wishListID: options.wishListID,
+        pics: pics(),
+        wishimage:pics(0)
       });
       console.log(this.data.wishListID);
       return Promise.all([
@@ -83,7 +85,10 @@ Page({
                   year: res.data.listDueTime.substring(0, 4),
                   month: res.data.listDueTime.substring(5, 7),
                   currentDate: res.data.listDueTime.substring(8, 10),
-                  timeout: new Date(res.data.listDueTime.replace(new RegExp(/-/gm), "/")) < new Date(),
+                  timeout:
+                    new Date(
+                      res.data.listDueTime.replace(new RegExp(/-/gm), "/")
+                    ) < new Date(),
                   timePickerConfig: {
                     defaultDate:
                       res.data.listDueTime.length < 11
@@ -161,7 +166,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(options) {
-    let imageUrl = pics[this.data.selectPicIndex];
+    let imageUrl = pics(this.data.selectPicIndex);
     if (options.from == "button") {
       console.log(this.data.wishListID);
       var nick_name = app.globalData.userInfo.nickName;
@@ -174,31 +179,13 @@ Page({
         this.data.selectPicIndex +
         "&nickName=" +
         nick_name;
-      console.log(path);
-      return {
-        title: nick_name + " " + this.data.listDescription,
-        path: path,
-        imageUrl: imageUrl,
-        success: function(res) {
-          console.log("契约分享成功:" + JSON.stringify(res));
-        },
-        fail: function(res) {
-          console.log("契约分享失败:" + JSON.stringify(res));
-        }
-      };
+      return util.shareDate(
+        nick_name + " " + this.data.listDescription,
+        imageUrl,
+        path
+      );
     } else {
-      return {
-        title: "友爱契约",
-        imageUrl: imageUrl,
-        success: function(res) {
-          // 转发成功
-          console.log("转发成功:" + JSON.stringify(res));
-        },
-        fail: function(res) {
-          // 转发失败
-          console.log("转发失败:" + JSON.stringify(res));
-        }
-      };
+      return util.shareDate(null, null);
     }
   },
   bindKeyInput: function(e) {
@@ -481,7 +468,7 @@ Page({
   },
 
   showDatePicker: function(e) {
-    if(this.data.timeout || !this.data.canDelete) return
+    if (this.data.timeout || !this.data.canDelete) return;
     this.pickerShow();
   },
   hideDatePicker: function(e) {

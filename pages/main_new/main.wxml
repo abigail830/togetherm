@@ -64,7 +64,7 @@
             </view>
             <view class='timeline-middle'>
               <view>{{wishListDTOList.listDescription}}</view>
-              <progress percent="{{100-wishListDTOList.progress}}" activeColor="#ffd45a" backgroundColor="#E60C12" />
+              <progress percent="{{wishListDTOList.progress}}" activeColor="{{wishListDTOList.activeColor}}" backgroundColor="#d1d5da" />
             </view>
             <view class='timeline-right'>
               <navigator hover-class="none" url="../wishList/wishList?wishListID={{wishListDTOList.listId}}" class="timeline-btn">

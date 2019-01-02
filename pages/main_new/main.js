@@ -71,18 +71,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-    return {
-      title: "友爱契约",
-      imageUrl: "../../images/LOGO.png",
-      success: function(res) {
-        // 转发成功s
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function(res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
-      }
-    };
+      return util.shareDate(null,null);
   },
 
   touchstart: function(e) {
@@ -150,36 +139,44 @@ Page({
     }
   },
 
-  selectFriend: function () {
+  selectFriend: function() {
     wx.showLoading({
-      title: '加载中...',
+      title: "加载中..."
     });
     console.log("selectFriend");
     this.setData({ showType: "friend" });
     Promise.all([
-      util.request(app.globalData.apiBase + "/v1/wishes/taken/timeline?" + "openId=" + app.globalData.authInfo.openid)
-        .then((res) => {
-          console.log(res.data);
-          let friendTimeline = res.data.takenWishTimelineEntryList.map(e => {
-            e.takenWishDTOList = e.takenWishDTOList.map(e => {
-              let date = new Date(e.listDueTime.replace(/ /g, "T"));
-              e.dateInTime = format0(date.getHours()) + ":" + format0(date.getMinutes());
+      util
+        .request(
+          app.globalData.apiBase +
+            "/v1/wishes/taken/timeline?" +
+            "openId=" +
+            app.globalData.authInfo.openid
+        )
+        .then(
+          res => {
+            console.log(res.data);
+            let friendTimeline = res.data.takenWishTimelineEntryList.map(e => {
+              e.takenWishDTOList = e.takenWishDTOList.map(e => {
+                let date = new Date(e.listDueTime.replace(/ /g, "T"));
+                e.dateInTime =
+                  format0(date.getHours()) + ":" + format0(date.getMinutes());
+                return e;
+              });
               return e;
             });
-            return e;
-          });
-          
-          this.setData(
-            {
-              friendTimeline: friendTimeline
-            }
-          );
-          console.log(this.data.friendTimeline);
 
-          wx.hideLoading();
-        }, (res) => {
-          util.showModel('获取您的认领契约', res.errMsg)
-        })
+            this.setData({
+              friendTimeline: friendTimeline
+            });
+            console.log(this.data.friendTimeline);
+
+            wx.hideLoading();
+          },
+          res => {
+            util.showModel("获取您的认领契约", res.errMsg);
+          }
+        )
     ]).then(() => {
       wx.hideLoading();
     });
@@ -316,7 +313,9 @@ Page({
           let timeline = res.data.wishListTimelineEntryList.map(e => {
             e.wishListDTOList = e.wishListDTOList.map(e => {
               let date = new Date(e.listDueTime.replace(/ /g, "T"));
-              e.dateInTime = format0(date.getHours()) + ":" + format0(date.getMinutes());
+              e.activeColor = e.progress !== 100 ? "#ffd45a" : "#E60C12";
+              e.dateInTime =
+                format0(date.getHours()) + ":" + format0(date.getMinutes());
               return e;
             });
             return e;
