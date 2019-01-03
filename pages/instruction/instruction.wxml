@@ -1,5 +1,5 @@
 <!-- pages/instruction/instruction.wxml -->
-<view class="container">
+<view class="container {{isMax||'min'}}">
   <view>
     <image bindtap='showEntrance' class="logo" src="../../images/LOGO.png"></image>
   </view>

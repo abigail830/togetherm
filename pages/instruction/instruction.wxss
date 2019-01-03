@@ -7,6 +7,7 @@
   justify-content: flex-start;
   text-align: center;
   width: 100%;
+  padding-bottom: 200rpx;
 }
 
 .logo {
@@ -86,14 +87,19 @@
   margin-left: 10rpx;
 }
 .buttonView {
-  width: 562rpx;
   margin: auto;
   /* margin-bottom: 50rpx; */
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 80rpx;
   left: 0;
   right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.76) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .main_btn {
   width: 100%;
@@ -119,4 +125,18 @@
 }
 .entrance button {
   margin: 10rpx;
+}
+.min .logo {
+  margin: 0;
+  width: 224.68247248094832rpx;
+  height: 60rpx;
+}
+.min .description {
+  height: 970rpx;
+  overflow: auto;
+  margin: 10rpx 30rpx;
+}
+
+.min .buttonView {
+  bottom: 20rpx;
 }

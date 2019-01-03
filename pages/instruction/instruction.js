@@ -9,6 +9,7 @@ Page({
    */
   data: {
     entranceState: false,
+    isMax: true,
     entrances: [
       {
         id: "",
@@ -38,7 +39,12 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function() {
+    if (app.globalData.x <= 1.7) {
+      console.log(app.globalData.x);
+      this.setData({ isMax: false });
+    }
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
