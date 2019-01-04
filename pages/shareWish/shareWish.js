@@ -33,13 +33,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options);
+    console.warn("share-onLoad", options);
     app.globalData.entrance = options.entrance
       ? options.entrance
       : app.globalData.entrance || "";
     if (options.wishListId == null) {
       console.log("wishListId is null");
-    } else {
+    } else {  
       this.setData({
         wishimage: pics(options.wishimageId || 0),
         wishListId: options.wishListId,

@@ -48,6 +48,10 @@ Page({
     if (options.wishListID == null) {
       console.log("Going to create new wishlist ");
       this.postWishList();
+      this.setData({
+        pics: pics(),
+        wishimage: pics(0)
+      });
     } else {
       this.setData({
         wishListID: options.wishListID,

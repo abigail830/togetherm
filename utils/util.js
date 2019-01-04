@@ -229,8 +229,9 @@ module.exports = {
       ],
       dt: ["/images/dt-0.png"]
     };
-
-    let lists = images[entrance] || images['default'];
-    return typeof i !== "number" ? lists : lists[i];
+    let lists = images[entrance] || images["default"];
+    const res = typeof i === "undefined" ? lists : lists[i];
+    console.warn("获取图片", typeof i, i, entrance, res);
+    return res;
   }
 };
