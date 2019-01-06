@@ -28,7 +28,7 @@
           <image class="list_icon" mode='aspectFill' src="/images/icon-delete.png" />
         </view>
         <view wx:if="{{timeout || item.implementor}}" class="implementor">
-          <text wx:if="{{item.implementor&&item.wishStatus!=='NEW'}}">{{item.implementor.nickName}}</text>
+          <text wx:if="{{item.implementor&&item.wishStatus!=='NEW'}}">{{item.implementor.nickName||'神秘的朋友'}}</text>
           <text wx:if="{{!item.implementor&&item.wishStatus!=='NEW'}}" class="not">匿名</text>
           <text wx:if="{{item.wishStatus==='NEW'}}" class="not">还没人认领</text>
         </view>
