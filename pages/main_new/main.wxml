@@ -111,7 +111,8 @@
               <view class="description">
                 <view class="bot"></view>
                 <view class="top"></view>
-                <text class="description-text">{{takenWishDTOList.creator.nickName}}</text>
+                <text wx:if="{{takenWishDTOList.creator.nickName != ''}}" class="description-text">{{takenWishDTOList.creator.nickName}}</text>
+                <text wx:else class="description-text">神秘的朋友</text>
               </view>
               <view>{{takenWishDTOList.description}}</view>
             </view>
