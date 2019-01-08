@@ -16,6 +16,7 @@ Page({
    */
   data: {
     wishes: [],
+    deNickname:'神秘的朋友',
     listDescription: "",
     listDescription2: "",
     listDueTime: "",
@@ -173,7 +174,7 @@ Page({
     let imageUrl = pics(this.data.selectPicIndex);
     if (options.from == "button") {
       console.log(this.data.wishListID);
-      var nick_name = app.globalData.userInfo.nickName;
+      var nick_name = app.globalData.userInfo?app.globalData.userInfo.nickName : this.data.deNickname;
       // const path = "/pages/shareIndex/shareIndex?wishListId=" + this.data.wishListID + "&wishimageId=" + this.data.selectPicIndex + "&nickName=" +  nick_name;
 
       const path =
