@@ -177,13 +177,7 @@ Page({
       var nick_name = app.globalData.userInfo?app.globalData.userInfo.nickName : this.data.deNickname;
       // const path = "/pages/shareIndex/shareIndex?wishListId=" + this.data.wishListID + "&wishimageId=" + this.data.selectPicIndex + "&nickName=" +  nick_name;
 
-      const path =
-        "/pages/shareWish/shareWish?wishListId=" +
-        this.data.wishListID +
-        "&wishimageId=" +
-        this.data.selectPicIndex +
-        "&nickName=" +
-        nick_name;
+      const path = "/pages/shareWish/shareWish?wishListId=" + this.data.wishListID + "&wishimageId=" + this.data.selectPicIndex + "&wishimageUrl=" + imageUrl + "&nickName=" + nick_name;
       return util.shareDate(
         nick_name + " " + this.data.listDescription,
         imageUrl,

@@ -41,7 +41,7 @@ Page({
       console.log("wishListId is null");
     } else {  
       this.setData({
-        wishimage: pics(options.wishimageId || 0),
+        wishimage: options.wishimageUrl || pics(options.wishimageId || 0),
         wishListId: options.wishListId,
         nickName: options.nickName
       });

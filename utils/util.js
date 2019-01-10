@@ -215,8 +215,27 @@ module.exports = {
   posterImages: i => {
     let globalData = getApp().globalData;
     const entrance = globalData.entrance || "default";
-    const images = { default: ["/images/0.jpg", "/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg", "/images/7.jpg", "/images/8.jpg"], dt: ["/images/dt-0.png"], ts: ["/images/ts-0.png", "/images/ts-1.png"] };
+    const images = globalData.status || {
+      default: [
+        "/images/0.jpg",
+        "/images/1.jpg",
+        "/images/2.jpg",
+        "/images/3.jpg",
+        "/images/4.jpg",
+        "/images/5.jpg",
+        "/images/6.jpg",
+        "/images/7.jpg",
+        "/images/8.jpg"
+      ],
+      dt: ["/images/dt-0.png"],
+      ts: ["/images/ts-0.png", "/images/ts-1.png"]
+    };
     let lists = images[entrance] || images["default"];
+    if (globalData.status) {
+      lists = lists.map(e => {
+        return globalData.statusBase + e;
+      });
+    }
     const res = typeof i === "undefined" ? lists : lists[i];
     console.warn("获取图片", typeof i, i, entrance, res);
     return res;

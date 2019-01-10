@@ -4,6 +4,7 @@ App({
   onLaunch: function() {
     // 展示本地存储能力
     let logs = wx.getStorageSync("logs") || [];
+    this.getStatus();
     logs.unshift(Date.now());
     wx.setStorageSync("logs", logs);
     this.bindNetworkChangeRefresh();
@@ -153,10 +154,23 @@ App({
     isNetworkConnected: true,
     userInfo: null,
     apiBase: "https://wishlist.rabbit-hop.com",
+    statusBase: "https://wishlist.rabbit-hop.com/images/",
     myCompletedWishCount: null,
     myFriendsCompletedWishCount: null,
     wishLists: [],
     hasWishList: false,
-    timeline: []
+    timeline: [],
+    status: null,
+    types:[]
+  },
+
+  getStatus() {
+    util.request(this.globalData.statusBase + "/status.json").then(e => {
+        console.log(e);
+        this.globalData.status = e.data.lists;
+        this.globalData.types = e.data.types;
+      }, res => {
+        util.showModel("获取契约海报失败", res.errMsg);
+      });
   }
 });

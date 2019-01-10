@@ -10,20 +10,7 @@ Page({
   data: {
     entranceState: false,
     isMax: true,
-    entrances: [
-      {
-        id: "",
-        name: "默认"
-      },
-      {
-        id: "dt",
-        name: "兔叮贺年专用"
-      },
-      {
-        id: "ts",
-        name: "天硕光大活动"
-      }
-    ]
+    entrances: []
   },
 
   /**
@@ -41,8 +28,9 @@ Page({
    */
   onShow: function() {
     if (app.globalData.x <= 1.7) {
-      console.log(app.globalData.x);
-      this.setData({ isMax: false });
+      this.setData({ entrances: app.globalData.types, isMax: false });
+    } else {
+      this.setData({ entrances: app.globalData.types, isMax: true });
     }
   },
 
