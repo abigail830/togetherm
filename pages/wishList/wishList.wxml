@@ -14,9 +14,7 @@
       <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写契约描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
     </view>
   </view>
-  <view class="items-title">
-    约定事项
-  </view>
+  <view class="items-title">约定事项</view>
   <view wx:if="{{wishes.length>0 || !timeout}}" class="content_lists_new {{timeout&&'timeout'}}">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="input_new list_input hr">
@@ -28,7 +26,9 @@
           <image class="list_icon" mode='aspectFill' src="/images/icon-delete.png" />
         </view>
         <view wx:if="{{timeout || item.implementor}}" class="implementor">
-          <text wx:if="{{item.implementor&&item.wishStatus!=='NEW'}}">{{item.implementor.nickName||'神秘的朋友'}}</text>
+          <text wx:if="{{item.implementor&&item.wishStatus!=='NEW'}}">
+            {{item.implementor.nickName||'神秘的朋友'}}
+          </text>
           <text wx:if="{{!item.implementor&&item.wishStatus!=='NEW'}}" class="not">匿名</text>
           <text wx:if="{{item.wishStatus==='NEW'}}" class="not">还没人认领</text>
         </view>
@@ -38,11 +38,15 @@
       <view class="lable list_input_label"></view>
       <view class="list_input_box"></view>
       <view bindtap="addWishList">
-        <image class="list_icon" mode='aspectFill' src="/images/icon-add.png" />
+        <form report-submit bindsubmit="formSubmit">
+          <button class='add-list-btn' form-type="submit" hover-class='none'>
+            <image class="list_icon" mode='aspectFill' src="/images/icon-add.png" />
+          </button>
+        </form>
       </view>
     </view>
   </view>
-<view wx:else class="wishes-not">您没建立任何契约</view>
+  <view wx:else class="wishes-not">您没建立任何契约</view>
   <view>
     <view class="pic_title">
       选择分享图片

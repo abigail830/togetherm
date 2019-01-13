@@ -633,5 +633,8 @@ Page({
         console.log("request fail", error);
       }
     });
+  },
+  formSubmit(e){
+    console.warn(e.detail.formId);
   }
 });
