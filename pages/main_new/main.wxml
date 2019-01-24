@@ -13,7 +13,8 @@
     </view>
     <view class="right">
       <image class="logo" src="../../images/LOGO.png"></image>
-      <button bindtap="help" class="help">帮 助</button>
+      <button wx:if="{{outstandingCoupon.coupon}}" bindtap="addCard" class="help">领取卡券</button>
+      <button wx:else bindtap="help" class="help">帮 助</button>
     </view>
   </view>
   <view class="countinfo">

@@ -19,6 +19,7 @@ Page({
     hasUserInfo: false,
     timeline: [],
     friendTimeline: [],
+    outstandingCoupon: {},
     showType: "me" //me ,friend
   },
 
@@ -51,7 +52,8 @@ Page({
         myFriendsCompletedWishCount: app.globalData.myFriendsCompletedWishCount,
         hasWishList: app.globalData.hasWishList,
         wishLists: app.globalData.wishLists,
-        timeline: app.globalData.timeline
+        timeline: app.globalData.timeline,
+        outstandingCoupon: app.globalData.outstandingCoupon
       });
     }
   },
@@ -181,6 +183,64 @@ Page({
       wx.hideLoading();
     });
   },
+
+acknowledgeCard: function() {
+  try {
+    console.log("Acknowledge card");
+    sdk.request({
+      url: app.globalData.apiBase + `/coupon/?openID=` + app.globalData.authInfo.openid,
+        method: "PUT",
+        header: { "Content-Type": "application/json" },
+    success(result) {
+      console.log("请求成功");
+      console.log(result);
+      if (result.data.error) {
+        console.log(result.data.error);
+      }
+    },
+    fail(error) {
+      util.showModel("请求失败,请检查网络", error);
+      console.log("request fail", error);
+    }
+  });
+} catch (e) {
+  console.log("Exception happen when acknowledge card !");
+  console.log(e);
+}
+},
+
+addCard: function(e) {
+  var cardID = this.data.outstandingCoupon.coupon;
+  var page = this;
+  wx.request({
+    url: app.globalData.apiBase + "/wx/platform/cardsign?cardID=" + cardID,
+    data: {},
+    method: 'GET',
+    success: function (res) {
+      console.log(res);
+      wx.addCard({
+        cardList: [{
+          cardId: cardID,
+          cardExt: '{"code":"","openid":"","timestamp":' + res.data.timestamp + ',"nonce_str":"' + res.data.nonceStr + '","signature":"' + res.data.signature + '"}'
+        }],
+        success: function (result) {
+          console.log(res);
+          page.acknowledgeCard();
+          wx.showToast({
+            title: '领取成功',
+            icon: 'success',
+            duration: 2000
+          });
+        },
+        fail: function (res) {
+          console.log('领取失败');
+          console.log(res);
+        }
+      })
+
+    }
+  });
+},
 
   // selectFriend() {
   //   console.log("selectFriend");
@@ -326,6 +386,7 @@ Page({
           app.globalData.wishLists = res.data.wishLists;
           app.globalData.hasWishList = res.data.hasWishList;
           app.globalData.timeline = timeline;
+          app.globalData.outstandingCoupon = res.data.outstandingCoupon;
           //new Date('2018-12-24 13:19:29'.replace(/ /g,"T"))
           this.setWishListData();
           wx.hideLoading();
