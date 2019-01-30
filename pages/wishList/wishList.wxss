@@ -330,7 +330,7 @@ button::after {
   text-overflow: ellipsis;
   color: red;
   font-size: 26rpx;
-  line-height: 60rpx;
+  line-height: 26rpx;
   width: 130rpx;
   text-align: center;
 }

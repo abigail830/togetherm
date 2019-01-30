@@ -508,3 +508,25 @@
   height: 54rpx;
   padding-top: 20rpx;
 }
+.card-tip-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.card-tip-view-box {
+  width: 600rpx;
+  height: 600rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.card-tip-bg {
+  width: 600rpx;
+  height: 600rpx;
+}

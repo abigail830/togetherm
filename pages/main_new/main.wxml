@@ -133,3 +133,9 @@
     </view>
   </block>
 </view>
+<view class="card-tip-view" wx:if="{{outstandingCoupon.coupon}}">
+<view class="card-tip-view-box" bind:tap="addCard">
+     <image class="card-tip-bg" src="/images/card-tip.png" />
+</view>
+/ddd
+</view>

@@ -7,7 +7,6 @@ const app = getApp();
 const format0 = function(num) {
   return num < 10 ? "0" + num : num;
 };
-
 Page({
   data: {
     empty_wish: "还没你的契约契约哦 6_6",
@@ -19,7 +18,7 @@ Page({
     hasUserInfo: false,
     timeline: [],
     friendTimeline: [],
-    outstandingCoupon: {},
+    outstandingCoupon: null,
     showType: "me" //me ,friend
   },
 
@@ -30,7 +29,7 @@ Page({
         hasUserInfo: true
       });
     }
-
+    wx.pageMain = this;
     // this.setWishListData();
   },
   help: function(e) {
@@ -73,7 +72,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-      return util.shareDate(null,null);
+    return util.shareDate(null, null);
   },
 
   touchstart: function(e) {
@@ -184,116 +183,85 @@ Page({
     });
   },
 
-acknowledgeCard: function() {
-  try {
-    console.log("Acknowledge card");
-    sdk.request({
-      url: app.globalData.apiBase + `/coupon/?openID=` + app.globalData.authInfo.openid,
+  acknowledgeCard: function() {
+    try {
+      console.log("Acknowledge card");
+      sdk.request({
+        url:
+          app.globalData.apiBase +
+          `/coupon/?openID=` +
+          app.globalData.authInfo.openid,
         method: "PUT",
         header: { "Content-Type": "application/json" },
-    success(result) {
-      console.log("请求成功");
-      console.log(result);
-      if (result.data.error) {
-        console.log(result.data.error);
-      }
-    },
-    fail(error) {
-      util.showModel("请求失败,请检查网络", error);
-      console.log("request fail", error);
-    }
-  });
-} catch (e) {
-  console.log("Exception happen when acknowledge card !");
-  console.log(e);
-}
-},
-
-addCard: function(e) {
-  var cardID = this.data.outstandingCoupon.coupon;
-  var page = this;
-  wx.request({
-    url: app.globalData.apiBase + "/wx/platform/cardsign?cardID=" + cardID,
-    data: {},
-    method: 'GET',
-    success: function (res) {
-      console.log(res);
-      wx.addCard({
-        cardList: [{
-          cardId: cardID,
-          cardExt: '{"code":"","openid":"","timestamp":' + res.data.timestamp + ',"nonce_str":"' + res.data.nonceStr + '","signature":"' + res.data.signature + '"}'
-        }],
-        success: function (result) {
-          console.log(res);
-          page.acknowledgeCard();
-          wx.showToast({
-            title: '领取成功',
-            icon: 'success',
-            duration: 2000
-          });
+        success(result) {
+          console.log("请求成功");
+          console.log(result);
+          if (result.data.error) {
+            console.log(result.data.error);
+          }
         },
-        fail: function (res) {
-          console.log('领取失败');
-          console.log(res);
+        fail(error) {
+          util.showModel("请求失败,请检查网络", error);
+          console.log("request fail", error);
         }
-      })
-
+      });
+    } catch (e) {
+      console.log("Exception happen when acknowledge card !");
+      console.log(e);
     }
-  });
-},
+  },
 
-  // selectFriend() {
-  //   console.log("selectFriend");
-
-  //   this.setData({ showType: "friend" });
-  //   util
-  //     .request(
-  //       app.globalData.apiBase +
-  //         "/v1/wishes/taken?" +
-  //         "openId=" +
-  //         app.globalData.authInfo.openid
-  //     )
-  //     .then(
-  //       res => {
-  //         console.log(res.data);
-  //         this.setData({
-  //           friendTimeline: [
-  //             {
-  //               asofMonth: "2028年12月",
-  //               wishListDTOList: [
-  //                 {
-  //                   wishID: 85,
-  //                   wishListID: 24,
-  //                   wishStatus: "DONE",
-  //                   listId: 82,
-  //                   description: "吃大餐",
-  //                   listDescription: "我的契约是什么",
-  //                   listDueTime: "2028-12-19 00:59:59",
-  //                   dateInMonth: "19",
-  //                   yearAndMonth: "2028-12"
-  //                 },
-  //                 {
-  //                   wishID: 230,
-  //                   wishListID: 24,
-  //                   wishStatus: "TAKEUP",
-  //                   listId: 82,
-  //                   description: "吃大餐222",
-  //                   listDescription: "我的契约是什么",
-  //                   listDueTime: "2028-12-19 00:59:59",
-  //                   dateInMonth: "19",
-  //                   yearAndMonth: "2028-12"
-  //                 }
-  //               ]
-  //             }
-  //           ]
-  //         });
-  //         wx.hideLoading();
-  //       },
-  //       res => {
-  //         util.showModel("获取您的认领契约", res.errMsg);
-  //       }
-  //     );
-  // },
+  addCard: function(e) {
+    let coupon = this.data.outstandingCoupon;
+    var cardID = coupon === null && typeof e === "string" ? e : coupon.coupon;
+    var page = this;
+    wx.request({
+      url: app.globalData.apiBase + "/wx/platform/cardsign?cardID=" + cardID,
+      data: {},
+      method: "GET",
+      success: function(res) {
+        console.log(res);
+        wx.addCard({
+          cardList: [
+            {
+              cardId: cardID,
+              cardExt:
+                '{"code":"","openid":"","timestamp":' +
+                res.data.timestamp +
+                ',"nonce_str":"' +
+                res.data.nonceStr +
+                '","signature":"' +
+                res.data.signature +
+                '"}'
+            }
+          ],
+          success: function(result) {
+            console.log(res);
+            wx.showToast({
+              title: "领取成功",
+              icon: "success",
+              duration: 2000
+            });
+            app.globalData.outstandingCoupon = null;
+            page.setData({ outstandingCoupon: null });
+            if (app.globalData.postCoupon) {
+              page.acknowledgeCard();
+            } else {
+            }
+          },
+          fail: function(res) {
+            console.log("领取失败");
+            if (res && res.errMsg === "addCard:fail cancel") {
+              app.globalData.repeatTipCard &&
+                page.getCardTip("请先点击领取卡券^-^");
+              console.log("再次弹出领取???");
+            }
+            console.log(res);
+          }
+        });
+      }
+    });
+  },
   cancelWish(e) {
     let wishID = e.target.dataset.wishid;
     let page = this;
@@ -387,6 +355,12 @@ addCard: function(e) {
           app.globalData.hasWishList = res.data.hasWishList;
           app.globalData.timeline = timeline;
           app.globalData.outstandingCoupon = res.data.outstandingCoupon;
+          // todo dev
+          // app.globalData.outstandingCoupon = { coupon: 1 };
+          // 有卡券待领
+          // if (app.globalData.outstandingCoupon) {
+          //   this.getCardTip();
+          // }
           //new Date('2018-12-24 13:19:29'.replace(/ /g,"T"))
           this.setWishListData();
           wx.hideLoading();
@@ -395,5 +369,19 @@ addCard: function(e) {
           util.showModel("获取您的契约契约", res.errMsg);
         }
       );
+  },
+  getCardTip(tip = "您有卡券待领!") {
+    let that = this;
+    // wx.showModal({
+    //   title: "温馨提示",
+    //   showCancel: false,
+    //   content: tip,
+    //   confirmText: "领取",
+    //   success(res) {
+    //     if (res.confirm) {
+    //       that.addCard();
+    //     }
+    //   }
+    // });
   }
 });

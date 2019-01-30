@@ -186,7 +186,7 @@ const shareDate = (title, imageUrl, path) => {
     imageUrl
       ? { imageUrl: imageUrl }
       : imageUrl === null
-      ? { imageUrl: "../../images/LOGO.png" }
+        ? { imageUrl: "../../images/share-icon.jpg" }
       : {}
   );
   console.log(opt);

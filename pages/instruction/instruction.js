@@ -57,10 +57,9 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-    return util.shareDate();
+  onShareAppMessage: function () {
+    return util.shareDate(null, null);
   },
-
   toMain: function(e) {
     console.info("to main called");
     wx.navigateBack();

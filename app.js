@@ -161,16 +161,23 @@ App({
     hasWishList: false,
     timeline: [],
     status: null,
-    types:[]
+    types: [],
+    postCoupon: false,
+    repeatTipCard: null
   },
 
   getStatus() {
-    util.request(this.globalData.statusBase + "/status.json").then(e => {
+    util.request(this.globalData.statusBase + "/status.json").then(
+      e => {
         console.log(e);
         this.globalData.status = e.data.lists;
         this.globalData.types = e.data.types;
-      }, res => {
+        this.globalData.postCoupon = e.data.postCoupon;
+        this.globalData.repeatTipCard = e.data.repeatTipCard;
+      },
+      res => {
         util.showModel("获取契约海报失败", res.errMsg);
-      });
+      }
+    );
   }
 });

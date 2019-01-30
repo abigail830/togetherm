@@ -1,23 +1,20 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
   <view>
     <image class="logo" src="../../images/LOGO.png"></image>
   </view>
-
   <view>
     <image class="intro" src="../../images/intro.png"></image>
   </view>
-
-    <view class="description">
-  <text>契约精神挽救地球，真爱信诺拯救朋友圈\n\nTogether, to get them.</text>
-</view>
+  <view class="description">
+    <text>契约精神挽救地球，真爱拯救朋友圈\n\nTogether, to get them.</text>
+  </view>
   <view class="userinfo">
-    <button class="wish-save-btn" wx:if="{{!hasUserInfo && canIUse}}" 
-    open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    <button class="wish-save-btn" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
       <image class="wish-share-btn" src="/images/login.png" />
     </button>
     <!-- <button class="login_btn" wx:if="{{!hasUserInfo && canIUse}}" 
     open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信登陆 </button> -->
   </view>
-      <!-- <view>友爱契约</view> -->
+  <!-- <view>友爱契约</view> -->
 </view>
