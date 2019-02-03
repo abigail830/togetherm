@@ -402,7 +402,8 @@ Page({
                 method: "DELETE",
                 header: {"Content-Type": "application/json"},
                 data: {
-                    wishID: wishID
+                    wishID: wishID,
+                    wishListID: this.data.wishListID,
                 },
                 success(result) {
                     if (back) wx.navigateBack();
