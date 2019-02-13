@@ -536,41 +536,6 @@ Page({
         );
     },
 
-    confirmAndBack: function (e) {
-        //This is going for HTTP POST/PUT for info update
-        try {
-            sdk.request({
-                url: app.globalData.apiBase + `/wishes`,
-                method: "POST",
-                header: {"Content-Type": "application/json"},
-                data: {
-                    wishes: this.data.wishes,
-                    listDueDate: this.data.listDueDate,
-                    listDescription: this.data.listDescription
-                },
-                success(result) {
-                    console.log("请求成功");
-                    console.log(result.data);
-
-                    //http response code 200/404/500..etc
-                    if (result.data.error) {
-                        console.log(result.data.error);
-                    }
-                },
-                fail(error) {
-                    util.showModel("请求失败,请检查网络", error);
-                    console.log("request fail", error);
-                }
-            });
-        } catch (e) {
-            this.setData({
-                hiddenLoading: true
-            });
-            console.log("Exception happen when update wish content!");
-            console.log(e);
-        }
-    },
-
     touchstart: function (e) {
         this.setData({
             startX: e.changedTouches[0].clientX,
