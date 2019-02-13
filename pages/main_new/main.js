@@ -19,6 +19,7 @@ Page({
     timeline: [],
     friendTimeline: [],
     outstandingCoupon: null,
+    iconDone:"",
     showType: "me" //me ,friend
   },
 
@@ -26,7 +27,7 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
       });
     }
     wx.pageMain = this;
@@ -166,8 +167,8 @@ Page({
               });
               return e;
             });
-
             this.setData({
+              iconDone: app.globalData.iconDone,
               friendTimeline: friendTimeline
             });
             console.log(this.data.friendTimeline);

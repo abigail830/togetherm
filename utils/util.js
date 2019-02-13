@@ -186,7 +186,7 @@ const shareDate = (title, imageUrl, path) => {
     imageUrl
       ? { imageUrl: imageUrl }
       : imageUrl === null
-        ? { imageUrl: "../../images/share-icon.jpg" }
+      ? { imageUrl: "../../images/share-icon.jpg" }
       : {}
   );
   console.log(opt);
@@ -239,5 +239,22 @@ module.exports = {
     const res = typeof i === "undefined" ? lists : lists[i];
     console.warn("获取图片", typeof i, i, entrance, res);
     return res;
+  },
+  iconDone: v => {
+    let lists = v || {};
+    let now = +new Date();
+    for (const key in lists) {
+      if (lists.hasOwnProperty(key)) {
+        const d = lists[key];
+        const s = +new Date(d[0]);
+        const e = +new Date(d[1]);
+        if (now >= s && now <= e) {
+          console.log("时间对", key);
+          return getApp().globalData.statusBase + key;
+        }
+        console.log(d);
+      }
+    }
+    return "/images/icon-star.png";
   }
 };

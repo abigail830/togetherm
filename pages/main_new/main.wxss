@@ -444,15 +444,16 @@
   margin-bottom: 15rpx;
 }
 .friend-timeline .description-text {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 330rpx;
-  display: inline-block;
-  max-width: 330rpx;
-  overflow: hidden;
-  line-height: 25rpx;
-  min-width: 60rpx;
-  text-align: center;
+  white-space:nowrap;
+text-overflow:ellipsis;
+max-width:330rpx;
+display:inline-block;
+overflow:hidden;
+line-height:12rpx;
+min-width:60rpx;
+text-align:center;
+padding-bottom:10rpx;
+height:20rpx;
 }
 .friend-timeline .description view.bot,
 .friend-timeline .description view.top {

@@ -112,7 +112,9 @@
               <view class="description">
                 <view class="bot"></view>
                 <view class="top"></view>
-                <text wx:if="{{takenWishDTOList.creator.nickName != ''}}" class="description-text">{{takenWishDTOList.creator.nickName}}</text>
+                <text wx:if="{{takenWishDTOList.creator.nickName != ''}}" class="description-text">
+                  {{takenWishDTOList.creator.nickName}}
+                </text>
                 <text wx:else class="description-text">神秘的朋友</text>
               </view>
               <view>{{takenWishDTOList.description}}</view>
@@ -122,7 +124,7 @@
                 <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
                 <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
               </block>
-              <image wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class="icon-star" src="/images/icon-star.png" />
+              <image wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class="icon-star" src="{{iconDone}}" />
             </view>
           </view>
         </block>
@@ -134,8 +136,8 @@
   </block>
 </view>
 <view class="card-tip-view" wx:if="{{outstandingCoupon.coupon}}">
-<view class="card-tip-view-box" bind:tap="addCard">
-     <image class="card-tip-bg" src="/images/card-tip.png" />
-</view>
-/ddd
+  <view class="card-tip-view-box" bind:tap="addCard">
+    <image class="card-tip-bg" src="/images/card-tip.png" />
+  </view>
+  /ddd
 </view>

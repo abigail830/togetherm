@@ -163,7 +163,8 @@ App({
     status: null,
     types: [],
     postCoupon: false,
-    repeatTipCard: null
+    repeatTipCard: null,
+    iconDone: ""
   },
 
   getStatus() {
@@ -174,6 +175,7 @@ App({
         this.globalData.types = e.data.types;
         this.globalData.postCoupon = e.data.postCoupon;
         this.globalData.repeatTipCard = e.data.repeatTipCard;
+        this.globalData.iconDone = util.iconDone(e.data.iconDone);
       },
       res => {
         util.showModel("获取契约海报失败", res.errMsg);
