@@ -175,7 +175,8 @@ App({
         this.globalData.types = e.data.types;
         this.globalData.postCoupon = e.data.postCoupon;
         this.globalData.repeatTipCard = e.data.repeatTipCard;
-        this.globalData.iconDone = util.iconDone(e.data.iconDone);
+        this.globalData.iconDoneLists = e.data.iconDone;
+        this.globalData.iconDone = util.getIconDone(e.data.iconDone);
       },
       res => {
         util.showModel("获取契约海报失败", res.errMsg);

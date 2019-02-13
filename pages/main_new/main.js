@@ -19,7 +19,7 @@ Page({
     timeline: [],
     friendTimeline: [],
     outstandingCoupon: null,
-    iconDone:"",
+    iconDone: "",
     showType: "me" //me ,friend
   },
 
@@ -27,10 +27,12 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
+        hasUserInfo: true
       });
     }
-    wx.pageMain = this;
+    wx._pageMain = this;
+    wx._app = app;
+    wx._util = util;
     // this.setWishListData();
   },
   help: function(e) {
@@ -163,6 +165,7 @@ Page({
                 let date = new Date(e.listDueTime.replace(/ /g, "T"));
                 e.dateInTime =
                   format0(date.getHours()) + ":" + format0(date.getMinutes());
+                e.iconDone = util.getIconDone(null, e.createTime);
                 return e;
               });
               return e;

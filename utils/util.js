@@ -240,9 +240,15 @@ module.exports = {
     console.warn("获取图片", typeof i, i, entrance, res);
     return res;
   },
-  iconDone: v => {
-    let lists = v || {};
-    let now = +new Date();
+  getIconDone: (v, time) => {
+    let globalData = getApp().globalData;
+    let lists = v || globalData.iconDoneLists,
+      now;
+    if (time) {
+      now = +new Date(time.replace(new RegExp(/-/gm), "/"));
+    } else {
+      now = +new Date();
+    }
     for (const key in lists) {
       if (lists.hasOwnProperty(key)) {
         const d = lists[key];
@@ -250,9 +256,9 @@ module.exports = {
         const e = +new Date(d[1]);
         if (now >= s && now <= e) {
           console.log("时间对", key);
-          return getApp().globalData.statusBase + key;
+          return globalData.statusBase + key;
         }
-        console.log(d);
+        console.log(d,now);
       }
     }
     return "/images/icon-star.png";
