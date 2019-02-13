@@ -1,94 +1,94 @@
 /* pages/wishList/wishList.wxss */
 .tab-header {
-  background-color: #f08080;
-  color: white;
-  padding: 30rpx 10rpx;
-  margin: 0;
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
+  background-color : #F08080;
+  color : white;
+  padding : 30rpx 10rpx;
+  margin : 0;
+  width : 100%;
+  text-align : center;
+  font-weight : bold;
 }
 
 .headerText {
-  border: 6rpx solid white;
-  padding: 8rpx;
-  margin: 10rpx auto;
-  margin-bottom: 20rpx;
-  border-radius: 50rpx;
-  font-size: 40rpx;
-  width: 60%;
+  border : 6rpx solid white;
+  padding : 8rpx;
+  margin : 10rpx auto;
+  margin-bottom : 20rpx;
+  border-radius : 50rpx;
+  font-size : 40rpx;
+  width : 60%;
 }
 .content {
-  width: 100%;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 50rpx 20rpx;
+  width : 100%;
+  background-color : #FFFFFF;
+  display : flex;
+  flex-direction : column;
+  text-align : left;
+  padding : 50rpx 20rpx;
 }
 .row-container {
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1rpx solid #eeeeee;
-  vertical-align: center;
-  padding: 10rpx;
-  margin: 0;
-  background-color: #ffffff;
+  display : flex;
+  flex-direction : row;
+  border-bottom : 1rpx solid #EEEEEE;
+  vertical-align : center;
+  padding : 10rpx;
+  margin : 0;
+  background-color : #FFFFFF;
 }
 
 .con-info {
-  margin: 10rpx;
-  font-size: 90%;
-  color: #757575;
-  width: 64%;
-  display: flex;
-  flex-direction: row;
+  margin : 10rpx;
+  font-size : 90%;
+  color : #757575;
+  width : 64%;
+  display : flex;
+  flex-direction : row;
 }
 
 .con-status {
-  color: #bbbbbb;
-  font-size: 60%;
+  color : #BBBBBB;
+  font-size : 60%;
 }
 
 .flex_row_header {
-  display: flex;
-  flex-direction: row;
-  width: 86%;
-  color: #ffffff;
-  padding: 6rpx 20rpx;
-  text-align: center;
+  display : flex;
+  flex-direction : row;
+  width : 86%;
+  color : #FFFFFF;
+  padding : 6rpx 20rpx;
+  text-align : center;
 }
 
 .lable {
-  margin: 5rpx 8rpx;
+  margin : 5rpx 8rpx;
 }
 .description {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  color: #ffffff;
-  text-align: center;
-  padding: 6rpx 20rpx;
-  margin-top: 20rpx;
+  display : flex;
+  flex-direction : row;
+  width : 90%;
+  color : #FFFFFF;
+  text-align : center;
+  padding : 6rpx 20rpx;
+  margin-top : 20rpx;
 }
 
 .con-trimg {
-  width: 50rpx;
-  height: 50rpx;
-  margin: 5rpx 8rpx;
+  width : 50rpx;
+  height : 50rpx;
+  margin : 5rpx 8rpx;
 }
 
 .takeup {
-  border: 2rpx solid #f08080;
-  border-radius: 10rpx;
-  margin: 10rpx;
-  padding: 3rpx 10rpx;
-  margin-left: 20rpx;
-  align-items: center;
-  justify-content: center;
-  vertical-align: center;
-  text-align: center;
-  color: #f08080;
+  border : 2rpx solid #F08080;
+  border-radius : 10rpx;
+  margin : 10rpx;
+  padding : 3rpx 10rpx;
+  margin-left : 20rpx;
+  align-items : center;
+  justify-content : center;
+  vertical-align : center;
+  text-align : center;
+  color : #F08080;
 }
 
 /* .takeup{
@@ -104,103 +104,103 @@
  color: #aaaaaa;
 } */
 .boxs {
-  padding: 0 40rpx;
-  color: #6a3906;
+  padding : 0 40rpx;
+  color : #6A3906;
 }
 .logo {
-  width: 199.68rpx;
-  height: 54rpx;
+  width : 199.68rpx;
+  height : 54rpx;
   /* margin-top: 41.4rpx ; */
 }
 .poster {
-  width: 670rpx;
-  height: 500rpx;
-  margin-top: 20rpx;
-  border-radius: 25rpx;
-  border: 6rpx solid #6a3906;
-  box-sizing: border-box;
+  width : 670rpx;
+  height : 500rpx;
+  margin-top : 20rpx;
+  border-radius : 25rpx;
+  border : 6rpx solid #6A3906;
+  box-sizing : border-box;
 }
 .row-text {
-  font-size: 36rpx;
-  font-weight: 700;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 10rpx 0 0;
-  text-overflow: ellipsis;
+  font-size : 36rpx;
+  font-weight : 700;
+  overflow : hidden;
+  white-space : nowrap;
+  margin : 10rpx 0 0;
+  text-overflow : ellipsis;
 }
 .row-text-nickname.row-text {
-  margin-top: 0;
-  margin-bottom: 10rpx;
+  margin-top : 0;
+  margin-bottom : 10rpx;
 }
 
 .row-text-nickname {
-  text-align: right;
+  text-align : right;
 }
 .content_lists_new {
-  border: 4rpx solid #6a3906;
-  border-radius: 25rpx;
-  background-color: #fff;
-  min-height: 100rpx;
-  box-sizing: border-box;
-  overflow: hidden;
+  border : 4rpx solid #6A3906;
+  border-radius : 25rpx;
+  background-color : #FFFFFF;
+  min-height : 100rpx;
+  box-sizing : border-box;
+  overflow : hidden;
 }
 .input_new.list_input {
-  padding: 20rpx;
+  padding : 20rpx;
 }
 .list_input_label {
-  min-width: 60rpx;
+  min-width : 60rpx;
+  margin-top : 10rpx;
 }
 .list_input_box {
-  flex: 1;
-  width: 480rpx;
-  font-weight: normal !important;
+  flex : 1;
+  width : 480rpx;
+  font-weight : normal !important;
 }
 .list_icon {
-  width: 50rpx;
-  height: 50rpx;
-  padding: 0;
+  width : 50rpx;
+  height : 50rpx;
+  padding : 0;
 }
 .input_new {
-  display: flex;
-  flex-direction: row;
-  padding: 10rpx 20rpx;
-  font-size: 34rpx;
-  position: relative;
+  display : flex;
+  flex-direction : row;
+  padding : 10rpx 20rpx;
+  font-size : 34rpx;
+  position : relative;
 }
 .input_new.hr::after {
-  border-bottom: 1rpx solid #e5e5e5;
-  content: "";
-  width: 98%;
-  right: 0;
-  bottom: 0;
-  position: absolute;
+  border-bottom : 1rpx solid #E5E5E5;
+  content : '';
+  width : 98%;
+  right : 0;
+  bottom : 0;
+  position : absolute;
 }
-button,
-.button-hover {
-  background: none;
+button, .button-hover {
+  background : none;
 }
 button::after {
-  border: none;
+  border : none;
 }
 .time {
-  font-size: 34rpx;
-  padding: 20px 0;
+  font-size : 34rpx;
+  padding : 20px 0;
 }
 .create-btn {
-  width: 672rpx;
-  height: 140rpx;
-  padding-bottom: 40rpx;
+  width : 672rpx;
+  height : 140rpx;
+  padding-bottom : 40rpx;
 }
 .row-text-info {
-  font-size: 32rpx;
-  color: #6a3906;
-  padding: 5rpx 0 30rpx;
+  font-size : 32rpx;
+  color : #6A3906;
+  padding : 5rpx 0 30rpx;
 }
 
 .list_btn {
-  line-height: 0;
-  padding: 10rpx 0 0 10rpx;
-  background-color: none;
-  border: none;
-  border-color: transparent;
+  line-height : 0;
+  padding : 10rpx 0 0 10rpx;
+  background-color : none;
+  border : none;
+  border-color : transparent;
 }
