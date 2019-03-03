@@ -634,5 +634,5 @@ Page({
         this.setData({
             formId: e.detail.formId
         });
-    }
+    },
 });

@@ -5,38 +5,18 @@
   </view>
   <view class="description">
     <view class="entrance" wx:if="{{entranceState}}">
-      <button bindtap="selectEntrance" wx:for="{{entrances}}" wx:key='item.id' data-id="{{item.id}}">{{item.name}}</button>
+      <button bindtap="selectEntrance" wx:for="{{entrances}}" wx:key='item.id' data-id="{{item.id}}">
+        {{item.name}}
+      </button>
     </view>
-    <view wx:else class="textArea">
-      <view class="header">
-        <image src="/images/icon-title.png" />
-        友爱契约是什么？
-      </view>
-      <view class="box">
-        <text class="icon-detail">是协助你与圈中好友订立约定的小程序。</text>
-      </view>
-      <view class="header">
-        <image src="/images/icon-title.png" />
-        友爱契约怎么玩？
-      </view>
-      <view class="box">
-        <view>
-          <view class="icon-btn">创建</view>
-          <view class="icon-detail">● 选定契约有效期，按步骤填好和谁约定，为何约定，并列清约定事项。</view>
-          <view class="icon-detail">● 向小伙伴发出契约，和小伙伴们共同履行约定。</view>
-          <view class="icon-detail">● 请注意，一旦双方达成协议，即立字为据。小伙伴认领约定事项后，这张契约和约定事项将无法删除。</view>
-        </view>
-        <view>
-          <view class="icon-btn">认领</view>
-          <view class="icon-detail">打开小伙伴的契约，勾选认领约定事项，在完成约定后点 Done。让友谊的小船更加稳固！</view>
-        </view>
-        <view>
-          <view class="icon-btn">分享</view>
-          <view class="icon-detail">保存海报，把契约分享到朋友圈，看有多少小伙伴愿意认领，考验你的RP。</view>
-        </view>
-      </view>
-      <view class="tip">答应过的事情要努力做到哟！</view>
-    </view>
+    <swiper wx:else class="textArea" indicator-dots>
+      <swiper-item>
+        <image mode="widthFix" src="/images/help_1.png" />
+      </swiper-item>
+      <swiper-item>
+        <image mode="widthFix" src="/images/help_2.png" />
+      </swiper-item>
+    </swiper>
   </view>
   <view class='buttonView'>
     <!-- <button class="wish-save-btn" > -->

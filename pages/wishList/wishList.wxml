@@ -1,20 +1,32 @@
 <!-- pages/wishList/wishList.wxml -->
 <view class="content_new">
   <view class="header_new">
-    <view class="input_new hr">
-      <view class="lable">有效日期：</view>
-      <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
-    </view>
-    <view class="input_new hr">
+    <view class="input_new  hr">
       <view class="lable">和谁约定：</view>
       <input disabled="{{timeout || !canDelete}}" class="value_new" placeholder-class="placeholder_new" bindinput="bindKeyInput" placeholder="请填写契约标题" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription}}" />
     </view>
-    <view class="input_new">
-      <view class="lable">为何约定：</view>
+    <view class="input_new  hr">
+      <view class="lable">约定宣言：</view>
       <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写契约描述" bindblur="bindListDescCompleted" class="value_new" value="{{listDescription2}}" />
     </view>
+    <view class="input_new  hr">
+      <view class="lable">认领人数：</view>
+      <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写认领人数" bindblur="" class="value_new" value="" />
+    </view>
+    <view class="input_new  hr">
+      <view class="lable">约定地点：</view>
+      <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写约定地点" bindblur="" class="value_new" />
+    </view>
+    <view class="input_new  hr">
+      <view class="lable">见 证 人 ：</view>
+      <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="" bindblur="" class="value_new" value="" />
+    </view>
+    <view class="input_new">
+      <view class="lable">有效日期：</view>
+      <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
+    </view>
   </view>
-  <view class="items-title">约定事项</view>
+  <view class="items-title">约定怎样</view>
   <view wx:if="{{wishes.length>0 || !timeout}}" class="content_lists_new {{timeout&&'timeout'}}">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
       <view class="input_new list_input hr">
@@ -52,12 +64,17 @@
       选择分享图片
       <image wx:if="{{canDelete}}" bindtap="onDeleteWish" class="wish-detele-btn" src="/images/wish-detele.png" />
     </view>
-    <scroll-view class="pic_items" scroll-x style="height: 200rpx;">
-      <view class="pic_item" wx:for="{{pics}}" wx:key="{{index}}" wx:for-item="item">
-        <image wx:if="{{selectPicIndex==index}}" class="pic_icon" mode='aspectFill' src="/images/icon-select.png" />
-        <image bindtap="onSelectPic" data-id="{{index}}" class="pic_image" mode='aspectFill' src="{{item}}" />
-      </view>
-    </scroll-view>
+    <view class="pic_items">
+         <image class="icon-arrows" src="/images/icon-arrows.png" />
+         <image class="icon-arrows icon-arrows--left" src="/images/icon-arrows.png" />
+            <scroll-view class="pic_items" scroll-x style="height: 200rpx;">
+          <view class="pic_item" wx:for="{{pics}}" wx:key="{{index}}" wx:for-item="item">
+            <image wx:if="{{selectPicIndex==index}}" class="pic_icon" mode='aspectFill' src="/images/icon-select.png" />
+            <image bindtap="onSelectPic" data-id="{{index}}" class="pic_image" mode='aspectFill' src="{{item}}" />
+          </view>
+        </scroll-view>
+    </view>
+
     <view class="wish-btns">
       <wish-poster wishimage="{{wishimage}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishinfo="{{listDescription2}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
         <image class="wish-save-btn" src="/images/wish-save.png" />

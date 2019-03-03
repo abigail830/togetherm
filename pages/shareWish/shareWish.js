@@ -33,6 +33,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+  //  wx.request({
+  //    url:  "http://127.0.0.1:1234/?path=%2Fpages%2FshareWish%2FshareWish%3FwishListId%3D1143%26wishimageId%3D0%26wishimageUrl%3Dhttps%3A%2F%2Fwishlist.rabbit-hop.com%2Fimages%2F0.jpg%26nickName%3D%E7%A5%9E%E7%A7%98%E7%9A%84%E6%9C%8B%E5%8F%8B",
+  //       method: "GET",
+  //       header: {
+        
+  //       },
+  //       // dataType: "json",
+  //       complete: res => {
+  //         // wx.hideLoading();
+  //       },
+  //       success: e => { console.log(e.data); },
+
+  //       fail: e => {
+  //         console.log(e);
+
+  //       }
+  //     });
+
+
     console.warn("share-onLoad", options);
     app.globalData.entrance = options.entrance
       ? options.entrance
