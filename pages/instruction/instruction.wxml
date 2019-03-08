@@ -11,10 +11,10 @@
     </view>
     <swiper wx:else class="textArea" indicator-dots>
       <swiper-item>
-        <image mode="widthFix" src="/images/help_1.png" />
+        <image class='helpImg' mode="widthFix" src="/images/help_1.png" />
       </swiper-item>
       <swiper-item>
-        <image mode="widthFix" src="/images/help_2.png" />
+        <image class='helpImg' mode="widthFix" src="/images/help_2.png" />
       </swiper-item>
     </swiper>
   </view>

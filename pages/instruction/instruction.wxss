@@ -25,7 +25,7 @@
 
 .description {
   margin : 30rpx;
-  width : 80%;
+  width : 600rpx;
   color : #6A3906;
   font-size : 80%;
   border : #6A3906;
@@ -35,7 +35,7 @@
   border-top-left-radius : 15px;
   border-bottom-right-radius : 15px;
   border-top-right-radius : 15px;
-  padding : 0 18rpx;
+  /* padding : 0 18rpx; */
   box-sizing : border-box;
 }
 .tip {
@@ -47,20 +47,20 @@
   text-shadow : 1rpx 1rpx 3rpx #000000;
 }
 .textArea {
-  margin-top : 30rpx;
+  /* margin-top : 30rpx; */
   width : 100%;
   color : #6A3906;
   font-size : 25rpx;
   text-align : left;
   line-height : 48rpx;
-  width : 570rpx;
-  height : 760rpx;
+  /* width : 570rpx; */
+  height : 790rpx;
   box-sizing : border-box;
   /* padding : 5px; */
 }
 .textArea image {
-  width : 550rpx;
-  margin-bottom : 10rpx;
+  width : 600rpx;
+  /* margin-bottom : 10rpx; */
 }
 .icon-btn {
   border : 4rpx solid #6A3906;
