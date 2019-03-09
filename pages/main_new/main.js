@@ -20,7 +20,7 @@ Page({
     friendTimeline: [],
     outstandingCoupon: null,
     iconDone: "",
-    showType: "me" //me ,friend
+    showType: "friend" //me ,friend
   },
 
   onLoad: function() {

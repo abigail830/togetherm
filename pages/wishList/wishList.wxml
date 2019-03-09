@@ -11,16 +11,16 @@
     </view>
     <view class="input_new  hr">
       <view class="lable">认领人数：</view>
-      <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写认领人数" bindblur="" class="value_new" value="" />
+      <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindImplementorsLimitInput" placeholder="请填写认领人数" bindblur="updateWishList" class="value_new" value="{{implementorsLimit}}" type='number' />
     </view>
-    <view class="input_new  hr">
+    <!-- <view class="input_new  hr">
       <view class="lable">约定地点：</view>
       <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="请填写约定地点" bindblur="" class="value_new" />
-    </view>
-    <view class="input_new  hr">
+    </view> -->
+    <!-- <view class="input_new  hr">
       <view class="lable">见 证 人 ：</view>
       <input disabled="{{timeout || !canDelete}}" auto-height class="value_new" placeholder-class="placeholder_new" bindinput="bindTitleInput" placeholder="" bindblur="" class="value_new" value="" />
-    </view>
+    </view> -->
     <view class="input_new">
       <view class="lable">有效日期：</view>
       <input bindtap="showDatePicker" class="value_new" type="text" placeholder-class="placeholder_new" value="{{listDueTime}}" placeholder="请选择有效日期" disabled />
