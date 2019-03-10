@@ -256,8 +256,8 @@
 
 .timeline {
   width: 98%;
-  margin: 30rpx auto;
-  padding: 10rpx 30rpx 130rpx;
+  margin: auto;
+  padding: 0 30rpx 130rpx;
   text-align: center;
   flex: 1;
   overflow: hidden;
@@ -322,7 +322,7 @@
 .timeline-asof {
   font-size: 14px;
   position: relative;
-  margin: 10rpx 0;
+  margin: 0 0 10rpx;
 }
 
 .timeline-btn {
@@ -335,10 +335,10 @@
   align-items: top;
   background-color: #fff;
   /* width: 94%; */
-  margin: 0;
+  margin: 0 0 20rpx;
   height: 140rpx;
   border-radius: 10rpx;
-  border: 4rpx solid #6a3906;
+  border: 2px solid #6a3906;
 }
 
 .timeline-middle progress {
@@ -355,17 +355,19 @@
 .timeline-middle {
   margin-top: 2rpx;
   padding-right: 30rpx;
-  width: 52%;
+  width: 378rpx;
   color: #6a3906;
   font-size: 80%;
   padding: 15px 15rpx 0 25rpx;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .timeline-right {
-  width: 18%;
+  width: 140rpx;
   display: flex;
   align-items: center;
+  text-align: right;
 }
 
 .time-point-left {
@@ -378,7 +380,7 @@
   color: #6a3906;
   font-weight: bold;
   text-align: center;
-  border-right: 4rpx solid;
+  border-right: 2px solid;
   font-size: 55rpx;
   font-family: TrebuchetMS, Rotobo, 'Microsoft YaHei', sans-serif;
 }
@@ -531,13 +533,17 @@
   height: 54rpx;
   padding-top: 25rpx;
 }
-.icon-star-box{
+
+.icon-star-box {
   border: 2px dashed #6a3906;
   border-radius: 100%;
   width: 100rpx;
   height: 100rpx;
-margin-top:15rpx;
+  margin-top: 15rpx;
+  text-align: center;
+  display: inline-block;
 }
+
 .card-tip-view {
   position: absolute;
   top: 0;
@@ -600,3 +606,52 @@ margin-top:15rpx;
 .time-point-left, .timeline-line {
   display: none;
 }
+
+.icon-max-see {
+  width: 110rpx;
+  height: 108rpx;
+  margin-top: 16rpx;
+}
+
+
+
+.done-view-avatar {
+  position: relative;
+  width: 116rpx;
+  height: 116rpx;
+  margin: 0 20rpx;
+}
+
+.done-view-tip {
+  font-size: 52rpx;
+  line-height: 116rpx;
+  color: #6a3906;
+  flex: 1;
+}
+
+.done-view-username {
+  font-size: 34rpx;
+  color: #6a3906;
+  line-height: 180rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.done-view-header {
+  display: flex;
+  height:146rpx;
+}
+
+
+.icon-new-done{
+  width: 170rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 40rpx
+}
+

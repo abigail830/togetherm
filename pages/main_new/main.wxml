@@ -89,7 +89,7 @@
     </view>
   </block>
   <block wx:if="{{showType!=='me'}}">
-    <view wx:if="{{friendTimeline.length>0}}" class="timeline  friend-timeline">
+    <view wx:if="{{friendTimeline.length>0}}" class="timeline friend-timeline">
       <block wx:for="{{friendTimeline}}" wx:for-index='timeline_index' wx:key="index">
         <view class='timeline-asof'>
           <view class='timeline-timestamp'>{{item.asofMonth}}</view>
@@ -121,13 +121,15 @@
               </view>
               <view>{{takenWishDTOList.description}}</view>
             </view>
-            <view class='timeline-right'>
+            <view class='timeline-right' data-findex='{{timeline_index}}' data-index='{{inside_index}}' bindtap='showDoneView'>
               <block wx:if="{{takenWishDTOList.wishStatus!=='DONE'}}">
-                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
-                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
+                <image data-wishid="{{takenWishDTOList.wishID}}" class="icon-max-see" src="/images/icon-max-see.png" />
+                <!-- <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
+                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" /> -->
               </block>
-             <view wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class='icon-star-box'>
-              <image class="icon-star" src="{{takenWishDTOList.iconDone}}" /></view>
+              <view wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class='icon-star-box'>
+                <image class="icon-star" src="{{takenWishDTOList.iconDone}}" />
+              </view>
             </view>
           </view>
         </block>
@@ -142,5 +144,36 @@
   <view class="card-tip-view-box" bind:tap="addCard">
     <image class="card-tip-bg" src="/images/card-tip.png" />
   </view>
-  /ddd
+</view>
+
+<view wx:if="{{maskLayerShow}}" class='mask-layer-view'>
+</view>
+<view wx:if="{{doneViewShow}}" class='done-tip-view'>
+  <view class='done-view-header'>
+    <view class='done-view-tip'>
+      你答应了</view>
+    <view class='done-view-avatar'>
+      <view class="left">
+        <image class="icon_bg" src="../../images/icon_bg.png"></image>
+        <image class="userinfo-avatar" src="{{doneData.creator.avatarUrl}}" mode="cover"></image>
+      </view>
+    </view>
+    <view class='done-view-username'>{{doneData.creator.nickName}}</view>
+  </view>
+  <view class='done-view-box done-view-info'>{{doneData.description}}</view>
+  <view class='done-view-box done-view-date'>
+    <view>
+      距离约定日期还有：
+    </view>
+    <view>
+      <text>{{doneData.day}}</text>
+      <text class='done-view-date-min-text'>天</text>
+      <text>{{doneData.hh}}</text>
+      <text class='done-view-date-min-text'>小时</text>
+      <text>{{doneData.mm}}</text>
+      <text class='done-view-date-min-text'>分</text>
+    </view>
+  </view>
+  <image class="icon-close" bindtap='closeDoneView' src="/images/icon-close.png" />
+  <image wx:if="{{doneData.day>0&&doneData.hh>0&&doneData.mm>=0&&doneData.wishStatus!='DONE'}}" class="icon-new-done" bindtap='doneWish' src="/images/icon-new-done.png" />
 </view>
