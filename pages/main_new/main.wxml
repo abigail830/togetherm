@@ -160,7 +160,9 @@
     </view>
     <view class='done-view-username'>{{doneData.creator.nickName}}</view>
   </view>
-  <view class='done-view-box done-view-info'>{{doneData.description}}</view>
+  <view class='done-view-box done-view-info'>
+    <text class="{{doneData.descriptionLen<=12?'max':''}}">{{doneData.description}}</text>
+  </view>
   <view class='done-view-box done-view-date'>
     <view>
       距离约定日期还有：

@@ -613,8 +613,6 @@
   margin-top: 16rpx;
 }
 
-
-
 .done-view-avatar {
   position: relative;
   width: 116rpx;
@@ -641,17 +639,23 @@
 
 .done-view-header {
   display: flex;
-  height:146rpx;
+  height: 146rpx;
 }
 
-
-.icon-new-done{
+.icon-new-done {
   width: 170rpx;
   height: 50rpx;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
-  bottom: 40rpx
+  bottom: 40rpx;
 }
 
+.done-view-info text {
+  font-size: 40rpx;
+}
+
+.done-view-info text.max {
+  font-size: 60rpx;
+}

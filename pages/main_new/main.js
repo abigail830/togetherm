@@ -23,7 +23,7 @@ Page({
     doneViewShow: false,
     doneData: {},
     iconDone: "",
-    showType: "me" //me ,friend
+    showType: "friend" //me ,friend
   },
 
   onLoad: function() {
@@ -414,6 +414,8 @@ Page({
     let data, countdown;
     if (fdata) {
       data = fdata["takenWishDTOList"][index];
+      data['descriptionLen'] = data['description'].split('').length;
+      console.log(data)
       countdown = util.countdown(data.listDueTime);
     }
     if (data) {
