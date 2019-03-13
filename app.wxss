@@ -16,6 +16,7 @@
 }
 
 .done-view-box {
+  touch-action: auto;
   padding: 10rpx 15rpx;
   box-sizing: border-box;
   background: #fff;
@@ -47,6 +48,7 @@
   bottom: 0;
   background: rgba(255, 255, 255, 0.8);
   z-index: 10;
+  touch-action: none;
 }
 
 .icon-close {
@@ -60,6 +62,7 @@
 .done-tip-view {
   padding: 30rpx 40rpx 40rpx;
   width: 690rpx;
+  touch-action: none;
   height: 658rpx;
   border-radius: 20rpx;
   border: 3px solid #6a3906;

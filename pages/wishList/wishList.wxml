@@ -76,7 +76,7 @@
     </view>
 
     <view class="wish-btns">
-      <wish-poster wishimage="{{wishimage}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishinfo="{{listDescription2}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
+      <wish-poster  entrance="{{entrance}}" nickname="{{nickname}}" wishListid="{{wishListID}}" wishimage="{{wishimage}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" id="wish-poster" wishlist="{{wishes}}" wishinfo="{{listDescription2}}" wishname="{{listDescription}}" date='{{listDueTime}}'>
         <image class="wish-save-btn" src="/images/wish-save.png" />
       </wish-poster>
       <button class="wish-save-btn" open-type="share">

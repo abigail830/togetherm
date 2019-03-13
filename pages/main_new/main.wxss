@@ -659,3 +659,8 @@
 .done-view-info text.max {
   font-size: 60rpx;
 }
+
+.friend-timeline .timeline-middle view.timeline-middle-description {
+  overflow: hidden;
+  width: 360rpx;
+}

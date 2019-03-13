@@ -119,7 +119,7 @@
                 </text>
                 <text wx:else class="description-text">神秘的朋友</text>
               </view>
-              <view>{{takenWishDTOList.description}}</view>
+              <view class='timeline-middle-description'>{{takenWishDTOList.description}}</view>
             </view>
             <view class='timeline-right' data-findex='{{timeline_index}}' data-index='{{inside_index}}' bindtap='showDoneView'>
               <block wx:if="{{takenWishDTOList.wishStatus!=='DONE'}}">

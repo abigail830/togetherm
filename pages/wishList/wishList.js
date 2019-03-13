@@ -29,7 +29,9 @@ Page({
     currentDate: currentDate,
     wishListID: null,
     canDelete: true,
+    entrance:"",
     wishimage: "",
+    nickname:"",
     touchMoveIndex: null,
     isPickerRender: false,
     isPickerShow: false,
@@ -57,6 +59,8 @@ Page({
       });
     } else {
       this.setData({
+        nickname: app.globalData.userInfo.nickName,
+        entrance: app.globalData.entrance,
         wishListID: options.wishListID,
         pics: pics(),
         wishimage: pics(0)

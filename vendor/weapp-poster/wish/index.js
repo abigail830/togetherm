@@ -29,15 +29,24 @@ Component({
     wishinfo: {
       type: String,
       value: ""
+    },
+    nickname: {
+      type: String,
+      value: ""
+    },
+    wishListid: {
+      type: String,
+      value: ""
     }
   },
   data: {
-    nickname: "",
     posterConfig: {}
   },
   methods: {
     onPosterSuccess(e) {
-      const { detail } = e;
+      const {
+        detail
+      } = e;
       PosterData = detail;
       wx.hideLoading();
       // this.onSavePic();
@@ -86,7 +95,7 @@ Component({
       const contentData = (() => {
         let data = {
           x: boxLeft + 5,
-          y: nicknameData.y + nicknameData.h + boxSpacing+10,
+          y: nicknameData.y + nicknameData.h + boxSpacing + 10,
           width: boxWidth - 10,
           text: this.data.wishinfo,
           fontSize: 32,
@@ -102,8 +111,8 @@ Component({
       let wishlist = [],
         wishlistFontSize = 34,
         lines = [],
-        images = [
-          {
+        wishimage = this.data.wishimage || "/images/poster-default.png",
+        images = [{
             url: "/images/LOGO.png",
             width: 199.68, // 355 96
             height: 54,
@@ -111,7 +120,7 @@ Component({
             x: 20.65 * 2
           },
           {
-            url: this.data.wishimage || "/images/poster-default.png",
+            url: wishimage,
             width: 335 * 2,
             height: 250 * 2,
             y: 120,
@@ -141,33 +150,41 @@ Component({
           borderRadius: 25,
           borderColor: fontColor
         };
+        const qrImage =
+          app.globalData.apiBase +
+          "/qrcode/limit?page=" + encodeURIComponent("/pages/shareIndex/shareIndex?wishimageUrl=" +
+            wishimage.replace(app.globalData.statusBase, "") +
+            "&wishListId=" +
+            this.data.wishListid +
+            "&nickName=" +
+            this.data.nickname);
+        console.log(qrImage);
         const setFooter = top => {
           top = top + 50;
           images.push({
-            url: "/images/poster-qr.png",
+            // url: "/images/poster-qr.png",
+            url: qrImage,
             width: 160,
             height: 160,
             y: top,
             x: 750 - 160 - boxLeft
           });
-          wishlist.push(
-            {
-              text: `有效日期：`,
-              fontBold: true,
-              fontSize: 36,
-              y: top + 30 + 36,
-              x: boxLeft,
-              color: fontColor
-            },
-            {
-              text: this.data.date,
-              fontBold: true,
-              fontSize: 36,
-              y: top + 30 * 3 + 36,
-              x: boxLeft,
-              color: fontColor
-            }
-          );
+
+          wishlist.push({
+            text: `有效日期：`,
+            fontBold: true,
+            fontSize: 36,
+            y: top + 30 + 36,
+            x: boxLeft,
+            color: fontColor
+          }, {
+            text: this.data.date,
+            fontBold: true,
+            fontSize: 36,
+            y: top + 30 * 3 + 36,
+            x: boxLeft,
+            color: fontColor
+          });
         };
         if (wishlistLen <= 0) {
           setFooter(y);
@@ -187,10 +204,9 @@ Component({
           });
 
           images.push({
-            url:
-              e.wishStatus !== "NEW"
-                ? "/images/icon-btn-2.png"
-                : "/images/icon-btn-1.png",
+            url: e.wishStatus !== "NEW" ?
+              "/images/icon-btn-2.png" :
+              "/images/icon-btn-1.png",
             width: 60,
             height: 60,
             y: top - padding - 12,
@@ -213,9 +229,9 @@ Component({
         return data;
       })();
 
-      let height = Object.keys(blocksData).length
-        ? blocksData.y + blocksData.height + 250
-        : 1020;
+      let height = Object.keys(blocksData).length ?
+        blocksData.y + blocksData.height + 250 :
+        1020;
       let posterConfig = {
         width: 750,
         height: height,
@@ -228,12 +244,19 @@ Component({
       };
       console.log(posterConfig);
 
-      this.setData({ posterConfig: posterConfig }, () => {
-        fn && fn(Poster);
-      });
+      this.setData({
+          posterConfig: posterConfig
+        },
+        () => {
+          fn && fn(Poster);
+        }
+      );
     },
     createPoster() {
-      wx.showLoading({ mask: true, title: this.data.tip });
+      wx.showLoading({
+        mask: true,
+        title: this.data.tip
+      });
       this.updatePosterConfig(() => {
         Poster.onCreate();
       });
@@ -278,9 +301,13 @@ Component({
     getUserInfo() {
       const setUser = info => {
         userInfo = info;
-        this.setData({ nickname: info.nickName }, () => {
-          this.updatePosterConfig();
-        });
+        this.setData({
+            nickname: info.nickName
+          },
+          () => {
+            this.updatePosterConfig();
+          }
+        );
         console.log(this.data, userInfo);
       };
       if (app.globalData.userInfo) {
@@ -300,6 +327,7 @@ Component({
   },
   created() {
     Poster = this.selectComponent("#weapp-poster");
-    this.getUserInfo();
+    // this.updatePosterConfig();
+    // this.getUserInfo();
   }
 });
