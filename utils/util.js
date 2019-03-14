@@ -8,8 +8,7 @@ const formatTime = date => {
 
   return (
     [year, month, day].map(formatNumber).join("/") +
-    " " +
-    [hour, minute, second].map(formatNumber).join(":")
+    " " + [hour, minute, second].map(formatNumber).join(":")
   );
 };
 
@@ -55,39 +54,141 @@ const showLoading = text =>
   });
 
 const parameterMap = {
-  gender: [
-    { id: 1, key: "male", name: "男" },
-    { id: 2, key: "female", name: "女" }
+  gender: [{
+      id: 1,
+      key: "male",
+      name: "男"
+    },
+    {
+      id: 2,
+      key: "female",
+      name: "女"
+    }
   ],
-  treatmentMethod: [
-    { id: 1, key: "medication", checked: false, name: "药物治疗" },
-    { id: 2, key: "hemodialysis", checked: false, name: "血液透析治疗" },
-    { id: 3, key: "peritoneal-dialysis", checked: false, name: "腹膜透析治疗" },
-    { id: 4, key: "transplantation", checked: false, name: "肾脏移植" }
+  treatmentMethod: [{
+      id: 1,
+      key: "medication",
+      checked: false,
+      name: "药物治疗"
+    },
+    {
+      id: 2,
+      key: "hemodialysis",
+      checked: false,
+      name: "血液透析治疗"
+    },
+    {
+      id: 3,
+      key: "peritoneal-dialysis",
+      checked: false,
+      name: "腹膜透析治疗"
+    },
+    {
+      id: 4,
+      key: "transplantation",
+      checked: false,
+      name: "肾脏移植"
+    }
   ],
-  sportRate: [
-    { id: 1, key: "light", name: "轻度（如：长期坐办公室）" },
-    { id: 2, key: "medium", name: "中度（如：不时外出跑业务）" },
-    { id: 3, key: "severe", name: "重度（如：搬运）" }
+  sportRate: [{
+      id: 1,
+      key: "light",
+      name: "轻度（如：长期坐办公室）"
+    },
+    {
+      id: 2,
+      key: "medium",
+      name: "中度（如：不时外出跑业务）"
+    },
+    {
+      id: 3,
+      key: "severe",
+      name: "重度（如：搬运）"
+    }
   ],
   otherDisease: [
     //高血压/高血脂（甘油三酯/胆固醇/both）/高血糖/高尿酸/无
-    { id: 1, key: "hypertension", checked: false, name: "高血压" },
-    { id: 2, key: "triglyceride", checked: false, name: "高甘油三酯" },
-    { id: 3, key: "cholesterol", checked: false, name: "高胆固醇" },
-    { id: 4, key: "hyperglycemia", checked: false, name: "高血糖" },
-    { id: 5, key: "hyperuricacidemia", checked: false, name: "高尿酸" }
+    {
+      id: 1,
+      key: "hypertension",
+      checked: false,
+      name: "高血压"
+    },
+    {
+      id: 2,
+      key: "triglyceride",
+      checked: false,
+      name: "高甘油三酯"
+    },
+    {
+      id: 3,
+      key: "cholesterol",
+      checked: false,
+      name: "高胆固醇"
+    },
+    {
+      id: 4,
+      key: "hyperglycemia",
+      checked: false,
+      name: "高血糖"
+    },
+    {
+      id: 5,
+      key: "hyperuricacidemia",
+      checked: false,
+      name: "高尿酸"
+    }
   ],
   irritability: [
     //奶/蛋/贝壳/虾蟹鱼/面粉/坚果/黄豆/玉米
-    { id: 1, key: "milk", checked: false, name: "奶" },
-    { id: 2, key: "egg", checked: false, name: "蛋" },
-    { id: 3, key: "crostacei", checked: false, name: "贝壳" },
-    { id: 4, key: "fish-prawn-crab", checked: false, name: "鱼虾蟹" },
-    { id: 5, key: "flour", checked: false, name: "面粉" },
-    { id: 6, key: "nuts", checked: false, name: "坚果" },
-    { id: 7, key: "soya", checked: false, name: "黄豆" },
-    { id: 8, key: "corn", checked: false, name: "玉米" }
+    {
+      id: 1,
+      key: "milk",
+      checked: false,
+      name: "奶"
+    },
+    {
+      id: 2,
+      key: "egg",
+      checked: false,
+      name: "蛋"
+    },
+    {
+      id: 3,
+      key: "crostacei",
+      checked: false,
+      name: "贝壳"
+    },
+    {
+      id: 4,
+      key: "fish-prawn-crab",
+      checked: false,
+      name: "鱼虾蟹"
+    },
+    {
+      id: 5,
+      key: "flour",
+      checked: false,
+      name: "面粉"
+    },
+    {
+      id: 6,
+      key: "nuts",
+      checked: false,
+      name: "坚果"
+    },
+    {
+      id: 7,
+      key: "soya",
+      checked: false,
+      name: "黄豆"
+    },
+    {
+      id: 8,
+      key: "corn",
+      checked: false,
+      name: "玉米"
+    }
   ]
 };
 
@@ -96,9 +197,9 @@ const getAliasSingleOption = (options, value) =>
 
 const getAliasMultiOption = (options, value) =>
   parameterMap[options]
-    .filter(item => value.includes(item))
-    .map(item => item.name)
-    .join(",");
+  .filter(item => value.includes(item))
+  .map(item => item.name)
+  .join(",");
 
 const cutMessage = (source, length) =>
   source.length > length ? source.substr(0, length) + "..." : source;
@@ -122,7 +223,11 @@ const getCurrentPageUrlWithArgs = () => {
   }
   urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1);
 
-  return { url: urlWithArgs, keys: options, page: currentPage };
+  return {
+    url: urlWithArgs,
+    keys: options,
+    page: currentPage
+  };
 };
 
 const networkTypePromise = () =>
@@ -165,15 +270,13 @@ const shareDate = (title, imageUrl, path) => {
   const entrance = globalData.entrance;
   const pages = getCurrentPages();
   var currentPage = path || "/pages/index_new/index_new";
-  const opt = Object.assign(
-    {
+  const opt = Object.assign({
       title: title || "友爱契约",
-      path: entrance
-        ? currentPage +
-          (currentPage.indexOf("?") >= 0 ? "&" : "?") +
-          "entrance=" +
-          entrance
-        : currentPage,
+      path: entrance ?
+        currentPage +
+        (currentPage.indexOf("?") >= 0 ? "&" : "?") +
+        "entrance=" +
+        entrance : currentPage,
       success: function(res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
@@ -183,11 +286,12 @@ const shareDate = (title, imageUrl, path) => {
         console.log("转发失败:" + JSON.stringify(res));
       }
     },
-    imageUrl
-      ? { imageUrl: imageUrl }
-      : imageUrl === null
-      ? { imageUrl: "../../images/share-icon.jpg" }
-      : {}
+    imageUrl ? {
+      imageUrl: imageUrl
+    } :
+    imageUrl === null ? {
+      imageUrl: "../../images/share-icon.jpg"
+    } : {}
   );
   console.log(opt);
 
@@ -258,9 +362,27 @@ module.exports = {
           console.log("时间对", key);
           return globalData.statusBase + key;
         }
-        console.log(d,now);
+        console.log(d, now);
       }
     }
     return "/images/icon-star.png";
+  },
+  countdown: (date) => {
+    const startTime = new Date();
+    const endTime = new Date(date.replace(new RegExp(/-/gm), "/"))
+    const num = endTime.getTime() - startTime.getTime();
+    let day, hh, mm;
+    if (num >= 0) {
+      day = parseInt(num / 1000 / 60 / 60 / 24);
+      hh = parseInt((num / 1000 / 60 / 60 / 24 - day) * 24);
+      mm = parseInt(((num / 1000 / 60 / 60 / 24 - day) * 24 - hh) * 60);
+    } else {
+      day = hh = mm = 0;
+    }
+    return {
+      day,
+      hh,
+      mm
+    }
   }
 };

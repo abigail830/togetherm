@@ -19,6 +19,9 @@ Page({
     timeline: [],
     friendTimeline: [],
     outstandingCoupon: null,
+    maskLayerShow: false,
+    doneViewShow: false,
+    doneData: {},
     iconDone: "",
     showType: "me" //me ,friend
   },
@@ -117,7 +120,9 @@ Page({
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes/lists`,
         method: "DELETE",
-        header: { "Content-Type": "application/json" },
+        header: {
+          "Content-Type": "application/json"
+        },
         data: {
           listId: wishListID,
           listOpenId: openID
@@ -148,40 +153,44 @@ Page({
       title: "加载中..."
     });
     console.log("selectFriend");
-    this.setData({ showType: "friend" });
+    this.setData({
+      showType: "friend"
+    });
     Promise.all([
       util
-        .request(
-          app.globalData.apiBase +
-            "/v1/wishes/taken/timeline?" +
-            "openId=" +
-            app.globalData.authInfo.openid
-        )
-        .then(
-          res => {
-            console.log(res.data);
-            let friendTimeline = res.data.takenWishTimelineEntryList.map(e => {
-              e.takenWishDTOList = e.takenWishDTOList.map(e => {
-                let date = new Date(e.listDueTime.replace(/ /g, "T"));
-                e.dateInTime =
-                  format0(date.getHours()) + ":" + format0(date.getMinutes());
-                e.iconDone = util.getIconDone(null, e.createTime);
-                return e;
-              });
+      .request(
+        app.globalData.apiBase +
+        "/v1/wishes/taken/timeline?" +
+        "openId=" +
+        app.globalData.authInfo.openid
+      )
+      .then(
+        res => {
+          console.log(res.data);
+          let friendTimeline = res.data.takenWishTimelineEntryList.map(e => {
+            e.takenWishDTOList = e.takenWishDTOList.map(e => {
+              let date = new Date(e.listDueTime.replace(/ /g, "T"));
+              e.dateInTime =
+                format0(date.getHours()) + ":" + format0(date.getMinutes());
+              e.iconDone = util.getIconDone(null, e.createTime);
+              let expired = util.countdown(e.listDueTime);
+              e.expired = expired.day == 0 && expired.hh == 0 && expired.mm==0;
               return e;
             });
-            this.setData({
-              iconDone: app.globalData.iconDone,
-              friendTimeline: friendTimeline
-            });
-            console.log(this.data.friendTimeline);
+            return e;
+          });
+          this.setData({
+            iconDone: app.globalData.iconDone,
+            friendTimeline: friendTimeline
+          });
+          console.log(this.data.friendTimeline);
 
-            wx.hideLoading();
-          },
-          res => {
-            util.showModel("获取您的认领契约", res.errMsg);
-          }
-        )
+          wx.hideLoading();
+        },
+        res => {
+          util.showModel("获取您的认领契约", res.errMsg);
+        }
+      )
     ]).then(() => {
       wx.hideLoading();
     });
@@ -191,12 +200,13 @@ Page({
     try {
       console.log("Acknowledge card");
       sdk.request({
-        url:
-          app.globalData.apiBase +
+        url: app.globalData.apiBase +
           `/coupon/?openID=` +
           app.globalData.authInfo.openid,
         method: "PUT",
-        header: { "Content-Type": "application/json" },
+        header: {
+          "Content-Type": "application/json"
+        },
         success(result) {
           console.log("请求成功");
           console.log(result);
@@ -226,19 +236,16 @@ Page({
       success: function(res) {
         console.log(res);
         wx.addCard({
-          cardList: [
-            {
-              cardId: cardID,
-              cardExt:
-                '{"code":"","openid":"","timestamp":' +
-                res.data.timestamp +
-                ',"nonce_str":"' +
-                res.data.nonceStr +
-                '","signature":"' +
-                res.data.signature +
-                '"}'
-            }
-          ],
+          cardList: [{
+            cardId: cardID,
+            cardExt: '{"code":"","openid":"","timestamp":' +
+              res.data.timestamp +
+              ',"nonce_str":"' +
+              res.data.nonceStr +
+              '","signature":"' +
+              res.data.signature +
+              '"}'
+          }],
           success: function(result) {
             console.log(res);
             wx.showToast({
@@ -247,11 +254,12 @@ Page({
               duration: 2000
             });
             app.globalData.outstandingCoupon = null;
-            page.setData({ outstandingCoupon: null });
+            page.setData({
+              outstandingCoupon: null
+            });
             if (app.globalData.postCoupon) {
               page.acknowledgeCard();
-            } else {
-            }
+            } else {}
           },
           fail: function(res) {
             console.log("领取失败");
@@ -268,6 +276,9 @@ Page({
   },
   cancelWish(e) {
     let wishID = e.target.dataset.wishid;
+    if (!wishID) {
+      wishID = this.data.doneData.wishID
+    }
     let page = this;
     let openID = app.globalData.authInfo.openid;
     wx.showLoading({
@@ -277,10 +288,13 @@ Page({
       sdk.request({
         url: app.globalData.apiBase + `/v1/wishes/taken?id=${wishID}`,
         method: "DELETE",
-        header: { "Content-Type": "application/json" },
+        header: {
+          "Content-Type": "application/json"
+        },
         success(res) {
           wx.hideLoading();
           page.selectFriend();
+          page.closeDoneView();
           console.log(res.data);
         },
         fail(error) {
@@ -297,6 +311,9 @@ Page({
   },
   doneWish(e) {
     let wishID = e.target.dataset.wishid;
+    if (!wishID) {
+      wishID = this.data.doneData.wishID
+    }
     let page = this;
     let openID = app.globalData.authInfo.openid;
     wx.showLoading({
@@ -304,18 +321,20 @@ Page({
     });
     try {
       sdk.request({
-        url:
-          app.globalData.apiBase +
+        url: app.globalData.apiBase +
           `/v1/wishes/completed?` +
           "id=" +
           wishID +
           "&openId=" +
           openID,
         method: "PUT",
-        header: { "Content-Type": "application/json" },
+        header: {
+          "Content-Type": "application/json"
+        },
         success(res) {
           wx.hideLoading();
           page.selectFriend();
+          page.closeDoneView();
         },
         fail(error) {
           util.showModel("请求失败,请检查网络", error);
@@ -331,13 +350,15 @@ Page({
   },
   selectMe() {
     console.log("selectMe");
-    this.setData({ showType: "me" });
+    this.setData({
+      showType: "me"
+    });
     util
       .request(
         app.globalData.apiBase +
-          "/v1/wishes/lists/timeline?" +
-          "openId=" +
-          app.globalData.authInfo.openid
+        "/v1/wishes/lists/timeline?" +
+        "openId=" +
+        app.globalData.authInfo.openid
       )
       .then(
         res => {
@@ -348,6 +369,8 @@ Page({
               e.activeColor = e.progress !== 100 ? "#ffd45a" : "#E60C12";
               e.dateInTime =
                 format0(date.getHours()) + ":" + format0(date.getMinutes());
+              let expired = util.countdown(e.listDueTime);
+              e.expired = expired.day == 0 && expired.hh == 0 && expired.mm == 0;
               return e;
             });
             return e;
@@ -387,5 +410,32 @@ Page({
     //     }
     //   }
     // });
+  },
+  showDoneView(e) {
+    const index = e.currentTarget.dataset.index;
+    const findex = e.currentTarget.dataset.findex;
+    const fdata = this.data.friendTimeline[findex];
+    let data, countdown;
+    if (fdata) {
+      data = fdata["takenWishDTOList"][index];
+      data['descriptionLen'] = data['description'].split('').length;
+      console.log(data)
+      countdown = util.countdown(data.listDueTime);
+    }
+    if (data) {
+      this.setData({
+        doneData: Object.assign(data, countdown),
+        maskLayerShow: true,
+        doneViewShow: true
+      });
+    }
+    console.log(data);
+  },
+  closeDoneView() {
+    this.setData({
+      doneData: {},
+      maskLayerShow: false,
+      doneViewShow: false
+    });
   }
 });

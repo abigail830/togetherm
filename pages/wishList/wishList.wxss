@@ -174,7 +174,7 @@
 
 .input_new.hr::after {
   border-bottom: 1rpx solid #e5e5e5;
-  content: "";
+  content: '';
   width: 98%;
   right: 0;
   bottom: 0;
@@ -183,7 +183,7 @@
 
 .takeup_hr::after {
   border-bottom: 8rpx solid #f9cc74;
-  content: "";
+  content: '';
   width: 490rpx;
   left: -20rpx;
   bottom: -10rpx;
@@ -260,6 +260,7 @@
 }
 
 .pic_items {
+  position: relative;
   display: flex;
   box-sizing: border-box;
   white-space: nowrap;
@@ -355,4 +356,35 @@ button::after {
 .add-list-btn {
   background-color: rgba(205, 92, 92, 0);
   height: 44rpx;
+}
+
+.icon-arrows {
+  position: absolute;
+  width: 22rpx;
+  height: 40rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: -30rpx;
+  animation: arrows 2.5s infinite;
+}
+
+.icon-arrows.icon-arrows--left {
+  right: inherit;
+  left: -20rpx;
+  transform: rotate(180deg);
+}
+
+@keyframes arrows {
+  0% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
 }

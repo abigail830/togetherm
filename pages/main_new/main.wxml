@@ -1,44 +1,46 @@
 <view class="container">
-  <view class="userinfo">
-    <view class="left">
-      <view class="icon_out">
+  <view class="countinfo">
+    <view class="countcell header userinfo">
+      <view class="left">
         <image class="icon_bg" src="../../images/icon_bg.png"></image>
         <image wx:if="{{hasUserInfo}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
         <open-data wx:else class="userinfo-avatar" type="userAvatarUrl"></open-data>
       </view>
+      <view class="right">
+        <text wx:if="{{hasUserInfo}}">{{userInfo.nickName}}</text>
+        <open-data wx:else type="userNickName"></open-data>
+        <view class='help_box'>
+          <button bindtap="help" class="help">帮 助</button>
+        </view>
+      </view>
     </view>
-    <view class="middle">
-      <text wx:if="{{hasUserInfo}}">{{userInfo.nickName}}</text>
-      <open-data wx:else type="userNickName"></open-data>
-    </view>
-    <view class="right">
-      <image class="logo" src="../../images/LOGO.png"></image>
-      <button wx:if="{{outstandingCoupon.coupon}}" bindtap="addCard" class="help">领取卡券</button>
-      <button wx:else bindtap="help" class="help">帮 助</button>
+    <view class="countcell header my_mark noactive">
+      <view class="countheader">友爱印记</view>
+      <view class="blocker">
+        <image class="blocker" src="../../images/count_block.png"></image>
+      </view>
+      <image class="icon-make icon-make_off" src="../../images/icon-make-off.png"></image>
+      <image class="icon-make icon-make_on" src="../../images/icon-make-on.png"></image>
     </view>
   </view>
   <view class="countinfo">
-    <view class="countcell {{showType!=='me'&&'noactive'}}" bindtap="selectMe">
+    <view class="countcell {{showType==='friend'&&'noactive'}}" bindtap="selectMe">
       <view class="count red">
-        <text class="counttips">Get</text>
-        {{myCompletedWishCount}}
+        <text class="counttips">Get</text> {{myCompletedWishCount}}
         <text class="counttips">个</text>
       </view>
-      <view class="blocker">
-        <image class="blocker" src="../../images/count_block.png"></image>
-      </view>
-      <view class="countheader">我的契约</view>
+      <view class="countheader">我发起的</view>
+      <image class="icon-make icon-make_off" src="../../images/icon-make-off.png"></image>
+      <image class="icon-make icon-make_on" src="../../images/icon-make-on.png"></image>
     </view>
     <view class="countcell {{showType==='me'&&'noactive'}}" bindtap="selectFriend">
       <view class="count yellow">
-        <text class="counttips">Get</text>
-        {{myFriendsCompletedWishCount}}
+        <text class="counttips">Get</text> {{myFriendsCompletedWishCount}}
         <text class="counttips">个</text>
       </view>
-      <view class="blocker">
-        <image class="blocker" src="../../images/count_block.png"></image>
-      </view>
-      <view class="countheader">友的契约</view>
+      <view class="countheader">我答应的</view>
+      <image class="icon-make icon-make_off" src="../../images/icon-make-off.png"></image>
+      <image class="icon-make icon-make_on" src="../../images/icon-make-on.png"></image>
     </view>
   </view>
   <block wx:if="{{showType==='me'}}">
@@ -49,15 +51,8 @@
         </view>
         <view class='timeline-line'></view>
         <block wx:for="{{item.wishListDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="wishListDTOList">
-          <view class="timeline-entry">
+          <view class="timeline-entry {{wishListDTOList.expired?'state--ban':''}}">
             <view class="timeline-left">
-              <view class="time-point-left">
-                <view class='timeline-line-up'></view>
-                <view class='timeline-circle'></view>
-                <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index != timeline.length-1}}">
-                  <view class='timeline-line-down'></view>
-                </block>
-              </view>
               <view class="time-point-right">
                 <view>{{wishListDTOList.dateInMonth}}</view>
                 <view class="mini-time">{{wishListDTOList.dateInTime}}</view>
@@ -87,22 +82,15 @@
     </view>
   </block>
   <block wx:if="{{showType!=='me'}}">
-    <view wx:if="{{friendTimeline.length>0}}" class="timeline  friend-timeline">
+    <view wx:if="{{friendTimeline.length>0}}" class="timeline friend-timeline">
       <block wx:for="{{friendTimeline}}" wx:for-index='timeline_index' wx:key="index">
         <view class='timeline-asof'>
           <view class='timeline-timestamp'>{{item.asofMonth}}</view>
         </view>
         <view class='timeline-line'></view>
         <block wx:for="{{item.takenWishDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="takenWishDTOList">
-          <view class="timeline-entry">
+          <view class="timeline-entry {{takenWishDTOList.expired?'state--ban':''}}">
             <view class="timeline-left">
-              <view class="time-point-left">
-                <view class='timeline-line-up'></view>
-                <view class='timeline-circle'></view>
-                <block wx:if="{{inside_index !=item.takenWishDTOList.length-1 || timeline_index !=  friendTimeline.length-1}}">
-                  <view class='timeline-line-down'></view>
-                </block>
-              </view>
               <view class="time-point-right">
                 <view>{{takenWishDTOList.dateInMonth}}</view>
                 <view class="mini-time">{{takenWishDTOList.dateInTime}}</view>
@@ -117,14 +105,17 @@
                 </text>
                 <text wx:else class="description-text">神秘的朋友</text>
               </view>
-              <view>{{takenWishDTOList.description}}</view>
+              <view class='timeline-middle-description'>{{takenWishDTOList.description}}</view>
             </view>
-            <view class='timeline-right'>
+            <view class='timeline-right' data-findex='{{timeline_index}}' data-index='{{inside_index}}' bindtap='showDoneView'>
               <block wx:if="{{takenWishDTOList.wishStatus!=='DONE'}}">
-                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
-                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" />
+                <image data-wishid="{{takenWishDTOList.wishID}}" class="icon-max-see" src="/images/icon-max-see.png" />
+                <!-- <image data-wishid="{{takenWishDTOList.wishID}}" bindtap='doneWish' class="icon-see" src="/images/icon-done.png" />
+                <image data-wishid="{{takenWishDTOList.wishID}}" bindtap="cancelWish" class="icon-see" src="/images/icon-cancel.png" /> -->
               </block>
-              <image wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class="icon-star" src="{{takenWishDTOList.iconDone}}" />
+              <view wx:if="{{takenWishDTOList.wishStatus==='DONE'}}" class='icon-star-box'>
+                <image class="icon-star" src="{{takenWishDTOList.iconDone}}" />
+              </view>
             </view>
           </view>
         </block>
@@ -139,5 +130,38 @@
   <view class="card-tip-view-box" bind:tap="addCard">
     <image class="card-tip-bg" src="/images/card-tip.png" />
   </view>
-  /ddd
+</view>
+
+<view wx:if="{{maskLayerShow}}" class='mask-layer-view'>
+</view>
+<view wx:if="{{doneViewShow}}" class='done-tip-view'>
+  <view class='done-view-header'>
+    <view class='done-view-tip'>
+      你答应了</view>
+    <view class='done-view-avatar'>
+      <view class="left">
+        <image class="icon_bg" src="../../images/icon_bg.png"></image>
+        <image class="userinfo-avatar" src="{{doneData.creator.avatarUrl}}" mode="cover"></image>
+      </view>
+    </view>
+    <view class='done-view-username'>{{doneData.creator.nickName}}</view>
+  </view>
+  <view class='done-view-box done-view-info'>
+    <text class="{{doneData.descriptionLen<=12?'max':''}}">{{doneData.description}}</text>
+  </view>
+  <view class='done-view-box done-view-date'>
+    <view>
+      距离约定日期还有：
+    </view>
+    <view>
+      <text>{{doneData.day}}</text>
+      <text class='done-view-date-min-text'>天</text>
+      <text>{{doneData.hh}}</text>
+      <text class='done-view-date-min-text'>小时</text>
+      <text>{{doneData.mm}}</text>
+      <text class='done-view-date-min-text'>分</text>
+    </view>
+  </view>
+  <image class="icon-close" bindtap='closeDoneView' src="/images/icon-close.png" />
+  <image wx:if="{{doneData.day>0&&doneData.hh>0&&doneData.mm>=0&&doneData.wishStatus!='DONE'}}" class="icon-new-done" bindtap='doneWish' src="/images/icon-new-done.png" />
 </view>

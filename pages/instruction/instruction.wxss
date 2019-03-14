@@ -1,142 +1,152 @@
 /* pages/instruction/instruction.wxss */
 .container {
   /* margin: 10rpx; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  width: 100%;
-  padding-bottom: 200rpx;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : flex-start;
+  text-align : center;
+  width : 100%;
+  /* padding-bottom : 200rpx; */
 }
 
 .logo {
-  width: 353.8rpx;
-  height: 94.48rpx;
-  margin: 10rpx;
+  width : 353.8rpx;
+  height : 94.48rpx;
+  margin : 10rpx;
   /* margin-top: 35rpx; */
 }
 
 .intro {
-  width: 600rpx;
-  height: 300rpx;
-  margin: 50rpx;
+  width : 600rpx;
+  height : 300rpx;
+  margin : 50rpx;
 }
 
 .description {
-  margin: 30rpx;
-  width: 80%;
-  color: #6a3906;
-  font-size: 80%;
-  border: #6a3906;
-  border-style: solid;
-  border-width: 3px;
-  border-bottom-left-radius: 15px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
-  padding: 0 18rpx;
-  box-sizing: border-box;
+  margin : 30rpx;
+  width : 600rpx;
+  color : #6A3906;
+  font-size : 80%;
+  border : #6A3906;
+  border-style : solid;
+  border-width : 3px;
+  border-bottom-left-radius : 15px;
+  border-top-left-radius : 15px;
+  border-bottom-right-radius : 15px;
+  border-top-right-radius : 15px;
+  /* padding : 0 18rpx; */
+  box-sizing : border-box;
 }
 .tip {
-  color: #e7464b;
-  font-size: 32rpx;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 40rpx;
-  text-shadow: 1rpx 1rpx 3rpx #000;
+  color : #E7464B;
+  font-size : 32rpx;
+  text-align : center;
+  font-weight : bold;
+  margin-bottom : 40rpx;
+  text-shadow : 1rpx 1rpx 3rpx #000000;
 }
 .textArea {
-  margin-top: 30rpx;
-  width: 100%;
-  color: #6a3906;
-  font-size: 25rpx;
-  text-align: left;
-  line-height: 48rpx;
+  /* margin-top : 30rpx; */
+  width : 100%;
+  color : #6A3906;
+  font-size : 25rpx;
+  text-align : left;
+  line-height : 48rpx;
+  /* width : 570rpx; */
+  height : 790rpx;
+  box-sizing : border-box;
+  /* padding : 5px; */
+}
+.textArea image {
+  width : 600rpx;
+  /* margin-bottom : 10rpx; */
 }
 .icon-btn {
-  border: 4rpx solid #6a3906;
-  border-radius: 12rpx;
-  display: block;
-  width: 120rpx;
-  height: 50rpx;
-  text-align: center;
-  line-height: 40rpx;
-  margin: 20rpx 0 0;
-  box-sizing: border-box;
+  border : 4rpx solid #6A3906;
+  border-radius : 12rpx;
+  display : block;
+  width : 120rpx;
+  height : 50rpx;
+  text-align : center;
+  line-height : 40rpx;
+  margin : 20rpx 0 0;
+  box-sizing : border-box;
 }
 .header {
-  font-size: 32rpx;
-  margin: 10rpx;
-  font-weight: bold;
-  line-height: 32rpx;
-  margin-bottom: 20rpx;
+  font-size : 32rpx;
+  margin : 10rpx;
+  font-weight : bold;
+  line-height : 32rpx;
+  margin-bottom : 20rpx;
 }
 .header image {
-  width: 42rpx;
-  height: 43rpx;
-  vertical-align: bottom;
+  width : 42rpx;
+  height : 43rpx;
+  vertical-align : bottom;
 }
 .box {
-  margin: 30rpx 10rpx;
-  line-height: 120%;
+  margin : 30rpx 10rpx;
+  line-height : 120%;
 }
 .icon-detail {
-  margin-top: 10rpx;
-  line-height: 150%;
-  margin-left: 10rpx;
+  margin-top : 10rpx;
+  line-height : 150%;
+  margin-left : 10rpx;
 }
 .buttonView {
-  margin: auto;
+  margin : 20rpx auto 0;
   /* margin-bottom: 50rpx; */
-  text-align: center;
-  position: fixed;
-  bottom: 80rpx;
-  left: 0;
-  right: 0;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.76) 50%,
-    rgba(255, 255, 255, 0) 100%
+  text-align : center;
+
+  /* position : fixed; */
+  /* bottom : 120rpx; */
+  /* left : 0; */
+  /* right : 0; */
+  background : linear-gradient(
+  to top,
+  rgba(255, 255, 255, 1) 0%,
+  rgba(255, 255, 255, .76) 50%,
+  rgba(255, 255, 255, 0) 100%
   );
 }
 .main_btn {
-  width: 100%;
-  border-radius: 30rpx;
-  background: #e60c12;
-  border: solid 1rpx #6a3906;
-  color: #ffffff;
+  width : 100%;
+  border-radius : 30rpx;
+  background : #E60C12;
+  border : solid 1rpx #6A3906;
+  color : #FFFFFF;
 }
 
 .wish-save-btn {
-  margin-top: 40rpx;
-  width: 562rpx;
-  height: 100rpx;
-  padding: 0;
+  margin-top : 40rpx;
+  width : 562rpx;
+  height : 100rpx;
+  padding : 0;
 }
 .wish-share-btn {
-  margin: auto;
-  width: 562rpx;
-  height: 100rpx;
+  margin : auto;
+  width : 562rpx;
+  height : 100rpx;
 }
 .entrance {
-  padding: 20rpx;
+  padding : 20rpx;
 }
 .entrance button {
-  margin: 10rpx;
+  margin : 10rpx;
 }
 .min .logo {
-  margin: 0;
-  width: 224.68247248094832rpx;
-  height: 60rpx;
+  margin : 0;
+  width : 224.68247248094832rpx;
+  height : 60rpx;
 }
 .min .description {
-  height: 970rpx;
-  overflow: auto;
-  margin: 10rpx 30rpx;
+  /* height : 970rpx; */
+  overflow : auto;
+  margin : 10rpx 30rpx;
 }
 
 .min .buttonView {
-  bottom: 20rpx;
+  margin-top : 10rpx;
+  /* bottom : 20rpx; */
 }

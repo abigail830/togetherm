@@ -1,4 +1,5 @@
 /**index.wxss**/
+
 .container {
   padding: 0rpx;
   margin: 0rpx;
@@ -14,40 +15,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #fff;
   width: 100%;
   padding: 0;
   margin: 0rpx;
   text-align: center;
 }
 
-.userinfo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #ffffff;
-  width: 90%;
-  padding: 10rpx;
-  margin: 0rpx;
+.header.userinfo {
+  position: relative;
+  border: 0;
 }
+
 .left {
-  width: 30%;
+  width: 108rpx;
+  /* width: 30%;
   padding: 10rpx;
-  text-align: right;
+  text-align: right; */
 }
-.middle {
-  width: 30%;
-  color: #6a3906;
-  font-size: 80%;
-  text-align: left;
-  padding-top: 60rpx;
-}
+
 .right {
-  width: 30%;
-  padding: 10rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-align: right;
+  font-size: 30rpx;
+  color: #6a3906;
+}
+
+.help_box {
+  margin-top: 12rpx;
 }
 
 .logo {
@@ -56,58 +54,64 @@
   margin: 15rpx;
   margin-top: 5rpx;
 }
+
 .help {
-  font-size: 70%;
+  font-size: 28rpx;
   padding: 3rpx;
   height: 50rpx;
   line-height: 40rpx;
   width: 140rpx;
   border-radius: 15rpx;
+  display: inline-block;
   border: solid 4rpx #6a3906;
-  color: #6a3906;
+  color: #fff;
   background-color: #94ddf8;
 }
 
 .userinfo-avatar {
   position: absolute;
-  top: 42rpx;
-  left: 84rpx;
-  margin: 10rpx;
-  width: 120rpx;
-  height: 120rpx;
+  left: 10.6rpx;
+  top: 9.8rpx;
+  width: 97rpx;
+  height: 97rpx;
   overflow: hidden;
   border-radius: 50%;
   background-color: #94ddf8;
 }
+
 .icon_bg {
   position: absolute;
-  top: 40rpx;
-  left: 80rpx;
-  width: 150rpx;
-  height: 150rpx;
+  top: 0;
+  left: 0;
+  width: 116rpx;
+  height: 116rpx;
 }
-.icon_out {
-  height: 200rpx;
-}
+
+/* .icon_out {
+  height : 200rpx;
+} */
 
 .countinfo {
   display: flex;
   flex-direction: row;
   width: 94%;
-  margin: 0rpx;
+  margin: 0 0 10rpx;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #fff;
   color: #353535;
 }
 
 .countcell {
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
-  width: 42%;
+  /* width: 42%; */
+  position: relative;
+  flex: 1;
   padding: 8rpx;
   margin: 10rpx;
-  border-radius: 30rpx;
-  border: solid 10rpx #6a3906;
+  border-radius: 20rpx;
+  border: solid 6rpx #6a3906;
   margin-top: 0rpx;
 }
 
@@ -127,14 +131,16 @@
 .red {
   color: #e60c12;
 }
+
 .yellow {
   color: #ffc000;
 }
+
 .countheader {
   font-size: 80%;
   margin: 5rpx;
   padding: 10rpx;
-  color: #ffffff;
+  color: #fff;
   background-color: #6a3906;
   border-radius: 0 0 20rpx 20rpx;
 }
@@ -143,10 +149,12 @@
   font-size: 140%;
   font-weight: bold;
 }
+
 .counttips {
   font-size: 70%;
   font-weight: lighter;
 }
+
 .blocker {
   width: 95%;
   height: 30rpx;
@@ -156,51 +164,36 @@
 
 .content {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   text-align: center;
   padding: 50rpx 20rpx;
 }
+
 .row-container {
-  /* display: flex;
-    flex-direction:row;
-    width:100%;
-    border-bottom: 1rpx solid #eeeeee;
-    vertical-align: center;
-    padding:10rpx 20rpx;
-    margin:0;
-    background-color: #ffffff;
-    text-align: left;
-
-
-    z-index: 5;
-    transition: left 0.2s ease-in-out;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis; */
-
   display: flex;
   flex-direction: row;
   width: 100%;
-  border-bottom: 1rpx solid #eeeeee;
+  border-bottom: 1rpx solid #eee;
   vertical-align: center;
   padding: 0rpx 10rpx;
   margin: 0;
-  background-color: #ffffff;
-
+  background-color: #fff;
   z-index: 5;
   transition: left 0.2s ease-in-out;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .con-date {
   color: #757575;
   margin: 10rpx;
   padding-left: 10rpx;
   font-size: 80%;
 }
+
 .con-info {
   margin: 10rpx;
   text-align: left;
@@ -221,8 +214,9 @@
   border-radius: 30rpx;
   background: #e60c12;
   border: solid 1rpx #6a3906;
-  color: #ffffff;
+  color: #fff;
 }
+
 .addwishbtn {
   color: #f08080;
   margin: 30rpx auto;
@@ -236,6 +230,7 @@
   height: 60rpx;
   margin: 5rpx 10rpx;
 }
+
 .con-enter {
   align-items: center;
   justify-content: center;
@@ -261,9 +256,8 @@
 
 .timeline {
   width: 98%;
-  margin: 30rpx auto;
-  padding: 10rpx 10rpx 130rpx;
-  padding-left: 30rpx;
+  margin: auto;
+  padding: 0 30rpx 130rpx;
   text-align: center;
   flex: 1;
   overflow: hidden;
@@ -301,30 +295,37 @@
   height: 50rpx;
   background: #fff;
 }
+
 .timeline.friend-timeline {
   padding-bottom: 50rpx;
 }
+
 .timeline-timestamp {
-  border: 2px solid #6a3906;
-  border-radius: 20rpx;
-  width: 80px;
   height: 20px;
-  padding: 5rpx 10rpx;
   border-color: #6a3906;
   color: #6a3906;
+  text-align: left;
+}
+
+.timeline-timestamp::after {
+  content: ' ';
+  height: 0;
+  width: 500rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-top: 2px dashed;
 }
 
 .timeline-asof {
   font-size: 14px;
+  position: relative;
+  margin: 0 0 10rpx;
 }
 
 .timeline-btn {
-  /* font-size: 70%;
-  margin: 10rpx 5rpx;
-  padding: 1rpx 18rpx;
-  border-radius: 15rpx;
-  border: solid 4rpx #6a3906;
-  color: #6a3906; */
   background-color: none;
 }
 
@@ -332,32 +333,41 @@
   display: flex;
   flex-direction: row;
   align-items: top;
-  background-color: #ffffff;
-  width: 94%;
-  margin: 0rpx;
+  background-color: #fff;
+  /* width: 94%; */
+  margin: 0 0 20rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  border: 2px solid #6a3906;
 }
+
 .timeline-middle progress {
   margin-top: 14rpx;
 }
+
 .timeline-left {
-  width: 30%;
+  /* width: 30%; */
   text-align: left;
   display: flex;
   flex-direction: row;
 }
+
 .timeline-middle {
   margin-top: 2rpx;
   padding-right: 30rpx;
-  width: 52%;
+  width: 378rpx;
   color: #6a3906;
   font-size: 80%;
-  padding-top: 25rpx;
+  padding: 15px 15rpx 0 25rpx;
   text-align: left;
+  box-sizing: border-box;
 }
+
 .timeline-right {
-  width: 18%;
+  width: 140rpx;
   display: flex;
   align-items: center;
+  text-align: right;
 }
 
 .time-point-left {
@@ -365,12 +375,14 @@
 }
 
 .time-point-right {
-  width: 40%;
-  padding-top: 20rpx;
+  width: 130rpx;
+  padding-top: 25rpx;
   color: #6a3906;
   font-weight: bold;
   text-align: center;
-  font-family: TrebuchetMS, Rotobo, "Microsoft YaHei", sans-serif;
+  border-right: 2px solid;
+  font-size: 55rpx;
+  font-family: TrebuchetMS, Rotobo, 'Microsoft YaHei', sans-serif;
 }
 
 .buttonView {
@@ -378,26 +390,23 @@
   margin: auto;
   position: fixed;
   bottom: 0;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.76) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.76) 50%, rgba(255, 255, 255, 0) 100%);
   left: 0;
   right: 0;
   padding: 25rpx 50rpx;
   box-sizing: border-box;
   text-align: center;
 }
+
 .main_btn {
   width: 562rpx;
   margin: auto;
   border-radius: 30rpx;
   background: #e60c12;
   border: solid 5rpx #6a3906;
-  color: #ffffff;
+  color: #fff;
 }
+
 .timeline-middle view {
   overflow: hidden;
   white-space: nowrap;
@@ -405,17 +414,20 @@
   width: 360rpx;
   font-size: 30rpx;
 }
+
 .icon-see {
   width: 130rpx;
   height: 50rpx;
-  margin-top: 25rpx;
+  margin-top: 38rpx;
   vertical-align: middle;
 }
+
 .friend-timeline .icon-see {
   /* width: 104rpx;
   height: 40rpx; */
   margin-top: 0rpx;
 }
+
 .friend-timeline .icon-see + .icon-see {
   margin-top: 5rpx;
 }
@@ -423,15 +435,19 @@
 .friend-timeline .timeline-entry {
   /* height: 160rpx; */
 }
+
 .friend-timeline .time-point-right {
   /* line-height: 160rpx; */
 }
+
 .friend-timeline .timeline-line-up {
   /* height: 70rpx; */
 }
+
 .friend-timeline .timeline-line-down {
   height: 55rpx;
 }
+
 .friend-timeline .description {
   font-size: 25rpx;
   background: #ffd45a;
@@ -443,20 +459,21 @@
   position: relative;
   margin-bottom: 15rpx;
 }
+
 .friend-timeline .description-text {
-  white-space:nowrap;
-text-overflow:ellipsis;
-max-width:330rpx;
-display:inline-block;
-overflow:hidden;
-line-height:12rpx;
-min-width:60rpx;
-text-align:center;
-padding-bottom:10rpx;
-height:20rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 330rpx;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 12rpx;
+  min-width: 60rpx;
+  text-align: center;
+  padding-bottom: 10rpx;
+  height: 20rpx;
 }
-.friend-timeline .description view.bot,
-.friend-timeline .description view.top {
+
+.friend-timeline .description view.bot, .friend-timeline .description view.top {
   width: 0;
   height: 0;
   font-size: 0;
@@ -465,28 +482,32 @@ height:20rpx;
   z-index: 1;
   left: 14rpx;
 }
+
 .friend-timeline .description view.bot {
   border-width: 10rpx;
   border-style: solid dashed dashed;
   border-color: #e8b90b transparent transparent;
   bottom: -20rpx;
 }
+
 .friend-timeline .timeline-middle view {
   overflow: visible;
   width: auto;
 }
+
 .friend-timeline .description view.top {
   border-width: 10rpx;
   border-style: solid dashed dashed;
   border-color: #ffd45a transparent transparent;
   bottom: -18rpx;
 }
+
 .friend-timeline .timeline-right {
   display: inline-block;
 }
 
 .friend-timeline .timeline-middle {
-  padding-top: 5rpx;
+  padding-top: 15rpx;
 }
 
 .wish-save-btn {
@@ -495,20 +516,34 @@ height:20rpx;
   height: 100rpx;
   padding: 0;
 }
+
 .wish-share-btn {
   margin: auto;
   width: 562rpx;
   height: 100rpx;
 }
+
 .mini-time {
-  font-size: 20rpx;
+  font-size: 25rpx;
   font-weight: normal;
 }
+
 .icon-star {
   width: 56rpx;
   height: 54rpx;
-  padding-top: 20rpx;
+  padding-top: 25rpx;
 }
+
+.icon-star-box {
+  border: 2px dashed #6a3906;
+  border-radius: 100%;
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 15rpx;
+  text-align: center;
+  display: inline-block;
+}
+
 .card-tip-view {
   position: absolute;
   top: 0;
@@ -517,6 +552,7 @@ height:20rpx;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .card-tip-view-box {
   width: 600rpx;
   height: 600rpx;
@@ -527,7 +563,107 @@ height:20rpx;
   bottom: 0;
   margin: auto;
 }
+
 .card-tip-bg {
   width: 600rpx;
   height: 600rpx;
+}
+
+.countcell.header {
+  height: 130rpx;
+}
+
+.my_mark .countheader {
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 2rpx;
+}
+
+.icon-make {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+}
+
+.my_mark .icon-make {
+  bottom: 10rpx;
+  top: inherit;
+}
+
+.noactive .icon-make.icon-make_on {
+  display: none;
+}
+
+.icon-make.icon-make_off {
+  display: none;
+}
+
+.noactive .icon-make.icon-make_off {
+  display: block;
+}
+
+.time-point-left, .timeline-line {
+  display: none;
+}
+
+.icon-max-see {
+  width: 110rpx;
+  height: 108rpx;
+  margin-top: 16rpx;
+}
+
+.done-view-avatar {
+  position: relative;
+  width: 116rpx;
+  height: 116rpx;
+  margin: 0 20rpx;
+}
+
+.done-view-tip {
+  font-size: 52rpx;
+  line-height: 116rpx;
+  color: #6a3906;
+  flex: 1;
+}
+
+.done-view-username {
+  font-size: 34rpx;
+  color: #6a3906;
+  line-height: 180rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.done-view-header {
+  display: flex;
+  height: 146rpx;
+}
+
+.icon-new-done {
+  width: 170rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 40rpx;
+}
+
+.done-view-info text {
+  font-size: 40rpx;
+}
+
+.done-view-info text.max {
+  font-size: 60rpx;
+}
+
+.friend-timeline .timeline-middle view.timeline-middle-description {
+  overflow: hidden;
+  width: 360rpx;
+}
+.state--ban{
+  opacity:.5;
 }
