@@ -664,3 +664,6 @@
   overflow: hidden;
   width: 360rpx;
 }
+.state--ban{
+  opacity:.5;
+}

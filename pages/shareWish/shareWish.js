@@ -61,6 +61,7 @@ Page({
       : app.globalData.entrance || "";
     if (options.wishListId == null) {
       console.log("wishListId is null");
+      this.createMe();
     } else {
       this.setData({
         wishimage: options.wishimageUrl || pics(options.wishimageId || 0),

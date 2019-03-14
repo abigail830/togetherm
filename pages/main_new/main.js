@@ -173,6 +173,8 @@ Page({
               e.dateInTime =
                 format0(date.getHours()) + ":" + format0(date.getMinutes());
               e.iconDone = util.getIconDone(null, e.createTime);
+              let expired = util.countdown(e.listDueTime);
+              e.expired = expired.day == 0 && expired.hh == 0 && expired.mm==0;
               return e;
             });
             return e;
@@ -367,6 +369,8 @@ Page({
               e.activeColor = e.progress !== 100 ? "#ffd45a" : "#E60C12";
               e.dateInTime =
                 format0(date.getHours()) + ":" + format0(date.getMinutes());
+              let expired = util.countdown(e.listDueTime);
+              e.expired = expired.day == 0 && expired.hh == 0 && expired.mm == 0;
               return e;
             });
             return e;

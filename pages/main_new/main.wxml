@@ -51,15 +51,8 @@
         </view>
         <view class='timeline-line'></view>
         <block wx:for="{{item.wishListDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="wishListDTOList">
-          <view class="timeline-entry">
+          <view class="timeline-entry {{wishListDTOList.expired?'state--ban':''}}">
             <view class="timeline-left">
-              <view class="time-point-left">
-                <view class='timeline-line-up'></view>
-                <view class='timeline-circle'></view>
-                <block wx:if="{{inside_index !=item.wishListDTOList.length-1 || timeline_index != timeline.length-1}}">
-                  <view class='timeline-line-down'></view>
-                </block>
-              </view>
               <view class="time-point-right">
                 <view>{{wishListDTOList.dateInMonth}}</view>
                 <view class="mini-time">{{wishListDTOList.dateInTime}}</view>
@@ -96,15 +89,8 @@
         </view>
         <view class='timeline-line'></view>
         <block wx:for="{{item.takenWishDTOList}}" wx:key="index" wx:for-index="inside_index" wx:for-item="takenWishDTOList">
-          <view class="timeline-entry">
+          <view class="timeline-entry {{takenWishDTOList.expired?'state--ban':''}}">
             <view class="timeline-left">
-              <view class="time-point-left">
-                <view class='timeline-line-up'></view>
-                <view class='timeline-circle'></view>
-                <block wx:if="{{inside_index !=item.takenWishDTOList.length-1 || timeline_index !=  friendTimeline.length-1}}">
-                  <view class='timeline-line-down'></view>
-                </block>
-              </view>
               <view class="time-point-right">
                 <view>{{takenWishDTOList.dateInMonth}}</view>
                 <view class="mini-time">{{takenWishDTOList.dateInTime}}</view>
