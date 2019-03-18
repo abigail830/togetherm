@@ -24,7 +24,7 @@
 
 .header.userinfo {
   position: relative;
-  border: 0;
+  border-color: transparent;
 }
 
 .left {
@@ -42,6 +42,8 @@
   text-align: right;
   font-size: 30rpx;
   color: #6a3906;
+  position: absolute;
+  right: -4rpx;
 }
 
 .help_box {
@@ -118,6 +120,10 @@
 .noactive {
   filter: grayscale(80%);
   -webkit-filter: grayscale(80%);
+}
+
+.my_mark.noactive {
+  filter: none;
 }
 
 /* .noactive.countcell {
@@ -664,6 +670,7 @@
   overflow: hidden;
   width: 360rpx;
 }
-.state--ban{
-  opacity:.5;
+
+.state--ban {
+  opacity: 0.5;
 }
