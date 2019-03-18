@@ -388,3 +388,35 @@ button::after {
     opacity: 0.9;
   }
 }
+
+.radio-group {
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+
+.radio text {
+  margin-right: 70rpx;
+}
+
+.limit {
+  display: flex;
+  width: 550rpx;
+  align-items: center;
+  overflow: hidden;
+}
+
+.limit .value_new {
+  width: 80rpx;
+  text-align: center;
+}
+
+.limit .list_icon {
+  padding: 0 20rpx;
+  display: inline-block;
+  vertical-align: bottom;
+  line-height: 60rpx;
+}
+
+.limit .list_icon.noshow {
+  filter: grayscale(100%);
+}

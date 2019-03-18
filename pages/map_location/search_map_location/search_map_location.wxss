@@ -1,0 +1,41 @@
+page {
+  background: #efefef;
+}
+
+.addressCell {
+  background-color: white;
+  padding: 10rpx 20rpx 10rpx 20rpx;
+  margin-bottom: 5rpx;
+}
+
+.address text {
+  font-size: 30rpx;
+  color: #000;
+}
+
+.detail text {
+  font-size: 27rpx;
+  color: #666;
+}
+
+.search-view {
+  display: flex;
+  background: white;
+  padding: 20rpx;
+  height: 60rpx;
+  box-shadow: 1px 1px 5px #666;
+  margin-bottom: 10rpx;
+}
+.address-list-view{
+  background: #fff
+}
+
+button{
+  font-size : 28rpx;
+  color : #fff;
+  background : #6A3906;
+}
+.search-input{
+  font-size: 30rpx;
+  width: 580rpx
+}

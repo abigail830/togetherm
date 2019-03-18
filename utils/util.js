@@ -359,10 +359,8 @@ module.exports = {
         const s = +new Date(d[0]);
         const e = +new Date(d[1]);
         if (now >= s && now <= e) {
-          console.log("时间对", key);
           return globalData.statusBase + key;
         }
-        console.log(d, now);
       }
     }
     return "/images/icon-star.png";

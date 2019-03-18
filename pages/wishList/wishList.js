@@ -21,6 +21,7 @@ Page({
     listDescription: "",
     listDescription2: "",
     listDueTime: "",
+    listDueTimeText: "",
     // headerText: "契约列表",
     datePickerIsShow: false,
     datePickerValue: [currentYear, currentMonth, currentDate],
@@ -29,12 +30,15 @@ Page({
     currentDate: currentDate,
     wishListID: null,
     canDelete: true,
-    entrance:"",
+    entrance: "",
     wishimage: "",
-    nickname:"",
+    nickname: "",
     touchMoveIndex: null,
     isPickerRender: false,
     isPickerShow: false,
+    address: '',
+    isSelfWitness: true,
+    isSelfWitnessChecked: 1,
     timePickerConfig: {
       confirmColor: "#F08080",
       column: "hour"
@@ -42,7 +46,7 @@ Page({
     selectPicIndex: 0,
     pics: [],
     timeout: false,
-    formId: null
+    formId: null,
   },
 
   /**
@@ -59,8 +63,8 @@ Page({
       });
     } else {
       this.setData({
-        nickname: app.globalData.userInfo.nickName,
-        entrance: app.globalData.entrance,
+        nickname: app.globalData.userInfo ? app.globalData.userInfo.nickName : '神秘朋友',
+        entrance: app.globalData.entrance || 0,
         wishListID: options.wishListID,
         pics: pics(),
         wishimage: pics(0)
@@ -77,7 +81,7 @@ Page({
         )
         .then(
           res => {
-            console.log(res.data);
+            console.log('get', res.data);
             let canDelete = true;
             let arr = res.data.wishes;
             let len = arr.length;
@@ -90,9 +94,14 @@ Page({
             this.setData({
                 canDelete: canDelete,
                 wishes: res.data.wishes,
+                address: res.data.address,
+                isSelfWitnessChecked: +res.data.isSelfWitness,
+                isSelfWitness: res.data.isSelfWitness,
+                implementorsLimit: res.data.implementorsLimit,
                 listDescription: res.data.listDescription,
                 listDescription2: res.data.listDescription2,
                 listDueTime: res.data.listDueTime,
+                listDueTimeText: res.data.listDueTime.substring(0, 16),
                 year: res.data.listDueTime.substring(0, 4),
                 month: res.data.listDueTime.substring(5, 7),
                 currentDate: res.data.listDueTime.substring(8, 10),
@@ -101,8 +110,7 @@ Page({
                 ) < new Date(),
                 timePickerConfig: {
                   defaultDate: res.data.listDueTime.length < 11 ?
-                    res.data.listDueTime + " 00:59:59" :
-                    res.data.listDueTime,
+                    res.data.listDueTime + " 00:59:59" : res.data.listDueTime,
                   ...this.data.timePickerConfig
                 }
               },
@@ -205,12 +213,26 @@ Page({
       listDescription: e.detail.value
     });
   },
-  bindTitleInput: function (e) {
+  isSelfWitnessChange: function(e) {
+    this.setData({
+      isSelfWitness: !!(+e.detail.value),
+      isSelfWitnessChecked: e.detail.value
+    }, () => {
+      this.updateWishList()
+    })
+  },
+  bindTitleInput: function(e) {
     this.setData({
       listDescription2: e.detail.value
     });
-  }, 
-  bindImplementorsLimitInput: function (e) {
+  },
+  bindAddressInput: function(e) {
+    this.setData({
+      address: e.detail.value
+    });
+  },
+  //address
+  bindImplementorsLimitInput: function(e) {
     this.setData({
       implementorsLimit: e.detail.value
     });
@@ -274,6 +296,8 @@ Page({
           listDescription: "我的新契约",
           listDueTime: currentYear + "-" + currentMonth + "-" + currentDate,
           listOpenId: app.globalData.authInfo.openid,
+          isSelfWitness: this.data.isSelfWitness,
+          address: this.data.address,
           implementorsLimit: this.data.implementorsLimit
         },
         success(result) {
@@ -284,6 +308,7 @@ Page({
             listDescription2: result.data.listDescription2,
             listDescription: result.data.listDescription,
             listDueTime: result.data.listDueTime,
+            listDueTimeText: result.data.listDueTime.substring(0, 16),
             implementorsLimit: result.data.implementorsLimit
           });
           if (result.data.error) {
@@ -321,7 +346,6 @@ Page({
       this.setData({
         formId: null
       })
-
       sdk.request({
         url: url,
         method: "POST",
@@ -331,10 +355,13 @@ Page({
         data: {
           description: item.description,
           wishListID: this.data.wishListID,
+          isSelfWitness: this.data.isSelfWitness,
+          address: this.data.address,
+          implementorsLimit: this.data.implementorsLimit,
           wishStatus: "NEW"
         },
         success(result) {
-          console.log("请求成功");
+          console.log("添加请求成功");
           console.log(result);
           item.wishID = result.data.wishID;
           item.wishListID = result.data.wishListID;
@@ -381,7 +408,7 @@ Page({
           wishStatus: item.wishStatus
         },
         success(result) {
-          console.log("请求成功");
+          console.log("更新请求成功");
           console.log(result);
           // if (result.data.error) {
           //   console.log(result.data.error);
@@ -485,6 +512,8 @@ Page({
           listDescription2: this.data.listDescription2,
           listDescription: this.data.listDescription,
           listDueTime: this.data.listDueTime,
+          isSelfWitness: this.data.isSelfWitness,
+          address: this.data.address,
           implementorsLimit: this.data.implementorsLimit
         },
         success(result) {
@@ -617,7 +646,8 @@ Page({
     console.log(data);
 
     this.setData({
-      listDueTime: data.startTime.substr(0, 14) + "59:59"
+      listDueTime: data.startTime.substr(0, 14) + "59:59",
+      listDueTimeText: data.startTime.substring(0, 16),
     });
     this.confirmDate();
   },
@@ -653,6 +683,33 @@ Page({
         util.showModel("请求失败,请检查网络", error);
         console.log("request fail", error);
       }
+    });
+  },
+  addLimit() {
+    let l = ++this.data.implementorsLimit
+    this.setData({
+      implementorsLimit: l
+    }, () => {
+      this.updateWishList()
+    })
+  },
+  reducLimit() {
+    let l = --this.data.implementorsLimit
+    if (l > 0) {
+      this.setData({
+        implementorsLimit: l
+      }, () => {
+        this.updateWishList()
+      })
+    }
+  },
+  selectAddress() {
+    console.log('selectAddress')
+    if (this.data.timeout || !this.data.canDelete) {
+      return;
+    }
+    wx.navigateTo({
+      url: "../map_location/search_map_location/search_map_location"
     });
   },
   formSubmit(e) {

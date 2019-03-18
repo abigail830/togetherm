@@ -174,7 +174,7 @@ Page({
                 format0(date.getHours()) + ":" + format0(date.getMinutes());
               e.iconDone = util.getIconDone(null, e.createTime);
               let expired = util.countdown(e.listDueTime);
-              e.expired = expired.day == 0 && expired.hh == 0 && expired.mm==0;
+              e.expired = expired.day == 0 && expired.hh == 0 && expired.mm == 0;
               return e;
             });
             return e;
@@ -430,6 +430,14 @@ Page({
       });
     }
     console.log(data);
+  },
+  make() {
+    wx.showModal({
+      title: '温馨提示',
+      content: "敬请期待",
+      confirmColor: '#6A3906',
+      showCancel: false,
+    })
   },
   closeDoneView() {
     this.setData({

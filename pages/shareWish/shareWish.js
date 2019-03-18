@@ -145,7 +145,7 @@ Page({
               wishes: res.data.wishes,
               listDescription: res.data.listDescription,
               listDescription2: res.data.listDescription2,
-              listDueTime: res.data.listDueTime,
+              listDueTime: res.data.listDueTime.substring(0, 16),
               year: res.data.listDueTime.substring(0, 4),
               month: res.data.listDueTime.substring(5, 7),
               currentDate: res.data.listDueTime.substring(8, 10)

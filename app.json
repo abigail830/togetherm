@@ -9,12 +9,19 @@
     "pages/shareWish/shareWish",
     "pages/shareIndex/shareIndex",
     "pages/instruction/instruction",
-    "pages/poster/poster"
+    "pages/poster/poster",
+    "pages/map_location/map_location",
+    "pages/map_location/search_map_location/search_map_location"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "友爱契约",
     "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于定位约定地址信息"
+    }
   }
 }

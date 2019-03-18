@@ -1,8 +1,8 @@
 <view class="boxs">
   <image mode='aspectFill' class="logo" src='/images/LOGO.png' />
+  <view class="row-text row-text-nickname">{{nickName}}的友爱契约</view>
   <image mode='aspectFill' class="poster" src='{{wishimage}}' />
   <view class="row-text">{{listDescription}}</view>
-  <view class="row-text row-text-nickname">{{nickName}}</view>
   <view class="row-text-info">{{listDescription2||''}}</view>
   <view class="content_lists_new">
     <block wx:for="{{wishes}}" wx:for-item="item" wx:key="wishID">
@@ -22,6 +22,7 @@
       </view>
     </block>
   </view>
-  <view class="time">有效日期：{{listDueTime}}</view>
+  <view class="time">年月日时：{{listDueTime}}</view>
+  <view class="time">约定地点：{{address||'无'}}</view>
   <image bindtap="createMe" class="create-btn" mode='aspectFill' src="/images/create-me.png" />
 </view>

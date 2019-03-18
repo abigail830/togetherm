@@ -14,7 +14,7 @@
         </view>
       </view>
     </view>
-    <view class="countcell header my_mark noactive">
+    <view bindtap='make' class="countcell header my_mark noactive">
       <view class="countheader">友爱印记</view>
       <view class="blocker">
         <image class="blocker" src="../../images/count_block.png"></image>

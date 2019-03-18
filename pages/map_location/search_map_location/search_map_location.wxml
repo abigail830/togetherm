@@ -1,0 +1,16 @@
+<view class="search-view">
+  <input class="search-input" bindinput="bindKeyInput" placeholder="请输入地址关键字" confirm-type="search" maxlength="100" bindconfirm="clickSearch" bindfocus="clickSearchView" bindblur="loseInputBlur" focus="true" />
+  <button bindtap="clickSearch" hover-class="btnClick">查询</button>
+</view>
+<view class="address-list-view">
+  <block wx:for="{{tips}}" wx:key="{{index}}">
+    <view class="addressCell" bindtap="didSelectCell" data-index="{{index}}">
+      <view class="address">
+        <text>{{item.title}}</text>
+      </view>
+      <view class="detail">
+        <text>{{item.address}}</text>
+      </view>
+    </view>
+  </block>
+</view>

@@ -37,6 +37,10 @@ Component({
     wishListid: {
       type: String,
       value: ""
+    },
+    address:{
+      type:String,
+      value:''
     }
   },
   data: {
@@ -60,7 +64,7 @@ Component({
       const fontColor = "#6A3906";
       const boxWidth = 672;
       const boxLeft = 40;
-      const boxTop = 680;
+      const boxTop = 660;
       const titleHeight = 40;
       const boxSpacing = 20;
 
@@ -82,11 +86,11 @@ Component({
         return {
           x: boxLeft / 2 + boxWidth,
           textAlign: "right",
-          y: boxTop + titleHeight + boxSpacing - 10,
+          y: 70,
           width: boxWidth,
-          text: this.data.nickname,
-          fontSize: titleHeight - 4,
-          fontBold: true,
+          text: this.data.nickname + "的友爱契约",
+          fontSize: 30,
+          // fontBold: true,
           color: fontColor,
           lineNum: 1,
           h: titleHeight - 16
@@ -95,7 +99,8 @@ Component({
       const contentData = (() => {
         let data = {
           x: boxLeft + 5,
-          y: nicknameData.y + nicknameData.h + boxSpacing + 10,
+          // y: nicknameData.y + nicknameData.h + boxSpacing + 10,
+          y: boxTop + titleHeight + boxSpacing - 10,
           width: boxWidth - 10,
           text: this.data.wishinfo,
           fontSize: 32,
@@ -114,16 +119,16 @@ Component({
         wishimage = this.data.wishimage || "/images/poster-default.png",
         images = [{
             url: "/images/LOGO.png",
-            width: 199.68, // 355 96
-            height: 54,
-            y: 20.7 * 2,
+            width: 184.9,
+            height: 48,
+            y: 28,
             x: 20.65 * 2
           },
           {
             url: wishimage,
             width: 335 * 2,
             height: 250 * 2,
-            y: 120,
+            y: 100,
             x: 40,
             borderRadius: 25,
             borderWidth: 12,
@@ -158,34 +163,45 @@ Component({
             this.data.wishListid +
             "&nickName=" +
             this.data.nickname);
-        console.log(qrImage);
         const setFooter = top => {
           top = top + 50;
+          const qrSize = 120
+          const qrTop = top + 80
           images.push({
             // url: "/images/poster-qr.png",
             url: qrImage,
-            width: 160,
-            height: 160,
-            y: top,
-            x: 750 - 160 - boxLeft
+            width: qrSize,
+            height: qrSize,
+            y: qrTop + 60,
+            x: 750 / 2 - (qrSize / 2) + 1
           });
-
+          images.push({
+            url: "/images/qr-bg.png",
+            width: 750,
+            height: 244,
+            y: qrTop,
+            x: 0
+          });
           wishlist.push({
-            text: `有效日期：`,
-            fontBold: true,
-            fontSize: 36,
-            y: top + 30 + 36,
+            text: `年月日时：` + this.data.date.substring(0, 16),
+            // fontBold: true,
+            fontSize: 28,
+            y: top,
             x: boxLeft,
             color: fontColor
           }, {
-            text: this.data.date,
-            fontBold: true,
-            fontSize: 36,
-            y: top + 30 * 3 + 36,
+            lineNum: 1,
+            width: 580,
+              text: `约定地点：` + (this.data.address||'无'),
+            // fontBold: true,
+            fontSize: 28,
+            y: top + 20 * 2,
             x: boxLeft,
             color: fontColor
           });
         };
+
+
         if (wishlistLen <= 0) {
           setFooter(y);
           return {};
@@ -205,8 +221,7 @@ Component({
 
           images.push({
             url: e.wishStatus !== "NEW" ?
-              "/images/icon-btn-2.png" :
-              "/images/icon-btn-1.png",
+              "/images/icon-btn-2.png" : "/images/icon-btn-1.png",
             width: 60,
             height: 60,
             y: top - padding - 12,
@@ -231,7 +246,8 @@ Component({
 
       let height = Object.keys(blocksData).length ?
         blocksData.y + blocksData.height + 250 :
-        1020;
+        1050;
+      height = height + 130;
       let posterConfig = {
         width: 750,
         height: height,

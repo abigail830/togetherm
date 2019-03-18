@@ -115,7 +115,7 @@
 .poster {
   width : 670rpx;
   height : 500rpx;
-  margin-top : 20rpx;
+  margin-top : 0rpx;
   border-radius : 25rpx;
   border : 6rpx solid #6A3906;
   box-sizing : border-box;
@@ -129,12 +129,14 @@
   text-overflow : ellipsis;
 }
 .row-text-nickname.row-text {
-  margin-top : 0;
-  margin-bottom : 10rpx;
+  margin : 10rpx 10rpx 0 0;
+  font-size: 30rpx;
 }
 
 .row-text-nickname {
   text-align : right;
+  float: right;
+  font-weight: normal;
 }
 .content_lists_new {
   border : 4rpx solid #6A3906;
@@ -183,13 +185,18 @@ button::after {
   border : none;
 }
 .time {
-  font-size : 34rpx;
-  padding : 20px 0;
+  font-size : 28rpx;
+  padding : 20rpx 0 0;
+}
+.time+.time{
+  padding: 0 0 20rpx
 }
 .create-btn {
-  width : 672rpx;
-  height : 140rpx;
+  width : 562rpx;
+  height : 100rpx;
   padding-bottom : 40rpx;
+  display: block;
+  margin: auto
 }
 .row-text-info {
   font-size : 32rpx;
