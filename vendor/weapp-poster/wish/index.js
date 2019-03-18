@@ -38,9 +38,9 @@ Component({
       type: String,
       value: ""
     },
-    address:{
-      type:String,
-      value:''
+    address: {
+      type: String,
+      value: ""
     }
   },
   data: {
@@ -48,9 +48,7 @@ Component({
   },
   methods: {
     onPosterSuccess(e) {
-      const {
-        detail
-      } = e;
+      const { detail } = e;
       PosterData = detail;
       wx.hideLoading();
       // this.onSavePic();
@@ -88,7 +86,7 @@ Component({
           textAlign: "right",
           y: 70,
           width: boxWidth,
-          text: this.data.nickname + "的友爱契约",
+          text: (this.data.nickname || "神秘朋友") + "的友爱契约",
           fontSize: 30,
           // fontBold: true,
           color: fontColor,
@@ -117,7 +115,8 @@ Component({
         wishlistFontSize = 34,
         lines = [],
         wishimage = this.data.wishimage || "/images/poster-default.png",
-        images = [{
+        images = [
+          {
             url: "/images/LOGO.png",
             width: 184.9,
             height: 48,
@@ -157,23 +156,26 @@ Component({
         };
         const qrImage =
           app.globalData.apiBase +
-          "/qrcode/limit?page=" + encodeURIComponent("/pages/shareIndex/shareIndex?wishimageUrl=" +
-            wishimage.replace(app.globalData.statusBase, "") +
-            "&wishListId=" +
-            this.data.wishListid +
-            "&nickName=" +
-            this.data.nickname);
+          "/qrcode/limit?page=" +
+          encodeURIComponent(
+            "/pages/shareIndex/shareIndex?wishimageUrl=" +
+              wishimage.replace(app.globalData.statusBase, "") +
+              "&wishListId=" +
+              this.data.wishListid +
+              "&nickName=" +
+              this.data.nickname
+          );
         const setFooter = top => {
           top = top + 50;
-          const qrSize = 120
-          const qrTop = top + 80
+          const qrSize = 120;
+          const qrTop = top + 80;
           images.push({
             // url: "/images/poster-qr.png",
             url: qrImage,
             width: qrSize,
             height: qrSize,
             y: qrTop + 60,
-            x: 750 / 2 - (qrSize / 2) + 1
+            x: 750 / 2 - qrSize / 2 + 1
           });
           images.push({
             url: "/images/qr-bg.png",
@@ -182,25 +184,27 @@ Component({
             y: qrTop,
             x: 0
           });
-          wishlist.push({
-            text: `年月日时：` + this.data.date.substring(0, 16),
-            // fontBold: true,
-            fontSize: 28,
-            y: top,
-            x: boxLeft,
-            color: fontColor
-          }, {
-            lineNum: 1,
-            width: 580,
-              text: `约定地点：` + (this.data.address||'无'),
-            // fontBold: true,
-            fontSize: 28,
-            y: top + 20 * 2,
-            x: boxLeft,
-            color: fontColor
-          });
+          wishlist.push(
+            {
+              text: `年月日时：` + this.data.date.substring(0, 16),
+              // fontBold: true,
+              fontSize: 28,
+              y: top,
+              x: boxLeft,
+              color: fontColor
+            },
+            {
+              lineNum: 1,
+              width: 580,
+              text: `约定地点：` + (this.data.address || "无"),
+              // fontBold: true,
+              fontSize: 28,
+              y: top + 20 * 2,
+              x: boxLeft,
+              color: fontColor
+            }
+          );
         };
-
 
         if (wishlistLen <= 0) {
           setFooter(y);
@@ -220,8 +224,10 @@ Component({
           });
 
           images.push({
-            url: e.wishStatus !== "NEW" ?
-              "/images/icon-btn-2.png" : "/images/icon-btn-1.png",
+            url:
+              e.wishStatus !== "NEW"
+                ? "/images/icon-btn-2.png"
+                : "/images/icon-btn-1.png",
             width: 60,
             height: 60,
             y: top - padding - 12,
@@ -244,9 +250,9 @@ Component({
         return data;
       })();
 
-      let height = Object.keys(blocksData).length ?
-        blocksData.y + blocksData.height + 250 :
-        1050;
+      let height = Object.keys(blocksData).length
+        ? blocksData.y + blocksData.height + 250
+        : 1050;
       height = height + 130;
       let posterConfig = {
         width: 750,
@@ -260,7 +266,8 @@ Component({
       };
       console.log(posterConfig);
 
-      this.setData({
+      this.setData(
+        {
           posterConfig: posterConfig
         },
         () => {
@@ -317,7 +324,8 @@ Component({
     getUserInfo() {
       const setUser = info => {
         userInfo = info;
-        this.setData({
+        this.setData(
+          {
             nickname: info.nickName
           },
           () => {
