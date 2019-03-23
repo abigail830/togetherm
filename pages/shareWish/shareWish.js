@@ -56,15 +56,20 @@ Page({
     //     });
 
     console.warn("share-onLoad", options);
-    app.globalData.entrance = options.entrance
-      ? options.entrance
-      : app.globalData.entrance || "";
+    app.globalData.entrance = options.entrance ?
+      options.entrance :
+      app.globalData.entrance || "";
     if (options.wishListId == null) {
       console.log("wishListId is null");
       this.createMe();
     } else {
+      let i = options.wishimageUrl;
+      if (i && i.indexOf('http') !== 0) {
+        i = app.globalData.statusBase + i
+      }
+      console.log(i)
       this.setData({
-        wishimage: options.wishimageUrl || pics(options.wishimageId || 0),
+        wishimage: i || pics(options.wishimageId || 0),
         wishListId: options.wishListId,
         nickName: options.nickName
       });
@@ -93,8 +98,7 @@ Page({
     });
     try {
       sdk.request({
-        url:
-          app.globalData.apiBase +
+        url: app.globalData.apiBase +
           `/v1/wishes/taken?` +
           "id=" +
           wishID +
@@ -103,7 +107,9 @@ Page({
           "&formId=" +
           formID,
         method: "PUT",
-        header: { "Content-Type": "application/json" },
+        header: {
+          "Content-Type": "application/json"
+        },
         success(res) {
           console.log("handling take up wish response");
           console.log(res.data);
@@ -131,30 +137,30 @@ Page({
     });
     Promise.all([
       util
-        .request(
-          app.globalData.apiBase +
-            "/v1/wishes?" +
-            "wishListId=" +
-            this.data.wishListId
-        )
-        .then(
-          res => {
-            console.log("refeshing wish data");
-            console.log(res.data);
-            this.setData({
-              wishes: res.data.wishes,
-              listDescription: res.data.listDescription,
-              listDescription2: res.data.listDescription2,
-              listDueTime: res.data.listDueTime.substring(0, 16),
-              year: res.data.listDueTime.substring(0, 4),
-              month: res.data.listDueTime.substring(5, 7),
-              currentDate: res.data.listDueTime.substring(8, 10)
-            });
-          },
-          res => {
-            util.showModel("获取您的契约", res.errMsg);
-          }
-        )
+      .request(
+        app.globalData.apiBase +
+        "/v1/wishes?" +
+        "wishListId=" +
+        this.data.wishListId
+      )
+      .then(
+        res => {
+          console.log("refeshing wish data");
+          console.log(res.data);
+          this.setData({
+            wishes: res.data.wishes,
+            listDescription: res.data.listDescription,
+            listDescription2: res.data.listDescription2,
+            listDueTime: res.data.listDueTime.substring(0, 16),
+            year: res.data.listDueTime.substring(0, 4),
+            month: res.data.listDueTime.substring(5, 7),
+            currentDate: res.data.listDueTime.substring(8, 10)
+          });
+        },
+        res => {
+          util.showModel("获取您的契约", res.errMsg);
+        }
+      )
     ]).then(() => {
       wx.hideLoading();
     });
@@ -190,9 +196,24 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {},
-
+  onShareAppMessage: function (options) {
+    const path =
+      "/pages/shareWish/shareWish?wishListId=" +
+      this.data.wishListId +
+      "&wishimageUrl=" +
+      this.data.wishimage +
+      "&nickName=" +
+      this.data.nickName;
+    return util.shareDate(
+      this.data.nickName + " " + this.data.listDescription,
+      this.data.wishimage,
+      path
+    );
+  },
   createMe: function() {
     console.log("go go go");
-    wx.navigateTo({ url: "../index_new/index_new" });
+    wx.navigateTo({
+      url: "../index_new/index_new"
+    });
   }
 });

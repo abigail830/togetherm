@@ -66,14 +66,15 @@
   border-radius: 15rpx;
   display: inline-block;
   border: solid 4rpx #6a3906;
-  color: #fff;
+  /* color: #fff; */
+  color: #6a3906;
   background-color: #94ddf8;
 }
 
 .userinfo-avatar {
   position: absolute;
   left: 10.6rpx;
-  top: 9.8rpx;
+  top: 9.1rpx;
   width: 97rpx;
   height: 97rpx;
   overflow: hidden;
@@ -123,7 +124,7 @@
 }
 
 .my_mark.noactive {
-  filter: none;
+  /* filter: none; */
 }
 
 /* .noactive.countcell {
